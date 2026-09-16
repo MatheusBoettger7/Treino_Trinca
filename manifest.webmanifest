@@ -1,1 +1,19 @@
-{"name":"Treino Trinca","short_name":"Trinca","start_url":"./","display":"standalone","background_color":"#0b1020","theme_color":"#0b1020","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
+{
+  "name": "Treino Trinca",
+  "short_name": "Trinca",
+  "id": "/Treino_Trinca/",
+  "start_url": "/Treino_Trinca/",
+  "scope": "/Treino_Trinca/",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020",
+  "description": "Controle seus treinos, cargas, repetições e progresso.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
