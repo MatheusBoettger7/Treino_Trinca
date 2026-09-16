@@ -1,4 +1,4 @@
-const CACHE = 'treino-trinca-v4';
+const CACHE = 'treino-trinca-v5';
 const ASSETS = [
   './',
   './index.html',
@@ -27,29 +27,10 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
-  const url = new URL(event.request.url);
-  const isExerciseImage = url.hostname === 'exercise-dataset.com' && url.pathname.startsWith('/images/flat/');
-
-  if (isExerciseImage) {
-    event.respondWith(
-      caches.match(event.request).then(cached => {
-        if (cached) return cached;
-        return fetch(event.request)
-          .then(response => {
-            if (response.ok || response.type === 'opaque') {
-              const copy = response.clone();
-              caches.open(CACHE).then(cache => cache.put(event.request, copy));
-            }
-            return response;
-          });
-      })
-    );
-    return;
-  }
-
   event.respondWith(
     caches.match(event.request).then(cached => {
       if (cached) return cached;
+
       return fetch(event.request)
         .then(response => {
           if (response.ok) {
