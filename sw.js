@@ -1,4 +1,4 @@
-const CACHE = 'treino-trinca-v8';
+const CACHE = 'treino-trinca-v9';
 const ASSETS = ['./','./index.html','./manifest.webmanifest','./icon.svg'];
 
 self.addEventListener('install', event => {
@@ -18,6 +18,7 @@ self.addEventListener('activate', event => {
       .then(() => self.clients.claim())
   );
 });
+
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
