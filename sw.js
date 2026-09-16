@@ -1,10 +1,5 @@
-const CACHE = 'treino-trinca-v7';
-const ASSETS = [
-  './',
-  './index.html',
-  './manifest.webmanifest',
-  './icon.svg'
-];
+const CACHE = 'treino-trinca-v8';
+const ASSETS = ['./','./index.html','./manifest.webmanifest','./icon.svg'];
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -23,7 +18,6 @@ self.addEventListener('activate', event => {
       .then(() => self.clients.claim())
   );
 });
-
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
@@ -33,7 +27,7 @@ self.addEventListener('fetch', event => {
 
       return fetch(event.request)
         .then(response => {
-          if (response.ok) {
+          if (response.ok || response.type === 'opaque') {
             const copy = response.clone();
             caches.open(CACHE).then(cache => cache.put(event.request, copy));
           }
