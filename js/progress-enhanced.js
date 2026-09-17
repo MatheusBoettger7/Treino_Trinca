@@ -69,14 +69,60 @@
       .filter(Boolean);
   }
 
+  function exerciseLogs(name){
+    if(!name)return [];
+    return progressSessions()
+      .filter(s=>(s.exercises||[]).some(e=>e.name===name))
+      .sort((a,b)=>new Date(a.date)-new Date(b.date))
+      .flatMap(s=>(s.exercises||[])
+        .filter(e=>e.name===name)
+        .flatMap(e=>(e.sets||[])
+          .filter(x=>num(x.kg)>0||num(x.reps)>0)
+          .map(x=>({date:s.date,code:s.code,kg:x.kg||'',reps:x.reps||'',rir:x.rir??x.RIR??''}))
+        )
+      );
+  }
+
+  function exerciseSummary(name){
+    const logs=exerciseLogs(name);
+    const valid=logs.filter(x=>num(x.kg)>0&&num(x.reps)>0);
+    if(!valid.length){
+      return {
+        maxKg:0,
+        bestReps:0,
+        volume:0,
+        rirAvg:null,
+        sessions:0,
+        sets:logs.length
+      };
+    }
+
+    const maxKg=Math.max(...valid.map(x=>num(x.kg)));
+    const bestReps=Math.max(...valid.map(x=>num(x.reps)));
+    const volume=Math.round(valid.reduce((sum,x)=>sum+(num(x.kg)*num(x.reps)),0));
+    const rirValues=logs.map(x=>num(x.rir)).filter(x=>x>0||x===0 && String(x.rir).trim()!=='');
+    const rirAvg=rirValues.length ? Math.round((rirValues.reduce((a,b)=>a+b,0)/rirValues.length)*10)/10 : null;
+    const sessionKeys=new Set(valid.map(x=>`${x.date}|${x.code||''}`));
+
+    return {maxKg,bestReps,volume,rirAvg,sessions:sessionKeys.size,sets:logs.length};
+  }
+
   function exerciseHistory(name){
+    const logs=exerciseLogs(name);
     if(!name)return '<div class="empty">Faça algum treino para gerar o histórico por exercício.</div>';
-    const logs=progressSessions().flatMap(s=>(s.exercises||[])
-      .filter(e=>e.name===name)
-      .map(e=>({date:s.date,sets:e.sets||[]})))
-      .reverse();
     if(!logs.length)return '<div class="empty">Nenhum histórico para este exercício.</div>';
-    return logs.slice(0,8).map(l=>`<div class="history"><b>${new Date(l.date).toLocaleDateString('pt-BR')}</b> — ${l.sets.filter(x=>num(x.kg)||num(x.reps)).map(x=>`${x.kg||'—'} kg × ${x.reps||'—'}`).join(' · ')||'Sem carga registrada'}</div>`).join('');
+
+    let html='';
+    let currentKey='';
+    logs.forEach(item=>{
+      const key=`${item.date}|${item.code||''}`;
+      if(key!==currentKey){
+        currentKey=key;
+        html+=`<div class="history exercise-history-session"><b>${new Date(item.date).toLocaleDateString('pt-BR')}</b>${item.code?` · Treino ${esc(item.code)}`:''}</div>`;
+      }
+      html+=`<div class="exercise-history-set"><span>${item.kg||'—'} kg × ${item.reps||'—'}</span>${item.rir!==''?`<span class="muted small">RIR ${esc(item.rir)}</span>`:''}</div>`;
+    });
+    return `<div class="exercise-history-list">${html}</div>`;
   }
 
   function prs(){
@@ -104,6 +150,23 @@
     return list.length?list[list.length-1]:null;
   }
 
+  function renderExerciseHistoryCard(exercises,selected){
+    const summary=exerciseSummary(selected);
+    return `<div class="card"><h3>Histórico por exercício</h3>
+      <div class="exercise-history-picker">${exercises.map(e=>`<button class="filter ${e===selected?'active':''}" onclick='selectExerciseEnhanced(${JSON.stringify(e)})'>${esc(e)}</button>`).join('')||'<div class="empty">Faça algum treino para criar o histórico.</div>'}</div>
+      ${selected?`<div class="exercise-summary">
+        <div class="exercise-summary-head"><strong>${esc(selected)}</strong><span class="muted small">${summary.sessions} treino${summary.sessions===1?'':'s'} · ${summary.sets} séries</span></div>
+        <div class="exercise-summary-grid">
+          <div><span>Maior carga</span><b>${summary.maxKg?`${summary.maxKg} kg`:'—'}</b></div>
+          <div><span>Melhor repetição</span><b>${summary.bestReps||'—'}</b></div>
+          <div><span>Volume acumulado</span><b>${summary.volume?`${summary.volume.toLocaleString('pt-BR')} kg`:'—'}</b></div>
+          <div><span>RIR médio</span><b>${summary.rirAvg!=null?summary.rirAvg.toLocaleString('pt-BR'):'—'}</b></div>
+        </div>
+      </div>`:''}
+      ${exerciseHistory(selected)}
+    </div>`;
+  }
+
   function renderProgressEnhanced(c){
     const stats=weekStats();
     const recent=progressSessions().slice(-8).reverse();
@@ -126,10 +189,7 @@
       <div><label>Cintura (cm)</label><input id="cintura" inputmode="decimal" placeholder="88" value="${esc(metric.waist||'')}"></div>
     </div><button class="primary" onclick="saveMetricEnhanced()">Salvar medidas</button>${chart()}</div>
 
-    <div class="card"><h3>Histórico por exercício</h3>
-      <div>${exercises.map(e=>`<button class="filter ${e===selected?'active':''}" onclick='selectExerciseEnhanced(${JSON.stringify(e)})'>${esc(e)}</button>`).join('')||'<div class="empty">Faça algum treino para criar o histórico.</div>'}</div>
-      ${exerciseHistory(selected)}
-    </div>
+    ${renderExerciseHistoryCard(exercises,selected)}
 
     <div class="card"><h3>🏆 Recordes pessoais</h3>${prs()}</div>
 
