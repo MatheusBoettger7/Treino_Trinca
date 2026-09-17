@@ -48,6 +48,7 @@
   function addExerciseV16(){if(!editing)return;editing.items.push({name:'Novo exercício',sets:3,reps:'8–12'});renderEditor();const el=document.getElementById(`ename_${editing.items.length-1}`);el?.focus();el?.select()}
 
   function pickerDialog(){return document.getElementById('repdbExercisePicker')}
+
   function pickerResults(query=''){
     const holder=document.getElementById('repdbPickerResults');
     if(!holder||typeof RepDB==='undefined'||!RepDB.loaded)return;
@@ -55,9 +56,13 @@
     const count=document.getElementById('repdbPickerCount');
     if(count)count.textContent=`${list.length} resultados`;
     holder.innerHTML=list.map(ex=>{
+      const localized=RepDB.localized(ex);
       const img=RepDB.image(ex,'peak')||RepDB.image(ex,'start')||'';
-      const muscles=[...(ex.primary_muscles||[]).map(RepDB.label),...(ex.secondary_muscles||[]).map(RepDB.label).slice(0,2)].join(', ');
-      return `<button type="button" class="repdb-picker-item" data-picker-select="${escLocal(ex.id)}"><div class="repdb-picker-text"><strong>${escLocal(ex.name_en||ex.id)}</strong><span>${escLocal(RepDB.label(ex.body_part)||'')} · ${escLocal(ex.equipment||'Peso corporal')}</span>${muscles?`<small>${escLocal(muscles)}</small>`:''}</div>${img?`<img src="${img}" alt="" referrerpolicy="no-referrer">`:''}</button>`;
+      const muscles=[...(localized.primaryMuscles||[]),...(localized.secondaryMuscles||[]).slice(0,2)].filter(Boolean).join(', ');
+      const equipment=localized.equipment||'Peso corporal';
+      const bodyPart=localized.bodyPart||'';
+      const description=localized.description||'';
+      return `<button type="button" class="repdb-picker-item" data-picker-select="${escLocal(ex.id)}"><div class="repdb-picker-text"><strong>${escLocal(localized.name||ex.id)}</strong><span>${escLocal(bodyPart)}${equipment?` · ${escLocal(equipment)}`:''}</span>${muscles?`<small>${escLocal(muscles)}</small>`:''}${description?`<small class="repdb-picker-description">${escLocal(description)}</small>`:''}</div>${img?`<img src="${img}" alt="" referrerpolicy="no-referrer">`:''}</button>`;
     }).join('')||'<div class="empty">Nenhum exercício encontrado.</div>';
   }
 
@@ -86,7 +91,8 @@
   function selectRepDBExercise(id){
     if(!editing||typeof RepDB==='undefined')return;
     const ex=RepDB.get(id);if(!ex)return;
-    const item={name:String(ex.name_en||ex.id),sets:3,reps:'8–12',repdbId:ex.id};
+    const localized=RepDB.localized(ex);
+    const item={name:String(localized.name||ex.name_en||ex.id),sets:3,reps:'8–12',repdbId:ex.id};
     if(pickerIndex===-1)editing.items.push(item);
     else if(editing.items[pickerIndex]){
       item.sets=editing.items[pickerIndex].sets||3;
