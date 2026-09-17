@@ -1,24 +1,39 @@
 const RepDB = (() => {
-  const URL = 'https://exercise-dataset.com/exercises.json';
+  // O endpoint do exercise-dataset.com nem sempre pode ser lido por fetch
+  // em páginas hospedadas em outro domínio. O mesmo catálogo oficial da RepDB
+  // também é publicado no Hugging Face com acesso via navegador.
+  const URL = 'https://huggingface.co/datasets/RepDB/exercise-dataset/raw/main/exercises.json';
   let exercises = [];
   let byId = new Map();
   let loaded = false;
   let failed = false;
+  let loading = null;
 
   async function load() {
-    if (loaded || failed) return exercises;
-    try {
-      const response = await fetch(URL, { cache: 'force-cache' });
-      if (!response.ok) throw new Error(`RepDB HTTP ${response.status}`);
-      const json = await response.json();
-      exercises = Array.isArray(json.exercises) ? json.exercises : [];
-      byId = new Map(exercises.map(ex => [ex.id, ex]));
-      loaded = true;
-    } catch (error) {
-      failed = true;
-      console.warn('RepDB não pôde ser carregado:', error);
-    }
-    return exercises;
+    if (loaded) return exercises;
+    if (loading) return loading;
+
+    failed = false;
+    loading = (async () => {
+      try {
+        const response = await fetch(URL, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`RepDB HTTP ${response.status}`);
+        const json = await response.json();
+        exercises = Array.isArray(json.exercises) ? json.exercises : [];
+        byId = new Map(exercises.map(ex => [ex.id, ex]));
+        loaded = exercises.length > 0;
+        if (!loaded) throw new Error('Catálogo RepDB vazio');
+        failed = false;
+      } catch (error) {
+        failed = true;
+        console.warn('RepDB não pôde ser carregado:', error);
+      } finally {
+        loading = null;
+      }
+      return exercises;
+    })();
+
+    return loading;
   }
 
   function get(id) { return byId.get(id) || null; }
