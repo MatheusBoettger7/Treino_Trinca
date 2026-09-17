@@ -1,0 +1,229 @@
+(function(){
+  const PT={
+    squat:{
+      name:'Agachamento',description:'Exercício composto para pernas, com ênfase em quadríceps e glúteos.',
+      instructions:['Posicione os pés aproximadamente na largura dos ombros e mantenha o tronco firme.','Desça controlando o movimento, mantendo os joelhos alinhados com os pés.','Suba pressionando o chão e retorne à posição inicial sem perder a estabilidade.'],
+      tips:['Mantenha o abdômen contraído durante todo o movimento.','Evite deixar os joelhos colapsarem para dentro.','Controle principalmente a descida e use uma amplitude confortável.']},
+    'bench-press':{
+      name:'Supino reto',description:'Exercício de empurrar para peito, com participação importante de tríceps e ombros anteriores.',
+      instructions:['Deite no banco com os pés firmes no chão e escápulas estabilizadas.','Desça a barra de forma controlada em direção ao meio do peito.','Empurre a barra para cima mantendo os punhos firmes e o corpo estável.'],
+      tips:['Mantenha as escápulas apoiadas no banco.','Não deixe os cotovelos abrirem excessivamente.','Controle a barra durante a descida.']},
+    'barbell-row':{
+      name:'Remada curvada',description:'Exercício de puxada para costas, com destaque para dorsais, romboides e bíceps.',
+      instructions:['Incline o tronco mantendo a coluna neutra e segure a barra.','Puxe a barra em direção ao abdômen, levando os cotovelos para trás.','Desça a barra controladamente até estender os braços.'],
+      tips:['Evite arredondar a lombar.','Pense em levar os cotovelos para trás, não apenas puxar com as mãos.','Mantenha o tronco estável durante as repetições.']},
+    'romanian-deadlift':{
+      name:'Stiff / terra romeno',description:'Movimento de dobradiça do quadril para posterior de coxa e glúteos, com a lombar estabilizada.',
+      instructions:['Fique em pé com a carga próxima às pernas e joelhos levemente flexionados.','Leve o quadril para trás enquanto a carga desce próxima ao corpo.','Retorne estendendo o quadril e contraindo glúteos.'],
+      tips:['Mantenha a carga próxima às pernas.','Pare a descida quando perder a posição neutra da coluna.','O movimento deve vir principalmente do quadril.']},
+    'lateral-raise':{
+      name:'Elevação lateral',description:'Exercício de isolamento com foco no deltoide lateral para desenvolvimento dos ombros.',
+      instructions:['Fique em pé com os braços ao lado do corpo e cotovelos levemente flexionados.','Eleve os braços lateralmente até aproximadamente a altura dos ombros.','Desça lentamente e repita.'],
+      tips:['Evite embalar o corpo.','Use uma carga que permita controlar todo o movimento.','Mantenha os ombros relaxados e não encolha o trapézio.']},
+    'barbell-curl':{
+      name:'Rosca direta',description:'Exercício de flexão do cotovelo com foco no bíceps.',
+      instructions:['Segure a barra com as mãos aproximadamente na largura dos ombros.','Flexione os cotovelos levando a barra para cima sem movimentar o tronco.','Desça a carga lentamente até quase estender os braços.'],
+      tips:['Mantenha os cotovelos próximos ao corpo.','Evite usar impulso do quadril ou das costas.','Priorize amplitude e controle.']},
+    'tricep-pushdown':{
+      name:'Tríceps na polia',description:'Exercício de extensão do cotovelo para trabalhar principalmente o tríceps.',
+      instructions:['Segure a barra ou acessório e mantenha os cotovelos próximos ao corpo.','Empurre o acessório para baixo até estender os cotovelos.','Retorne de forma controlada sem perder a posição dos braços.'],
+      tips:['Evite inclinar o tronco para gerar impulso.','Mantenha os cotovelos estáveis.','Controle a subida do acessório.']},
+    'machine-calf-raise':{
+      name:'Panturrilha',description:'Exercício de elevação dos calcanhares com foco nos músculos da panturrilha.',
+      instructions:['Posicione os pés na plataforma e estabilize o corpo.','Desça os calcanhares de forma controlada até uma amplitude confortável.','Empurre a plataforma com a ponta dos pés e eleve os calcanhares.'],
+      tips:['Use amplitude completa que você consiga controlar.','Evite quicar no fundo do movimento.','Faça uma pausa breve no topo quando possível.']},
+    'cable-crunch':{
+      name:'Abdominal na polia',description:'Exercício de flexão do tronco para fortalecer principalmente a musculatura abdominal.',
+      instructions:['Ajoelhe-se diante da polia e segure o acessório próximo à cabeça.','Contraia o abdômen e flexione o tronco para baixo.','Retorne lentamente sem perder a tensão abdominal.'],
+      tips:['Não transforme o movimento em uma puxada de braços.','Pense em aproximar as costelas do quadril.','Evite usar impulso.']},
+    'leg-press':{
+      name:'Leg press',description:'Exercício composto para pernas, com grande participação de quadríceps e glúteos.',
+      instructions:['Apoie costas e quadril no encosto e posicione os pés de forma estável.','Desça a plataforma controladamente, respeitando sua amplitude.','Empurre a plataforma de volta sem relaxar as pernas no final.'],
+      tips:['Mantenha o quadril encostado no banco.','Não trave os joelhos no final da repetição.','Use amplitude segura e consistente.']},
+    'incline-db-press':{
+      name:'Supino inclinado com halteres',description:'Pressão inclinada para peito superior, com participação dos ombros anteriores e tríceps.',
+      instructions:['Ajuste o banco em uma inclinação moderada e estabilize os pés no chão.','Desça os halteres controladamente ao lado do peito.','Empurre os halteres para cima mantendo o controle da trajetória.'],
+      tips:['Evite abrir demais os cotovelos.','Mantenha as escápulas estabilizadas.','Não deixe os halteres se chocarem no topo.']},
+    'lat-pulldown':{
+      name:'Puxada alta',description:'Exercício de puxada vertical com foco nas costas e participação dos bíceps.',
+      instructions:['Segure a barra e estabilize o tronco com os pés apoiados.','Puxe a barra em direção à parte superior do peito.','Retorne lentamente até estender os braços novamente.'],
+      tips:['Evite balançar o tronco.','Pense em levar os cotovelos para baixo.','Controle especialmente a volta da barra.']},
+    'leg-curl':{
+      name:'Mesa flexora',description:'Exercício de isolamento para os músculos posteriores da coxa.',
+      instructions:['Ajuste a máquina para manter o joelho alinhado ao eixo de rotação.','Flexione os joelhos puxando o apoio para perto das pernas.','Retorne lentamente até a posição inicial.'],
+      tips:['Mantenha o quadril apoiado.','Evite chutar o peso com velocidade.','Controle a fase de retorno.']},
+    'dumbbell-shoulder-press':{
+      name:'Desenvolvimento com halteres',description:'Pressão acima da cabeça para deltoides, com participação do tríceps.',
+      instructions:['Comece com os halteres na altura dos ombros e tronco firme.','Empurre os halteres para cima até quase estender os braços.','Desça de forma controlada até a posição inicial.'],
+      tips:['Evite arquear excessivamente a lombar.','Mantenha os punhos alinhados.','Use uma carga que permita uma trajetória estável.']},
+    'cable-fly':{
+      name:'Crossover',description:'Exercício de adução dos braços na polia com foco nos músculos do peito.',
+      instructions:['Fique entre as polias com o tronco firme e uma leve flexão dos cotovelos.','Traga as mãos para frente e para dentro em um arco controlado.','Retorne lentamente até sentir alongamento confortável no peito.'],
+      tips:['Não transforme o movimento em uma extensão de cotovelos.','Mantenha tensão contínua no peito.','Controle a abertura dos braços.']},
+    'hammer-curl':{
+      name:'Rosca martelo',description:'Variação da rosca com pegada neutra, trabalhando bíceps e musculatura do antebraço.',
+      instructions:['Segure os halteres com as palmas voltadas uma para a outra.','Flexione os cotovelos levando os halteres para cima.','Desça lentamente até a posição inicial.'],
+      tips:['Mantenha os cotovelos próximos ao corpo.','Evite balançar o tronco.','Controle a descida.']},
+    'overhead-tricep-extension':{
+      name:'Tríceps francês',description:'Extensão dos cotovelos acima da cabeça com foco no tríceps.',
+      instructions:['Posicione a carga acima da cabeça com os cotovelos apontando para frente.','Flexione os cotovelos descendo a carga atrás da cabeça.','Estenda os cotovelos e volte à posição inicial.'],
+      tips:['Mantenha os braços relativamente estáveis.','Não abra demais os cotovelos.','Escolha uma carga que permita controle.']},
+    'seated-calf-raise':{
+      name:'Panturrilha sentado',description:'Elevação dos calcanhares sentado, com ênfase na musculatura profunda da panturrilha.',
+      instructions:['Sente-se com o apoio sobre as coxas e os pés posicionados corretamente.','Abaixe os calcanhares de forma controlada.','Eleve os calcanhares o máximo que conseguir com controle.'],
+      tips:['Evite movimentos curtos e rápidos.','Use uma amplitude confortável.','Controle tanto a subida quanto a descida.']},
+    'hanging-leg-raise':{
+      name:'Elevação de pernas',description:'Exercício de elevação das pernas para fortalecer principalmente a musculatura abdominal.',
+      instructions:['Segure a barra e estabilize o corpo antes de iniciar.','Eleve as pernas de forma controlada, trazendo a pelve para cima.','Desça sem deixar o corpo balançar excessivamente.'],
+      tips:['Evite usar embalo.','Comece com amplitude que consiga controlar.','Mantenha o abdômen ativo durante todo o movimento.']},
+    'hack-squat':{
+      name:'Hack squat',description:'Agachamento guiado com foco em quadríceps e participação dos glúteos.',
+      instructions:['Apoie costas e ombros na máquina e posicione os pés firmes.','Desça a plataforma controlando a flexão dos joelhos e quadris.','Empurre a plataforma para retornar à posição inicial.'],
+      tips:['Mantenha o quadril apoiado no encosto.','Ajuste os pés para uma posição confortável.','Evite travar os joelhos no topo.']},
+    'chest-press-machine':{
+      name:'Supino máquina',description:'Pressão guiada para o peito, com participação de tríceps e ombros anteriores.',
+      instructions:['Ajuste o banco para que as alças fiquem alinhadas ao meio do peito.','Empurre as alças para frente sem perder o apoio do corpo.','Retorne lentamente até a posição inicial.'],
+      tips:['Mantenha as escápulas estáveis.','Não deixe os ombros avançarem excessivamente.','Controle a volta das alças.']},
+    'seated-cable-row':{
+      name:'Remada sentada',description:'Puxada horizontal para costas, com participação de bíceps e estabilizadores da escápula.',
+      instructions:['Sente-se com os pés apoiados e a coluna neutra.','Puxe o acessório em direção ao abdômen mantendo os cotovelos próximos ao corpo.','Retorne lentamente até os braços ficarem estendidos.'],
+      tips:['Evite arredondar a lombar.','Não use impulso do tronco.','Concentre-se em aproximar as escápulas no final.']},
+    'leg-extension':{
+      name:'Cadeira extensora',description:'Exercício de isolamento para extensão do joelho, com foco nos quadríceps.',
+      instructions:['Ajuste a máquina para alinhar o joelho ao eixo de rotação.','Estenda os joelhos até a posição alta de forma controlada.','Desça lentamente sem soltar o peso.'],
+      tips:['Mantenha o quadril encostado no banco.','Evite movimentos bruscos.','Controle principalmente a descida.']},
+    'face-pull':{
+      name:'Face pull',description:'Puxada para o rosto com foco em deltoides posteriores e musculatura da parte superior das costas.',
+      instructions:['Segure a corda com as duas mãos e mantenha o tronco firme.','Puxe a corda em direção ao rosto, abrindo os cotovelos.','Retorne lentamente até estender os braços.'],
+      tips:['Mantenha os ombros baixos.','Não transforme o movimento em uma remada pesada.','Priorize controle e qualidade do movimento.']},
+    'preacher-curl':{
+      name:'Rosca Scott',description:'Rosca com apoio dos braços que reduz a ajuda do tronco e enfatiza o bíceps.',
+      instructions:['Apoie os braços no banco e segure a barra ou halteres.','Flexione os cotovelos elevando a carga.','Desça lentamente sem perder o controle na parte baixa.'],
+      tips:['Evite estender o cotovelo de forma agressiva no fundo.','Mantenha os braços apoiados.','Não use impulso.']},
+    'machine-seated-crunch':{
+      name:'Abdominal máquina',description:'Flexão de tronco guiada para fortalecer a musculatura abdominal.',
+      instructions:['Ajuste o equipamento e mantenha o quadril firme.','Flexione o tronco contra a resistência, contraindo o abdômen.','Retorne lentamente à posição inicial.'],
+      tips:['Não puxe apenas com o pescoço.','Mantenha o movimento controlado.','Evite perder a posição do quadril.']},
+    'machine-shoulder-press':{
+      name:'Desenvolvimento máquina',description:'Pressão guiada acima da cabeça para deltoides e tríceps.',
+      instructions:['Ajuste o banco para que as alças fiquem na altura dos ombros.','Empurre as alças para cima até quase estender os braços.','Retorne lentamente mantendo o tronco apoiado.'],
+      tips:['Evite arquear a lombar.','Mantenha os punhos alinhados.','Não use impulso.']},
+    'crunches':{
+      name:'Abdominal',description:'Movimento de flexão do tronco para trabalhar a musculatura abdominal.',
+      instructions:['Deite-se ou posicione-se de acordo com a variação escolhida.','Contraia o abdômen e eleve o tronco de forma controlada.','Retorne lentamente sem perder a tensão.'],
+      tips:['Evite puxar a cabeça com as mãos.','Concentre o movimento no tronco.','Use amplitude controlada.']},
+    'incline-treadmill-walk':{
+      name:'Cardio moderado',description:'Caminhada em esteira com inclinação para elevar o gasto energético e trabalhar o condicionamento.',
+      instructions:['Escolha uma velocidade confortável e uma inclinação moderada.','Mantenha postura estável enquanto caminha.','Sustente o esforço pelo tempo planejado.'],
+      tips:['Mantenha uma intensidade que permita controlar a respiração.','Evite apoiar todo o peso nas barras da esteira.','Aumente a intensidade gradualmente.']},
+    'hip-thrust':{
+      name:'Elevação pélvica',description:'Extensão do quadril com forte participação dos glúteos e auxílio dos posteriores.',
+      instructions:['Apoie a parte superior das costas no banco e mantenha os pés firmes.','Eleve o quadril contraindo os glúteos.','Desça controladamente até a posição inicial.'],
+      tips:['Evite compensar com hiperextensão da lombar.','Mantenha os joelhos alinhados com os pés.','Concentre a força na extensão do quadril.']},
+    'bulgarian-split-squat':{
+      name:'Agachamento búlgaro',description:'Agachamento unilateral com foco em quadríceps e glúteos.',
+      instructions:['Posicione o pé traseiro em um banco e o outro à frente.','Desça controladamente mantendo estabilidade.','Empurre o chão com a perna da frente para subir.'],
+      tips:['Ajuste a distância dos pés para uma posição estável.','Evite deixar o joelho perder o alinhamento.','Comece com carga moderada até dominar o equilíbrio.']},
+    'glute-kickback':{
+      name:'Coice na polia',description:'Extensão do quadril na polia com foco no glúteo.',
+      instructions:['Prenda o tornozelo ao cabo e estabilize o corpo.','Leve a perna para trás sem girar o quadril.','Retorne lentamente à posição inicial.'],
+      tips:['Evite arquear a lombar.','Movimente o quadril, não o tronco.','Use carga que permita controle.']},
+    'hip-abduction':{
+      name:'Abdutora',description:'Abdução do quadril para trabalhar principalmente os músculos glúteos laterais.',
+      instructions:['Sente-se e ajuste a máquina para uma posição confortável.','Abra as pernas contra a resistência de forma controlada.','Retorne lentamente sem deixar a carga bater.'],
+      tips:['Evite usar impulso.','Controle a volta das pernas.','Mantenha o tronco estável.']},
+    'step-up':{
+      name:'Step-up',description:'Subida unilateral em banco ou plataforma para trabalhar pernas e glúteos.',
+      instructions:['Posicione um pé sobre a plataforma e mantenha o corpo estável.','Empurre a plataforma com a perna de apoio para subir.','Desça controladamente e repita do outro lado.'],
+      tips:['Evite impulsionar excessivamente com a perna de trás.','Mantenha o joelho alinhado com o pé.','Use uma altura que permita controle.']}
+  };
+
+  const translations={
+    body:{upper_arms:'Braços',lower_legs:'Panturrilhas',upper_legs:'Pernas',chest:'Peito',back:'Costas',shoulders:'Ombros',core:'Abdômen',full_body:'Corpo inteiro',waist:'Cintura',hips:'Quadril',lower_back:'Lombar'},
+    equipment:{barbell:'Barra',dumbbell:'Halteres',cable:'Polia',machine:'Máquina',bodyweight:'Peso corporal',ab_wheel:'Roda abdominal',dip_machine:'Máquina assistida',pull_up_bar:'Barra fixa',kettlebell:'Kettlebell'},
+    difficulty:{beginner:'Iniciante',intermediate:'Intermediário',advanced:'Avançado'}
+  };
+
+  function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+  function label(map,value){return map[value]||RepDB.label(value||'')||'—'}
+  function findExerciseByIdOrName(idOrName){
+    if(!window.RepDB||!RepDB.loaded)return null;
+    return RepDB.get(idOrName)||RepDB.exercises.find(ex=>ex.name_en===idOrName)||null;
+  }
+  function resolveIdFromImage(img){
+    const localName=img.dataset.exercise||'';
+    const ids=window.mediaMap?.[localName]||[];
+    for(const id of ids){if(RepDB.get(id))return id}
+    return ids[0]||localName;
+  }
+  function getDetails(ex){
+    const local=PT[ex.id]||{};
+    return {
+      name:local.name||ex.name_en||ex.id,
+      description:local.description||ex.description_en||'Informação descritiva disponível no catálogo RepDB.',
+      instructions:local.instructions||ex.instructions_en||[],
+      tips:local.tips||ex.tips_en||[]
+    };
+  }
+  function ensureDialog(){
+    let d=document.getElementById('exerciseDetailsDialog');
+    if(d)return d;
+    d=document.createElement('dialog');
+    d.id='exerciseDetailsDialog';
+    d.className='exercise-details-dialog';
+    d.innerHTML=`<div class="exercise-details-shell"><div class="exercise-details-top"><strong class="exercise-details-title"></strong><button type="button" class="exercise-details-close" aria-label="Fechar">✕</button></div><img class="exercise-details-image" alt=""><div class="exercise-details-content"><div class="exercise-details-meta"></div><h3>Descrição</h3><p class="exercise-details-description"></p><h3>Como executar</h3><ol class="exercise-details-instructions"></ol><h3>💡 Dicas</h3><ul class="exercise-details-tips"></ul><div class="exercise-details-source">Dados do exercício: RepDB · conteúdo adaptado para português.</div></div></div>`;
+    document.body.appendChild(d);
+    d.querySelector('.exercise-details-close').addEventListener('click',()=>d.close());
+    d.addEventListener('click',e=>{if(e.target===d)d.close()});
+    return d;
+  }
+  function openFromImage(img){
+    if(!window.RepDB||!RepDB.loaded)return;
+    const id=resolveIdFromImage(img);
+    const ex=findExerciseByIdOrName(id);
+    if(!ex)return;
+    const detail=getDetails(ex),d=ensureDialog();
+    const imageSrc=typeof exerciseImage==='function'?exerciseImage(img.dataset.exercise||detail.name,0,'peak'):RepDB.image(ex,'peak');
+    d.querySelector('.exercise-details-title').textContent=detail.name;
+    const big=d.querySelector('.exercise-details-image');
+    big.src=imageSrc||RepDB.image(ex,'peak');
+    big.alt=`Demonstração de ${detail.name}`;
+    const muscles=[...(ex.primary_muscles||[]),...(ex.secondary_muscles||[]).slice(0,2)].map(RepDB.label).join(', ');
+    const body=label(translations.body,ex.body_part);
+    const equipment=label(translations.equipment,ex.equipment||'bodyweight');
+    const difficulty=label(translations.difficulty,ex.difficulty);
+    d.querySelector('.exercise-details-meta').textContent=[body,equipment,difficulty,muscles].filter(Boolean).join(' · ');
+    d.querySelector('.exercise-details-description').textContent=detail.description;
+    d.querySelector('.exercise-details-instructions').innerHTML=detail.instructions.map(x=>`<li>${esc(x)}</li>`).join('')||'<li>Sem instruções disponíveis.</li>';
+    d.querySelector('.exercise-details-tips').innerHTML=detail.tips.map(x=>`<li>${esc(x)}</li>`).join('')||'<li>Sem dicas disponíveis.</li>';
+    d.showModal();
+  }
+
+  const style=document.createElement('style');
+  style.textContent=`
+  .exercise-visual{cursor:zoom-in}
+  .exercise-details-dialog{width:min(94vw,560px);max-height:90vh;padding:0;border:1px solid #475569;border-radius:18px;background:#111827;color:#f8fafc;box-shadow:0 24px 80px #0009;overflow:hidden}
+  .exercise-details-dialog::backdrop{background:#020617cc;backdrop-filter:blur(4px)}
+  .exercise-details-shell{max-height:90vh;overflow:auto}
+  .exercise-details-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;border-bottom:1px solid #263149;position:sticky;top:0;background:#111827;z-index:1}
+  .exercise-details-title{font-size:18px}
+  .exercise-details-close{border:1px solid #475569;border-radius:9px;background:#1e293b;color:#fff;padding:7px 10px;font-weight:700}
+  .exercise-details-image{display:block;width:100%;height:min(48vh,360px);object-fit:contain;background:#0d1424}
+  .exercise-details-content{padding:15px}
+  .exercise-details-meta{color:#93c5fd;font-size:12px;line-height:1.5;margin-bottom:10px}
+  .exercise-details-content h3{font-size:14px;margin:14px 0 6px}
+  .exercise-details-content p,.exercise-details-content li{font-size:13px;line-height:1.55;color:#d1d5db}
+  .exercise-details-content ol,.exercise-details-content ul{padding-left:20px;margin:6px 0}
+  .exercise-details-source{margin-top:16px;padding-top:10px;border-top:1px solid #263149;color:#64748b;font-size:10px}
+  @media(max-width:430px){.exercise-details-dialog{width:96vw}.exercise-details-image{height:300px}.exercise-details-content{padding:13px}}
+  `;
+  document.head.appendChild(style);
+
+  document.addEventListener('click',function(ev){
+    const img=ev.target.closest?.('.exercise-visual[data-exercise]');
+    if(!img)return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    openFromImage(img);
+  },true);
+})();
