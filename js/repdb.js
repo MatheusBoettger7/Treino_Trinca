@@ -1,4 +1,3 @@
-document.getElementById('appVersion')?.replaceChildren(document.createTextNode('v2026.09.17.10'));
 const RepDB = (() => {
   const URL = 'https://huggingface.co/datasets/RepDB/exercise-dataset/raw/main/exercises.json';
   let exercises = [];
