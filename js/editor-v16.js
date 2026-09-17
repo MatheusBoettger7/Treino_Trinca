@@ -2,41 +2,28 @@
   const storageKey=p=>`treinoTrincaWorkouts_${p}`;
   let editing=null;
 
-  function loadSaved(){
-    try{return JSON.parse(localStorage.getItem(storageKey(profile))||'{}')}catch{return{}}
-  }
+  function loadSaved(){try{return JSON.parse(localStorage.getItem(storageKey(profile))||'{}')}catch{return{}}}
   function saveSaved(x){localStorage.setItem(storageKey(profile),JSON.stringify(x))}
   function clone(x){return JSON.parse(JSON.stringify(x))}
-  function applySaved(){
-    const saved=loadSaved();
-    Object.keys(saved).forEach(k=>{workouts[k]=saved[k]});
-  }
-  function allCodes(){
-    const base=profiles[profile].codes.slice();
-    Object.keys(workouts).forEach(k=>{if(!base.includes(k))base.push(k)});
-    return base;
-  }
-  function isBase(k){return profiles[profile].codes.includes(k)}
-
   function escLocal(v){return typeof esc==='function'?esc(v):String(v??'')}
+  function isBase(k){return profiles[profile].codes.includes(k)}
+  function applySaved(){const saved=loadSaved();Object.keys(saved).forEach(k=>{workouts[k]=saved[k]})}
+  function allCodes(){const base=profiles[profile].codes.slice();Object.keys(workouts).forEach(k=>{if(!base.includes(k))base.push(k)});return base}
 
   function renderListV16(c){
-    const p=profiles[profile];
-    const codes=allCodes();
-    c.innerHTML=`<div class="card"><h2>Treinos ${p.emoji}</h2><div class="muted small">Perfil atual: ${escLocal(p.label)}</div><p class="muted small">Agora você pode personalizar exercícios, séries e repetições sem alterar o arquivo original.</p><button class="primary compact-btn" onclick="newWorkoutV16()">➕ Criar treino</button></div><h3 class="section-title">Meus treinos</h3>${codes.map(k=>{const w=workouts[k];if(!w)return'';return `<div class="workout-list-row"><button class="listbtn ${k===current?'selected-workout':''}" onclick="setCurrent('${escLocal(k)}');show('hoje')"><b>Treino ${escLocal(k)}</b> — ${escLocal(w.name||'')} ${k===current?'· Atual':''}<br><span class="muted small">${w.items?.length||0} exercícios</span></button><button class="secondary edit-workout-btn" title="Editar" onclick="editWorkoutV16('${escLocal(k)}')">✏️</button><button class="secondary compact-btn" title="Duplicar" onclick="duplicateWorkoutV16('${escLocal(k)}')">📋</button>${!isBase(k)?`<button class="secondary delete-workout-btn" title="Excluir" onclick="deleteWorkoutV16('${escLocal(k)}')">🗑️</button>`:''}</div>`}).join('')}`;
+    const p=profiles[profile],codes=allCodes();
+    c.innerHTML=`<div class="card"><h2>Treinos ${p.emoji}</h2><div class="muted small">Perfil atual: ${escLocal(p.label)}</div><p class="muted small">Personalize exercícios, séries e repetições sem alterar o treino original.</p><button type="button" class="primary compact-btn" data-editor-action="new">➕ Criar treino</button></div><h3 class="section-title">Meus treinos</h3>${codes.map(k=>{const w=workouts[k];if(!w)return'';return `<div class="workout-list-row"><button type="button" class="listbtn ${k===current?'selected-workout':''}" data-editor-action="select" data-code="${escLocal(k)}"><b>Treino ${escLocal(k)}</b> — ${escLocal(w.name||'')} ${k===current?'· Atual':''}<br><span class="muted small">${w.items?.length||0} exercícios</span></button><button type="button" class="secondary edit-workout-btn" title="Editar" data-editor-action="edit" data-code="${escLocal(k)}">✏️</button><button type="button" class="secondary compact-btn" title="Duplicar" data-editor-action="duplicate" data-code="${escLocal(k)}">📋</button>${!isBase(k)?`<button type="button" class="secondary delete-workout-btn" title="Excluir" data-editor-action="delete" data-code="${escLocal(k)}">🗑️</button>`:''}</div>`}).join('')}`;
   }
 
   function newWorkoutV16(){
-    const code=`${profile==='masculino'?'M':'E'}${Date.now().toString().slice(-5)}`;
+    const code=`${profile==='masculino'?'M':'E'}${Date.now().toString().slice(-6)}`;
     const w={id:code,name:'Novo treino',items:[]};
-    workouts[code]=w;
-    const saved=loadSaved();saved[code]=w;saveSaved(saved);
-    editWorkoutV16(code);
+    workouts[code]=w;const saved=loadSaved();saved[code]=w;saveSaved(saved);editWorkoutV16(code);
   }
 
   function duplicateWorkoutV16(code){
     const src=workouts[code];if(!src)return;
-    const id=`${profile==='masculino'?'M':'E'}${Date.now().toString().slice(-5)}`;
+    const id=`${profile==='masculino'?'M':'E'}${Date.now().toString().slice(-6)}`;
     const w=clone(src);w.id=id;w.name=`${src.name||'Treino'} (cópia)`;
     workouts[id]=w;const saved=loadSaved();saved[id]=w;saveSaved(saved);setCurrent(id);editWorkoutV16(id);
   }
@@ -46,65 +33,55 @@
     if(!confirm(`Excluir o treino ${code}?`))return;
     delete workouts[code];const saved=loadSaved();delete saved[code];saveSaved(saved);
     if(current===code)setCurrent(profiles[profile].codes[0]);
-    show('treinos');
-  }
-
-  function repdbResults(query,currentName){
-    if(!window.RepDB||!RepDB.loaded)return[];
-    const q=String(query||'').trim().toLowerCase();
-    let list=RepDB.search(q).slice(0,30);
-    if(!q && currentName){
-      const cur=RepDB.candidates(mediaMap[currentName]||[]);
-      const body=cur?.body_part;
-      const primary=cur?.primary_muscles||[];
-      list=RepDB.search('').filter(ex=>ex.name_en!==currentName && (!body||ex.body_part===body) && (!primary.length||primary.some(m=>(ex.primary_muscles||[]).includes(m)))).slice(0,12);
-    }
-    return list;
+    renderListV16(content);
   }
 
   function rowHtml(it,i,total){
-    return `<div class="editor-exercise"><div class="editor-exercise-title"><strong>${i+1}. ${escLocal(it.name)}</strong><button class="secondary compact-btn" onclick="swapExerciseV16(${i})">🔄 Trocar</button></div><div class="editor-grid"><label>Exercício<input id="ename_${i}" value="${escLocal(it.name)}" onchange="editorSetNameV16(${i},this.value)"></label><label>Séries<input type="number" min="1" max="20" id="esets_${i}" value="${Number(it.sets)||1}" onchange="editorSetNumV16(${i},'sets',this.value)"></label><label>Repetições<input id="ereps_${i}" value="${escLocal(it.reps||'')}" onchange="editorSetNumV16(${i},'reps',this.value)"></label></div><div class="editor-order">${i?`<button class="secondary" onclick="moveExerciseV16(${i},-1)">↑</button>`:''}${i<total-1?`<button class="secondary" onclick="moveExerciseV16(${i},1)">↓</button>`:''}<button class="secondary" onclick="removeExerciseV16(${i})">🗑️ Remover</button></div><div id="swap_${i}" class="editor-result"></div></div>`;
+    return `<div class="editor-exercise"><div class="editor-exercise-title"><strong>${i+1}. ${escLocal(it.name)}</strong><button type="button" class="secondary compact-btn" data-editor-action="swap" data-index="${i}">🔄 Trocar</button></div><div class="editor-grid"><label>Exercício<input id="ename_${i}" value="${escLocal(it.name)}" data-editor-field="name" data-index="${i}"></label><label>Séries<input type="number" min="1" max="20" id="esets_${i}" value="${Number(it.sets)||1}" data-editor-field="sets" data-index="${i}"></label><label>Repetições<input id="ereps_${i}" value="${escLocal(it.reps||'')}" data-editor-field="reps" data-index="${i}"></label></div><div class="editor-order">${i?`<button type="button" class="secondary" data-editor-action="move" data-index="${i}" data-delta="-1">↑</button>`:''}${i<total-1?`<button type="button" class="secondary" data-editor-action="move" data-index="${i}" data-delta="1">↓</button>`:''}<button type="button" class="secondary" data-editor-action="remove" data-index="${i}">🗑️ Remover</button></div><div id="swap_${i}" class="editor-result"></div></div>`;
   }
 
   function editWorkoutV16(code){
     const w=workouts[code];if(!w)return;
-    editing=clone(w);
-    const c=document.getElementById('content');
-    c.innerHTML=`<div class="card"><h2>✏️ Editar Treino ${escLocal(code)}</h2><label class="editor-name-label">Nome do treino<input id="editorWorkoutName" value="${escLocal(editing.name||'')}" oninput="editingWorkoutNameV16(this.value)"></label><div class="muted small" style="margin-top:8px">Troque exercícios por sugestões do RepDB, ajuste séries/repetições e reordene a sequência.</div></div><div id="editorExercises">${editing.items.map((it,i)=>rowHtml(it,i,editing.items.length)).join('')||'<div class="empty">Nenhum exercício. Use "Adicionar exercício".</div>'}</div><div class="card editor-actions"><button class="primary" onclick="addExerciseV16()">➕ Adicionar exercício</button><button class="primary" onclick="saveWorkoutV16()">💾 Salvar treino</button><button class="secondary" style="width:100%;margin-top:8px" onclick="show('treinos')">Cancelar</button>${isBase(code)?`<button class="secondary" style="width:100%;margin-top:8px" onclick="resetWorkoutV16('${escLocal(code)}')">↩️ Restaurar padrão</button>`:''}</div>`;
+    editing=clone(w);const c=document.getElementById('content');
+    c.innerHTML=`<div class="card"><h2>✏️ Editar Treino ${escLocal(code)}</h2><label class="editor-name-label">Nome do treino<input id="editorWorkoutName" value="${escLocal(editing.name||'')}" data-editor-field="workout-name"></label><div class="muted small" style="margin-top:8px">Troque exercícios pelo RepDB, ajuste séries/repetições e altere a ordem.</div></div><div id="editorExercises">${editing.items.map((it,i)=>rowHtml(it,i,editing.items.length)).join('')||'<div class="empty">Nenhum exercício. Use "Adicionar exercício".</div>'}</div><div class="card editor-actions"><button type="button" class="primary" data-editor-action="add">➕ Adicionar exercício</button><button type="button" class="primary" data-editor-action="save">💾 Salvar treino</button><button type="button" class="secondary" style="width:100%;margin-top:8px" data-editor-action="cancel">Cancelar</button>${isBase(code)?`<button type="button" class="secondary" style="width:100%;margin-top:8px" data-editor-action="reset" data-code="${escLocal(code)}">↩️ Restaurar padrão</button>`:''}</div>`;
   }
 
-  function editingWorkoutNameV16(v){if(editing)editing.name=v}
-  function editorSetNameV16(i,v){if(editing?.items[i])editing.items[i].name=v}
-  function editorSetNumV16(i,k,v){if(!editing?.items[i])return;editing.items[i][k]=k==='sets'?Math.max(1,Number(v)||1):v}
-  function moveExerciseV16(i,delta){if(!editing)return;const j=i+delta;if(j<0||j>=editing.items.length)return;[editing.items[i],editing.items[j]]=[editing.items[j],editing.items[i]];editWorkoutV16(editing.id)}
-  function removeExerciseV16(i){if(!editing)return;editing.items.splice(i,1);editWorkoutV16(editing.id)}
-
-  function addExerciseV16(){
-    if(!editing)return;
-    editing.items.push({name:'Agachamento',sets:3,reps:'8–12'});
-    editWorkoutV16(editing.id);
-    const i=editing.items.length-1;swapExerciseV16(i);
+  function renderEditor(){if(editing)editWorkoutV16(editing.id)}
+  function updateField(el){
+    if(!editing)return;const i=Number(el.dataset.index),field=el.dataset.editorField;
+    if(field==='workout-name'){editing.name=el.value;return}
+    if(!editing.items[i])return;
+    editing.items[i][field]=field==='sets'?Math.max(1,Number(el.value)||1):el.value;
   }
+  function moveExerciseV16(i,delta){if(!editing)return;const j=i+delta;if(j<0||j>=editing.items.length)return;[editing.items[i],editing.items[j]]=[editing.items[j],editing.items[i]];renderEditor()}
+  function removeExerciseV16(i){if(!editing)return;editing.items.splice(i,1);renderEditor()}
+  function addExerciseV16(){if(!editing)return;editing.items.push({name:'Agachamento',sets:3,reps:'8–12'});renderEditor();openSwapV16(editing.items.length-1)}
 
-  function swapExerciseV16(i){
+  function openSwapV16(i){
     const box=document.getElementById(`swap_${i}`);if(!box||!editing?.items[i])return;
-    const name=editing.items[i].name;
-    box.innerHTML=`<input class="editor-search" id="swapSearch_${i}" placeholder="🔍 Buscar exercício no RepDB" oninput="searchSwapV16(${i},this.value)" value=""><div class="muted small" style="margin-top:6px">Sugestões semelhantes:</div><div id="swapResults_${i}"></div>`;
+    box.innerHTML=`<input class="editor-search" placeholder="🔍 Buscar exercício no RepDB" data-swap-search="${i}"><div class="muted small" style="margin-top:6px">Sugestões:</div><div id="swapResults_${i}"></div>`;
     searchSwapV16(i,'');
+    box.querySelector('[data-swap-search]')?.focus();
+  }
+
+  function repdbResults(query,currentName){
+    if(!window.RepDB||!RepDB.loaded)return[];
+    const q=String(query||'').trim();
+    if(q)return RepDB.search(q).slice(0,20);
+    const cur=RepDB.candidates(mediaMap[currentName]||[]),body=cur?.body_part,primary=cur?.primary_muscles||[];
+    return RepDB.search('').filter(ex=>(!body||ex.body_part===body)&&(!primary.length||primary.some(m=>(ex.primary_muscles||[]).includes(m)))).slice(0,12);
   }
 
   function searchSwapV16(i,q){
     const box=document.getElementById(`swapResults_${i}`);if(!box)return;
     const list=repdbResults(q,editing?.items[i]?.name);
-    box.innerHTML=list.slice(0,8).map(ex=>`<button class="secondary" style="width:100%;text-align:left;margin-top:5px" onclick="chooseExerciseV16(${i},'${escLocal(ex.name_en||ex.id).replace(/'/g,"&#39;")}')">${escLocal(ex.name_en||ex.id)}<span class="muted small"> · ${escLocal(RepDB.label(ex.body_part)||'')}</span></button>`).join('')||'<div class="empty">Nenhum resultado.</div>';
+    box.innerHTML=list.slice(0,8).map((ex,n)=>`<button type="button" class="secondary swap-option" data-editor-action="choose" data-index="${i}" data-repdb-index="${n}" style="width:100%;text-align:left;margin-top:5px"><b>${escLocal(ex.name_en||ex.id)}</b><span class="muted small"> · ${escLocal(RepDB.label(ex.body_part)||'')}</span></button>`).join('')||'<div class="empty">Nenhum resultado.</div>';
+    box._results=list.slice(0,8);
   }
 
-  function chooseExerciseV16(i,name){
-    if(!editing?.items[i])return;
-    const ex=(window.RepDB&&RepDB.loaded)?RepDB.search(name).find(x=>(x.name_en||x.id)===name):null;
-    editing.items[i].name=name;
-    if(ex)mediaMap[name]=[ex.id];
-    editWorkoutV16(editing.id);
+  function chooseExerciseV16(i,n){
+    if(!editing?.items[i])return;const box=document.getElementById(`swapResults_${i}`);const ex=box?._results?.[n];if(!ex)return;
+    editing.items[i].name=ex.name_en||ex.id;mediaMap[editing.items[i].name]=[ex.id];renderEditor();
   }
 
   function saveWorkoutV16(){
@@ -114,26 +91,40 @@
   }
 
   function resetWorkoutV16(code){
-    if(!isBase(code))return;
-    const saved=loadSaved();delete saved[code];saveSaved(saved);
+    if(!isBase(code))return;const saved=loadSaved();delete saved[code];saveSaved(saved);
     const defaults=window.__trincaDefaults?.[code];
-    if(defaults)workouts[code]=clone(defaults);
-    else location.reload();
+    if(defaults)workouts[code]=clone(defaults);else{location.reload();return}
     editWorkoutV16(code);
   }
+
+  document.addEventListener('click',function(ev){
+    const btn=ev.target.closest('[data-editor-action]');if(!btn)return;
+    const action=btn.dataset.editorAction,code=btn.dataset.code,i=Number(btn.dataset.index);
+    ev.preventDefault();ev.stopPropagation();
+    if(action==='new')newWorkoutV16();
+    else if(action==='select'){setCurrent(code);show('hoje')}
+    else if(action==='edit')editWorkoutV16(code);
+    else if(action==='duplicate')duplicateWorkoutV16(code);
+    else if(action==='delete')deleteWorkoutV16(code);
+    else if(action==='swap')openSwapV16(i);
+    else if(action==='move')moveExerciseV16(i,Number(btn.dataset.delta));
+    else if(action==='remove')removeExerciseV16(i);
+    else if(action==='add')addExerciseV16();
+    else if(action==='save')saveWorkoutV16();
+    else if(action==='cancel'){editing=null;show('treinos')}
+    else if(action==='reset')resetWorkoutV16(code);
+    else if(action==='choose')chooseExerciseV16(i,Number(btn.dataset.repdbIndex));
+  },true);
+
+  document.addEventListener('input',function(ev){const el=ev.target;if(el.matches('[data-editor-field]'))updateField(el);if(el.matches('[data-swap-search]'))searchSwapV16(Number(el.dataset.swapSearch),el.value)},true);
 
   function install(){
     if(!window.__trincaDefaults)window.__trincaDefaults={};
     Object.keys(workouts).forEach(k=>{if(isBase(k)&&!window.__trincaDefaults[k])window.__trincaDefaults[k]=clone(workouts[k])});
-    applySaved();
-    if(typeof window.renderList==='function')window.renderList=renderListV16;
-    else window.renderList=renderListV16;
-    if(tab==='treinos')renderListV16(content);
+    applySaved();window.renderList=renderListV16;if(tab==='treinos')renderListV16(content);
   }
 
-  window.newWorkoutV16=newWorkoutV16;window.duplicateWorkoutV16=duplicateWorkoutV16;window.deleteWorkoutV16=deleteWorkoutV16;window.editWorkoutV16=editWorkoutV16;window.editingWorkoutNameV16=editingWorkoutNameV16;window.editorSetNameV16=editorSetNameV16;window.editorSetNumV16=editorSetNumV16;window.moveExerciseV16=moveExerciseV16;window.removeExerciseV16=removeExerciseV16;window.addExerciseV16=addExerciseV16;window.swapExerciseV16=swapExerciseV16;window.searchSwapV16=searchSwapV16;window.chooseExerciseV16=chooseExerciseV16;window.saveWorkoutV16=saveWorkoutV16;window.resetWorkoutV16=resetWorkoutV16;
+  window.newWorkoutV16=newWorkoutV16;window.duplicateWorkoutV16=duplicateWorkoutV16;window.deleteWorkoutV16=deleteWorkoutV16;window.editWorkoutV16=editWorkoutV16;window.moveExerciseV16=moveExerciseV16;window.removeExerciseV16=removeExerciseV16;window.addExerciseV16=addExerciseV16;window.swapExerciseV16=openSwapV16;window.searchSwapV16=searchSwapV16;window.chooseExerciseV16=chooseExerciseV16;window.saveWorkoutV16=saveWorkoutV16;window.resetWorkoutV16=resetWorkoutV16;
 
-  const timer=setInterval(()=>{
-    if(typeof workouts!=='undefined' && Object.keys(workouts).length){clearInterval(timer);install()}
-  },100);
+  const timer=setInterval(()=>{if(typeof workouts!=='undefined'&&Object.keys(workouts).length){clearInterval(timer);install()}},100);
 })();
