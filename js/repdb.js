@@ -9,7 +9,7 @@ const RepDB = (() => {
 
   function slug(value) {
     return String(value || '')
-      .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
@@ -17,8 +17,8 @@ const RepDB = (() => {
 
   function normalizeExercise(ex) {
     const images = Array.isArray(ex.images) ? ex.images : [];
-    const startPath = images.find(x => /\\/0\\.jpg$/i.test(x)) || images[0] || '';
-    const peakPath = images.find(x => /\\/1\\.jpg$/i.test(x)) || images[1] || startPath;
+    const startPath = images.find(x => /\/0\.jpg$/i.test(x)) || images[0] || '';
+    const peakPath = images.find(x => /\/1\.jpg$/i.test(x)) || images[1] || startPath;
 
     return {
       id: ex.id,
@@ -188,7 +188,7 @@ const RepDB = (() => {
         ex.difficulty
       ].join(' ').toLowerCase();
 
-      return q.split(/\\s+/).every(term => haystack.includes(term));
+      return q.split(/\s+/).every(term => haystack.includes(term));
     });
   }
 
