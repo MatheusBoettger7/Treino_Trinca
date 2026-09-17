@@ -1,0 +1,467 @@
+{
+  "A": {
+    "id": "A",
+    "name": "Força + base",
+    "items": [
+      {
+        "name": "Agachamento",
+        "sets": 3,
+        "reps": "5–8"
+      },
+      {
+        "name": "Supino reto",
+        "sets": 3,
+        "reps": "6–8"
+      },
+      {
+        "name": "Remada",
+        "sets": 3,
+        "reps": "6–10"
+      },
+      {
+        "name": "Stiff / terra romeno",
+        "sets": 3,
+        "reps": "8–10"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Rosca direta",
+        "sets": 2,
+        "reps": "8–12"
+      },
+      {
+        "name": "Tríceps na polia",
+        "sets": 2,
+        "reps": "8–12"
+      },
+      {
+        "name": "Panturrilha",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Abdominal na polia",
+        "sets": 3,
+        "reps": "10–15"
+      }
+    ]
+  },
+  "B": {
+    "id": "B",
+    "name": "Hipertrofia",
+    "items": [
+      {
+        "name": "Leg press",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Supino inclinado com halteres",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Puxada alta",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Mesa flexora",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Desenvolvimento com halteres",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Crossover",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Rosca martelo",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Tríceps francês",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Panturrilha sentado",
+        "sets": 3,
+        "reps": "12–20"
+      },
+      {
+        "name": "Elevação de pernas",
+        "sets": 3,
+        "reps": "10–15"
+      }
+    ]
+  },
+  "C": {
+    "id": "C",
+    "name": "Volume + pontos fracos",
+    "items": [
+      {
+        "name": "Hack squat",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Supino máquina",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Remada baixa",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Cadeira extensora",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Mesa flexora",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 3,
+        "reps": "12–20"
+      },
+      {
+        "name": "Face pull",
+        "sets": 2,
+        "reps": "12–20"
+      },
+      {
+        "name": "Rosca Scott",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Tríceps corda",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Abdominal máquina",
+        "sets": 3,
+        "reps": "10–15"
+      }
+    ]
+  },
+  "D": {
+    "id": "D",
+    "name": "Volume complementar",
+    "items": [
+      {
+        "name": "Cadeira extensora",
+        "sets": 3,
+        "reps": "12–15"
+      },
+      {
+        "name": "Mesa flexora",
+        "sets": 3,
+        "reps": "12–15"
+      },
+      {
+        "name": "Puxada alta",
+        "sets": 3,
+        "reps": "10–12"
+      },
+      {
+        "name": "Crossover",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 3,
+        "reps": "12–20"
+      },
+      {
+        "name": "Rosca martelo",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Tríceps corda",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Panturrilha",
+        "sets": 3,
+        "reps": "12–20"
+      },
+      {
+        "name": "Abdominal",
+        "sets": 3,
+        "reps": "12–15"
+      }
+    ]
+  },
+  "E": {
+    "id": "E",
+    "name": "Volume + condicionamento",
+    "items": [
+      {
+        "name": "Leg press",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Remada sentada",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Desenvolvimento máquina",
+        "sets": 3,
+        "reps": "10–12"
+      },
+      {
+        "name": "Mesa flexora",
+        "sets": 3,
+        "reps": "12–15"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 3,
+        "reps": "15–20"
+      },
+      {
+        "name": "Face pull",
+        "sets": 3,
+        "reps": "12–20"
+      },
+      {
+        "name": "Abdominal na polia",
+        "sets": 3,
+        "reps": "12–15"
+      },
+      {
+        "name": "Cardio moderado",
+        "sets": 1,
+        "reps": "20–30 min"
+      }
+    ]
+  },
+  "F": {
+    "id": "F",
+    "name": "Glúteos + quadríceps",
+    "items": [
+      {
+        "name": "Elevação pélvica",
+        "sets": 4,
+        "reps": "8–12"
+      },
+      {
+        "name": "Leg press",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Agachamento búlgaro",
+        "sets": 3,
+        "reps": "8–10 cada perna"
+      },
+      {
+        "name": "Cadeira extensora",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Coice na polia",
+        "sets": 3,
+        "reps": "12–15 cada perna"
+      },
+      {
+        "name": "Abdutora",
+        "sets": 3,
+        "reps": "15–20"
+      }
+    ]
+  },
+  "G": {
+    "id": "G",
+    "name": "Costas + ombros + braços",
+    "items": [
+      {
+        "name": "Puxada alta",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Remada sentada",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Supino inclinado com halteres",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 3,
+        "reps": "12–20"
+      },
+      {
+        "name": "Face pull",
+        "sets": 2,
+        "reps": "12–20"
+      },
+      {
+        "name": "Rosca martelo",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Tríceps corda",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Abdominal na polia",
+        "sets": 3,
+        "reps": "10–15"
+      }
+    ]
+  },
+  "H": {
+    "id": "H",
+    "name": "Glúteos + posterior",
+    "items": [
+      {
+        "name": "Elevação pélvica",
+        "sets": 4,
+        "reps": "8–12"
+      },
+      {
+        "name": "Step-up",
+        "sets": 3,
+        "reps": "8–10 cada perna"
+      },
+      {
+        "name": "Stiff com halteres ou barra",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Mesa flexora",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Coice na polia",
+        "sets": 3,
+        "reps": "12–15 cada perna"
+      },
+      {
+        "name": "Abdutora",
+        "sets": 3,
+        "reps": "15–20"
+      }
+    ]
+  },
+  "I": {
+    "id": "I",
+    "name": "Superior + condicionamento",
+    "items": [
+      {
+        "name": "Supino máquina",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Remada sentada",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Desenvolvimento máquina",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Puxada alta",
+        "sets": 3,
+        "reps": "10–12"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 3,
+        "reps": "12–20"
+      },
+      {
+        "name": "Tríceps corda",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Rosca martelo",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Cardio moderado",
+        "sets": 1,
+        "reps": "20–30 min"
+      }
+    ]
+  },
+  "J": {
+    "id": "J",
+    "name": "Pernas + glúteos",
+    "items": [
+      {
+        "name": "Hack squat",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Elevação pélvica",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Cadeira extensora",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Mesa flexora",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Abdutora",
+        "sets": 3,
+        "reps": "15–20"
+      },
+      {
+        "name": "Panturrilha",
+        "sets": 3,
+        "reps": "12–20"
+      },
+      {
+        "name": "Abdominal na polia",
+        "sets": 3,
+        "reps": "12–15"
+      }
+    ]
+  }
+}
