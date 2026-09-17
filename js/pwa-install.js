@@ -1,6 +1,7 @@
 (function(){
   let deferredPrompt=null;
   let installed=false;
+  let hadController=false;
 
   function button(){return document.getElementById('installBtn')}
   function isStandalone(){return window.matchMedia?.('(display-mode: standalone)').matches||window.navigator.standalone===true}
@@ -41,7 +42,18 @@
 
   window.addEventListener('load',()=>{
     if('serviceWorker' in navigator){
-      navigator.serviceWorker.register('./sw.js').catch(error=>console.warn('Service Worker não pôde ser registrado:',error));
+      hadController=!!navigator.serviceWorker.controller;
+
+      navigator.serviceWorker.addEventListener('controllerchange',()=>{
+        if(!hadController)return;
+        if(sessionStorage.getItem('tt-sw-reloaded')==='1')return;
+        sessionStorage.setItem('tt-sw-reloaded','1');
+        window.location.reload();
+      });
+
+      navigator.serviceWorker.register('./sw.js?v=23').then(registration=>{
+        registration.update().catch(()=>{});
+      }).catch(error=>console.warn('Service Worker não pôde ser registrado:',error));
     }
     if(isStandalone())hideButton();
   });
