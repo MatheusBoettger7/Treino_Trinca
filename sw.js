@@ -1,5 +1,5 @@
-const CACHE='treino-trinca-v21';
-const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./css/app.css','./css/exercise-picker.css','./js/app.js','./js/mobile-fix.js','./js/editor-v16.js','./js/progress-enhanced.js','./js/exercise-details.js','./js/weight-repeat.js','./js/repdb.js','./js/repdb-ptbr.js','./js/repdb-ptbr-runtime.js','./js/repdb-ptbr-names.js','./data/workouts.json'];
+const CACHE='treino-trinca-v22';
+const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./css/app.css','./css/exercise-picker.css','./js/app.js','./js/mobile-fix.js','./js/editor-v16.js','./js/progress-enhanced.js','./js/exercise-details.js','./js/weight-repeat.js','./js/repdb.js','./js/repdb-ptbr.js','./js/repdb-ptbr-runtime.js','./js/repdb-ptbr-names.js','./js/pwa-install.js','./data/workouts.json'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',event=>{if(event.request.method!=='GET')return;event.respondWith(fetch(event.request).then(response=>{if(response.ok||response.type==='opaque'){const copy=response.clone();caches.open(CACHE).then(c=>c.put(event.request,copy))}return response}).catch(()=>caches.match(event.request).then(cached=>cached||caches.match('./index.html'))))});
