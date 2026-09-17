@@ -46,6 +46,22 @@
     Object.keys(fixes).forEach(name=>{if(mediaMap[name])mediaMap[name]=fixes[name]});
   }
 
+  // No editor, a busca pode acontecer antes de o catálogo RepDB terminar de carregar.
+  // Após o carregamento, dispara novamente a busca sem alterar o código do editor.
+  let loadingRepDB=null;
+  async function refreshEditorSearch(el){
+    try{
+      if(!el?.matches('[data-swap-search]')||!window.RepDB)return;
+      if(RepDB.loaded){
+        if(typeof window.searchSwapV16==='function')window.searchSwapV16(Number(el.dataset.swapSearch),el.value);
+        return;
+      }
+      if(!loadingRepDB)loadingRepDB=RepDB.load().finally(()=>{loadingRepDB=null});
+      await loadingRepDB;
+      if(typeof window.searchSwapV16==='function'&&document.body.contains(el))window.searchSwapV16(Number(el.dataset.swapSearch),el.value);
+    }catch(e){console.warn('Busca do editor não pôde carregar o RepDB:',e)}
+  }
+
   function renderExercisesFallback(){
     try{
       const holder=document.getElementById('exercises');
@@ -68,6 +84,7 @@
   }
 
   repairExerciseMedia();
+  document.addEventListener('input',function(ev){refreshEditorSearch(ev.target)},true);
   window.addEventListener('load',()=>{repairExerciseMedia();setTimeout(renderExercisesFallback,250)});
   const observer=new MutationObserver(()=>{repairExerciseMedia();setTimeout(renderExercisesFallback,0)});
   observer.observe(document.documentElement,{childList:true,subtree:true});
