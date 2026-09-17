@@ -1,5 +1,5 @@
-const CACHE = 'treino-trinca-v13';
-const ASSETS = ['./','./index.html','./manifest.webmanifest','./icon.svg'];
+const CACHE = 'treino-trinca-v15';
+const ASSETS = ['./','./index.html','./manifest.webmanifest','./icon.svg','./css/app.css','./js/app.js','./js/repdb.js','./data/workouts.json','./css/app.css','./js/app.js','./js/repdb.js'];
 
 self.addEventListener('install', event => {
   event.waitUntil(
