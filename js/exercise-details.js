@@ -47,7 +47,7 @@
 
   function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
   function label(map,value){return map[value]||RepDB.label(value||'')||'—'}
-  function findExerciseByIdOrName(idOrName){if(!window.RepDB||!RepDB.loaded)return null;return RepDB.get(idOrName)||RepDB.exercises.find(ex=>ex.name_en===idOrName)||null}
+  function findExerciseByIdOrName(idOrName){if(typeof RepDB==='undefined'||!RepDB.loaded)return null;return RepDB.get(idOrName)||RepDB.exercises.find(ex=>ex.name_en===idOrName)||null}
   function resolveIdFromImage(img){
     const localName=img.dataset.exercise||'';
     const ids=(window.mediaMap?.[localName]||[]);
@@ -67,7 +67,7 @@
     return d;
   }
   function openFromImage(img){
-    if(!window.RepDB||!RepDB.loaded)return;
+    if(typeof RepDB==='undefined'||!RepDB.loaded)return;
     const id=resolveIdFromImage(img),ex=findExerciseByIdOrName(id);
     if(!ex)return;
     const detail=getDetails(ex),d=ensureDialog();
