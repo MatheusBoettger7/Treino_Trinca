@@ -23,3 +23,8 @@
   .day{padding:3px 1px;font-size:10.5px}
   .top{padding-top:11px;padding-bottom:6px}
 }
+
+/* Layout v26 */
+.tabs{transition:transform .2s ease,opacity .2s ease;will-change:transform,opacity}
+.layout-scrolled .tabs{transform:translateY(calc(-100% - 8px));opacity:0;pointer-events:none}
+.layout-scrolled .workout-timer-card{top:calc(var(--top-sticky-h,96px) + 4px)}
