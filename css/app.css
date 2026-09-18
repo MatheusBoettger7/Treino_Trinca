@@ -39,3 +39,12 @@ html.layout-scrolled .tabs{
 html.layout-scrolled .workout-timer-card{
   top:calc(var(--top-sticky-h,96px) + 4px);
 }
+
+/* Layout v28 - imagens no editor de treinos */
+.editor-exercise-head{display:grid;grid-template-columns:minmax(0,1fr) 88px;gap:12px;align-items:start}
+.editor-exercise-visual{width:88px;height:78px;display:block;object-fit:contain;border:1px solid #334155;border-radius:10px;background:#0d1424}
+.editor-image-label{margin-top:5px}
+@media(max-width:430px){
+  .editor-exercise-head{grid-template-columns:minmax(0,1fr) 78px;gap:9px}
+  .editor-exercise-visual{width:78px;height:70px}
+}
