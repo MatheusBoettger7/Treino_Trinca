@@ -1,6 +1,7 @@
 const RepDB = (() => {
   const URL = 'https://raw.githubusercontent.com/gugeldev/exercicios-bd-ptbr/main/exercises/exercises-ptbr-full-translation.json';
   const IMAGE_BASE = 'https://exercise-dataset.com/';
+  const FALLBACK_IMAGE_BASE = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/';
   const IMAGE_MAP_URL = './data/repdb-image-map.json';
   let exercises = [];
   let byId = new Map();
@@ -119,7 +120,7 @@ const RepDB = (() => {
 
     if (!ex.__images) return '';
     const path = phase === 'start' ? ex.__images.start : ex.__images.peak;
-    return path ? IMAGE_BASE + path : '';
+    return path ? FALLBACK_IMAGE_BASE + path : '';
   }
 
   function text(value) {
