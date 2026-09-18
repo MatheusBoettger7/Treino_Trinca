@@ -14,14 +14,16 @@
         "reps": "6–8"
       },
       {
-        "name": "Remada",
+        "name": "Remada sentada no Pulley",
         "sets": 3,
-        "reps": "6–10"
+        "reps": "6–10",
+        "repdbId": "seated-cable-row"
       },
       {
-        "name": "Stiff / terra romeno",
+        "name": "Cadeira Flexora sentada",
         "sets": 3,
-        "reps": "8–10"
+        "reps": "8–10",
+        "repdbId": "seated-leg-curl"
       },
       {
         "name": "Elevação lateral",
@@ -44,9 +46,10 @@
         "reps": "10–15"
       },
       {
-        "name": "Abdominal na polia",
+        "name": "Abdominal máquina",
         "sets": 3,
-        "reps": "10–15"
+        "reps": "10–15",
+        "repdbId": "machine-seated-crunch"
       }
     ]
   },
@@ -70,9 +73,10 @@
         "reps": "8–12"
       },
       {
-        "name": "Mesa flexora",
+        "name": "Cadeira Flexora sentada",
         "sets": 3,
-        "reps": "10–15"
+        "reps": "10–15",
+        "repdbId": "seated-leg-curl"
       },
       {
         "name": "Desenvolvimento com halteres",
@@ -100,9 +104,10 @@
         "reps": "12–20"
       },
       {
-        "name": "Elevação de pernas",
+        "name": "Abdominal máquina",
         "sets": 3,
-        "reps": "10–15"
+        "reps": "10–15",
+        "repdbId": "machine-seated-crunch"
       }
     ]
   },
@@ -127,11 +132,6 @@
       },
       {
         "name": "Cadeira extensora",
-        "sets": 3,
-        "reps": "10–15"
-      },
-      {
-        "name": "Mesa flexora",
         "sets": 3,
         "reps": "10–15"
       },
@@ -172,9 +172,10 @@
         "reps": "12–15"
       },
       {
-        "name": "Mesa flexora",
+        "name": "Cadeira Flexora sentada",
         "sets": 3,
-        "reps": "12–15"
+        "reps": "12–15",
+        "repdbId": "seated-leg-curl"
       },
       {
         "name": "Puxada alta",
@@ -233,9 +234,10 @@
         "reps": "10–12"
       },
       {
-        "name": "Mesa flexora",
+        "name": "Cadeira Flexora sentada",
         "sets": 3,
-        "reps": "12–15"
+        "reps": "12–15",
+        "repdbId": "seated-leg-curl"
       },
       {
         "name": "Elevação lateral",
@@ -248,9 +250,10 @@
         "reps": "12–20"
       },
       {
-        "name": "Abdominal na polia",
+        "name": "Abdominal máquina",
         "sets": 3,
-        "reps": "12–15"
+        "reps": "12–15",
+        "repdbId": "machine-seated-crunch"
       },
       {
         "name": "Cardio moderado",
@@ -286,7 +289,8 @@
       {
         "name": "Coice na polia",
         "sets": 3,
-        "reps": "12–15 cada perna"
+        "reps": "12–15 cada perna",
+        "repdbId": "cable-kickback"
       },
       {
         "name": "Abdutora",
@@ -335,9 +339,10 @@
         "reps": "10–15"
       },
       {
-        "name": "Abdominal na polia",
+        "name": "Abdominal máquina",
         "sets": 3,
-        "reps": "10–15"
+        "reps": "10–15",
+        "repdbId": "machine-seated-crunch"
       }
     ]
   },
@@ -358,17 +363,20 @@
       {
         "name": "Stiff com halteres ou barra",
         "sets": 3,
-        "reps": "8–12"
+        "reps": "8–12",
+        "repdbId": "romanian-deadlift"
       },
       {
-        "name": "Mesa flexora",
+        "name": "Cadeira Flexora sentada",
         "sets": 3,
-        "reps": "10–15"
+        "reps": "10–15",
+        "repdbId": "seated-leg-curl"
       },
       {
         "name": "Coice na polia",
         "sets": 3,
-        "reps": "12–15 cada perna"
+        "reps": "12–15 cada perna",
+        "repdbId": "cable-kickback"
       },
       {
         "name": "Abdutora",
@@ -412,9 +420,10 @@
         "reps": "10–15"
       },
       {
-        "name": "Rosca martelo",
+        "name": "Rosca Scott com Halteres no Banco Inclinado",
         "sets": 2,
-        "reps": "10–15"
+        "reps": "10–15",
+        "repdbId": "incline-db-curl"
       },
       {
         "name": "Cardio moderado",
@@ -443,9 +452,10 @@
         "reps": "10–15"
       },
       {
-        "name": "Mesa flexora",
+        "name": "Cadeira Flexora sentada",
         "sets": 3,
-        "reps": "10–15"
+        "reps": "10–15",
+        "repdbId": "seated-leg-curl"
       },
       {
         "name": "Abdutora",
@@ -458,9 +468,10 @@
         "reps": "12–20"
       },
       {
-        "name": "Abdominal na polia",
+        "name": "Abdominal máquina",
         "sets": 3,
-        "reps": "12–15"
+        "reps": "12–15",
+        "repdbId": "machine-seated-crunch"
       }
     ]
   }
