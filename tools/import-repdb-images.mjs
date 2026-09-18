@@ -8,6 +8,8 @@ const IMAGE_BASE = 'https://exercise-dataset.com/';
 const ROOT = process.cwd();
 const ASSET_ROOT = path.join(ROOT, 'assets', 'exercises');
 const MAP_FILE = path.join(ROOT, 'data', 'repdb-image-map.json');
+const APP_MEDIA_FILE = path.join(ROOT, 'data', 'app-exercise-media.json');
+const APP_LOCAL_MAP_FILE = path.join(ROOT, 'data', 'app-repdb-media.json');
 
 const aliases = {
   'ab-roller': 'ab-wheel-rollout',
@@ -147,6 +149,7 @@ async function download(url, destination) {
 const ptbr = await getJson(PTBR_URL);
 const repdbRoot = await getJson(REPDB_URL);
 const repdb = Array.isArray(repdbRoot.exercises) ? repdbRoot.exercises : [];
+const appMedia = await fs.readFile(APP_MEDIA_FILE, 'utf8').then(JSON.parse);
 
 await fs.mkdir(ASSET_ROOT, { recursive: true });
 
@@ -200,6 +203,48 @@ await fs.writeFile(
   }, null, 2) + '\n'
 );
 
+const appLocal = {};
+let appUnmatched = 0;
+let appDownloaded = 0;
+
+for (const [name, ids] of Object.entries(appMedia)) {
+  const candidates = Array.isArray(ids) ? ids : [ids];
+  const ex = candidates.map(id => repdb.find(item => item.id === id)).find(Boolean);
+  if (!ex || !ex.images?.flat) {
+    appUnmatched++;
+    continue;
+  }
+
+  const local = {};
+  for (const phase of ['start', 'peak', 'main']) {
+    const remotePath = ex.images.flat[phase];
+    if (!remotePath) continue;
+    const relative = path.join('assets', 'repdb', ex.id, phase + '.webp').replaceAll('\\', '/');
+    const destination = path.join(ROOT, relative);
+    await download(IMAGE_BASE + remotePath, destination);
+    local[phase] = './' + relative;
+    appDownloaded++;
+  }
+
+  appLocal[name] = {
+    repdbId: ex.id,
+    images: local
+  };
+}
+
+await fs.writeFile(
+  APP_LOCAL_MAP_FILE,
+  JSON.stringify({
+    source: 'RepDB free tier',
+    generatedAt: new Date().toISOString(),
+    matched: Object.keys(appLocal).length,
+    unmatched: appUnmatched,
+    imagesDownloaded: appDownloaded,
+    exercises: appLocal
+  }, null, 2) + '\n'
+);
+
 console.log('RepDB: ' + repdb.length + ' exercícios disponíveis.');
 console.log('PT-BR: ' + ptbr.length + ' exercícios.');
-console.log('Correspondências: ' + matched + '; sem correspondência segura: ' + unmatched + '; imagens baixadas: ' + downloaded + '.');
+console.log('Correspondências PT-BR: ' + matched + '; sem correspondência segura: ' + unmatched + '; imagens baixadas: ' + downloaded + '.');
+console.log('Mídia local do app: ' + Object.keys(appLocal).length + ' exercícios; sem correspondência: ' + appUnmatched + '; imagens baixadas: ' + appDownloaded + '.');
