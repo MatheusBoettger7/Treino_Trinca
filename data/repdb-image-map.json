@@ -1,0 +1,3255 @@
+{
+  "source": "RepDB free tier",
+  "generatedAt": "2026-09-18T00:20:18.900Z",
+  "matched": 364,
+  "unmatched": 509,
+  "imagesDownloaded": 698,
+  "exercises": {
+    "Ab_Crunch_Machine": {
+      "repdbId": "machine-seated-crunch",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/Ab_Crunch_Machine/start.webp",
+        "peak": "./assets/exercises/Ab_Crunch_Machine/peak.webp"
+      }
+    },
+    "Ab_Roller": {
+      "repdbId": "ab-wheel-rollout",
+      "method": "alias",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Ab_Roller/start.webp",
+        "peak": "./assets/exercises/Ab_Roller/peak.webp"
+      }
+    },
+    "Adductor": {
+      "repdbId": "banded-adductor-stretch",
+      "method": "fuzzy",
+      "score": 0.8,
+      "images": {
+        "main": "./assets/exercises/Adductor/main.webp"
+      }
+    },
+    "Air_Bike": {
+      "repdbId": "air-bike",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "main": "./assets/exercises/Air_Bike/main.webp"
+      }
+    },
+    "Alternate_Incline_Dumbbell_Curl": {
+      "repdbId": "incline-db-curl",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Alternate_Incline_Dumbbell_Curl/start.webp",
+        "peak": "./assets/exercises/Alternate_Incline_Dumbbell_Curl/peak.webp"
+      }
+    },
+    "Alternating_Floor_Press": {
+      "repdbId": "floor-press",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Alternating_Floor_Press/start.webp",
+        "peak": "./assets/exercises/Alternating_Floor_Press/peak.webp"
+      }
+    },
+    "Alternating_Hang_Clean": {
+      "repdbId": "hang-clean",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Alternating_Hang_Clean/start.webp",
+        "peak": "./assets/exercises/Alternating_Hang_Clean/peak.webp"
+      }
+    },
+    "Arnold_Dumbbell_Press": {
+      "repdbId": "arnold-press",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Arnold_Dumbbell_Press/start.webp",
+        "peak": "./assets/exercises/Arnold_Dumbbell_Press/peak.webp"
+      }
+    },
+    "Ball_Leg_Curl": {
+      "repdbId": "ball-leg-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Ball_Leg_Curl/start.webp",
+        "peak": "./assets/exercises/Ball_Leg_Curl/peak.webp"
+      }
+    },
+    "Band_Assisted_Pull-Up": {
+      "repdbId": "band-assisted-pull-ups",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/Band_Assisted_Pull-Up/start.webp",
+        "peak": "./assets/exercises/Band_Assisted_Pull-Up/peak.webp"
+      }
+    },
+    "Band_Good_Morning": {
+      "repdbId": "good-morning",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Band_Good_Morning/start.webp",
+        "peak": "./assets/exercises/Band_Good_Morning/peak.webp"
+      }
+    },
+    "Band_Pull_Apart": {
+      "repdbId": "band-pull-apart",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Band_Pull_Apart/start.webp",
+        "peak": "./assets/exercises/Band_Pull_Apart/peak.webp"
+      }
+    },
+    "Band_Skull_Crusher": {
+      "repdbId": "skull-crusher",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Band_Skull_Crusher/start.webp",
+        "peak": "./assets/exercises/Band_Skull_Crusher/peak.webp"
+      }
+    },
+    "Barbell_Ab_Rollout": {
+      "repdbId": "barbell-ab-rollout",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Barbell_Ab_Rollout/start.webp",
+        "peak": "./assets/exercises/Barbell_Ab_Rollout/peak.webp"
+      }
+    },
+    "Barbell_Ab_Rollout_-_On_Knees": {
+      "repdbId": "barbell-ab-rollout",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Barbell_Ab_Rollout_-_On_Knees/start.webp",
+        "peak": "./assets/exercises/Barbell_Ab_Rollout_-_On_Knees/peak.webp"
+      }
+    },
+    "Barbell_Bench_Press_-_Medium_Grip": {
+      "repdbId": "bench-press",
+      "method": "alias",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Barbell_Bench_Press_-_Medium_Grip/start.webp",
+        "peak": "./assets/exercises/Barbell_Bench_Press_-_Medium_Grip/peak.webp"
+      }
+    },
+    "Barbell_Curl": {
+      "repdbId": "barbell-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Barbell_Curl/start.webp",
+        "peak": "./assets/exercises/Barbell_Curl/peak.webp"
+      }
+    },
+    "Barbell_Deadlift": {
+      "repdbId": "deadlift",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Barbell_Deadlift/start.webp",
+        "peak": "./assets/exercises/Barbell_Deadlift/peak.webp"
+      }
+    },
+    "Barbell_Full_Squat": {
+      "repdbId": "squat",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/Barbell_Full_Squat/start.webp",
+        "peak": "./assets/exercises/Barbell_Full_Squat/peak.webp"
+      }
+    },
+    "Barbell_Glute_Bridge": {
+      "repdbId": "barbell-glute-bridge",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Barbell_Glute_Bridge/start.webp",
+        "peak": "./assets/exercises/Barbell_Glute_Bridge/peak.webp"
+      }
+    },
+    "Barbell_Guillotine_Bench_Press": {
+      "repdbId": "bench-press",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Barbell_Guillotine_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Barbell_Guillotine_Bench_Press/peak.webp"
+      }
+    },
+    "Barbell_Hack_Squat": {
+      "repdbId": "hack-squat",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Barbell_Hack_Squat/start.webp",
+        "peak": "./assets/exercises/Barbell_Hack_Squat/peak.webp"
+      }
+    },
+    "Barbell_Hip_Thrust": {
+      "repdbId": "hip-thrust",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Barbell_Hip_Thrust/start.webp",
+        "peak": "./assets/exercises/Barbell_Hip_Thrust/peak.webp"
+      }
+    },
+    "Barbell_Incline_Bench_Press_-_Medium_Grip": {
+      "repdbId": "incline-bench-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Barbell_Incline_Bench_Press_-_Medium_Grip/start.webp",
+        "peak": "./assets/exercises/Barbell_Incline_Bench_Press_-_Medium_Grip/peak.webp"
+      }
+    },
+    "Barbell_Lunge": {
+      "repdbId": "barbell-lunge",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Barbell_Lunge/start.webp",
+        "peak": "./assets/exercises/Barbell_Lunge/peak.webp"
+      }
+    },
+    "Barbell_Rear_Delt_Row": {
+      "repdbId": "barbell-rear-delt-row",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Barbell_Rear_Delt_Row/start.webp",
+        "peak": "./assets/exercises/Barbell_Rear_Delt_Row/peak.webp"
+      }
+    },
+    "Barbell_Seated_Calf_Raise": {
+      "repdbId": "barbell-calf-raise",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Barbell_Seated_Calf_Raise/start.webp",
+        "peak": "./assets/exercises/Barbell_Seated_Calf_Raise/peak.webp"
+      }
+    },
+    "Barbell_Shrug": {
+      "repdbId": "shrug",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Barbell_Shrug/start.webp",
+        "peak": "./assets/exercises/Barbell_Shrug/peak.webp"
+      }
+    },
+    "Barbell_Shrug_Behind_The_Back": {
+      "repdbId": "behind-the-back-barbell-shrug",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Barbell_Shrug_Behind_The_Back/start.webp",
+        "peak": "./assets/exercises/Barbell_Shrug_Behind_The_Back/peak.webp"
+      }
+    },
+    "Barbell_Squat": {
+      "repdbId": "squat",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "start": "./assets/exercises/Barbell_Squat/start.webp",
+        "peak": "./assets/exercises/Barbell_Squat/peak.webp"
+      }
+    },
+    "Barbell_Step_Ups": {
+      "repdbId": "step-ups",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Barbell_Step_Ups/start.webp",
+        "peak": "./assets/exercises/Barbell_Step_Ups/peak.webp"
+      }
+    },
+    "Barbell_Walking_Lunge": {
+      "repdbId": "barbell-lunge",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Barbell_Walking_Lunge/start.webp",
+        "peak": "./assets/exercises/Barbell_Walking_Lunge/peak.webp"
+      }
+    },
+    "Bear_Crawl_Sled_Drags": {
+      "repdbId": "bear-crawl",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Bear_Crawl_Sled_Drags/start.webp",
+        "peak": "./assets/exercises/Bear_Crawl_Sled_Drags/peak.webp"
+      }
+    },
+    "Bench_Dips": {
+      "repdbId": "bench-dips",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Bench_Dips/start.webp",
+        "peak": "./assets/exercises/Bench_Dips/peak.webp"
+      }
+    },
+    "Bench_Press_-_Powerlifting": {
+      "repdbId": "close-grip-bench-press",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Bench_Press_-_Powerlifting/start.webp",
+        "peak": "./assets/exercises/Bench_Press_-_Powerlifting/peak.webp"
+      }
+    },
+    "Bench_Press_-_With_Bands": {
+      "repdbId": "close-grip-bench-press",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Bench_Press_-_With_Bands/start.webp",
+        "peak": "./assets/exercises/Bench_Press_-_With_Bands/peak.webp"
+      }
+    },
+    "Bench_Press_with_Chains": {
+      "repdbId": "close-grip-bench-press",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Bench_Press_with_Chains/start.webp",
+        "peak": "./assets/exercises/Bench_Press_with_Chains/peak.webp"
+      }
+    },
+    "Bent-Arm_Barbell_Pullover": {
+      "repdbId": "bent-arm-barbell-pullover",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Bent-Arm_Barbell_Pullover/start.webp",
+        "peak": "./assets/exercises/Bent-Arm_Barbell_Pullover/peak.webp"
+      }
+    },
+    "Bent-Arm_Dumbbell_Pullover": {
+      "repdbId": "bent-arm-barbell-pullover",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/Bent-Arm_Dumbbell_Pullover/start.webp",
+        "peak": "./assets/exercises/Bent-Arm_Dumbbell_Pullover/peak.webp"
+      }
+    },
+    "Bent_Over_Barbell_Row": {
+      "repdbId": "barbell-row",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Bent_Over_Barbell_Row/start.webp",
+        "peak": "./assets/exercises/Bent_Over_Barbell_Row/peak.webp"
+      }
+    },
+    "Bent_Over_Two-Dumbbell_Row": {
+      "repdbId": "bent-over-db-row",
+      "method": "fuzzy",
+      "score": 0.86,
+      "images": {
+        "start": "./assets/exercises/Bent_Over_Two-Dumbbell_Row/start.webp",
+        "peak": "./assets/exercises/Bent_Over_Two-Dumbbell_Row/peak.webp"
+      }
+    },
+    "Bent_Over_Two-Dumbbell_Row_With_Palms_In": {
+      "repdbId": "bent-over-db-row",
+      "method": "fuzzy",
+      "score": 0.7,
+      "images": {
+        "start": "./assets/exercises/Bent_Over_Two-Dumbbell_Row_With_Palms_In/start.webp",
+        "peak": "./assets/exercises/Bent_Over_Two-Dumbbell_Row_With_Palms_In/peak.webp"
+      }
+    },
+    "Body-Up": {
+      "repdbId": "pull-up",
+      "method": "fuzzy",
+      "score": 0.85,
+      "images": {
+        "start": "./assets/exercises/Body-Up/start.webp",
+        "peak": "./assets/exercises/Body-Up/peak.webp"
+      }
+    },
+    "Bodyweight_Squat": {
+      "repdbId": "bodyweight-squat",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Bodyweight_Squat/start.webp",
+        "peak": "./assets/exercises/Bodyweight_Squat/peak.webp"
+      }
+    },
+    "Bodyweight_Walking_Lunge": {
+      "repdbId": "walking-lunge",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Bodyweight_Walking_Lunge/start.webp",
+        "peak": "./assets/exercises/Bodyweight_Walking_Lunge/peak.webp"
+      }
+    },
+    "Bottoms_Up": {
+      "repdbId": "one-arm-kettlebell-bottoms-up-press",
+      "method": "fuzzy",
+      "score": 0.8,
+      "images": {
+        "start": "./assets/exercises/Bottoms_Up/start.webp",
+        "peak": "./assets/exercises/Bottoms_Up/peak.webp"
+      }
+    },
+    "Box_Jump_Multiple_Response": {
+      "repdbId": "box-jump",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Box_Jump_Multiple_Response/start.webp",
+        "peak": "./assets/exercises/Box_Jump_Multiple_Response/peak.webp"
+      }
+    },
+    "Box_Squat": {
+      "repdbId": "box-squat",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Box_Squat/start.webp",
+        "peak": "./assets/exercises/Box_Squat/peak.webp"
+      }
+    },
+    "Box_Squat_with_Bands": {
+      "repdbId": "box-squat",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Box_Squat_with_Bands/start.webp",
+        "peak": "./assets/exercises/Box_Squat_with_Bands/peak.webp"
+      }
+    },
+    "Box_Squat_with_Chains": {
+      "repdbId": "box-squat",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Box_Squat_with_Chains/start.webp",
+        "peak": "./assets/exercises/Box_Squat_with_Chains/peak.webp"
+      }
+    },
+    "Butterfly": {
+      "repdbId": "butterfly-stretch",
+      "method": "fuzzy",
+      "score": 0.85,
+      "images": {
+        "main": "./assets/exercises/Butterfly/main.webp"
+      }
+    },
+    "Cable_Chest_Press": {
+      "repdbId": "cable-chest-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Cable_Chest_Press/start.webp",
+        "peak": "./assets/exercises/Cable_Chest_Press/peak.webp"
+      }
+    },
+    "Cable_Crunch": {
+      "repdbId": "cable-crunch",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Cable_Crunch/start.webp",
+        "peak": "./assets/exercises/Cable_Crunch/peak.webp"
+      }
+    },
+    "Cable_Hammer_Curls_-_Rope_Attachment": {
+      "repdbId": "cable-hammer-curl",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Cable_Hammer_Curls_-_Rope_Attachment/start.webp",
+        "peak": "./assets/exercises/Cable_Hammer_Curls_-_Rope_Attachment/peak.webp"
+      }
+    },
+    "Cable_Hip_Adduction": {
+      "repdbId": "hip-adduction",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Cable_Hip_Adduction/start.webp",
+        "peak": "./assets/exercises/Cable_Hip_Adduction/peak.webp"
+      }
+    },
+    "Cable_Incline_Pushdown": {
+      "repdbId": "tricep-pushdown",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/Cable_Incline_Pushdown/start.webp",
+        "peak": "./assets/exercises/Cable_Incline_Pushdown/peak.webp"
+      }
+    },
+    "Cable_Internal_Rotation": {
+      "repdbId": "cable-external-rotation",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/Cable_Internal_Rotation/start.webp",
+        "peak": "./assets/exercises/Cable_Internal_Rotation/peak.webp"
+      }
+    },
+    "Cable_Lying_Triceps_Extension": {
+      "repdbId": "ez-bar-lying-tricep-extension",
+      "method": "fuzzy",
+      "score": 0.675,
+      "images": {
+        "start": "./assets/exercises/Cable_Lying_Triceps_Extension/start.webp",
+        "peak": "./assets/exercises/Cable_Lying_Triceps_Extension/peak.webp"
+      }
+    },
+    "Cable_Preacher_Curl": {
+      "repdbId": "cable-curl",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Cable_Preacher_Curl/start.webp",
+        "peak": "./assets/exercises/Cable_Preacher_Curl/peak.webp"
+      }
+    },
+    "Cable_Rear_Delt_Fly": {
+      "repdbId": "rear-delt-fly",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Cable_Rear_Delt_Fly/start.webp",
+        "peak": "./assets/exercises/Cable_Rear_Delt_Fly/peak.webp"
+      }
+    },
+    "Cable_Reverse_Crunch": {
+      "repdbId": "cable-crunch",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Cable_Reverse_Crunch/start.webp",
+        "peak": "./assets/exercises/Cable_Reverse_Crunch/peak.webp"
+      }
+    },
+    "Cable_Seated_Crunch": {
+      "repdbId": "cable-crunch",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Cable_Seated_Crunch/start.webp",
+        "peak": "./assets/exercises/Cable_Seated_Crunch/peak.webp"
+      }
+    },
+    "Cable_Seated_Lateral_Raise": {
+      "repdbId": "cable-lateral-raise",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Cable_Seated_Lateral_Raise/start.webp",
+        "peak": "./assets/exercises/Cable_Seated_Lateral_Raise/peak.webp"
+      }
+    },
+    "Cable_Wrist_Curl": {
+      "repdbId": "cable-wrist-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Cable_Wrist_Curl/start.webp",
+        "peak": "./assets/exercises/Cable_Wrist_Curl/peak.webp"
+      }
+    },
+    "Calf_Raise_On_A_Dumbbell": {
+      "repdbId": "dumbbell-calf-raise",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Calf_Raise_On_A_Dumbbell/start.webp",
+        "peak": "./assets/exercises/Calf_Raise_On_A_Dumbbell/peak.webp"
+      }
+    },
+    "Cat_Stretch": {
+      "repdbId": "cat-stretch",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "main": "./assets/exercises/Cat_Stretch/main.webp"
+      }
+    },
+    "Childs_Pose": {
+      "repdbId": "childs-pose",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "main": "./assets/exercises/Childs_Pose/main.webp"
+      }
+    },
+    "Chin_To_Chest_Stretch": {
+      "repdbId": "knee-to-chest-stretch",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "main": "./assets/exercises/Chin_To_Chest_Stretch/main.webp"
+      }
+    },
+    "Clean": {
+      "repdbId": "clean",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Clean/start.webp",
+        "peak": "./assets/exercises/Clean/peak.webp"
+      }
+    },
+    "Clean_Deadlift": {
+      "repdbId": "clean",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Clean_Deadlift/start.webp",
+        "peak": "./assets/exercises/Clean_Deadlift/peak.webp"
+      }
+    },
+    "Clean_Pull": {
+      "repdbId": "clean",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Clean_Pull/start.webp",
+        "peak": "./assets/exercises/Clean_Pull/peak.webp"
+      }
+    },
+    "Clean_Shrug": {
+      "repdbId": "clean",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Clean_Shrug/start.webp",
+        "peak": "./assets/exercises/Clean_Shrug/peak.webp"
+      }
+    },
+    "Clean_and_Jerk": {
+      "repdbId": "clean-and-jerk",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Clean_and_Jerk/start.webp",
+        "peak": "./assets/exercises/Clean_and_Jerk/peak.webp"
+      }
+    },
+    "Clean_and_Press": {
+      "repdbId": "double-kettlebell-clean-and-press",
+      "method": "fuzzy",
+      "score": 0.85,
+      "images": {
+        "start": "./assets/exercises/Clean_and_Press/start.webp",
+        "peak": "./assets/exercises/Clean_and_Press/peak.webp"
+      }
+    },
+    "Clock_Push-Up": {
+      "repdbId": "push-up",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Clock_Push-Up/start.webp",
+        "peak": "./assets/exercises/Clock_Push-Up/peak.webp"
+      }
+    },
+    "Close-Grip_Barbell_Bench_Press": {
+      "repdbId": "bench-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Close-Grip_Barbell_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Close-Grip_Barbell_Bench_Press/peak.webp"
+      }
+    },
+    "Close-Grip_Dumbbell_Press": {
+      "repdbId": "close-grip-db-bench-press",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "start": "./assets/exercises/Close-Grip_Dumbbell_Press/start.webp",
+        "peak": "./assets/exercises/Close-Grip_Dumbbell_Press/peak.webp"
+      }
+    },
+    "Close-Grip_EZ-Bar_Curl_with_Band": {
+      "repdbId": "close-grip-ez-bar-curl",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Close-Grip_EZ-Bar_Curl_with_Band/start.webp",
+        "peak": "./assets/exercises/Close-Grip_EZ-Bar_Curl_with_Band/peak.webp"
+      }
+    },
+    "Close-Grip_EZ-Bar_Press": {
+      "repdbId": "close-grip-ez-bar-bench-press",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Close-Grip_EZ-Bar_Press/start.webp",
+        "peak": "./assets/exercises/Close-Grip_EZ-Bar_Press/peak.webp"
+      }
+    },
+    "Close-Grip_EZ_Bar_Curl": {
+      "repdbId": "close-grip-ez-bar-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Close-Grip_EZ_Bar_Curl/start.webp",
+        "peak": "./assets/exercises/Close-Grip_EZ_Bar_Curl/peak.webp"
+      }
+    },
+    "Close-Grip_Front_Lat_Pulldown": {
+      "repdbId": "close-grip-lat-pulldown",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Close-Grip_Front_Lat_Pulldown/start.webp",
+        "peak": "./assets/exercises/Close-Grip_Front_Lat_Pulldown/peak.webp"
+      }
+    },
+    "Close-Grip_Standing_Barbell_Curl": {
+      "repdbId": "barbell-curl",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Close-Grip_Standing_Barbell_Curl/start.webp",
+        "peak": "./assets/exercises/Close-Grip_Standing_Barbell_Curl/peak.webp"
+      }
+    },
+    "Cocoons": {
+      "repdbId": "cocoons",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Cocoons/start.webp",
+        "peak": "./assets/exercises/Cocoons/peak.webp"
+      }
+    },
+    "Concentration_Curls": {
+      "repdbId": "concentration-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Concentration_Curls/start.webp",
+        "peak": "./assets/exercises/Concentration_Curls/peak.webp"
+      }
+    },
+    "Cross-Body_Crunch": {
+      "repdbId": "cross-body-crunch",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Cross-Body_Crunch/start.webp",
+        "peak": "./assets/exercises/Cross-Body_Crunch/peak.webp"
+      }
+    },
+    "Cross_Body_Hammer_Curl": {
+      "repdbId": "cross-body-hammer-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Cross_Body_Hammer_Curl/start.webp",
+        "peak": "./assets/exercises/Cross_Body_Hammer_Curl/peak.webp"
+      }
+    },
+    "Crossover_Reverse_Lunge": {
+      "repdbId": "reverse-lunge",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Crossover_Reverse_Lunge/start.webp",
+        "peak": "./assets/exercises/Crossover_Reverse_Lunge/peak.webp"
+      }
+    },
+    "Crunches": {
+      "repdbId": "crunches",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Crunches/start.webp",
+        "peak": "./assets/exercises/Crunches/peak.webp"
+      }
+    },
+    "Dead_Bug": {
+      "repdbId": "dead-bug",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Dead_Bug/start.webp",
+        "peak": "./assets/exercises/Dead_Bug/peak.webp"
+      }
+    },
+    "Decline_Barbell_Bench_Press": {
+      "repdbId": "decline-bench-press-barbell",
+      "method": "alias",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Decline_Barbell_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Decline_Barbell_Bench_Press/peak.webp"
+      }
+    },
+    "Decline_Crunch": {
+      "repdbId": "decline-crunch",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Decline_Crunch/start.webp",
+        "peak": "./assets/exercises/Decline_Crunch/peak.webp"
+      }
+    },
+    "Decline_Dumbbell_Bench_Press": {
+      "repdbId": "close-grip-db-bench-press",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Decline_Dumbbell_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Decline_Dumbbell_Bench_Press/peak.webp"
+      }
+    },
+    "Decline_Dumbbell_Flyes": {
+      "repdbId": "decline-db-fly",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/Decline_Dumbbell_Flyes/start.webp",
+        "peak": "./assets/exercises/Decline_Dumbbell_Flyes/peak.webp"
+      }
+    },
+    "Decline_EZ_Bar_Triceps_Extension": {
+      "repdbId": "ez-bar-lying-tricep-extension",
+      "method": "fuzzy",
+      "score": 0.76,
+      "images": {
+        "start": "./assets/exercises/Decline_EZ_Bar_Triceps_Extension/start.webp",
+        "peak": "./assets/exercises/Decline_EZ_Bar_Triceps_Extension/peak.webp"
+      }
+    },
+    "Decline_Oblique_Crunch": {
+      "repdbId": "decline-crunch",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Decline_Oblique_Crunch/start.webp",
+        "peak": "./assets/exercises/Decline_Oblique_Crunch/peak.webp"
+      }
+    },
+    "Decline_Push-Up": {
+      "repdbId": "decline-push-up",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Decline_Push-Up/start.webp",
+        "peak": "./assets/exercises/Decline_Push-Up/peak.webp"
+      }
+    },
+    "Decline_Reverse_Crunch": {
+      "repdbId": "decline-crunch",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Decline_Reverse_Crunch/start.webp",
+        "peak": "./assets/exercises/Decline_Reverse_Crunch/peak.webp"
+      }
+    },
+    "Decline_Smith_Press": {
+      "repdbId": "smith-machine-decline-bench-press",
+      "method": "fuzzy",
+      "score": 0.88,
+      "images": {
+        "start": "./assets/exercises/Decline_Smith_Press/start.webp",
+        "peak": "./assets/exercises/Decline_Smith_Press/peak.webp"
+      }
+    },
+    "Deficit_Deadlift": {
+      "repdbId": "deficit-deadlift",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Deficit_Deadlift/start.webp",
+        "peak": "./assets/exercises/Deficit_Deadlift/peak.webp"
+      }
+    },
+    "Dips_-_Chest_Version": {
+      "repdbId": "dips",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Dips_-_Chest_Version/start.webp",
+        "peak": "./assets/exercises/Dips_-_Chest_Version/peak.webp"
+      }
+    },
+    "Dips_-_Triceps_Version": {
+      "repdbId": "weighted-dips",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Dips_-_Triceps_Version/start.webp",
+        "peak": "./assets/exercises/Dips_-_Triceps_Version/peak.webp"
+      }
+    },
+    "Donkey_Calf_Raises": {
+      "repdbId": "donkey-calf-raise",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Donkey_Calf_Raises/start.webp",
+        "peak": "./assets/exercises/Donkey_Calf_Raises/peak.webp"
+      }
+    },
+    "Double_Kettlebell_Alternating_Hang_Clean": {
+      "repdbId": "double-kettlebell-clean",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Double_Kettlebell_Alternating_Hang_Clean/start.webp",
+        "peak": "./assets/exercises/Double_Kettlebell_Alternating_Hang_Clean/peak.webp"
+      }
+    },
+    "Double_Kettlebell_Jerk": {
+      "repdbId": "double-kettlebell-jerk",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Double_Kettlebell_Jerk/start.webp",
+        "peak": "./assets/exercises/Double_Kettlebell_Jerk/peak.webp"
+      }
+    },
+    "Double_Kettlebell_Push_Press": {
+      "repdbId": "double-kettlebell-push-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Double_Kettlebell_Push_Press/start.webp",
+        "peak": "./assets/exercises/Double_Kettlebell_Push_Press/peak.webp"
+      }
+    },
+    "Double_Kettlebell_Snatch": {
+      "repdbId": "double-kettlebell-swing-snatch",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Double_Kettlebell_Snatch/start.webp",
+        "peak": "./assets/exercises/Double_Kettlebell_Snatch/peak.webp"
+      }
+    },
+    "Downward_Facing_Balance": {
+      "repdbId": "downward-dog",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "main": "./assets/exercises/Downward_Facing_Balance/main.webp"
+      }
+    },
+    "Drag_Curl": {
+      "repdbId": "drag-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Drag_Curl/start.webp",
+        "peak": "./assets/exercises/Drag_Curl/peak.webp"
+      }
+    },
+    "Dumbbell_Alternate_Bicep_Curl": {
+      "repdbId": "bicep-curl",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Alternate_Bicep_Curl/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Alternate_Bicep_Curl/peak.webp"
+      }
+    },
+    "Dumbbell_Bench_Press": {
+      "repdbId": "db-bench-press",
+      "method": "alias",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Bench_Press/peak.webp"
+      }
+    },
+    "Dumbbell_Bench_Press_with_Neutral_Grip": {
+      "repdbId": "close-grip-db-bench-press",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Bench_Press_with_Neutral_Grip/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Bench_Press_with_Neutral_Grip/peak.webp"
+      }
+    },
+    "Dumbbell_Bicep_Curl": {
+      "repdbId": "bicep-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Bicep_Curl/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Bicep_Curl/peak.webp"
+      }
+    },
+    "Dumbbell_Clean": {
+      "repdbId": "clean",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Clean/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Clean/peak.webp"
+      }
+    },
+    "Dumbbell_Floor_Press": {
+      "repdbId": "dumbbell-floor-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Floor_Press/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Floor_Press/peak.webp"
+      }
+    },
+    "Dumbbell_Lunges": {
+      "repdbId": "db-lunge",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Lunges/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Lunges/peak.webp"
+      }
+    },
+    "Dumbbell_Lying_Rear_Lateral_Raise": {
+      "repdbId": "lateral-raise",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Lying_Rear_Lateral_Raise/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Lying_Rear_Lateral_Raise/peak.webp"
+      }
+    },
+    "Dumbbell_One-Arm_Shoulder_Press": {
+      "repdbId": "one-arm-dumbbell-push-press",
+      "method": "fuzzy",
+      "score": 0.8,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_One-Arm_Shoulder_Press/start.webp",
+        "peak": "./assets/exercises/Dumbbell_One-Arm_Shoulder_Press/peak.webp"
+      }
+    },
+    "Dumbbell_One-Arm_Upright_Row": {
+      "repdbId": "dumbbell-upright-row",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_One-Arm_Upright_Row/start.webp",
+        "peak": "./assets/exercises/Dumbbell_One-Arm_Upright_Row/peak.webp"
+      }
+    },
+    "Dumbbell_Prone_Incline_Curl": {
+      "repdbId": "incline-db-curl",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Prone_Incline_Curl/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Prone_Incline_Curl/peak.webp"
+      }
+    },
+    "Dumbbell_Raise": {
+      "repdbId": "dumbbell-calf-raise",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Raise/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Raise/peak.webp"
+      }
+    },
+    "Dumbbell_Rear_Lunge": {
+      "repdbId": "db-lunge",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Rear_Lunge/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Rear_Lunge/peak.webp"
+      }
+    },
+    "Dumbbell_Shoulder_Press": {
+      "repdbId": "dumbbell-shoulder-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Shoulder_Press/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Shoulder_Press/peak.webp"
+      }
+    },
+    "Dumbbell_Shrug": {
+      "repdbId": "db-shrug",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Shrug/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Shrug/peak.webp"
+      }
+    },
+    "Dumbbell_Side_Bend": {
+      "repdbId": "dumbbell-side-bend",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Side_Bend/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Side_Bend/peak.webp"
+      }
+    },
+    "Dumbbell_Squat": {
+      "repdbId": "db-squat",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Squat/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Squat/peak.webp"
+      }
+    },
+    "Dumbbell_Step_Ups": {
+      "repdbId": "step-ups",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Step_Ups/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Step_Ups/peak.webp"
+      }
+    },
+    "Dumbbell_Tricep_Extension_-Pronated_Grip": {
+      "repdbId": "dumbbell-tricep-extension",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Tricep_Extension_-Pronated_Grip/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Tricep_Extension_-Pronated_Grip/peak.webp"
+      }
+    },
+    "EZ-Bar_Curl": {
+      "repdbId": "close-grip-ez-bar-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/EZ-Bar_Curl/start.webp",
+        "peak": "./assets/exercises/EZ-Bar_Curl/peak.webp"
+      }
+    },
+    "Elliptical_Trainer": {
+      "repdbId": "elliptical-trainer",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "main": "./assets/exercises/Elliptical_Trainer/main.webp"
+      }
+    },
+    "Extended_Range_One-Arm_Kettlebell_Floor_Press": {
+      "repdbId": "one-arm-kettlebell-floor-press",
+      "method": "fuzzy",
+      "score": 0.8,
+      "images": {
+        "start": "./assets/exercises/Extended_Range_One-Arm_Kettlebell_Floor_Press/start.webp",
+        "peak": "./assets/exercises/Extended_Range_One-Arm_Kettlebell_Floor_Press/peak.webp"
+      }
+    },
+    "External_Rotation": {
+      "repdbId": "cable-external-rotation",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "start": "./assets/exercises/External_Rotation/start.webp",
+        "peak": "./assets/exercises/External_Rotation/peak.webp"
+      }
+    },
+    "External_Rotation_with_Band": {
+      "repdbId": "cable-external-rotation",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/External_Rotation_with_Band/start.webp",
+        "peak": "./assets/exercises/External_Rotation_with_Band/peak.webp"
+      }
+    },
+    "External_Rotation_with_Cable": {
+      "repdbId": "cable-external-rotation",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/External_Rotation_with_Cable/start.webp",
+        "peak": "./assets/exercises/External_Rotation_with_Cable/peak.webp"
+      }
+    },
+    "Face_Pull": {
+      "repdbId": "face-pull",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Face_Pull/start.webp",
+        "peak": "./assets/exercises/Face_Pull/peak.webp"
+      }
+    },
+    "Farmers_Walk": {
+      "repdbId": "dumbbell-farmers-walk",
+      "method": "fuzzy",
+      "score": 0.82,
+      "images": {
+        "main": "./assets/exercises/Farmers_Walk/main.webp"
+      }
+    },
+    "Flat_Bench_Leg_Pull-In": {
+      "repdbId": "bench-leg-pull-in",
+      "method": "fuzzy",
+      "score": 0.86,
+      "images": {
+        "start": "./assets/exercises/Flat_Bench_Leg_Pull-In/start.webp",
+        "peak": "./assets/exercises/Flat_Bench_Leg_Pull-In/peak.webp"
+      }
+    },
+    "Flat_Bench_Lying_Leg_Raise": {
+      "repdbId": "lying-leg-raise",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Flat_Bench_Lying_Leg_Raise/start.webp",
+        "peak": "./assets/exercises/Flat_Bench_Lying_Leg_Raise/peak.webp"
+      }
+    },
+    "Flexor_Incline_Dumbbell_Curls": {
+      "repdbId": "incline-db-curl",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Flexor_Incline_Dumbbell_Curls/start.webp",
+        "peak": "./assets/exercises/Flexor_Incline_Dumbbell_Curls/peak.webp"
+      }
+    },
+    "Floor_Press": {
+      "repdbId": "floor-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Floor_Press/start.webp",
+        "peak": "./assets/exercises/Floor_Press/peak.webp"
+      }
+    },
+    "Floor_Press_with_Chains": {
+      "repdbId": "floor-press",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Floor_Press_with_Chains/start.webp",
+        "peak": "./assets/exercises/Floor_Press_with_Chains/peak.webp"
+      }
+    },
+    "Flutter_Kicks": {
+      "repdbId": "flutter-kicks",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Flutter_Kicks/start.webp",
+        "peak": "./assets/exercises/Flutter_Kicks/peak.webp"
+      }
+    },
+    "Freehand_Jump_Squat": {
+      "repdbId": "jump-squat",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Freehand_Jump_Squat/start.webp",
+        "peak": "./assets/exercises/Freehand_Jump_Squat/peak.webp"
+      }
+    },
+    "Frog_Sit-Ups": {
+      "repdbId": "sit-ups",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Frog_Sit-Ups/start.webp",
+        "peak": "./assets/exercises/Frog_Sit-Ups/peak.webp"
+      }
+    },
+    "Front_Barbell_Squat": {
+      "repdbId": "front-squat",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Front_Barbell_Squat/start.webp",
+        "peak": "./assets/exercises/Front_Barbell_Squat/peak.webp"
+      }
+    },
+    "Front_Box_Jump": {
+      "repdbId": "box-jump",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Front_Box_Jump/start.webp",
+        "peak": "./assets/exercises/Front_Box_Jump/peak.webp"
+      }
+    },
+    "Front_Cable_Raise": {
+      "repdbId": "cable-front-raise",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Front_Cable_Raise/start.webp",
+        "peak": "./assets/exercises/Front_Cable_Raise/peak.webp"
+      }
+    },
+    "Front_Dumbbell_Raise": {
+      "repdbId": "dumbbell-front-raise",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Front_Dumbbell_Raise/start.webp",
+        "peak": "./assets/exercises/Front_Dumbbell_Raise/peak.webp"
+      }
+    },
+    "Front_Incline_Dumbbell_Raise": {
+      "repdbId": "dumbbell-front-raise",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Front_Incline_Dumbbell_Raise/start.webp",
+        "peak": "./assets/exercises/Front_Incline_Dumbbell_Raise/peak.webp"
+      }
+    },
+    "Front_Squat_Clean_Grip": {
+      "repdbId": "front-squat",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Front_Squat_Clean_Grip/start.webp",
+        "peak": "./assets/exercises/Front_Squat_Clean_Grip/peak.webp"
+      }
+    },
+    "Front_Two-Dumbbell_Raise": {
+      "repdbId": "dumbbell-front-raise",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Front_Two-Dumbbell_Raise/start.webp",
+        "peak": "./assets/exercises/Front_Two-Dumbbell_Raise/peak.webp"
+      }
+    },
+    "Glute_Kickback": {
+      "repdbId": "glute-kickback",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Glute_Kickback/start.webp",
+        "peak": "./assets/exercises/Glute_Kickback/peak.webp"
+      }
+    },
+    "Goblet_Squat": {
+      "repdbId": "goblet-squat",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Goblet_Squat/start.webp",
+        "peak": "./assets/exercises/Goblet_Squat/peak.webp"
+      }
+    },
+    "Good_Morning": {
+      "repdbId": "good-morning",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Good_Morning/start.webp",
+        "peak": "./assets/exercises/Good_Morning/peak.webp"
+      }
+    },
+    "Hack_Squat": {
+      "repdbId": "hack-squat",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Hack_Squat/start.webp",
+        "peak": "./assets/exercises/Hack_Squat/peak.webp"
+      }
+    },
+    "Hammer_Curls": {
+      "repdbId": "cable-hammer-curl",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "start": "./assets/exercises/Hammer_Curls/start.webp",
+        "peak": "./assets/exercises/Hammer_Curls/peak.webp"
+      }
+    },
+    "Hammer_Grip_Incline_DB_Bench_Press": {
+      "repdbId": "close-grip-db-bench-press",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Hammer_Grip_Incline_DB_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Hammer_Grip_Incline_DB_Bench_Press/peak.webp"
+      }
+    },
+    "Hamstring_Stretch": {
+      "repdbId": "banded-hamstring-stretch",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "main": "./assets/exercises/Hamstring_Stretch/main.webp"
+      }
+    },
+    "Handstand_Push-Ups": {
+      "repdbId": "handstand-push-ups",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Handstand_Push-Ups/start.webp",
+        "peak": "./assets/exercises/Handstand_Push-Ups/peak.webp"
+      }
+    },
+    "Hang_Clean": {
+      "repdbId": "hang-clean",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Hang_Clean/start.webp",
+        "peak": "./assets/exercises/Hang_Clean/peak.webp"
+      }
+    },
+    "Hang_Snatch": {
+      "repdbId": "snatch",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Hang_Snatch/start.webp",
+        "peak": "./assets/exercises/Hang_Snatch/peak.webp"
+      }
+    },
+    "Hanging_Leg_Raise": {
+      "repdbId": "hanging-leg-raise",
+      "method": "alias",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Hanging_Leg_Raise/start.webp",
+        "peak": "./assets/exercises/Hanging_Leg_Raise/peak.webp"
+      }
+    },
+    "Hanging_Pike": {
+      "repdbId": "hanging-pike",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Hanging_Pike/start.webp",
+        "peak": "./assets/exercises/Hanging_Pike/peak.webp"
+      }
+    },
+    "High_Cable_Curls": {
+      "repdbId": "cable-curl",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/High_Cable_Curls/start.webp",
+        "peak": "./assets/exercises/High_Cable_Curls/peak.webp"
+      }
+    },
+    "Hyperextensions_Back_Extensions": {
+      "repdbId": "back-extension",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Hyperextensions_Back_Extensions/start.webp",
+        "peak": "./assets/exercises/Hyperextensions_Back_Extensions/peak.webp"
+      }
+    },
+    "IT_Band_and_Glute_Stretch": {
+      "repdbId": "banded-it-band-stretch",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "main": "./assets/exercises/IT_Band_and_Glute_Stretch/main.webp"
+      }
+    },
+    "Incline_Barbell_Triceps_Extension": {
+      "repdbId": "ez-bar-lying-tricep-extension",
+      "method": "fuzzy",
+      "score": 0.675,
+      "images": {
+        "start": "./assets/exercises/Incline_Barbell_Triceps_Extension/start.webp",
+        "peak": "./assets/exercises/Incline_Barbell_Triceps_Extension/peak.webp"
+      }
+    },
+    "Incline_Bench_Pull": {
+      "repdbId": "bench-pull",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Incline_Bench_Pull/start.webp",
+        "peak": "./assets/exercises/Incline_Bench_Pull/peak.webp"
+      }
+    },
+    "Incline_Cable_Chest_Press": {
+      "repdbId": "cable-chest-press",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Incline_Cable_Chest_Press/start.webp",
+        "peak": "./assets/exercises/Incline_Cable_Chest_Press/peak.webp"
+      }
+    },
+    "Incline_Dumbbell_Curl": {
+      "repdbId": "incline-db-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Incline_Dumbbell_Curl/start.webp",
+        "peak": "./assets/exercises/Incline_Dumbbell_Curl/peak.webp"
+      }
+    },
+    "Incline_Dumbbell_Press": {
+      "repdbId": "incline-db-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Incline_Dumbbell_Press/start.webp",
+        "peak": "./assets/exercises/Incline_Dumbbell_Press/peak.webp"
+      }
+    },
+    "Incline_Hammer_Curls": {
+      "repdbId": "incline-hammer-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Incline_Hammer_Curls/start.webp",
+        "peak": "./assets/exercises/Incline_Hammer_Curls/peak.webp"
+      }
+    },
+    "Incline_Push-Up": {
+      "repdbId": "incline-push-ups",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Incline_Push-Up/start.webp",
+        "peak": "./assets/exercises/Incline_Push-Up/peak.webp"
+      }
+    },
+    "Incline_Push-Up_Close-Grip": {
+      "repdbId": "incline-push-ups",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Incline_Push-Up_Close-Grip/start.webp",
+        "peak": "./assets/exercises/Incline_Push-Up_Close-Grip/peak.webp"
+      }
+    },
+    "Incline_Push-Up_Medium": {
+      "repdbId": "incline-push-ups",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Incline_Push-Up_Medium/start.webp",
+        "peak": "./assets/exercises/Incline_Push-Up_Medium/peak.webp"
+      }
+    },
+    "Incline_Push-Up_Reverse_Grip": {
+      "repdbId": "incline-push-ups",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/Incline_Push-Up_Reverse_Grip/start.webp",
+        "peak": "./assets/exercises/Incline_Push-Up_Reverse_Grip/peak.webp"
+      }
+    },
+    "Incline_Push-Up_Wide": {
+      "repdbId": "incline-push-ups",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Incline_Push-Up_Wide/start.webp",
+        "peak": "./assets/exercises/Incline_Push-Up_Wide/peak.webp"
+      }
+    },
+    "Intermediate_Hip_Flexor_and_Quad_Stretch": {
+      "repdbId": "kneeling-hip-flexor-stretch",
+      "method": "fuzzy",
+      "score": 0.645,
+      "images": {
+        "main": "./assets/exercises/Intermediate_Hip_Flexor_and_Quad_Stretch/main.webp"
+      }
+    },
+    "Inverted_Row": {
+      "repdbId": "inverted-row",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Inverted_Row/start.webp",
+        "peak": "./assets/exercises/Inverted_Row/peak.webp"
+      }
+    },
+    "Inverted_Row_with_Straps": {
+      "repdbId": "inverted-row",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Inverted_Row_with_Straps/start.webp",
+        "peak": "./assets/exercises/Inverted_Row_with_Straps/peak.webp"
+      }
+    },
+    "Jackknife_Sit-Up": {
+      "repdbId": "jackknife-sit-up",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Jackknife_Sit-Up/start.webp",
+        "peak": "./assets/exercises/Jackknife_Sit-Up/peak.webp"
+      }
+    },
+    "Janda_Sit-Up": {
+      "repdbId": "jackknife-sit-up",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/Janda_Sit-Up/start.webp",
+        "peak": "./assets/exercises/Janda_Sit-Up/peak.webp"
+      }
+    },
+    "Kettlebell_Arnold_Press": {
+      "repdbId": "arnold-press",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Kettlebell_Arnold_Press/start.webp",
+        "peak": "./assets/exercises/Kettlebell_Arnold_Press/peak.webp"
+      }
+    },
+    "Kettlebell_Dead_Clean": {
+      "repdbId": "double-kettlebell-dead-clean",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Kettlebell_Dead_Clean/start.webp",
+        "peak": "./assets/exercises/Kettlebell_Dead_Clean/peak.webp"
+      }
+    },
+    "Kettlebell_Hang_Clean": {
+      "repdbId": "hang-clean",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Kettlebell_Hang_Clean/start.webp",
+        "peak": "./assets/exercises/Kettlebell_Hang_Clean/peak.webp"
+      }
+    },
+    "Kettlebell_Pistol_Squat": {
+      "repdbId": "kettlebell-pistol-squat",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Kettlebell_Pistol_Squat/start.webp",
+        "peak": "./assets/exercises/Kettlebell_Pistol_Squat/peak.webp"
+      }
+    },
+    "Kettlebell_Sumo_High_Pull": {
+      "repdbId": "kettlebell-sumo-high-pull",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Kettlebell_Sumo_High_Pull/start.webp",
+        "peak": "./assets/exercises/Kettlebell_Sumo_High_Pull/peak.webp"
+      }
+    },
+    "Kettlebell_Thruster": {
+      "repdbId": "thruster",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Kettlebell_Thruster/start.webp",
+        "peak": "./assets/exercises/Kettlebell_Thruster/peak.webp"
+      }
+    },
+    "Kipping_Muscle_Up": {
+      "repdbId": "ring-muscle-up",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/Kipping_Muscle_Up/start.webp",
+        "peak": "./assets/exercises/Kipping_Muscle_Up/peak.webp"
+      }
+    },
+    "Kneeling_Hip_Flexor": {
+      "repdbId": "kneeling-hip-flexor-stretch",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "main": "./assets/exercises/Kneeling_Hip_Flexor/main.webp"
+      }
+    },
+    "Kneeling_Jump_Squat": {
+      "repdbId": "jump-squat",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Kneeling_Jump_Squat/start.webp",
+        "peak": "./assets/exercises/Kneeling_Jump_Squat/peak.webp"
+      }
+    },
+    "Lateral_Box_Jump": {
+      "repdbId": "box-jump",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Lateral_Box_Jump/start.webp",
+        "peak": "./assets/exercises/Lateral_Box_Jump/peak.webp"
+      }
+    },
+    "Leg_Extensions": {
+      "repdbId": "leg-extension",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Leg_Extensions/start.webp",
+        "peak": "./assets/exercises/Leg_Extensions/peak.webp"
+      }
+    },
+    "Leg_Lift": {
+      "repdbId": "side-plank-leg-lift",
+      "method": "fuzzy",
+      "score": 0.85,
+      "images": {
+        "start": "./assets/exercises/Leg_Lift/start.webp",
+        "peak": "./assets/exercises/Leg_Lift/peak.webp"
+      }
+    },
+    "Leg_Press": {
+      "repdbId": "leg-press",
+      "method": "alias",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Leg_Press/start.webp",
+        "peak": "./assets/exercises/Leg_Press/peak.webp"
+      }
+    },
+    "Leg_Pull-In": {
+      "repdbId": "bench-leg-pull-in",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Leg_Pull-In/start.webp",
+        "peak": "./assets/exercises/Leg_Pull-In/peak.webp"
+      }
+    },
+    "Lunge_Sprint": {
+      "repdbId": "lunge",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Lunge_Sprint/start.webp",
+        "peak": "./assets/exercises/Lunge_Sprint/peak.webp"
+      }
+    },
+    "Lying_Cable_Curl": {
+      "repdbId": "cable-curl",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Lying_Cable_Curl/start.webp",
+        "peak": "./assets/exercises/Lying_Cable_Curl/peak.webp"
+      }
+    },
+    "Lying_Close-Grip_Barbell_Triceps_Extension_Behind_The_Head": {
+      "repdbId": "ez-bar-lying-tricep-extension",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/Lying_Close-Grip_Barbell_Triceps_Extension_Behind_The_Head/start.webp",
+        "peak": "./assets/exercises/Lying_Close-Grip_Barbell_Triceps_Extension_Behind_The_Head/peak.webp"
+      }
+    },
+    "Lying_Dumbbell_Tricep_Extension": {
+      "repdbId": "dumbbell-tricep-extension",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Lying_Dumbbell_Tricep_Extension/start.webp",
+        "peak": "./assets/exercises/Lying_Dumbbell_Tricep_Extension/peak.webp"
+      }
+    },
+    "Lying_Leg_Curls": {
+      "repdbId": "leg-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Lying_Leg_Curls/start.webp",
+        "peak": "./assets/exercises/Lying_Leg_Curls/peak.webp"
+      }
+    },
+    "Lying_T-Bar_Row": {
+      "repdbId": "t-bar-row",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Lying_T-Bar_Row/start.webp",
+        "peak": "./assets/exercises/Lying_T-Bar_Row/peak.webp"
+      }
+    },
+    "Machine_Bench_Press": {
+      "repdbId": "smith-machine-bench-press",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Machine_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Machine_Bench_Press/peak.webp"
+      }
+    },
+    "Machine_Bicep_Curl": {
+      "repdbId": "machine-bicep-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Machine_Bicep_Curl/start.webp",
+        "peak": "./assets/exercises/Machine_Bicep_Curl/peak.webp"
+      }
+    },
+    "Machine_Preacher_Curls": {
+      "repdbId": "machine-preacher-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Machine_Preacher_Curls/start.webp",
+        "peak": "./assets/exercises/Machine_Preacher_Curls/peak.webp"
+      }
+    },
+    "Machine_Shoulder_Military_Press": {
+      "repdbId": "machine-shoulder-press",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Machine_Shoulder_Military_Press/start.webp",
+        "peak": "./assets/exercises/Machine_Shoulder_Military_Press/peak.webp"
+      }
+    },
+    "Machine_Triceps_Extension": {
+      "repdbId": "machine-triceps-extension",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Machine_Triceps_Extension/start.webp",
+        "peak": "./assets/exercises/Machine_Triceps_Extension/peak.webp"
+      }
+    },
+    "Middle_Back_Shrug": {
+      "repdbId": "behind-the-back-barbell-shrug",
+      "method": "fuzzy",
+      "score": 0.617,
+      "images": {
+        "start": "./assets/exercises/Middle_Back_Shrug/start.webp",
+        "peak": "./assets/exercises/Middle_Back_Shrug/peak.webp"
+      }
+    },
+    "Mountain_Climbers": {
+      "repdbId": "mountain-climbers",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Mountain_Climbers/start.webp",
+        "peak": "./assets/exercises/Mountain_Climbers/peak.webp"
+      }
+    },
+    "Muscle_Snatch": {
+      "repdbId": "muscle-snatch",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Muscle_Snatch/start.webp",
+        "peak": "./assets/exercises/Muscle_Snatch/peak.webp"
+      }
+    },
+    "Muscle_Up": {
+      "repdbId": "ring-muscle-up",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "start": "./assets/exercises/Muscle_Up/start.webp",
+        "peak": "./assets/exercises/Muscle_Up/peak.webp"
+      }
+    },
+    "Narrow_Stance_Hack_Squats": {
+      "repdbId": "hack-squat",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Narrow_Stance_Hack_Squats/start.webp",
+        "peak": "./assets/exercises/Narrow_Stance_Hack_Squats/peak.webp"
+      }
+    },
+    "Narrow_Stance_Leg_Press": {
+      "repdbId": "close-stance-leg-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Narrow_Stance_Leg_Press/start.webp",
+        "peak": "./assets/exercises/Narrow_Stance_Leg_Press/peak.webp"
+      }
+    },
+    "Neck_Press": {
+      "repdbId": "behind-the-neck-press",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "start": "./assets/exercises/Neck_Press/start.webp",
+        "peak": "./assets/exercises/Neck_Press/peak.webp"
+      }
+    },
+    "Oblique_Crunches": {
+      "repdbId": "crunches",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Oblique_Crunches/start.webp",
+        "peak": "./assets/exercises/Oblique_Crunches/peak.webp"
+      }
+    },
+    "One-Arm_Dumbbell_Row": {
+      "repdbId": "one-arm-dumbbell-swing",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Dumbbell_Row/start.webp",
+        "peak": "./assets/exercises/One-Arm_Dumbbell_Row/peak.webp"
+      }
+    },
+    "One-Arm_Kettlebell_Clean": {
+      "repdbId": "one-arm-kettlebell-row",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Kettlebell_Clean/start.webp",
+        "peak": "./assets/exercises/One-Arm_Kettlebell_Clean/peak.webp"
+      }
+    },
+    "One-Arm_Kettlebell_Floor_Press": {
+      "repdbId": "one-arm-kettlebell-floor-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Kettlebell_Floor_Press/start.webp",
+        "peak": "./assets/exercises/One-Arm_Kettlebell_Floor_Press/peak.webp"
+      }
+    },
+    "One-Arm_Kettlebell_Jerk": {
+      "repdbId": "one-arm-kettlebell-row",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Kettlebell_Jerk/start.webp",
+        "peak": "./assets/exercises/One-Arm_Kettlebell_Jerk/peak.webp"
+      }
+    },
+    "One-Arm_Kettlebell_Para_Press": {
+      "repdbId": "one-arm-kettlebell-floor-press",
+      "method": "fuzzy",
+      "score": 0.8,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Kettlebell_Para_Press/start.webp",
+        "peak": "./assets/exercises/One-Arm_Kettlebell_Para_Press/peak.webp"
+      }
+    },
+    "One-Arm_Kettlebell_Push_Press": {
+      "repdbId": "one-arm-kettlebell-push-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Kettlebell_Push_Press/start.webp",
+        "peak": "./assets/exercises/One-Arm_Kettlebell_Push_Press/peak.webp"
+      }
+    },
+    "One-Arm_Kettlebell_Row": {
+      "repdbId": "one-arm-kettlebell-row",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Kettlebell_Row/start.webp",
+        "peak": "./assets/exercises/One-Arm_Kettlebell_Row/peak.webp"
+      }
+    },
+    "One-Arm_Kettlebell_Snatch": {
+      "repdbId": "one-arm-kettlebell-row",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Kettlebell_Snatch/start.webp",
+        "peak": "./assets/exercises/One-Arm_Kettlebell_Snatch/peak.webp"
+      }
+    },
+    "One-Arm_Kettlebell_Swings": {
+      "repdbId": "one-arm-kettlebell-row",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Kettlebell_Swings/start.webp",
+        "peak": "./assets/exercises/One-Arm_Kettlebell_Swings/peak.webp"
+      }
+    },
+    "One-Arm_Long_Bar_Row": {
+      "repdbId": "one-arm-kettlebell-row",
+      "method": "fuzzy",
+      "score": 0.645,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Long_Bar_Row/start.webp",
+        "peak": "./assets/exercises/One-Arm_Long_Bar_Row/peak.webp"
+      }
+    },
+    "One-Arm_Medicine_Ball_Slam": {
+      "repdbId": "medicine-ball-slam",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Medicine_Ball_Slam/start.webp",
+        "peak": "./assets/exercises/One-Arm_Medicine_Ball_Slam/peak.webp"
+      }
+    },
+    "One-Arm_Overhead_Kettlebell_Squats": {
+      "repdbId": "one-arm-kettlebell-front-squat",
+      "method": "fuzzy",
+      "score": 0.8,
+      "images": {
+        "start": "./assets/exercises/One-Arm_Overhead_Kettlebell_Squats/start.webp",
+        "peak": "./assets/exercises/One-Arm_Overhead_Kettlebell_Squats/peak.webp"
+      }
+    },
+    "One_Arm_Chin-Up": {
+      "repdbId": "one-arm-kettlebell-bottoms-up-press",
+      "method": "fuzzy",
+      "score": 0.675,
+      "images": {
+        "start": "./assets/exercises/One_Arm_Chin-Up/start.webp",
+        "peak": "./assets/exercises/One_Arm_Chin-Up/peak.webp"
+      }
+    },
+    "One_Arm_Dumbbell_Bench_Press": {
+      "repdbId": "one-arm-dumbbell-push-press",
+      "method": "fuzzy",
+      "score": 0.8,
+      "images": {
+        "start": "./assets/exercises/One_Arm_Dumbbell_Bench_Press/start.webp",
+        "peak": "./assets/exercises/One_Arm_Dumbbell_Bench_Press/peak.webp"
+      }
+    },
+    "One_Arm_Floor_Press": {
+      "repdbId": "one-arm-kettlebell-floor-press",
+      "method": "fuzzy",
+      "score": 0.94,
+      "images": {
+        "start": "./assets/exercises/One_Arm_Floor_Press/start.webp",
+        "peak": "./assets/exercises/One_Arm_Floor_Press/peak.webp"
+      }
+    },
+    "One_Arm_Lat_Pulldown": {
+      "repdbId": "one-arm-lat-pulldown",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/One_Arm_Lat_Pulldown/start.webp",
+        "peak": "./assets/exercises/One_Arm_Lat_Pulldown/peak.webp"
+      }
+    },
+    "One_Knee_To_Chest": {
+      "repdbId": "knee-to-chest-stretch",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "main": "./assets/exercises/One_Knee_To_Chest/main.webp"
+      }
+    },
+    "Overhead_Cable_Curl": {
+      "repdbId": "cable-curl",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Overhead_Cable_Curl/start.webp",
+        "peak": "./assets/exercises/Overhead_Cable_Curl/peak.webp"
+      }
+    },
+    "Overhead_Squat": {
+      "repdbId": "overhead-squat",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Overhead_Squat/start.webp",
+        "peak": "./assets/exercises/Overhead_Squat/peak.webp"
+      }
+    },
+    "Overhead_Stretch": {
+      "repdbId": "overhead-triceps-stretch",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "main": "./assets/exercises/Overhead_Stretch/main.webp"
+      }
+    },
+    "Overhead_Triceps": {
+      "repdbId": "overhead-triceps-stretch",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "main": "./assets/exercises/Overhead_Triceps/main.webp"
+      }
+    },
+    "Pallof_Press": {
+      "repdbId": "cable-pallof-press",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "start": "./assets/exercises/Pallof_Press/start.webp",
+        "peak": "./assets/exercises/Pallof_Press/peak.webp"
+      }
+    },
+    "Pallof_Press_With_Rotation": {
+      "repdbId": "cable-pallof-press",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/Pallof_Press_With_Rotation/start.webp",
+        "peak": "./assets/exercises/Pallof_Press_With_Rotation/peak.webp"
+      }
+    },
+    "Physioball_Hip_Bridge": {
+      "repdbId": "stability-ball-hip-bridge",
+      "method": "fuzzy",
+      "score": 0.617,
+      "images": {
+        "start": "./assets/exercises/Physioball_Hip_Bridge/start.webp",
+        "peak": "./assets/exercises/Physioball_Hip_Bridge/peak.webp"
+      }
+    },
+    "Plank": {
+      "repdbId": "plank",
+      "method": "alias",
+      "score": 1,
+      "images": {
+        "main": "./assets/exercises/Plank/main.webp"
+      }
+    },
+    "Plate_Pinch": {
+      "repdbId": "plate-pinch",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Plate_Pinch/start.webp",
+        "peak": "./assets/exercises/Plate_Pinch/peak.webp"
+      }
+    },
+    "Plie_Dumbbell_Squat": {
+      "repdbId": "db-squat",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Plie_Dumbbell_Squat/start.webp",
+        "peak": "./assets/exercises/Plie_Dumbbell_Squat/peak.webp"
+      }
+    },
+    "Plyo_Push-up": {
+      "repdbId": "plyo-push-up",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Plyo_Push-up/start.webp",
+        "peak": "./assets/exercises/Plyo_Push-up/peak.webp"
+      }
+    },
+    "Power_Clean": {
+      "repdbId": "hang-power-clean",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "start": "./assets/exercises/Power_Clean/start.webp",
+        "peak": "./assets/exercises/Power_Clean/peak.webp"
+      }
+    },
+    "Power_Snatch": {
+      "repdbId": "snatch",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Power_Snatch/start.webp",
+        "peak": "./assets/exercises/Power_Snatch/peak.webp"
+      }
+    },
+    "Preacher_Curl": {
+      "repdbId": "preacher-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Preacher_Curl/start.webp",
+        "peak": "./assets/exercises/Preacher_Curl/peak.webp"
+      }
+    },
+    "Preacher_Hammer_Dumbbell_Curl": {
+      "repdbId": "hammer-curl",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Preacher_Hammer_Dumbbell_Curl/start.webp",
+        "peak": "./assets/exercises/Preacher_Hammer_Dumbbell_Curl/peak.webp"
+      }
+    },
+    "Push-Up_Wide": {
+      "repdbId": "push-up",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Push-Up_Wide/start.webp",
+        "peak": "./assets/exercises/Push-Up_Wide/peak.webp"
+      }
+    },
+    "Push_Press": {
+      "repdbId": "push-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Push_Press/start.webp",
+        "peak": "./assets/exercises/Push_Press/peak.webp"
+      }
+    },
+    "Push_Press_-_Behind_the_Neck": {
+      "repdbId": "behind-the-neck-press",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Push_Press_-_Behind_the_Neck/start.webp",
+        "peak": "./assets/exercises/Push_Press_-_Behind_the_Neck/peak.webp"
+      }
+    },
+    "Pyramid": {
+      "repdbId": "pyramid-pose",
+      "method": "fuzzy",
+      "score": 0.85,
+      "images": {
+        "main": "./assets/exercises/Pyramid/main.webp"
+      }
+    },
+    "Quad_Stretch": {
+      "repdbId": "standing-quad-stretch",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "main": "./assets/exercises/Quad_Stretch/main.webp"
+      }
+    },
+    "Rack_Pull_with_Bands": {
+      "repdbId": "rack-pull",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Rack_Pull_with_Bands/start.webp",
+        "peak": "./assets/exercises/Rack_Pull_with_Bands/peak.webp"
+      }
+    },
+    "Reverse_Band_Box_Squat": {
+      "repdbId": "box-squat",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Reverse_Band_Box_Squat/start.webp",
+        "peak": "./assets/exercises/Reverse_Band_Box_Squat/peak.webp"
+      }
+    },
+    "Reverse_Barbell_Curl": {
+      "repdbId": "ez-bar-reverse-curl",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Reverse_Barbell_Curl/start.webp",
+        "peak": "./assets/exercises/Reverse_Barbell_Curl/peak.webp"
+      }
+    },
+    "Reverse_Barbell_Preacher_Curls": {
+      "repdbId": "barbell-preacher-curl",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Reverse_Barbell_Preacher_Curls/start.webp",
+        "peak": "./assets/exercises/Reverse_Barbell_Preacher_Curls/peak.webp"
+      }
+    },
+    "Reverse_Cable_Curl": {
+      "repdbId": "cable-curl",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Reverse_Cable_Curl/start.webp",
+        "peak": "./assets/exercises/Reverse_Cable_Curl/peak.webp"
+      }
+    },
+    "Reverse_Grip_Bent-Over_Rows": {
+      "repdbId": "reverse-grip-bent-over-row",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Reverse_Grip_Bent-Over_Rows/start.webp",
+        "peak": "./assets/exercises/Reverse_Grip_Bent-Over_Rows/peak.webp"
+      }
+    },
+    "Reverse_Plate_Curls": {
+      "repdbId": "reverse-curl",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Reverse_Plate_Curls/start.webp",
+        "peak": "./assets/exercises/Reverse_Plate_Curls/peak.webp"
+      }
+    },
+    "Ring_Dips": {
+      "repdbId": "ring-dips",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Ring_Dips/start.webp",
+        "peak": "./assets/exercises/Ring_Dips/peak.webp"
+      }
+    },
+    "Rocking_Standing_Calf_Raise": {
+      "repdbId": "standing-calf-raise",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Rocking_Standing_Calf_Raise/start.webp",
+        "peak": "./assets/exercises/Rocking_Standing_Calf_Raise/peak.webp"
+      }
+    },
+    "Romanian_Deadlift": {
+      "repdbId": "romanian-deadlift",
+      "method": "alias",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Romanian_Deadlift/start.webp",
+        "peak": "./assets/exercises/Romanian_Deadlift/peak.webp"
+      }
+    },
+    "Rope_Climb": {
+      "repdbId": "rope-climb",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "main": "./assets/exercises/Rope_Climb/main.webp"
+      }
+    },
+    "Rope_Straight-Arm_Pulldown": {
+      "repdbId": "straight-arm-pulldown",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Rope_Straight-Arm_Pulldown/start.webp",
+        "peak": "./assets/exercises/Rope_Straight-Arm_Pulldown/peak.webp"
+      }
+    },
+    "Running_Treadmill": {
+      "repdbId": "treadmill-running",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "main": "./assets/exercises/Running_Treadmill/main.webp"
+      }
+    },
+    "Russian_Twist": {
+      "repdbId": "russian-twist",
+      "method": "alias",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Russian_Twist/start.webp",
+        "peak": "./assets/exercises/Russian_Twist/peak.webp"
+      }
+    },
+    "Scapular_Pull-Up": {
+      "repdbId": "pull-up",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Scapular_Pull-Up/start.webp",
+        "peak": "./assets/exercises/Scapular_Pull-Up/peak.webp"
+      }
+    },
+    "Seated_Barbell_Military_Press": {
+      "repdbId": "seated-barbell-overhead-press",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/Seated_Barbell_Military_Press/start.webp",
+        "peak": "./assets/exercises/Seated_Barbell_Military_Press/peak.webp"
+      }
+    },
+    "Seated_Cable_Rows": {
+      "repdbId": "seated-cable-row",
+      "method": "alias",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Seated_Cable_Rows/start.webp",
+        "peak": "./assets/exercises/Seated_Cable_Rows/peak.webp"
+      }
+    },
+    "Seated_Cable_Shoulder_Press": {
+      "repdbId": "seated-db-press",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/Seated_Cable_Shoulder_Press/start.webp",
+        "peak": "./assets/exercises/Seated_Cable_Shoulder_Press/peak.webp"
+      }
+    },
+    "Seated_Calf_Raise": {
+      "repdbId": "seated-calf-raise",
+      "method": "alias",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Seated_Calf_Raise/start.webp",
+        "peak": "./assets/exercises/Seated_Calf_Raise/peak.webp"
+      }
+    },
+    "Seated_Dumbbell_Curl": {
+      "repdbId": "seated-dumbbell-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Seated_Dumbbell_Curl/start.webp",
+        "peak": "./assets/exercises/Seated_Dumbbell_Curl/peak.webp"
+      }
+    },
+    "Seated_Dumbbell_Inner_Biceps_Curl": {
+      "repdbId": "seated-dumbbell-curl",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Seated_Dumbbell_Inner_Biceps_Curl/start.webp",
+        "peak": "./assets/exercises/Seated_Dumbbell_Inner_Biceps_Curl/peak.webp"
+      }
+    },
+    "Seated_Dumbbell_Press": {
+      "repdbId": "seated-db-press",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Seated_Dumbbell_Press/start.webp",
+        "peak": "./assets/exercises/Seated_Dumbbell_Press/peak.webp"
+      }
+    },
+    "Seated_Flat_Bench_Leg_Pull-In": {
+      "repdbId": "bench-leg-pull-in",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Seated_Flat_Bench_Leg_Pull-In/start.webp",
+        "peak": "./assets/exercises/Seated_Flat_Bench_Leg_Pull-In/peak.webp"
+      }
+    },
+    "Seated_Leg_Curl": {
+      "repdbId": "seated-leg-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Seated_Leg_Curl/start.webp",
+        "peak": "./assets/exercises/Seated_Leg_Curl/peak.webp"
+      }
+    },
+    "Seated_Leg_Tucks": {
+      "repdbId": "seated-leg-curl",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/Seated_Leg_Tucks/start.webp",
+        "peak": "./assets/exercises/Seated_Leg_Tucks/peak.webp"
+      }
+    },
+    "Seated_Side_Lateral_Raise": {
+      "repdbId": "seated-dumbbell-lateral-raise",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/Seated_Side_Lateral_Raise/start.webp",
+        "peak": "./assets/exercises/Seated_Side_Lateral_Raise/peak.webp"
+      }
+    },
+    "Shoulder_Stretch": {
+      "repdbId": "banded-shoulder-stretch",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "main": "./assets/exercises/Shoulder_Stretch/main.webp"
+      }
+    },
+    "Side_Lateral_Raise": {
+      "repdbId": "side-lying-lateral-raise",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Side_Lateral_Raise/start.webp",
+        "peak": "./assets/exercises/Side_Lateral_Raise/peak.webp"
+      }
+    },
+    "Side_Neck_Stretch": {
+      "repdbId": "neck-side-stretch",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "main": "./assets/exercises/Side_Neck_Stretch/main.webp"
+      }
+    },
+    "Single-Leg_Leg_Extension": {
+      "repdbId": "single-leg-extension",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Single-Leg_Leg_Extension/start.webp",
+        "peak": "./assets/exercises/Single-Leg_Leg_Extension/peak.webp"
+      }
+    },
+    "Single_Leg_Glute_Bridge": {
+      "repdbId": "single-leg-glute-bridge",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Single_Leg_Glute_Bridge/start.webp",
+        "peak": "./assets/exercises/Single_Leg_Glute_Bridge/peak.webp"
+      }
+    },
+    "Sit-Up": {
+      "repdbId": "jackknife-sit-up",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "start": "./assets/exercises/Sit-Up/start.webp",
+        "peak": "./assets/exercises/Sit-Up/peak.webp"
+      }
+    },
+    "Sled_Row": {
+      "repdbId": "sled-row",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Sled_Row/start.webp",
+        "peak": "./assets/exercises/Sled_Row/peak.webp"
+      }
+    },
+    "Smith_Machine_Behind_the_Back_Shrug": {
+      "repdbId": "smith-machine-shrug",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Behind_the_Back_Shrug/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Behind_the_Back_Shrug/peak.webp"
+      }
+    },
+    "Smith_Machine_Bench_Press": {
+      "repdbId": "smith-machine-bench-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Bench_Press/peak.webp"
+      }
+    },
+    "Smith_Machine_Bent_Over_Row": {
+      "repdbId": "smith-machine-bent-over-row",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Bent_Over_Row/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Bent_Over_Row/peak.webp"
+      }
+    },
+    "Smith_Machine_Calf_Raise": {
+      "repdbId": "smith-machine-calf-raise",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Calf_Raise/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Calf_Raise/peak.webp"
+      }
+    },
+    "Smith_Machine_Close-Grip_Bench_Press": {
+      "repdbId": "smith-machine-bench-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Close-Grip_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Close-Grip_Bench_Press/peak.webp"
+      }
+    },
+    "Smith_Machine_Decline_Press": {
+      "repdbId": "smith-machine-decline-bench-press",
+      "method": "fuzzy",
+      "score": 0.94,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Decline_Press/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Decline_Press/peak.webp"
+      }
+    },
+    "Smith_Machine_Hang_Power_Clean": {
+      "repdbId": "hang-power-clean",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Hang_Power_Clean/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Hang_Power_Clean/peak.webp"
+      }
+    },
+    "Smith_Machine_Hip_Raise": {
+      "repdbId": "smith-machine-calf-raise",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Hip_Raise/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Hip_Raise/peak.webp"
+      }
+    },
+    "Smith_Machine_Incline_Bench_Press": {
+      "repdbId": "smith-machine-incline-bench-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Incline_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Incline_Bench_Press/peak.webp"
+      }
+    },
+    "Smith_Machine_Leg_Press": {
+      "repdbId": "smith-machine-bench-press",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Leg_Press/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Leg_Press/peak.webp"
+      }
+    },
+    "Smith_Machine_One-Arm_Upright_Row": {
+      "repdbId": "smith-machine-upright-row",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_One-Arm_Upright_Row/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_One-Arm_Upright_Row/peak.webp"
+      }
+    },
+    "Smith_Machine_Overhead_Shoulder_Press": {
+      "repdbId": "smith-machine-shoulder-press",
+      "method": "fuzzy",
+      "score": 0.86,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Overhead_Shoulder_Press/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Overhead_Shoulder_Press/peak.webp"
+      }
+    },
+    "Smith_Machine_Pistol_Squat": {
+      "repdbId": "smith-machine-squat",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Pistol_Squat/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Pistol_Squat/peak.webp"
+      }
+    },
+    "Smith_Machine_Reverse_Calf_Raises": {
+      "repdbId": "smith-machine-calf-raise",
+      "method": "fuzzy",
+      "score": 0.86,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Reverse_Calf_Raises/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Reverse_Calf_Raises/peak.webp"
+      }
+    },
+    "Smith_Machine_Squat": {
+      "repdbId": "smith-machine-squat",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Squat/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Squat/peak.webp"
+      }
+    },
+    "Smith_Machine_Stiff-Legged_Deadlift": {
+      "repdbId": "smith-machine-rdl",
+      "method": "fuzzy",
+      "score": 0.6,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Stiff-Legged_Deadlift/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Stiff-Legged_Deadlift/peak.webp"
+      }
+    },
+    "Smith_Machine_Upright_Row": {
+      "repdbId": "smith-machine-upright-row",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Smith_Machine_Upright_Row/start.webp",
+        "peak": "./assets/exercises/Smith_Machine_Upright_Row/peak.webp"
+      }
+    },
+    "Snatch": {
+      "repdbId": "snatch",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Snatch/start.webp",
+        "peak": "./assets/exercises/Snatch/peak.webp"
+      }
+    },
+    "Snatch_Balance": {
+      "repdbId": "snatch",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Snatch_Balance/start.webp",
+        "peak": "./assets/exercises/Snatch_Balance/peak.webp"
+      }
+    },
+    "Snatch_Deadlift": {
+      "repdbId": "snatch",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Snatch_Deadlift/start.webp",
+        "peak": "./assets/exercises/Snatch_Deadlift/peak.webp"
+      }
+    },
+    "Snatch_Pull": {
+      "repdbId": "snatch",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Snatch_Pull/start.webp",
+        "peak": "./assets/exercises/Snatch_Pull/peak.webp"
+      }
+    },
+    "Snatch_Shrug": {
+      "repdbId": "snatch",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Snatch_Shrug/start.webp",
+        "peak": "./assets/exercises/Snatch_Shrug/peak.webp"
+      }
+    },
+    "Speed_Box_Squat": {
+      "repdbId": "box-squat",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Speed_Box_Squat/start.webp",
+        "peak": "./assets/exercises/Speed_Box_Squat/peak.webp"
+      }
+    },
+    "Spider_Curl": {
+      "repdbId": "spider-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Spider_Curl/start.webp",
+        "peak": "./assets/exercises/Spider_Curl/peak.webp"
+      }
+    },
+    "Split_Clean": {
+      "repdbId": "clean",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "start": "./assets/exercises/Split_Clean/start.webp",
+        "peak": "./assets/exercises/Split_Clean/peak.webp"
+      }
+    },
+    "Split_Jerk": {
+      "repdbId": "split-jerk",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Split_Jerk/start.webp",
+        "peak": "./assets/exercises/Split_Jerk/peak.webp"
+      }
+    },
+    "Split_Snatch": {
+      "repdbId": "double-kettlebell-dead-split-snatch",
+      "method": "fuzzy",
+      "score": 0.82,
+      "images": {
+        "start": "./assets/exercises/Split_Snatch/start.webp",
+        "peak": "./assets/exercises/Split_Snatch/peak.webp"
+      }
+    },
+    "Split_Squat_with_Dumbbells": {
+      "repdbId": "dumbbell-split-squat",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Split_Squat_with_Dumbbells/start.webp",
+        "peak": "./assets/exercises/Split_Squat_with_Dumbbells/peak.webp"
+      }
+    },
+    "Split_Squats": {
+      "repdbId": "split-squat",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Split_Squats/start.webp",
+        "peak": "./assets/exercises/Split_Squats/peak.webp"
+      }
+    },
+    "Standing_Barbell_Calf_Raise": {
+      "repdbId": "barbell-calf-raise",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Standing_Barbell_Calf_Raise/start.webp",
+        "peak": "./assets/exercises/Standing_Barbell_Calf_Raise/peak.webp"
+      }
+    },
+    "Standing_Barbell_Press_Behind_Neck": {
+      "repdbId": "behind-the-neck-press",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Standing_Barbell_Press_Behind_Neck/start.webp",
+        "peak": "./assets/exercises/Standing_Barbell_Press_Behind_Neck/peak.webp"
+      }
+    },
+    "Standing_Cable_Chest_Press": {
+      "repdbId": "cable-chest-press",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Standing_Cable_Chest_Press/start.webp",
+        "peak": "./assets/exercises/Standing_Cable_Chest_Press/peak.webp"
+      }
+    },
+    "Standing_Calf_Raises": {
+      "repdbId": "standing-calf-raise",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Standing_Calf_Raises/start.webp",
+        "peak": "./assets/exercises/Standing_Calf_Raises/peak.webp"
+      }
+    },
+    "Standing_Concentration_Curl": {
+      "repdbId": "concentration-curl",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Standing_Concentration_Curl/start.webp",
+        "peak": "./assets/exercises/Standing_Concentration_Curl/peak.webp"
+      }
+    },
+    "Standing_Dumbbell_Calf_Raise": {
+      "repdbId": "dumbbell-calf-raise",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Standing_Dumbbell_Calf_Raise/start.webp",
+        "peak": "./assets/exercises/Standing_Dumbbell_Calf_Raise/peak.webp"
+      }
+    },
+    "Standing_Dumbbell_Reverse_Curl": {
+      "repdbId": "db-reverse-curl",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Standing_Dumbbell_Reverse_Curl/start.webp",
+        "peak": "./assets/exercises/Standing_Dumbbell_Reverse_Curl/peak.webp"
+      }
+    },
+    "Standing_Dumbbell_Upright_Row": {
+      "repdbId": "dumbbell-upright-row",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/Standing_Dumbbell_Upright_Row/start.webp",
+        "peak": "./assets/exercises/Standing_Dumbbell_Upright_Row/peak.webp"
+      }
+    },
+    "Standing_Elevated_Quad_Stretch": {
+      "repdbId": "standing-quad-stretch",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "main": "./assets/exercises/Standing_Elevated_Quad_Stretch/main.webp"
+      }
+    },
+    "Standing_Gastrocnemius_Calf_Stretch": {
+      "repdbId": "standing-calf-stretch",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "main": "./assets/exercises/Standing_Gastrocnemius_Calf_Stretch/main.webp"
+      }
+    },
+    "Standing_Hamstring_and_Calf_Stretch": {
+      "repdbId": "standing-calf-stretch",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "main": "./assets/exercises/Standing_Hamstring_and_Calf_Stretch/main.webp"
+      }
+    },
+    "Standing_Leg_Curl": {
+      "repdbId": "banded-standing-curl",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Standing_Leg_Curl/start.webp",
+        "peak": "./assets/exercises/Standing_Leg_Curl/peak.webp"
+      }
+    },
+    "Standing_Overhead_Barbell_Triceps_Extension": {
+      "repdbId": "barbell-overhead-extension",
+      "method": "fuzzy",
+      "score": 0.72,
+      "images": {
+        "start": "./assets/exercises/Standing_Overhead_Barbell_Triceps_Extension/start.webp",
+        "peak": "./assets/exercises/Standing_Overhead_Barbell_Triceps_Extension/peak.webp"
+      }
+    },
+    "Standing_Palm-In_One-Arm_Dumbbell_Press": {
+      "repdbId": "one-arm-dumbbell-push-press",
+      "method": "fuzzy",
+      "score": 0.64,
+      "images": {
+        "start": "./assets/exercises/Standing_Palm-In_One-Arm_Dumbbell_Press/start.webp",
+        "peak": "./assets/exercises/Standing_Palm-In_One-Arm_Dumbbell_Press/peak.webp"
+      }
+    },
+    "Straight-Arm_Pulldown": {
+      "repdbId": "straight-arm-pulldown",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Straight-Arm_Pulldown/start.webp",
+        "peak": "./assets/exercises/Straight-Arm_Pulldown/peak.webp"
+      }
+    },
+    "Sumo_Deadlift": {
+      "repdbId": "sumo-deadlift",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Sumo_Deadlift/start.webp",
+        "peak": "./assets/exercises/Sumo_Deadlift/peak.webp"
+      }
+    },
+    "Sumo_Deadlift_with_Bands": {
+      "repdbId": "sumo-deadlift",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Sumo_Deadlift_with_Bands/start.webp",
+        "peak": "./assets/exercises/Sumo_Deadlift_with_Bands/peak.webp"
+      }
+    },
+    "Sumo_Deadlift_with_Chains": {
+      "repdbId": "sumo-deadlift",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Sumo_Deadlift_with_Chains/start.webp",
+        "peak": "./assets/exercises/Sumo_Deadlift_with_Chains/peak.webp"
+      }
+    },
+    "Superman": {
+      "repdbId": "superman",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Superman/start.webp",
+        "peak": "./assets/exercises/Superman/peak.webp"
+      }
+    },
+    "Suspended_Push-Up": {
+      "repdbId": "push-up",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Suspended_Push-Up/start.webp",
+        "peak": "./assets/exercises/Suspended_Push-Up/peak.webp"
+      }
+    },
+    "Suspended_Split_Squat": {
+      "repdbId": "split-squat",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Suspended_Split_Squat/start.webp",
+        "peak": "./assets/exercises/Suspended_Split_Squat/peak.webp"
+      }
+    },
+    "Svend_Press": {
+      "repdbId": "svend-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Svend_Press/start.webp",
+        "peak": "./assets/exercises/Svend_Press/peak.webp"
+      }
+    },
+    "T-Bar_Row_with_Handle": {
+      "repdbId": "t-bar-row",
+      "method": "fuzzy",
+      "score": 0.825,
+      "images": {
+        "start": "./assets/exercises/T-Bar_Row_with_Handle/start.webp",
+        "peak": "./assets/exercises/T-Bar_Row_with_Handle/peak.webp"
+      }
+    },
+    "The_Straddle": {
+      "repdbId": "seated-straddle-stretch",
+      "method": "fuzzy",
+      "score": 0.8,
+      "images": {
+        "main": "./assets/exercises/The_Straddle/main.webp"
+      }
+    },
+    "Trap_Bar_Deadlift": {
+      "repdbId": "deadlift",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Trap_Bar_Deadlift/start.webp",
+        "peak": "./assets/exercises/Trap_Bar_Deadlift/peak.webp"
+      }
+    },
+    "Tricep_Dumbbell_Kickback": {
+      "repdbId": "tricep-kickback",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Tricep_Dumbbell_Kickback/start.webp",
+        "peak": "./assets/exercises/Tricep_Dumbbell_Kickback/peak.webp"
+      }
+    },
+    "Tricep_Side_Stretch": {
+      "repdbId": "neck-side-stretch",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "main": "./assets/exercises/Tricep_Side_Stretch/main.webp"
+      }
+    },
+    "Triceps_Pushdown_-_V-Bar_Attachment": {
+      "repdbId": "v-bar-tricep-pushdown",
+      "method": "fuzzy",
+      "score": 0.645,
+      "images": {
+        "start": "./assets/exercises/Triceps_Pushdown_-_V-Bar_Attachment/start.webp",
+        "peak": "./assets/exercises/Triceps_Pushdown_-_V-Bar_Attachment/peak.webp"
+      }
+    },
+    "Triceps_Stretch": {
+      "repdbId": "banded-triceps-stretch",
+      "method": "fuzzy",
+      "score": 0.9,
+      "images": {
+        "main": "./assets/exercises/Triceps_Stretch/main.webp"
+      }
+    },
+    "Two-Arm_Kettlebell_Row": {
+      "repdbId": "one-arm-kettlebell-row",
+      "method": "fuzzy",
+      "score": 0.75,
+      "images": {
+        "start": "./assets/exercises/Two-Arm_Kettlebell_Row/start.webp",
+        "peak": "./assets/exercises/Two-Arm_Kettlebell_Row/peak.webp"
+      }
+    },
+    "Upright_Barbell_Row": {
+      "repdbId": "upright-row",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Upright_Barbell_Row/start.webp",
+        "peak": "./assets/exercises/Upright_Barbell_Row/peak.webp"
+      }
+    },
+    "Upright_Cable_Row": {
+      "repdbId": "cable-upright-row",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Upright_Cable_Row/start.webp",
+        "peak": "./assets/exercises/Upright_Cable_Row/peak.webp"
+      }
+    },
+    "V-Bar_Pulldown": {
+      "repdbId": "v-bar-lat-pulldown",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/V-Bar_Pulldown/start.webp",
+        "peak": "./assets/exercises/V-Bar_Pulldown/peak.webp"
+      }
+    },
+    "Walking_Treadmill": {
+      "repdbId": "walking",
+      "method": "fuzzy",
+      "score": 0.65,
+      "images": {
+        "main": "./assets/exercises/Walking_Treadmill/main.webp"
+      }
+    },
+    "Weighted_Crunches": {
+      "repdbId": "crunches",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Weighted_Crunches/start.webp",
+        "peak": "./assets/exercises/Weighted_Crunches/peak.webp"
+      }
+    },
+    "Weighted_Jump_Squat": {
+      "repdbId": "jump-squat",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Weighted_Jump_Squat/start.webp",
+        "peak": "./assets/exercises/Weighted_Jump_Squat/peak.webp"
+      }
+    },
+    "Weighted_Pull_Ups": {
+      "repdbId": "close-grip-pull-ups",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Weighted_Pull_Ups/start.webp",
+        "peak": "./assets/exercises/Weighted_Pull_Ups/peak.webp"
+      }
+    },
+    "Weighted_Sit-Ups_-_With_Bands": {
+      "repdbId": "sit-ups",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Weighted_Sit-Ups_-_With_Bands/start.webp",
+        "peak": "./assets/exercises/Weighted_Sit-Ups_-_With_Bands/peak.webp"
+      }
+    },
+    "Weighted_Squat": {
+      "repdbId": "banded-squat",
+      "method": "fuzzy",
+      "score": 0.85,
+      "images": {
+        "start": "./assets/exercises/Weighted_Squat/start.webp",
+        "peak": "./assets/exercises/Weighted_Squat/peak.webp"
+      }
+    },
+    "Wide-Grip_Barbell_Bench_Press": {
+      "repdbId": "bench-press",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Wide-Grip_Barbell_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Wide-Grip_Barbell_Bench_Press/peak.webp"
+      }
+    },
+    "Wide-Grip_Decline_Barbell_Bench_Press": {
+      "repdbId": "decline-bench-press-barbell",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Wide-Grip_Decline_Barbell_Bench_Press/start.webp",
+        "peak": "./assets/exercises/Wide-Grip_Decline_Barbell_Bench_Press/peak.webp"
+      }
+    },
+    "Wide-Grip_Decline_Barbell_Pullover": {
+      "repdbId": "barbell-pullover",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Wide-Grip_Decline_Barbell_Pullover/start.webp",
+        "peak": "./assets/exercises/Wide-Grip_Decline_Barbell_Pullover/peak.webp"
+      }
+    },
+    "Wide-Grip_Lat_Pulldown": {
+      "repdbId": "close-grip-lat-pulldown",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Wide-Grip_Lat_Pulldown/start.webp",
+        "peak": "./assets/exercises/Wide-Grip_Lat_Pulldown/peak.webp"
+      }
+    },
+    "Wide-Grip_Pulldown_Behind_The_Neck": {
+      "repdbId": "behind-the-neck-lat-pulldown",
+      "method": "fuzzy",
+      "score": 0.925,
+      "images": {
+        "start": "./assets/exercises/Wide-Grip_Pulldown_Behind_The_Neck/start.webp",
+        "peak": "./assets/exercises/Wide-Grip_Pulldown_Behind_The_Neck/peak.webp"
+      }
+    },
+    "Wide-Grip_Rear_Pull-Up": {
+      "repdbId": "pull-up",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Wide-Grip_Rear_Pull-Up/start.webp",
+        "peak": "./assets/exercises/Wide-Grip_Rear_Pull-Up/peak.webp"
+      }
+    },
+    "Wide-Grip_Standing_Barbell_Curl": {
+      "repdbId": "barbell-curl",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Wide-Grip_Standing_Barbell_Curl/start.webp",
+        "peak": "./assets/exercises/Wide-Grip_Standing_Barbell_Curl/peak.webp"
+      }
+    },
+    "Wide_Stance_Barbell_Squat": {
+      "repdbId": "squat",
+      "method": "fuzzy",
+      "score": 0.667,
+      "images": {
+        "start": "./assets/exercises/Wide_Stance_Barbell_Squat/start.webp",
+        "peak": "./assets/exercises/Wide_Stance_Barbell_Squat/peak.webp"
+      }
+    },
+    "Windmills": {
+      "repdbId": "kettlebell-windmills",
+      "method": "fuzzy",
+      "score": 0.85,
+      "images": {
+        "start": "./assets/exercises/Windmills/start.webp",
+        "peak": "./assets/exercises/Windmills/peak.webp"
+      }
+    },
+    "Wrist_Roller": {
+      "repdbId": "wrist-roller",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Wrist_Roller/start.webp",
+        "peak": "./assets/exercises/Wrist_Roller/peak.webp"
+      }
+    },
+    "Zottman_Curl": {
+      "repdbId": "zottman-curl",
+      "method": "fuzzy",
+      "score": 1,
+      "images": {
+        "start": "./assets/exercises/Zottman_Curl/start.webp",
+        "peak": "./assets/exercises/Zottman_Curl/peak.webp"
+      }
+    },
+    "Zottman_Preacher_Curl": {
+      "repdbId": "preacher-curl",
+      "method": "fuzzy",
+      "score": 0.767,
+      "images": {
+        "start": "./assets/exercises/Zottman_Preacher_Curl/start.webp",
+        "peak": "./assets/exercises/Zottman_Preacher_Curl/peak.webp"
+      }
+    }
+  }
+}
