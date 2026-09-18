@@ -47,15 +47,52 @@
 
   function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
   function label(map,value){return map[value]||RepDB.label(value||'')||'—'}
-  function findExerciseByIdOrName(idOrName){if(!window.RepDB||!RepDB.loaded)return null;return RepDB.get(idOrName)||RepDB.exercises.find(ex=>ex.name_en===idOrName)||null}
-  function resolveIdFromImage(img){
+  function normalizeKey(value){return String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+  function findExerciseByIdOrName(idOrName){
+    if(typeof RepDB==='undefined'||!RepDB.loaded)return null;
+    const direct=RepDB.get(idOrName);
+    if(direct)return direct;
+    const wanted=normalizeKey(idOrName);
+    return RepDB.exercises.find(ex=>{
+      return normalizeKey(ex.id)===wanted||
+        normalizeKey(ex.name_en)===wanted||
+        normalizeKey(ex.name_es)===wanted||
+        normalizeKey(ex.name_de)===wanted;
+    })||null;
+  }
+  function resolveExerciseFromImage(img){
     const localName=img.dataset.exercise||'';
     const ids=(window.mediaMap?.[localName]||[]);
-    for(const id of ids){if(RepDB.get(id))return id}
-    const fromPortugueseName=Object.entries(PT).find(([,detail])=>detail.name===localName);
-    return fromPortugueseName?fromPortugueseName[0]:(ids[0]||localName);
+    for(const id of ids){
+      const ex=findExerciseByIdOrName(id);
+      if(ex)return ex;
+    }
+    const pt=Object.values(PT).find(detail=>normalizeKey(detail.name)===normalizeKey(localName));
+    if(pt){
+      const ex=findExerciseByIdOrName(Object.keys(PT).find(key=>PT[key]===pt));
+      if(ex)return ex;
+    }
+    const exact=findExerciseByIdOrName(localName);
+    if(exact)return exact;
+    const terms=normalizeKey(localName).split(' ').filter(Boolean);
+    return RepDB.exercises.find(ex=>{
+      const hay=normalizeKey([ex.id,ex.name_en,ex.name_es,ex.name_de].join(' '));
+      return terms.length>0&&terms.every(term=>hay.includes(term));
+    })||null;
   }
-  function getDetails(ex){const local=PT[ex.id]||{};return{name:local.name||ex.name_en||ex.id,description:local.description||ex.description_en||'Informação descritiva disponível no catálogo RepDB.',instructions:local.instructions||ex.instructions_en||[],tips:local.tips||ex.tips_en||[]}}
+  function findLocalDetailKey(localName,ids){
+    for(const id of ids){if(PT[id])return id}
+    return Object.keys(PT).find(key=>normalizeKey(PT[key].name)===normalizeKey(localName))||null;
+  }
+  function getDetails(ex,detailKey){
+    const local=detailKey?PT[detailKey]:(ex?PT[ex.id]||{}:{});
+    return{
+      name:local?.name||ex?.name_en||detailKey||'Exercício',
+      description:local?.description||ex?.description_en||'Informação descritiva disponível no catálogo RepDB.',
+      instructions:local?.instructions||ex?.instructions_en||[],
+      tips:local?.tips||ex?.tips_en||[]
+    };
+  }
   function ensureDialog(){
     let d=document.getElementById('exerciseDetailsDialog');
     if(d)return d;
@@ -67,15 +104,27 @@
     return d;
   }
   function openFromImage(img){
-    if(!window.RepDB||!RepDB.loaded)return;
-    const id=resolveIdFromImage(img),ex=findExerciseByIdOrName(id);
-    if(!ex)return;
-    const detail=getDetails(ex),d=ensureDialog();
-    const imageSrc=typeof exerciseImage==='function'?exerciseImage(img.dataset.exercise||detail.name,0,'peak'):RepDB.image(ex,'peak');
+    const localName=img.dataset.exercise||'';
+    const ids=(window.mediaMap?.[localName]||[]);
+    const detailKey=findLocalDetailKey(localName,ids);
+    let ex=null;
+    if(typeof RepDB!=='undefined'&&RepDB.loaded){
+      for(const id of ids){ex=findExerciseByIdOrName(id);if(ex)break}
+      if(!ex)ex=resolveExerciseFromImage(img);
+    }
+    if(!ex&&!detailKey)return;
+    const detail=getDetails(ex,detailKey),d=ensureDialog();
+    const local=window.appExerciseMedia?.[localName]?.images||{};
+    const imageSrc=local.peak||local.start||(typeof exerciseImage==='function'?exerciseImage(localName,0,'peak'):'')||(ex?RepDB.image(ex,'peak'):'')||img.currentSrc||img.src;
     d.querySelector('.exercise-details-title').textContent=detail.name;
-    const big=d.querySelector('.exercise-details-image');big.src=imageSrc||RepDB.image(ex,'peak');big.alt=`Demonstração de ${detail.name}`;
-    const muscles=[...(ex.primary_muscles||[]),...(ex.secondary_muscles||[]).slice(0,2)].map(RepDB.label).join(', '),body=label(translations.body,ex.body_part),equipment=label(translations.equipment,ex.equipment||'bodyweight'),difficulty=label(translations.difficulty,ex.difficulty);
-    d.querySelector('.exercise-details-meta').textContent=[body,equipment,difficulty,muscles].filter(Boolean).join(' · ');
+    const big=d.querySelector('.exercise-details-image');big.src=imageSrc;big.alt=`Demonstração de ${detail.name}`;
+    let meta='';
+    if(ex&&typeof RepDB!=='undefined'){
+      const muscles=[...(ex.primary_muscles||[]),...(ex.secondary_muscles||[]).slice(0,2)].map(RepDB.label).join(', ');
+      const body=RepDB.label(ex.body_part),equipment=RepDB.label(ex.equipment||'bodyweight'),difficulty=RepDB.label(ex.difficulty);
+      meta=[body,equipment,difficulty,muscles].filter(Boolean).join(' · ');
+    }
+    d.querySelector('.exercise-details-meta').textContent=meta;
     d.querySelector('.exercise-details-description').textContent=detail.description;
     d.querySelector('.exercise-details-instructions').innerHTML=detail.instructions.map(x=>`<li>${esc(x)}</li>`).join('')||'<li>Sem instruções disponíveis.</li>';
     d.querySelector('.exercise-details-tips').innerHTML=detail.tips.map(x=>`<li>${esc(x)}</li>`).join('')||'<li>Sem dicas disponíveis.</li>';

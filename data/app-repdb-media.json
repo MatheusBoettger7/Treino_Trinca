@@ -1,0 +1,253 @@
+{
+  "source": "RepDB free tier",
+  "generatedAt": "2026-09-18T01:18:04.821Z",
+  "matched": 35,
+  "unmatched": 1,
+  "imagesDownloaded": 69,
+  "exercises": {
+    "Agachamento": {
+      "repdbId": "squat",
+      "images": {
+        "start": "./assets/repdb/squat/start.webp",
+        "peak": "./assets/repdb/squat/peak.webp"
+      }
+    },
+    "Supino reto": {
+      "repdbId": "bench-press",
+      "images": {
+        "start": "./assets/repdb/bench-press/start.webp",
+        "peak": "./assets/repdb/bench-press/peak.webp"
+      }
+    },
+    "Remada": {
+      "repdbId": "barbell-row",
+      "images": {
+        "start": "./assets/repdb/barbell-row/start.webp",
+        "peak": "./assets/repdb/barbell-row/peak.webp"
+      }
+    },
+    "Stiff / terra romeno": {
+      "repdbId": "romanian-deadlift",
+      "images": {
+        "start": "./assets/repdb/romanian-deadlift/start.webp",
+        "peak": "./assets/repdb/romanian-deadlift/peak.webp"
+      }
+    },
+    "Elevação lateral": {
+      "repdbId": "lateral-raise",
+      "images": {
+        "start": "./assets/repdb/lateral-raise/start.webp",
+        "peak": "./assets/repdb/lateral-raise/peak.webp"
+      }
+    },
+    "Rosca direta": {
+      "repdbId": "barbell-curl",
+      "images": {
+        "start": "./assets/repdb/barbell-curl/start.webp",
+        "peak": "./assets/repdb/barbell-curl/peak.webp"
+      }
+    },
+    "Tríceps na polia": {
+      "repdbId": "tricep-pushdown",
+      "images": {
+        "start": "./assets/repdb/tricep-pushdown/start.webp",
+        "peak": "./assets/repdb/tricep-pushdown/peak.webp"
+      }
+    },
+    "Panturrilha": {
+      "repdbId": "machine-calf-raise",
+      "images": {
+        "start": "./assets/repdb/machine-calf-raise/start.webp",
+        "peak": "./assets/repdb/machine-calf-raise/peak.webp"
+      }
+    },
+    "Abdominal na polia": {
+      "repdbId": "cable-crunch",
+      "images": {
+        "start": "./assets/repdb/cable-crunch/start.webp",
+        "peak": "./assets/repdb/cable-crunch/peak.webp"
+      }
+    },
+    "Leg press": {
+      "repdbId": "leg-press",
+      "images": {
+        "start": "./assets/repdb/leg-press/start.webp",
+        "peak": "./assets/repdb/leg-press/peak.webp"
+      }
+    },
+    "Supino inclinado com halteres": {
+      "repdbId": "incline-db-press",
+      "images": {
+        "start": "./assets/repdb/incline-db-press/start.webp",
+        "peak": "./assets/repdb/incline-db-press/peak.webp"
+      }
+    },
+    "Puxada alta": {
+      "repdbId": "lat-pulldown",
+      "images": {
+        "start": "./assets/repdb/lat-pulldown/start.webp",
+        "peak": "./assets/repdb/lat-pulldown/peak.webp"
+      }
+    },
+    "Mesa flexora": {
+      "repdbId": "leg-curl",
+      "images": {
+        "start": "./assets/repdb/leg-curl/start.webp",
+        "peak": "./assets/repdb/leg-curl/peak.webp"
+      }
+    },
+    "Desenvolvimento com halteres": {
+      "repdbId": "dumbbell-shoulder-press",
+      "images": {
+        "start": "./assets/repdb/dumbbell-shoulder-press/start.webp",
+        "peak": "./assets/repdb/dumbbell-shoulder-press/peak.webp"
+      }
+    },
+    "Crossover": {
+      "repdbId": "cable-fly",
+      "images": {
+        "start": "./assets/repdb/cable-fly/start.webp",
+        "peak": "./assets/repdb/cable-fly/peak.webp"
+      }
+    },
+    "Rosca martelo": {
+      "repdbId": "hammer-curl",
+      "images": {
+        "start": "./assets/repdb/hammer-curl/start.webp",
+        "peak": "./assets/repdb/hammer-curl/peak.webp"
+      }
+    },
+    "Tríceps francês": {
+      "repdbId": "overhead-tricep-extension",
+      "images": {
+        "start": "./assets/repdb/overhead-tricep-extension/start.webp",
+        "peak": "./assets/repdb/overhead-tricep-extension/peak.webp"
+      }
+    },
+    "Panturrilha sentado": {
+      "repdbId": "seated-calf-raise",
+      "images": {
+        "start": "./assets/repdb/seated-calf-raise/start.webp",
+        "peak": "./assets/repdb/seated-calf-raise/peak.webp"
+      }
+    },
+    "Elevação de pernas": {
+      "repdbId": "hanging-leg-raise",
+      "images": {
+        "start": "./assets/repdb/hanging-leg-raise/start.webp",
+        "peak": "./assets/repdb/hanging-leg-raise/peak.webp"
+      }
+    },
+    "Hack squat": {
+      "repdbId": "hack-squat",
+      "images": {
+        "start": "./assets/repdb/hack-squat/start.webp",
+        "peak": "./assets/repdb/hack-squat/peak.webp"
+      }
+    },
+    "Supino máquina": {
+      "repdbId": "chest-press-machine",
+      "images": {
+        "start": "./assets/repdb/chest-press-machine/start.webp",
+        "peak": "./assets/repdb/chest-press-machine/peak.webp"
+      }
+    },
+    "Remada baixa": {
+      "repdbId": "seated-cable-row",
+      "images": {
+        "start": "./assets/repdb/seated-cable-row/start.webp",
+        "peak": "./assets/repdb/seated-cable-row/peak.webp"
+      }
+    },
+    "Cadeira extensora": {
+      "repdbId": "leg-extension",
+      "images": {
+        "start": "./assets/repdb/leg-extension/start.webp",
+        "peak": "./assets/repdb/leg-extension/peak.webp"
+      }
+    },
+    "Face pull": {
+      "repdbId": "face-pull",
+      "images": {
+        "start": "./assets/repdb/face-pull/start.webp",
+        "peak": "./assets/repdb/face-pull/peak.webp"
+      }
+    },
+    "Rosca Scott": {
+      "repdbId": "preacher-curl",
+      "images": {
+        "start": "./assets/repdb/preacher-curl/start.webp",
+        "peak": "./assets/repdb/preacher-curl/peak.webp"
+      }
+    },
+    "Tríceps corda": {
+      "repdbId": "tricep-pushdown",
+      "images": {
+        "start": "./assets/repdb/tricep-pushdown/start.webp",
+        "peak": "./assets/repdb/tricep-pushdown/peak.webp"
+      }
+    },
+    "Abdominal máquina": {
+      "repdbId": "machine-seated-crunch",
+      "images": {
+        "start": "./assets/repdb/machine-seated-crunch/start.webp",
+        "peak": "./assets/repdb/machine-seated-crunch/peak.webp"
+      }
+    },
+    "Remada sentada": {
+      "repdbId": "seated-cable-row",
+      "images": {
+        "start": "./assets/repdb/seated-cable-row/start.webp",
+        "peak": "./assets/repdb/seated-cable-row/peak.webp"
+      }
+    },
+    "Desenvolvimento máquina": {
+      "repdbId": "machine-shoulder-press",
+      "images": {
+        "start": "./assets/repdb/machine-shoulder-press/start.webp",
+        "peak": "./assets/repdb/machine-shoulder-press/peak.webp"
+      }
+    },
+    "Abdominal": {
+      "repdbId": "crunches",
+      "images": {
+        "start": "./assets/repdb/crunches/start.webp",
+        "peak": "./assets/repdb/crunches/peak.webp"
+      }
+    },
+    "Cardio moderado": {
+      "repdbId": "incline-treadmill-walk",
+      "images": {
+        "main": "./assets/repdb/incline-treadmill-walk/main.webp"
+      }
+    },
+    "Elevação pélvica": {
+      "repdbId": "hip-thrust",
+      "images": {
+        "start": "./assets/repdb/hip-thrust/start.webp",
+        "peak": "./assets/repdb/hip-thrust/peak.webp"
+      }
+    },
+    "Agachamento búlgaro": {
+      "repdbId": "bulgarian-split-squat",
+      "images": {
+        "start": "./assets/repdb/bulgarian-split-squat/start.webp",
+        "peak": "./assets/repdb/bulgarian-split-squat/peak.webp"
+      }
+    },
+    "Coice na polia": {
+      "repdbId": "glute-kickback",
+      "images": {
+        "start": "./assets/repdb/glute-kickback/start.webp",
+        "peak": "./assets/repdb/glute-kickback/peak.webp"
+      }
+    },
+    "Abdutora": {
+      "repdbId": "hip-abduction",
+      "images": {
+        "start": "./assets/repdb/hip-abduction/start.webp",
+        "peak": "./assets/repdb/hip-abduction/peak.webp"
+      }
+    }
+  }
+}
