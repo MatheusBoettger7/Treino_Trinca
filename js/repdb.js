@@ -1,11 +1,14 @@
 const RepDB = (() => {
   const URL = 'https://raw.githubusercontent.com/gugeldev/exercicios-bd-ptbr/main/exercises/exercises-ptbr-full-translation.json';
-  const IMAGE_BASE = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/';
+  const IMAGE_BASE = 'https://exercise-dataset.com/';
+  const IMAGE_MAP_URL = './data/repdb-image-map.json';
   let exercises = [];
   let byId = new Map();
   let loaded = false;
   let failed = false;
   let loading = null;
+  let imageMap = null;
+  let imageMapLoading = null;
 
   function slug(value) {
     return String(value || '')
@@ -52,6 +55,16 @@ const RepDB = (() => {
     }
   }
 
+  async function loadImageMap() {
+    if (imageMap) return imageMap;
+    if (imageMapLoading) return imageMapLoading;
+    imageMapLoading = fetch(IMAGE_MAP_URL, { cache: 'no-store' })
+      .then(response => response.ok ? response.json() : null)
+      .catch(() => null)
+      .then(value => { imageMap = value; return imageMap; });
+    return imageMapLoading;
+  }
+
   async function load() {
     if (loaded) return exercises;
     if (loading) return loading;
@@ -59,6 +72,7 @@ const RepDB = (() => {
     failed = false;
     loading = (async () => {
       try {
+        await loadImageMap();
         const response = await fetch(URL, { cache: 'no-store' });
         if (!response.ok) throw new Error('PT-BR HTTP ' + response.status);
 
@@ -97,7 +111,13 @@ const RepDB = (() => {
   }
 
   function image(ex, phase = 'peak') {
-    if (!ex?.__images) return '';
+    if (!ex) return '';
+
+    const local = imageMap?.exercises?.[ex.id]?.images || {};
+    const localPath = local[phase] || local.peak || local.start || local.main;
+    if (localPath) return localPath;
+
+    if (!ex.__images) return '';
     const path = phase === 'start' ? ex.__images.start : ex.__images.peak;
     return path ? IMAGE_BASE + path : '';
   }
@@ -194,6 +214,7 @@ const RepDB = (() => {
 
   return {
     URL,
+    IMAGE_MAP_URL,
     load,
     get,
     candidates,
