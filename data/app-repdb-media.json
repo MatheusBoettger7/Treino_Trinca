@@ -1,9 +1,9 @@
 {
   "source": "RepDB free tier",
-  "generatedAt": "2026-09-18T01:16:40.383Z",
-  "matched": 35,
-  "unmatched": 1,
-  "imagesDownloaded": 69,
+  "generatedAt": "2026-09-18T01:17:34.875Z",
+  "matched": 36,
+  "unmatched": 0,
+  "imagesDownloaded": 71,
   "exercises": {
     "Agachamento": {
       "repdbId": "squat",
@@ -247,6 +247,13 @@
       "images": {
         "start": "./assets/repdb/hip-abduction/start.webp",
         "peak": "./assets/repdb/hip-abduction/peak.webp"
+      }
+    },
+    "Step-up": {
+      "repdbId": "step-ups",
+      "images": {
+        "start": "./assets/exercises/Barbell_Step_Ups/start.webp",
+        "peak": "./assets/exercises/Barbell_Step_Ups/peak.webp"
       }
     }
   }
