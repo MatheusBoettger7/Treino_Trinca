@@ -74,7 +74,7 @@
     const imageSrc=typeof exerciseImage==='function'?exerciseImage(img.dataset.exercise||detail.name,0,'peak'):RepDB.image(ex,'peak');
     d.querySelector('.exercise-details-title').textContent=detail.name;
     const big=d.querySelector('.exercise-details-image');big.src=imageSrc||RepDB.image(ex,'peak');big.alt=`Demonstração de ${detail.name}`;
-    const muscles=[...(ex.primary_muscles||[]),...(ex.secondary_muscles||[]).slice(0,2)].map(RepDB.label).join(', '),body=label(translations.body,ex.body_part),equipment=label(translations.equipment,ex.equipment||'bodyweight'),difficulty=label(translations.difficulty,ex.difficulty);
+    const muscles=[...(ex.primary_muscles||[]),...(ex.secondary_muscles||[]).slice(0,2)].map(RepDB.label).join(', '),body=RepDB.label(ex.body_part),equipment=RepDB.label(ex.equipment||'bodyweight'),difficulty=RepDB.label(ex.difficulty);
     d.querySelector('.exercise-details-meta').textContent=[body,equipment,difficulty,muscles].filter(Boolean).join(' · ');
     d.querySelector('.exercise-details-description').textContent=detail.description;
     d.querySelector('.exercise-details-instructions').innerHTML=detail.instructions.map(x=>`<li>${esc(x)}</li>`).join('')||'<li>Sem instruções disponíveis.</li>';
