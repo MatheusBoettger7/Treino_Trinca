@@ -47,13 +47,38 @@
 
   function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
   function label(map,value){return map[value]||RepDB.label(value||'')||'—'}
-  function findExerciseByIdOrName(idOrName){if(typeof RepDB==='undefined'||!RepDB.loaded)return null;return RepDB.get(idOrName)||RepDB.exercises.find(ex=>ex.name_en===idOrName)||null}
-  function resolveIdFromImage(img){
+  function normalizeKey(value){return String(value||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+  function findExerciseByIdOrName(idOrName){
+    if(typeof RepDB==='undefined'||!RepDB.loaded)return null;
+    const direct=RepDB.get(idOrName);
+    if(direct)return direct;
+    const wanted=normalizeKey(idOrName);
+    return RepDB.exercises.find(ex=>{
+      return normalizeKey(ex.id)===wanted||
+        normalizeKey(ex.name_en)===wanted||
+        normalizeKey(ex.name_es)===wanted||
+        normalizeKey(ex.name_de)===wanted;
+    })||null;
+  }
+  function resolveExerciseFromImage(img){
     const localName=img.dataset.exercise||'';
     const ids=(window.mediaMap?.[localName]||[]);
-    for(const id of ids){if(RepDB.get(id))return id}
-    const fromPortugueseName=Object.entries(PT).find(([,detail])=>detail.name===localName);
-    return fromPortugueseName?fromPortugueseName[0]:(ids[0]||localName);
+    for(const id of ids){
+      const ex=findExerciseByIdOrName(id);
+      if(ex)return ex;
+    }
+    const pt=Object.values(PT).find(detail=>normalizeKey(detail.name)===normalizeKey(localName));
+    if(pt){
+      const ex=findExerciseByIdOrName(Object.keys(PT).find(key=>PT[key]===pt));
+      if(ex)return ex;
+    }
+    const exact=findExerciseByIdOrName(localName);
+    if(exact)return exact;
+    const terms=normalizeKey(localName).split(' ').filter(Boolean);
+    return RepDB.exercises.find(ex=>{
+      const hay=normalizeKey([ex.id,ex.name_en,ex.name_es,ex.name_de].join(' '));
+      return terms.length>0&&terms.every(term=>hay.includes(term));
+    })||null;
   }
   function getDetails(ex){const local=PT[ex.id]||{};return{name:local.name||ex.name_en||ex.id,description:local.description||ex.description_en||'Informação descritiva disponível no catálogo RepDB.',instructions:local.instructions||ex.instructions_en||[],tips:local.tips||ex.tips_en||[]}}
   function ensureDialog(){
@@ -68,7 +93,7 @@
   }
   function openFromImage(img){
     if(typeof RepDB==='undefined'||!RepDB.loaded)return;
-    const id=resolveIdFromImage(img),ex=findExerciseByIdOrName(id);
+    const ex=resolveExerciseFromImage(img);
     if(!ex)return;
     const detail=getDetails(ex),d=ensureDialog();
     const imageSrc=typeof exerciseImage==='function'?exerciseImage(img.dataset.exercise||detail.name,0,'peak'):RepDB.image(ex,'peak');
