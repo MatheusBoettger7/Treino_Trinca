@@ -144,7 +144,8 @@ html.layout-scrolled .week{
 .app-message{position:fixed;inset:0;z-index:100;background:#020617aa;backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,visibility .18s ease}.app-message.show{opacity:1;visibility:visible;pointer-events:auto}.app-message-card{width:min(92vw,380px);background:#151c2e;border:1px solid #334155;border-radius:20px;padding:22px;box-shadow:0 24px 80px #000b;text-align:center;transform:translateY(10px) scale(.98);transition:transform .18s ease}.app-message.show .app-message-card{transform:translateY(0) scale(1)}.app-message-icon{width:52px;height:52px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:#1d4ed8;color:#fff;font-size:25px;font-weight:800}.app-message-title{font-size:20px;font-weight:800;margin-bottom:12px}.app-message-body{color:#cbd5e1;font-size:14px;line-height:1.5}.app-message-body b{color:#fff}.app-message-row{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid #263149;text-align:left}.app-message-row:last-child{border-bottom:0}.app-message-button{margin-top:18px}.message-active{overflow:hidden}
 
 
-/* Safe area v44 - status bar / iOS notch */
-body{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-.top{padding-top:max(18px,env(safe-area-inset-top,0px));}
+
+/* Safe area v45 - Android WindowInsets + iOS notch */
+body{padding-bottom:env(safe-area-inset-bottom,0px)}
+.top{padding-top:max(18px,env(safe-area-inset-top,0px))}
 @media(max-width:430px){.top{padding-top:max(14px,env(safe-area-inset-top,0px));}}
