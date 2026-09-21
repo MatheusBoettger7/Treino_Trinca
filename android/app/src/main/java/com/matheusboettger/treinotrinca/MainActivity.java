@@ -37,8 +37,8 @@ public class MainActivity extends Activity {
 
         webView = new WebView(this);
         webView.setBackgroundColor(Color.rgb(11, 16, 32));
-        applySystemBarInsets();
         setContentView(webView);
+        applySystemBarInsets();
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -52,7 +52,8 @@ public class MainActivity extends Activity {
         webView.addJavascriptInterface(new NotificationBridge(this), "AndroidNotifications");
         webView.setWebViewClient(new WebViewClient());
         webView.setWebChromeClient(new WebChromeClient());
-        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/");
+        // Cache-bust the top-level document so each native APK version loads the current web app.
+        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.09.21.46");
 
         requestNotificationPermission();
     }
@@ -176,6 +177,7 @@ public class MainActivity extends Activity {
                 return insets;
             });
             webView.requestApplyInsets();
+            getWindow().getDecorView().requestApplyInsets();
         }
     }
 
