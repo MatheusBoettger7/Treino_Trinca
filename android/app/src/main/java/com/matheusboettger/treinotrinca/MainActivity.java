@@ -18,8 +18,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.view.Window;
 
-import androidx.annotation.NonNull;
-
 public class MainActivity extends Activity {
     private static final int NOTIFICATION_PERMISSION_REQUEST = 43;
     private static final String CHANNEL_ID = "treino_trinca_rest";
