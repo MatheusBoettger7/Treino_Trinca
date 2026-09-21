@@ -1,0 +1,8 @@
+{
+  "appId": "com.matheusboettger7.treinotrinca",
+  "appName": "Treino Trinca",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
