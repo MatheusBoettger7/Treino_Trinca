@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - teste/app-nativo-capacitor-v36
+      - teste/app-nativo-ios-v37
   workflow_dispatch:
 
 permissions:
@@ -75,10 +76,14 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync ios
 
+      - name: Resolve iOS Swift Package dependencies
+        working-directory: ios/App
+        run: xcodebuild -resolvePackageDependencies -project App.xcodeproj -scheme App
+
       - name: Build iOS simulator app
         working-directory: ios/App
         run: |
-          xcodebuild             -workspace App.xcworkspace             -scheme App             -sdk iphonesimulator             -configuration Debug             -derivedDataPath build             CODE_SIGNING_ALLOWED=NO             CODE_SIGNING_REQUIRED=NO
+          xcodebuild             -project App.xcodeproj             -scheme App             -sdk iphonesimulator             -configuration Debug             -derivedDataPath build             CODE_SIGNING_ALLOWED=NO             CODE_SIGNING_REQUIRED=NO
 
       - name: Package iOS simulator app
         run: |
