@@ -1,0 +1,95 @@
+name: Build Treino Trinca Native
+
+on:
+  push:
+    branches:
+      - teste/app-nativo-capacitor-v36
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    name: Android debug APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Prepare web app
+        run: npm run prepare:web
+
+      - name: Add Android platform
+        run: npx cap add android
+
+      - name: Sync Capacitor
+        run: npx cap sync android
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Build debug APK
+        working-directory: android
+        run: ./gradlew assembleDebug
+
+      - name: Upload Android APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: treino-trinca-android-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+  ios:
+    name: iOS simulator build
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Prepare web app
+        run: npm run prepare:web
+
+      - name: Add iOS platform
+        run: npx cap add ios
+
+      - name: Sync Capacitor
+        run: npx cap sync ios
+
+      - name: Build iOS simulator app
+        working-directory: ios/App
+        run: |
+          xcodebuild             -workspace App.xcworkspace             -scheme App             -sdk iphonesimulator             -configuration Debug             -derivedDataPath build             CODE_SIGNING_ALLOWED=NO             CODE_SIGNING_REQUIRED=NO
+
+      - name: Package iOS simulator app
+        run: |
+          cd ios/App/build/Build/Products/Debug-iphonesimulator
+          zip -r "$GITHUB_WORKSPACE/treino-trinca-ios-simulator.zip" App.app
+
+      - name: Upload iOS simulator build
+        uses: actions/upload-artifact@v4
+        with:
+          name: treino-trinca-ios-simulator
+          path: treino-trinca-ios-simulator.zip
+          if-no-files-found: error
