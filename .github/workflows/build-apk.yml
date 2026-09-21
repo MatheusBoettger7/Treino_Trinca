@@ -35,11 +35,11 @@ jobs:
         run: gradle --no-daemon assembleDebug
 
       - name: Rename APK
-        run: cp android/app/build/outputs/apk/debug/app-debug.apk Treino-Trinca-v2026.09.21.43-debug.apk
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk Treino-Trinca-v2026.09.21.44-debug.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Treino-Trinca-v2026.09.21.43
-          path: Treino-Trinca-v2026.09.21.43-debug.apk
+          name: Treino-Trinca-v2026.09.21.44
+          path: Treino-Trinca-v2026.09.21.44-debug.apk
           retention-days: 30
