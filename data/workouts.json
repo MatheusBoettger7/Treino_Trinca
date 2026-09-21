@@ -1,7 +1,7 @@
 {
   "A": {
     "id": "A",
-    "name": "Força + base",
+    "name": "Peito + base + bíceps",
     "items": [
       {
         "name": "Agachamento",
@@ -16,19 +16,18 @@
       {
         "name": "Remada sentada no Pulley",
         "sets": 3,
-        "reps": "6–10",
+        "reps": "8–10",
         "repdbId": "seated-cable-row"
       },
       {
-        "name": "Cadeira Flexora sentada",
-        "sets": 3,
-        "reps": "8–10",
-        "repdbId": "seated-leg-curl"
+        "name": "Cadeira extensora",
+        "sets": 2,
+        "reps": "10–15"
       },
       {
         "name": "Elevação lateral",
-        "sets": 3,
-        "reps": "10–15"
+        "sets": 2,
+        "reps": "12–20"
       },
       {
         "name": "Rosca direta",
@@ -42,12 +41,12 @@
       },
       {
         "name": "Panturrilha",
-        "sets": 3,
+        "sets": 2,
         "reps": "10–15"
       },
       {
         "name": "Abdominal máquina",
-        "sets": 3,
+        "sets": 2,
         "reps": "10–15",
         "repdbId": "machine-seated-crunch"
       }
@@ -55,7 +54,7 @@
   },
   "B": {
     "id": "B",
-    "name": "Hipertrofia",
+    "name": "Costas + posterior + peito complementar",
     "items": [
       {
         "name": "Leg press",
@@ -63,13 +62,13 @@
         "reps": "8–12"
       },
       {
-        "name": "Supino inclinado com halteres",
+        "name": "Puxada alta",
         "sets": 3,
         "reps": "8–12"
       },
       {
-        "name": "Puxada alta",
-        "sets": 3,
+        "name": "Supino inclinado com halteres",
+        "sets": 2,
         "reps": "8–12"
       },
       {
@@ -80,11 +79,11 @@
       },
       {
         "name": "Desenvolvimento com halteres",
-        "sets": 3,
+        "sets": 2,
         "reps": "8–12"
       },
       {
-        "name": "Crossover",
+        "name": "Tríceps francês",
         "sets": 2,
         "reps": "10–15"
       },
@@ -94,39 +93,23 @@
         "reps": "10–15"
       },
       {
-        "name": "Tríceps francês",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
         "name": "Panturrilha sentado",
-        "sets": 3,
+        "sets": 2,
         "reps": "12–20"
-      },
-      {
-        "name": "Abdominal máquina",
-        "sets": 3,
-        "reps": "10–15",
-        "repdbId": "machine-seated-crunch"
       }
     ]
   },
   "C": {
     "id": "C",
-    "name": "Volume + pontos fracos",
+    "name": "Peito + quadríceps + braços",
     "items": [
-      {
-        "name": "Hack squat",
-        "sets": 3,
-        "reps": "8–12"
-      },
       {
         "name": "Supino máquina",
         "sets": 3,
         "reps": "8–12"
       },
       {
-        "name": "Remada baixa",
+        "name": "Hack squat",
         "sets": 3,
         "reps": "8–12"
       },
@@ -138,11 +121,6 @@
       {
         "name": "Elevação lateral",
         "sets": 3,
-        "reps": "12–20"
-      },
-      {
-        "name": "Face pull",
-        "sets": 2,
         "reps": "12–20"
       },
       {
@@ -156,40 +134,46 @@
         "reps": "10–15"
       },
       {
+        "name": "Panturrilha",
+        "sets": 2,
+        "reps": "12–20"
+      },
+      {
         "name": "Abdominal máquina",
-        "sets": 3,
-        "reps": "10–15"
+        "sets": 2,
+        "reps": "10–15",
+        "repdbId": "machine-seated-crunch"
       }
     ]
   },
   "D": {
     "id": "D",
-    "name": "Volume complementar",
+    "name": "Costas + posterior + braços",
     "items": [
       {
-        "name": "Cadeira extensora",
+        "name": "Stiff com halteres ou barra",
         "sets": 3,
-        "reps": "12–15"
+        "reps": "8–12",
+        "repdbId": "romanian-deadlift"
       },
       {
-        "name": "Cadeira Flexora sentada",
+        "name": "Remada baixa",
         "sets": 3,
-        "reps": "12–15",
-        "repdbId": "seated-leg-curl"
-      },
-      {
-        "name": "Puxada alta",
-        "sets": 3,
-        "reps": "10–12"
+        "reps": "8–12"
       },
       {
         "name": "Crossover",
-        "sets": 3,
+        "sets": 1,
         "reps": "10–15"
       },
       {
-        "name": "Elevação lateral",
-        "sets": 3,
+        "name": "Cadeira extensora",
+        "sets": 2,
+        "reps": "12–15"
+      },
+      {
+        "name": "Face pull",
+        "sets": 2,
         "reps": "12–20"
       },
       {
@@ -204,24 +188,19 @@
       },
       {
         "name": "Panturrilha",
-        "sets": 3,
+        "sets": 2,
         "reps": "12–20"
-      },
-      {
-        "name": "Abdominal",
-        "sets": 3,
-        "reps": "12–15"
       }
     ]
   },
   "E": {
     "id": "E",
-    "name": "Volume + condicionamento",
+    "name": "Peito + costas + pernas + braços + condicionamento",
     "items": [
       {
-        "name": "Leg press",
+        "name": "Supino inclinado com halteres",
         "sets": 3,
-        "reps": "10–15"
+        "reps": "8–12"
       },
       {
         "name": "Remada sentada",
@@ -229,36 +208,35 @@
         "reps": "10–15"
       },
       {
-        "name": "Desenvolvimento máquina",
+        "name": "Leg press",
         "sets": 3,
-        "reps": "10–12"
+        "reps": "10–15"
       },
       {
-        "name": "Cadeira Flexora sentada",
-        "sets": 3,
-        "reps": "12–15",
+        "name": "Cadeira flexora sentada",
+        "sets": 2,
+        "reps": "10–15",
         "repdbId": "seated-leg-curl"
       },
       {
         "name": "Elevação lateral",
-        "sets": 3,
+        "sets": 2,
         "reps": "15–20"
       },
       {
-        "name": "Face pull",
-        "sets": 3,
-        "reps": "12–20"
+        "name": "Rosca direta",
+        "sets": 2,
+        "reps": "10–15"
       },
       {
-        "name": "Abdominal máquina",
-        "sets": 3,
-        "reps": "12–15",
-        "repdbId": "machine-seated-crunch"
+        "name": "Tríceps corda",
+        "sets": 2,
+        "reps": "10–15"
       },
       {
         "name": "Cardio moderado",
         "sets": 1,
-        "reps": "20–30 min"
+        "reps": "15–20 min"
       }
     ]
   },
