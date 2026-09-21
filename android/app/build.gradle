@@ -1,0 +1,18 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.matheusboettger.treinotrinca'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.matheusboettger.treinotrinca'
+        minSdk 23
+        targetSdk 35
+        versionCode 41
+        versionName '2026.09.21.41'
+    }
+
+    buildTypes {
+        release { minifyEnabled false }
+    }
+}
