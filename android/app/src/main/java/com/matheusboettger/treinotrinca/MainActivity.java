@@ -18,8 +18,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.view.Window;
 import android.graphics.Color;
-import android.view.ViewGroup;
-import android.content.res.Resources;
 
 public class MainActivity extends Activity {
     private static final int NOTIFICATION_PERMISSION_REQUEST = 43;
@@ -158,13 +156,26 @@ public class MainActivity extends Activity {
     }
 
     private void applySystemBarInsets() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            int statusBarHeight = 0;
-            int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-            if (resourceId > 0) {
-                statusBarHeight = getResources().getDimensionPixelSize(resourceId);
-            }
-            webView.setPadding(0, statusBarHeight, 0, 0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            webView.setOnApplyWindowInsetsListener((v, insets) -> {
+                int top;
+                int bottom;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    android.graphics.Insets bars = insets.getInsets(
+                            android.view.WindowInsets.Type.statusBars()
+                                    | android.view.WindowInsets.Type.navigationBars()
+                                    | android.view.WindowInsets.Type.displayCutout()
+                    );
+                    top = bars.top;
+                    bottom = bars.bottom;
+                } else {
+                    top = insets.getSystemWindowInsetTop();
+                    bottom = insets.getSystemWindowInsetBottom();
+                }
+                v.setPadding(0, top, 0, bottom);
+                return insets;
+            });
+            webView.requestApplyInsets();
         }
     }
 
