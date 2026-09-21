@@ -121,3 +121,20 @@ body.rest-active .rest-timer-card > .secondary:last-child{
     margin:2px 4px;
   }
 }
+
+/* Hide weekday bar while scrolling v40 */
+html.layout-scrolled .week{
+  max-height:0;
+  margin-top:0;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(-6px);
+  pointer-events:none;
+  transition:max-height .2s ease,opacity .15s ease,transform .2s ease,margin .2s ease;
+}
+.week{
+  max-height:40px;
+  opacity:1;
+  transform:translateY(0);
+  transition:max-height .2s ease,opacity .15s ease,transform .2s ease,margin .2s ease;
+}
