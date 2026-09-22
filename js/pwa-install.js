@@ -6,12 +6,52 @@
   const APP_URL='https://matheusboettger7.github.io/Treino_Trinca/';
   const CHROME_PACKAGE='com.android.chrome';
 
+  function isIOS(){
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent||'') ||
+      (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  }
+
+  function isIOSSafari(){
+    const ua=navigator.userAgent||'';
+    return isIOS() && /Safari/i.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS/i.test(ua);
+  }
+
+  function ensureIOSDialog(){
+    let dialog=document.getElementById('iosInstallDialog');
+    if(dialog)return dialog;
+    dialog=document.createElement('dialog');
+    dialog.id='iosInstallDialog';
+    dialog.className='ios-install-dialog';
+    dialog.innerHTML='<div class="ios-install-content">'+
+      '<div class="ios-install-title">📲 Adicionar o Treino Trinca</div>'+
+      '<p>O iPhone não usa o mesmo botão automático de instalação do Android. Para colocar o Treino Trinca na tela inicial:</p>'+
+      '<ol>'+
+      '<li>Abra o Treino Trinca no <b>Safari</b>.</li>'+
+      '<li>Toque em <b>Compartilhar</b> ⬆️.</li>'+
+      '<li>Toque em <b>Adicionar à Tela de Início</b>.</li>'+
+      '<li>Deixe <b>Abrir como App da Web</b> ativado e toque em <b>Adicionar</b>.</li>'+
+      '</ol>'+
+      '<p>Depois disso, o Treino Trinca abrirá em uma janela própria, como um aplicativo.</p>'+
+      '<button type="button" id="iosInstallClose">Entendi</button>'+
+      '</div>';
+    document.body.appendChild(dialog);
+    dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+    document.getElementById('iosInstallClose').addEventListener('click',()=>dialog.close());
+    return dialog;
+  }
+
   function button(){return document.getElementById('installBtn')}
   function isStandalone(){return window.matchMedia?.('(display-mode: standalone)').matches||window.navigator.standalone===true}
   function isSamsungInternet(){return /SamsungBrowser/i.test(navigator.userAgent||'') && /Android/i.test(navigator.userAgent||'')}
   function showButton(){
     const b=button();
     if(!b||installed||isStandalone())return;
+    if(isIOS()){
+      b.textContent='📲 Adicionar à Tela de Início';
+      b.title='Abra o menu Compartilhar do iPhone e escolha Adicionar à Tela de Início.';
+      b.hidden=false;
+      return;
+    }
     if(isSamsungInternet()){
       b.textContent='📲 Instalar pelo Chrome';
       b.title='No Samsung Internet, a instalação do PWA pode ser bloqueada pelo Play Protect. Abra no Chrome para instalar.';
@@ -57,6 +97,11 @@
     if(!b)return;
     event.preventDefault();
 
+    if(isIOS()){
+      ensureIOSDialog().showModal();
+      return;
+    }
+
     if(isSamsungInternet()){
       openInChrome();
       return;
@@ -96,6 +141,7 @@
     }
 
     if(isStandalone())hideButton();
+    else if(isIOS())showButton();
     else if(isSamsungInternet())showButton();
   });
 })();
