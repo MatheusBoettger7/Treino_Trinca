@@ -149,3 +149,7 @@ html.layout-scrolled .week{
 body{padding-bottom:env(safe-area-inset-bottom,0px)}
 .top{padding-top:max(18px,env(safe-area-inset-top,0px))}
 @media(max-width:430px){.top{padding-top:max(14px,env(safe-area-inset-top,0px));}}
+
+
+/* Barra superior para acomodar a área do sistema em celulares */
+@media (max-width:600px){.top{padding-top:46px}.tabs{top:110px}}
