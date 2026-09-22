@@ -63,10 +63,19 @@ public class MainActivity extends Activity {
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
         webView.addJavascriptInterface(new NotificationBridge(this), "AndroidNotifications");
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                view.evaluateJavascript(
+                        "document.documentElement.classList.add('native-app')",
+                        null
+                );
+            }
+        });
         webView.setWebChromeClient(new WebChromeClient());
         // Cache-bust the top-level document so each native APK version loads the current web app.
-        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.09.21.48");
+        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.09.21.49");
 
         requestNotificationPermission();
     }
