@@ -51,7 +51,6 @@ public class MainActivity extends Activity {
 
         setContentView(rootLayout);
         applySystemBarInsets();
-        applySystemBarInsets();
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -75,7 +74,7 @@ public class MainActivity extends Activity {
         });
         webView.setWebChromeClient(new WebChromeClient());
         // Cache-bust the top-level document so each native APK version loads the current web app.
-        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.09.21.49");
+        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.09.21.50");
 
         requestNotificationPermission();
     }
