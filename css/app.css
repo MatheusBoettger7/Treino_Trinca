@@ -123,20 +123,20 @@ body.rest-active .rest-timer-card > .secondary:last-child{
 }
 
 /* Hide weekday bar while scrolling v40 */
+/* Hide weekday bar without changing header height.
+   Keeping its layout space stable prevents sticky tabs/content from jumping while scrolling. */
 html.layout-scrolled .week{
-  max-height:0;
-  margin-top:0;
-  overflow:hidden;
   opacity:0;
-  transform:translateY(-6px);
+  visibility:hidden;
   pointer-events:none;
-  transition:max-height .2s ease,opacity .15s ease,transform .2s ease,margin .2s ease;
+  transform:translateY(-6px);
+  transition:opacity .15s ease,transform .2s ease,visibility 0s linear .15s;
 }
 .week{
-  max-height:40px;
   opacity:1;
+  visibility:visible;
   transform:translateY(0);
-  transition:max-height .2s ease,opacity .15s ease,transform .2s ease,margin .2s ease;
+  transition:opacity .15s ease,transform .2s ease,visibility 0s linear 0s;
 }
 
 
