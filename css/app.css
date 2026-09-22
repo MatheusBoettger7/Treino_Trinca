@@ -150,6 +150,9 @@ html.layout-scrolled .week{
 .native-app .top{padding-top:18px!important}
 @media(max-width:430px){.top{padding-top:max(14px,env(safe-area-inset-top,0px))}.native-app .top{padding-top:14px!important}}
 
+.cancel-workout{width:100%;margin-top:6px;border-color:#475569;background:#1f2937}
+.layout-scrolled .workout-timer-card .cancel-workout{display:none}
+
 /* iOS / PWA safe areas */
 .app{padding-bottom:max(40px,env(safe-area-inset-bottom,40px))}
 .ios-install-dialog{border:1px solid #263149;border-radius:16px;background:#111827;color:#f3f4f6;padding:0;max-width:380px;width:calc(100% - 32px)}
