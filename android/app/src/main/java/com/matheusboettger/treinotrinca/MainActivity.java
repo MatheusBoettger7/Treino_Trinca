@@ -17,6 +17,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.view.Window;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.graphics.Color;
 
 public class MainActivity extends Activity {
@@ -25,6 +27,7 @@ public class MainActivity extends Activity {
     private static final int REST_NOTIFICATION_ID = 4301;
 
     private WebView webView;
+    private FrameLayout rootLayout;
     private final Handler handler = new Handler();
     private Runnable restNotificationRunnable;
 
@@ -35,9 +38,18 @@ public class MainActivity extends Activity {
 
         createNotificationChannel();
 
+        rootLayout = new FrameLayout(this);
+        rootLayout.setBackgroundColor(Color.rgb(11, 16, 32));
+
         webView = new WebView(this);
         webView.setBackgroundColor(Color.rgb(11, 16, 32));
-        setContentView(webView);
+
+        rootLayout.addView(webView, new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
+        ));
+
+        setContentView(rootLayout);
         applySystemBarInsets();
 
         WebSettings settings = webView.getSettings();
@@ -53,7 +65,7 @@ public class MainActivity extends Activity {
         webView.setWebViewClient(new WebViewClient());
         webView.setWebChromeClient(new WebChromeClient());
         // Cache-bust the top-level document so each native APK version loads the current web app.
-        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.09.21.46");
+        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.09.21.48");
 
         requestNotificationPermission();
     }
@@ -158,9 +170,10 @@ public class MainActivity extends Activity {
 
     private void applySystemBarInsets() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            webView.setOnApplyWindowInsetsListener((v, insets) -> {
+            View.OnApplyWindowInsetsListener listener = (v, insets) -> {
                 int top;
                 int bottom;
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     android.graphics.Insets bars = insets.getInsets(
                             android.view.WindowInsets.Type.statusBars()
@@ -173,11 +186,18 @@ public class MainActivity extends Activity {
                     top = insets.getSystemWindowInsetTop();
                     bottom = insets.getSystemWindowInsetBottom();
                 }
-                v.setPadding(0, top, 0, bottom);
+
+                FrameLayout.LayoutParams params =
+                        (FrameLayout.LayoutParams) webView.getLayoutParams();
+                params.topMargin = top;
+                params.bottomMargin = bottom;
+                webView.setLayoutParams(params);
+
                 return insets;
-            });
-            webView.requestApplyInsets();
-            getWindow().getDecorView().requestApplyInsets();
+            };
+
+            rootLayout.setOnApplyWindowInsetsListener(listener);
+            rootLayout.post(() -> rootLayout.requestApplyInsets());
         }
     }
 
