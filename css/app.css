@@ -145,7 +145,7 @@ html.layout-scrolled .week{
 
 
 
-/* Safe area v45 - Android WindowInsets + iOS notch */
-body{padding-bottom:env(safe-area-inset-bottom,0px)}
+/* Safe area: native Android is already inset by WindowInsets; iOS/PWA keeps its notch inset. */
 .top{padding-top:max(18px,env(safe-area-inset-top,0px))}
-@media(max-width:430px){.top{padding-top:max(14px,env(safe-area-inset-top,0px));}}
+.native-app .top{padding-top:18px!important}
+@media(max-width:430px){.top{padding-top:max(14px,env(safe-area-inset-top,0px))}.native-app .top{padding-top:14px!important}}
