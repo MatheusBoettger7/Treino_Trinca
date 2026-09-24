@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="BluLive">
+  <circle cx="256" cy="256" r="248" fill="#000"/>
+  <g fill="#ff1111">
+    <circle cx="160" cy="153" r="31"/>
+    <path d="M94 250c0-43 11-78 32-92 14-9 31 2 31 18v35l45-21-18 43-43 17v28c-1 19-13 35-31 38-10 2-19-5-19-16z"/>
+    <path d="M173 310 392 108 292 240l-119 70z"/>
+    <path d="M203 185c30-18 66-26 106-29l-77 67-55-2z"/>
+  </g>
+  <g fill="#fff" font-family="Arial, Helvetica, sans-serif" font-style="italic" font-weight="900">
+    <text x="238" y="278" font-size="105" letter-spacing="-8">BLU</text>
+    <text x="185" y="385" font-size="112" letter-spacing="-9">LIVE</text>
+  </g>
+</svg>
