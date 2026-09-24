@@ -1,16 +1,16 @@
 {
-  "name": "Treino Trinca",
-  "short_name": "Trinca",
+  "name": "BluLive",
+  "short_name": "BluLive",
   "id": "/Treino_Trinca/",
   "start_url": "/Treino_Trinca/",
   "scope": "/Treino_Trinca/",
   "display": "standalone",
   "background_color": "#0b1020",
   "theme_color": "#0b1020",
-  "description": "Treinos, cargas, repetições e progresso para dois perfis.",
+  "description": "BluLive - treinos, cargas, repetições e progresso para dois perfis.",
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "assets/blulive-logo.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
