@@ -1,13 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="BluLive">
-  <circle cx="256" cy="256" r="248" fill="#000"/>
-  <g fill="#ff1111">
-    <circle cx="160" cy="153" r="31"/>
-    <path d="M94 250c0-43 11-78 32-92 14-9 31 2 31 18v35l45-21-18 43-43 17v28c-1 19-13 35-31 38-10 2-19-5-19-16z"/>
-    <path d="M173 310 392 108 292 240l-119 70z"/>
-    <path d="M203 185c30-18 66-26 106-29l-77 67-55-2z"/>
-  </g>
-  <g fill="#fff" font-family="Arial, Helvetica, sans-serif" font-style="italic" font-weight="900">
-    <text x="238" y="278" font-size="105" letter-spacing="-8">BLU</text>
-    <text x="185" y="385" font-size="112" letter-spacing="-9">LIVE</text>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<circle cx="256" cy="256" r="250" fill="#000"/>
+<!-- atleta estilizado da logo BluLive -->
+<g fill="#ff1111">
+  <circle cx="160" cy="150" r="31"/>
+  <path d="M91 248c0-38 10-72 30-88 12-10 30-2 31 15l2 35 48-22-22 43-38 17 2 30c2 17-10 32-27 36-15 3-26-7-26-22z"/>
+  <path d="M145 315 393 106 286 248 145 315z"/>
+  <path d="M194 190c31-19 66-27 110-30l-79 67-55-2z"/>
+</g>
+<!-- tipografia da marca -->
+<g fill="#fff" font-family="Arial, Helvetica, sans-serif" font-style="italic" font-weight="900">
+  <text x="235" y="278" font-size="105" letter-spacing="-8">BLU</text>
+  <text x="183" y="385" font-size="108" letter-spacing="-9">LIVE</text>
+  <text x="106" y="429" font-size="43" letter-spacing="-1">ACADEMIA</text>
+</g>
 </svg>
