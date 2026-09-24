@@ -10,9 +10,9 @@
   "description": "BluLive - treinos, cargas, repetições e progresso para dois perfis.",
   "icons": [
     {
-      "src": "assets/trino-trinca-logo.jpg",
+      "src": "assets/blulive-logo.svg",
       "sizes": "any",
-      "type": "image/jpeg",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ]
