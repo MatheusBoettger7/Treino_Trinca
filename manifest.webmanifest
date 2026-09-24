@@ -1,6 +1,6 @@
 {
-  "name": "BluLive",
-  "short_name": "BluLive",
+  "name": "Treino Trinca",
+  "short_name": "Treino Trinca",
   "id": "/Treino_Trinca/",
   "start_url": "/Treino_Trinca/",
   "scope": "/Treino_Trinca/",
@@ -10,9 +10,9 @@
   "description": "BluLive - treinos, cargas, repetições e progresso para dois perfis.",
   "icons": [
     {
-      "src": "assets/blulive-logo.svg",
+      "src": "assets/trino-trinca-logo.jpg",
       "sizes": "any",
-      "type": "image/svg+xml",
+      "type": "image/jpeg",
       "purpose": "any maskable"
     }
   ]
