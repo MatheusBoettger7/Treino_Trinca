@@ -595,3 +595,33 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
 }
 
 :root:not([data-theme="blue"]) .tabs{background:var(--theme-top)!important}
+
+/* Seletor de tema: cada opção usa a própria cor quando selecionada */
+:root .theme-picker .theme-option{
+  background:#1c1c1c!important;
+  color:#fff!important;
+  border-color:#333!important;
+}
+:root .theme-picker .theme-option-blue.active{
+  background:#2563eb!important;
+  border-color:#60a5fa!important;
+  color:#fff!important;
+}
+:root .theme-picker .theme-option-red.active{
+  background:#8f0000!important;
+  border-color:#b80000!important;
+  color:#fff!important;
+}
+:root[data-theme="red"] .theme-picker .theme-option-blue.active{
+  background:#2563eb!important;
+  border-color:#60a5fa!important;
+}
+:root[data-theme="blue"] .theme-picker .theme-option-red.active{
+  background:#8f0000!important;
+  border-color:#b80000!important;
+}
+:root .theme-picker .theme-close{
+  background:#1c1c1c!important;
+  border-color:#383838!important;
+  color:#fff!important;
+}
