@@ -536,3 +536,60 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
   background:#111111!important;
   border-color:#333!important;
 }
+
+/* Mensagens do app: todos os elementos acompanham o tema */
+:root[data-theme="blue"] .app-message{
+  background:#020617aa!important;
+}
+:root[data-theme="blue"] .app-message-card{
+  background:#151c2e!important;
+  border-color:#334155!important;
+}
+:root[data-theme="blue"] .app-message-icon{
+  background:#2563eb!important;
+  color:#fff!important;
+}
+:root[data-theme="blue"] .app-message-body{
+  color:#cbd5e1!important;
+}
+:root[data-theme="blue"] .app-message-body b{
+  color:#fff!important;
+}
+:root[data-theme="blue"] .app-message-row{
+  border-color:#263149!important;
+}
+:root[data-theme="blue"] .app-message-button{
+  background:#2563eb!important;
+  border-color:#2563eb!important;
+  color:#fff!important;
+}
+:root[data-theme="blue"] .app-message-confirm-button{
+  background:#1f2937!important;
+  border-color:#475569!important;
+}
+:root[data-theme="red"] .app-message{
+  background:#020202aa!important;
+}
+:root[data-theme="red"] .app-message-card{
+  background:#151515!important;
+  border-color:#333!important;
+}
+:root[data-theme="red"] .app-message-icon{
+  background:#8f0000!important;
+  color:#fff!important;
+}
+:root[data-theme="red"] .app-message-body{
+  color:#cbd5e1!important;
+}
+:root[data-theme="red"] .app-message-row{
+  border-color:#2b2b2b!important;
+}
+:root[data-theme="red"] .app-message-button{
+  background:#8f0000!important;
+  border-color:#8f0000!important;
+  color:#fff!important;
+}
+:root[data-theme="red"] .app-message-confirm-button{
+  background:#202020!important;
+  border-color:#4a4a4a!important;
+}
