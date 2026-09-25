@@ -7,6 +7,8 @@ function applyTheme(theme=getTheme()){
   localStorage.setItem(themeKey,value);
   const meta=document.querySelector('meta[name="theme-color"]');
   if(meta)meta.content=value==='blue'?'#0b1020':'#080808';
+  const logo=document.querySelector('.brand-logo');
+  if(logo){logo.src=value==='blue'?'assets/treino-trinca-logo-blue.svg':'assets/blulive-logo.svg';}
   const btn=document.getElementById('themeBtn');
   if(btn)btn.textContent=value==='blue'?'🔵':'🔴';
 }
