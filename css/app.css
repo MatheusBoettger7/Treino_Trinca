@@ -217,3 +217,42 @@ button:hover,.btn:hover,.button:hover,[role="button"]:hover{background:var(--pri
 input,select,textarea{background:var(--surface-2)!important;border-color:var(--border)!important;color:#fff!important}
 .active,.selected,.tab.active,.profile.active{background:var(--primary)!important;border-color:var(--primary)!important;color:#fff!important}
 .progress-bar,.progress-fill{background:var(--primary)!important}
+
+/* Seletor de tema */
+.theme-btn{position:absolute;top:14px;right:82px;width:32px;height:32px;border:1px solid #333;border-radius:9px;background:#151515;color:#fff;font-size:16px;display:grid;place-items:center;padding:0}
+.theme-picker{position:fixed;inset:0;z-index:100;background:#000a;display:none;align-items:center;justify-content:center;padding:18px}
+.theme-picker.show{display:flex}
+.theme-picker-card{width:min(360px,100%);background:#151515;border:1px solid #333;border-radius:18px;padding:18px;box-shadow:0 20px 70px #000b}
+.theme-picker-title{font-size:20px;font-weight:800}
+.theme-picker-subtitle{color:#a5a5a5;font-size:13px;margin-top:4px;margin-bottom:16px}
+.theme-options{display:flex;gap:10px}
+.theme-option{flex:1;border:2px solid #333;border-radius:12px;background:#1c1c1c;color:#fff;padding:13px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:750}
+.theme-option.active{border-color:#fff}
+.theme-swatch{width:14px;height:14px;border-radius:50%;display:block}
+.theme-option-blue .theme-swatch{background:#2563eb}.theme-option-red .theme-swatch{background:#8f0000}
+.theme-close{width:100%;margin-top:12px}
+:root[data-theme="blue"] .day.active,
+:root[data-theme="blue"] .tabs button.active,
+:root[data-theme="blue"] .profile-buttons button.active,
+:root[data-theme="blue"] .filter.active,
+:root[data-theme="blue"] .primary,
+:root[data-theme="blue"] .progress-bar,
+:root[data-theme="blue"] .progress-fill,
+:root[data-theme="blue"] .listbtn.selected-workout{background:#2563eb!important;border-color:#2563eb!important}
+:root[data-theme="blue"] .install-btn{border-color:#2563eb;color:#93c5fd}
+:root[data-theme="blue"] .hint,
+:root[data-theme="blue"] .repdb-credit a,
+:root[data-theme="blue"] .detail-actions a{color:#93c5fd}
+:root[data-theme="blue"] .exercise-visual:focus-visible{outline-color:#60a5fa}
+:root[data-theme="blue"] .top,
+:root[data-theme="blue"] .profile-switch,
+:root[data-theme="blue"] .tabs{background:#0b1020}
+:root[data-theme="blue"] body{background:#0b1020}
+:root[data-theme="blue"] .card,
+:root[data-theme="blue"] .workout-timer-card,
+:root[data-theme="blue"] .tabs button,
+:root[data-theme="blue"] .profile-buttons button,
+:root[data-theme="blue"] .install-btn{background:#151c2e}
+:root[data-theme="blue"] .listbtn{background:#151c2e}
+:root[data-theme="blue"] .listbtn.selected-workout{background:#172449!important}
+@media(max-width:430px){.theme-btn{right:68px;top:11px;width:30px;height:30px}}
