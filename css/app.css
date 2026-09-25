@@ -422,3 +422,90 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
   background:#0b0b0b!important;
   border-color:#334155!important;
 }
+
+/* Modais e biblioteca: nenhum botão interno herda a cor do tema errado */
+:root[data-theme="blue"] .image-dialog{
+  background:#111a2d!important;
+  border-color:#334155!important;
+}
+:root[data-theme="blue"] .image-dialog button{
+  background:#2563eb!important;
+  border-color:#2563eb!important;
+  color:#fff!important;
+}
+:root[data-theme="blue"] .detail-dialog{
+  background:#111a2d!important;
+  border-color:#334155!important;
+}
+:root[data-theme="blue"] .detail-dialog button{
+  background:#1f2937!important;
+  border-color:#475569!important;
+  color:#fff!important;
+}
+:root[data-theme="blue"] .repdb-picker-dialog{
+  background:#111a2d!important;
+  border-color:#334155!important;
+}
+:root[data-theme="blue"] .repdb-picker-item{
+  background:#0d1424!important;
+  border-color:#263149!important;
+  color:#fff!important;
+}
+:root[data-theme="blue"] .repdb-picker-item:hover,
+:root[data-theme="blue"] .repdb-picker-item:focus-visible{
+  background:#172449!important;
+  border-color:#60a5fa!important;
+}
+:root[data-theme="blue"] .repdb-picker-item img{
+  background:#151c2e!important;
+  border-color:#263149!important;
+}
+:root[data-theme="blue"] .repdb-picker-header .secondary{
+  background:#1f2937!important;
+  border-color:#475569!important;
+  color:#fff!important;
+}
+:root[data-theme="blue"] .repdb-picker-dialog .editor-search{
+  background:#0b1428!important;
+  border-color:#334155!important;
+  color:#fff!important;
+}
+:root[data-theme="blue"] .repdb-picker-dialog .editor-search:focus{
+  border-color:#60a5fa!important;
+  outline-color:#60a5fa!important;
+}
+:root[data-theme="blue"] .repdb-picker-dialog .editor-linked,
+:root[data-theme="blue"] .repdb-picker-dialog .repdb-credit a{
+  color:#93c5fd!important;
+}
+
+/* Tema vermelho */
+:root[data-theme="red"] .image-dialog button{
+  background:#8f0000!important;
+  border-color:#8f0000!important;
+  color:#fff!important;
+}
+:root[data-theme="red"] .detail-dialog button{
+  background:#202020!important;
+  border-color:#4a4a4a!important;
+  color:#fff!important;
+}
+:root[data-theme="red"] .repdb-picker-item{
+  background:#0d0d0d!important;
+  border-color:#333!important;
+  color:#fff!important;
+}
+:root[data-theme="red"] .repdb-picker-item:hover,
+:root[data-theme="red"] .repdb-picker-item:focus-visible{
+  background:#2a1010!important;
+  border-color:#8f0000!important;
+}
+:root[data-theme="red"] .repdb-picker-dialog{
+  background:#111111!important;
+  border-color:#333!important;
+}
+:root[data-theme="red"] .repdb-picker-dialog .editor-search{
+  background:#0b0b0b!important;
+  border-color:#334155!important;
+  color:#fff!important;
+}
