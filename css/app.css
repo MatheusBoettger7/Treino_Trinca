@@ -593,3 +593,5 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
   background:#202020!important;
   border-color:#4a4a4a!important;
 }
+
+:root:not([data-theme="blue"]) .tabs{background:var(--theme-top)!important}
