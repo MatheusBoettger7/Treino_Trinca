@@ -625,3 +625,11 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
   border-color:#383838!important;
   color:#fff!important;
 }
+
+/* Calendário: treino realizado mantém o destaque no tema azul */
+:root[data-theme="blue"] .calendar .cal-day.trained{
+  background:#2563eb!important;
+  border-color:#2563eb!important;
+  color:#fff!important;
+  font-weight:700!important;
+}
