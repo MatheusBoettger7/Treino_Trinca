@@ -1,3 +1,37 @@
+
+const themeKey='treinoTrincaTheme';
+function getTheme(){return localStorage.getItem(themeKey)==='blue'?'blue':'red'}
+function applyTheme(theme=getTheme()){
+  const value=theme==='blue'?'blue':'red';
+  document.documentElement.dataset.theme=value;
+  localStorage.setItem(themeKey,value);
+  const meta=document.querySelector('meta[name="theme-color"]');
+  if(meta)meta.content=value==='blue'?'#0b1020':'#080808';
+  const btn=document.getElementById('themeBtn');
+  if(btn)btn.textContent=value==='blue'?'🔵':'🔴';
+}
+function openThemePicker(){
+  let el=document.getElementById('themePicker');
+  if(!el){
+    el=document.createElement('div');
+    el.id='themePicker';
+    el.className='theme-picker';
+    el.innerHTML='<div class="theme-picker-card" role="dialog" aria-modal="true" aria-labelledby="themePickerTitle"><div class="theme-picker-title" id="themePickerTitle">Aparência</div><div class="theme-picker-subtitle">Escolha a cor do Treino Trinca</div><div class="theme-options"><button type="button" class="theme-option theme-option-blue" data-theme-choice="blue"><span class="theme-swatch"></span><span>Azul</span></button><button type="button" class="theme-option theme-option-red" data-theme-choice="red"><span class="theme-swatch"></span><span>Vermelho</span></button></div><button type="button" class="secondary theme-close" onclick="closeThemePicker()">Fechar</button></div>';
+    document.body.appendChild(el);
+    el.addEventListener('click',e=>{if(e.target===el)closeThemePicker()});
+    el.querySelectorAll('[data-theme-choice]').forEach(b=>b.addEventListener('click',()=>{applyTheme(b.dataset.themeChoice);updateThemePicker();}));
+  }
+  updateThemePicker();
+  el.classList.add('show');
+}
+function updateThemePicker(){
+  const el=document.getElementById('themePicker'); if(!el)return;
+  const theme=getTheme();
+  el.querySelectorAll('[data-theme-choice]').forEach(b=>b.classList.toggle('active',b.dataset.themeChoice===theme));
+}
+function closeThemePicker(){document.getElementById('themePicker')?.classList.remove('show')}
+document.addEventListener('DOMContentLoaded',()=>applyTheme());
+
 const stateKey='treinoTrincaData';
 const profileKey='treinoTrincaProfile';
 const currentKey=p=>`treinoTrincaCurrent_${p}`;
