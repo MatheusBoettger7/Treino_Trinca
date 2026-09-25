@@ -382,3 +382,43 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
 :root[data-theme="red"] .install-btn{
   background:#151515!important;border-color:#8f0000!important;color:#c44a4a!important
 }
+
+/* Correção final: controles das séries também seguem o tema */
+:root[data-theme="blue"] .done{
+  background:#151c2e!important;
+  border-color:#334155!important;
+  color:#fff!important;
+}
+:root[data-theme="blue"] .done.next-set{
+  background:#2563eb!important;
+  border-color:#2563eb!important;
+}
+:root[data-theme="blue"] .done.on{
+  background:#16a34a!important;
+  border-color:#16a34a!important;
+}
+:root[data-theme="blue"] .sets input{
+  background:#0b1428!important;
+  border-color:#334155!important;
+}
+:root[data-theme="blue"] .sets input.next-set{
+  border-color:#60a5fa!important;
+  box-shadow:0 0 0 1px #60a5fa33,0 0 12px #60a5fa22!important;
+}
+:root[data-theme="blue"] .set-number.next-set{
+  color:#93c5fd!important;
+  text-shadow:0 0 8px #60a5fa55!important;
+}
+:root[data-theme="red"] .done{
+  background:#8f0000!important;
+  border-color:#8f0000!important;
+  color:#fff!important;
+}
+:root[data-theme="red"] .done.on{
+  background:#16a34a!important;
+  border-color:#16a34a!important;
+}
+:root[data-theme="red"] .sets input{
+  background:#0b0b0b!important;
+  border-color:#334155!important;
+}
