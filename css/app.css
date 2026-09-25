@@ -256,3 +256,129 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
 :root[data-theme="blue"] .listbtn{background:#151c2e}
 :root[data-theme="blue"] .listbtn.selected-workout{background:#172449!important}
 @media(max-width:430px){.theme-btn{right:112px;top:11px;width:30px;height:30px}}
+
+/* =========================================================
+   Temas completos — todos os elementos acompanham a escolha
+   ========================================================= */
+:root{
+  --theme-accent:#8f0000;
+  --theme-accent-dark:#650000;
+  --theme-accent-light:#b80000;
+  --theme-accent-text:#c44a4a;
+  --theme-bg:#080808;
+  --theme-top:#080808;
+  --theme-surface:#151515;
+  --theme-surface-2:#1a1a1a;
+  --theme-surface-3:#0b0b0b;
+  --theme-border:#2b2b2b;
+  --theme-input-border:#334155;
+}
+:root[data-theme="blue"]{
+  --theme-accent:#2563eb;
+  --theme-accent-dark:#1d4ed8;
+  --theme-accent-light:#60a5fa;
+  --theme-accent-text:#93c5fd;
+  --theme-bg:#0b1020;
+  --theme-top:#0b1020;
+  --theme-surface:#151c2e;
+  --theme-surface-2:#1f2937;
+  --theme-surface-3:#0b1428;
+  --theme-border:#263149;
+  --theme-input-border:#334155;
+}
+
+/* Estrutura */
+:root[data-theme="blue"] body{background:var(--theme-bg)!important}
+:root[data-theme="blue"] .top,
+:root[data-theme="blue"] .profile-switch,
+:root[data-theme="blue"] .tabs{background:var(--theme-top)!important}
+
+/* Elementos que usam a cor de destaque */
+:root[data-theme="blue"] .day.active,
+:root[data-theme="blue"] .tabs button.active,
+:root[data-theme="blue"] .profile-buttons button.active,
+:root[data-theme="blue"] .filter.active,
+:root[data-theme="blue"] .primary,
+:root[data-theme="blue"] .progress-bar,
+:root[data-theme="blue"] .progress-fill,
+:root[data-theme="blue"] .listbtn.selected-workout,
+:root[data-theme="blue"] .install-dialog-content button,
+:root[data-theme="blue"] .start-workout{background:var(--theme-accent)!important;border-color:var(--theme-accent)!important;color:#fff!important}
+
+:root[data-theme="blue"] .install-btn{
+  background:var(--theme-surface)!important;
+  border-color:var(--theme-accent)!important;
+  color:var(--theme-accent-text)!important
+}
+:root[data-theme="blue"] .hint,
+:root[data-theme="blue"] .repdb-credit a,
+:root[data-theme="blue"] .detail-actions a{color:var(--theme-accent-text)!important}
+:root[data-theme="blue"] .exercise-visual:focus-visible{outline-color:var(--theme-accent-light)!important}
+:root[data-theme="blue"] .listbtn.selected-workout{background:#172449!important}
+
+/* Superfícies */
+:root[data-theme="blue"] .card,
+:root[data-theme="blue"] .workout-timer-card,
+:root[data-theme="blue"] .tabs button,
+:root[data-theme="blue"] .profile-buttons button,
+:root[data-theme="blue"] .listbtn,
+:root[data-theme="blue"] .install-btn,
+:root[data-theme="blue"] .theme-picker-card,
+:root[data-theme="blue"] .install-dialog{
+  background:var(--theme-surface)!important;
+  border-color:var(--theme-border)!important
+}
+:root[data-theme="blue"] .secondary,
+:root[data-theme="blue"] .filter{
+  background:var(--theme-surface-2)!important;
+  border-color:#374151!important
+}
+:root[data-theme="blue"] .sets input,
+:root[data-theme="blue"] .metric input,
+:root[data-theme="blue"] .editor-name-label input,
+:root[data-theme="blue"] .editor-search,
+:root[data-theme="blue"] .editor-grid input,
+:root[data-theme="blue"] .editor-exercise{
+  background:var(--theme-surface-3)!important
+}
+:root[data-theme="blue"] .stat,
+:root[data-theme="blue"] .calendar .cal-day,
+:root[data-theme="blue"] .exercise-summary{
+  background:#0b1428!important
+}
+
+/* Elementos auxiliares que também estavam presos ao vermelho */
+:root[data-theme="blue"] .theme-btn{
+  background:#151c2e!important;
+  border-color:#263149!important
+}
+:root[data-theme="blue"] .theme-option-red.active{border-color:#64748b!important}
+:root[data-theme="blue"] .theme-option-blue.active{border-color:#60a5fa!important}
+:root[data-theme="blue"] .theme-option-blue .theme-swatch{background:#2563eb!important}
+:root[data-theme="blue"] .theme-option-red .theme-swatch{background:#8f0000!important}
+
+/* Estados de seleção e foco */
+:root[data-theme="blue"] .active,
+:root[data-theme="blue"] .selected{
+  --accent-color:#2563eb
+}
+:root[data-theme="blue"] button:focus-visible{
+  outline-color:#60a5fa
+}
+
+/* Tema vermelho: garante que todos os destaques usem exatamente a mesma família */
+:root[data-theme="red"] .day.active,
+:root[data-theme="red"] .tabs button.active,
+:root[data-theme="red"] .profile-buttons button.active,
+:root[data-theme="red"] .filter.active,
+:root[data-theme="red"] .primary,
+:root[data-theme="red"] .progress-bar,
+:root[data-theme="red"] .progress-fill,
+:root[data-theme="red"] .listbtn.selected-workout,
+:root[data-theme="red"] .install-dialog-content button,
+:root[data-theme="red"] .start-workout{
+  background:#8f0000!important;border-color:#8f0000!important;color:#fff!important
+}
+:root[data-theme="red"] .install-btn{
+  background:#151515!important;border-color:#8f0000!important;color:#c44a4a!important
+}
