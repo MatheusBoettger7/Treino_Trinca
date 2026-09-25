@@ -593,3 +593,6 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
   background:#202020!important;
   border-color:#4a4a4a!important;
 }
+
+/* Progressão automática das séries — teste */
+.finish-workout.all-series-done{animation:finishWorkoutPulse 1.5s ease-in-out infinite;box-shadow:0 0 0 2px #60a5fa55,0 0 22px #2563eb66}.done.next-set:focus,.sets input.next-set:focus{outline:2px solid #60a5fa!important;outline-offset:2px}@keyframes finishWorkoutPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 2px #60a5fa55,0 0 18px #2563eb55}50%{transform:scale(1.015);box-shadow:0 0 0 3px #60a5fa88,0 0 28px #2563eb88}}
