@@ -10,7 +10,7 @@
   "description": "Treinos, cargas, repetições e progresso para dois perfis.",
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "assets/treino-trinca-logo.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
