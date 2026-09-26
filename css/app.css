@@ -633,3 +633,6 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
   color:#fff!important;
   font-weight:700!important;
 }
+
+/* Destaque quando todas as séries foram concluídas */
+.finish-workout.all-series-done{animation:finishWorkoutPulse 1.5s ease-in-out infinite;box-shadow:0 0 0 2px #60a5fa55,0 0 22px #2563eb66}@keyframes finishWorkoutPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 2px #60a5fa55,0 0 18px #2563eb55}50%{transform:scale(1.015);box-shadow:0 0 0 3px #60a5fa88,0 0 28px #2563eb88}}
