@@ -2,6 +2,7 @@ package com.matheusboettger.treinotrinca;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -10,7 +11,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.SystemClock;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -20,16 +21,16 @@ import android.view.Window;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.graphics.Color;
+import android.util.Log;
 
 public class MainActivity extends Activity {
+    private static final String TAG = "TreinoTrinca";
     private static final int NOTIFICATION_PERMISSION_REQUEST = 43;
-    private static final String CHANNEL_ID = "treino_trinca_rest";
-    private static final int REST_NOTIFICATION_ID = 4301;
+    private static final String CHANNEL_ID = RestAlarmReceiver.CHANNEL_ID;
+    private static final int REST_NOTIFICATION_ID = RestAlarmReceiver.REST_NOTIFICATION_ID;
 
     private WebView webView;
     private FrameLayout rootLayout;
-    private final Handler handler = new Handler();
-    private Runnable restNotificationRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +74,9 @@ public class MainActivity extends Activity {
             }
         });
         webView.setWebChromeClient(new WebChromeClient());
+
         // Cache-bust the top-level document so each native APK version loads the current web app.
-        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.09.21.54");
+        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.09.29.55");
 
         requestNotificationPermission();
     }
@@ -82,7 +84,10 @@ public class MainActivity extends Activity {
     private void requestNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
                 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, NOTIFICATION_PERMISSION_REQUEST);
+            requestPermissions(
+                    new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                    NOTIFICATION_PERMISSION_REQUEST
+            );
         }
     }
 
@@ -101,54 +106,61 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void scheduleRestNotification(int seconds) {
-        cancelRestNotification();
-        if (seconds <= 0) return;
+    private PendingIntent getRestAlarmPendingIntent() {
+        Intent intent = new Intent(this, RestAlarmReceiver.class);
+        intent.setAction("com.matheusboettger.treinotrinca.REST_FINISHED");
 
-        restNotificationRunnable = () -> showRestNotification();
-        handler.postDelayed(restNotificationRunnable, seconds * 1000L);
-    }
-
-    private void cancelRestNotification() {
-        if (restNotificationRunnable != null) {
-            handler.removeCallbacks(restNotificationRunnable);
-            restNotificationRunnable = null;
-        }
-    }
-
-    private void showRestNotification() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-                && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(
+        return PendingIntent.getBroadcast(
                 this,
-                4301,
+                REST_NOTIFICATION_ID,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
         );
+    }
 
-        android.app.Notification.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            builder = new android.app.Notification.Builder(this, CHANNEL_ID);
-        } else {
-            builder = new android.app.Notification.Builder(this);
+    private void scheduleRestNotification(int seconds) {
+        cancelRestAlarmOnly();
+        if (seconds <= 0) return;
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        PendingIntent pendingIntent = getRestAlarmPendingIntent();
+        long triggerAtMillis = SystemClock.elapsedRealtime() + (seconds * 1000L);
+
+        boolean exactScheduled = false;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                && alarmManager.canScheduleExactAlarms()) {
+            try {
+                alarmManager.setExactAndAllowWhileIdle(
+                        AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                        triggerAtMillis,
+                        pendingIntent
+                );
+                exactScheduled = true;
+            } catch (SecurityException ex) {
+                Log.w(TAG, "Não foi possível programar alarme exato; usando alarme permitido em idle.", ex);
+            }
         }
 
-        builder.setSmallIcon(com.matheusboettger.treinotrinca.R.drawable.ic_launcher)
-                .setContentTitle("Descanso concluído! ⏱️")
-                .setContentText("Hora de voltar para a próxima série. 💪")
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
-                .setPriority(android.app.Notification.PRIORITY_HIGH)
-                .setVibrate(new long[]{0, 250, 120, 250});
+        if (!exactScheduled) {
+            // Fallback sem acesso especial de alarmes exatos. O Android garante que
+            // setAndAllowWhileIdle não dispara antes do horário solicitado e pode
+            // continuar funcionando enquanto o aparelho estiver em Doze.
+            alarmManager.setAndAllowWhileIdle(
+                    AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                    triggerAtMillis,
+                    pendingIntent
+            );
+        }
+    }
 
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(REST_NOTIFICATION_ID, builder.build());
-        restNotificationRunnable = null;
+    private void cancelRestAlarmOnly() {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(getRestAlarmPendingIntent());
+    }
+
+    private void cancelRestNotification() {
+        cancelRestAlarmOnly();
     }
 
     public class NotificationBridge {
@@ -171,8 +183,8 @@ public class MainActivity extends Activity {
         @JavascriptInterface
         public void notifyRestFinished() {
             runOnUiThread(() -> {
-                cancelRestNotification();
-                showRestNotification();
+                cancelRestAlarmOnly();
+                RestAlarmReceiver.showRestNotification(context);
             });
         }
     }
@@ -212,7 +224,8 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        cancelRestNotification();
+        // Do NOT cancel the rest alarm here. The whole point of the native
+        // AlarmManager scheduling is to survive Activity destruction/backgrounding.
         if (webView != null) {
             webView.removeJavascriptInterface("AndroidNotifications");
             webView.destroy();
