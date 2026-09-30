@@ -20,6 +20,7 @@ jobs:
   build:
     name: Android App Bundle
     runs-on: ubuntu-latest
+    environment: producao
 
     steps:
       - name: Checkout
@@ -36,16 +37,47 @@ jobs:
         with:
           gradle-version: '8.13'
 
-      - name: Build release App Bundle
+      - name: Validate signing configuration
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+
+          test -n "$ANDROID_KEYSTORE_BASE64" || { echo "::error::Secret ANDROID_KEYSTORE_BASE64 não configurado."; exit 1; }
+          test -n "$ANDROID_KEYSTORE_PASSWORD" || { echo "::error::Secret ANDROID_KEYSTORE_PASSWORD não configurado."; exit 1; }
+          test -n "$ANDROID_KEY_ALIAS" || { echo "::error::Secret ANDROID_KEY_ALIAS não configurado."; exit 1; }
+          test -n "$ANDROID_KEY_PASSWORD" || { echo "::error::Secret ANDROID_KEY_PASSWORD não configurado."; exit 1; }
+
+      - name: Restore upload keystore
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/treino-trinca-upload.jks
+          test -s android/treino-trinca-upload.jks
+
+      - name: Build signed release App Bundle
         working-directory: android
+        env:
+          ANDROID_KEYSTORE_FILE: ${{ github.workspace }}/android/treino-trinca-upload.jks
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: gradle --no-daemon bundleRelease
 
       - name: Prepare AAB artifact
-        run: cp android/app/build/outputs/bundle/release/app-release.aab Treino-Trinca-v2026.09.30.61-release-unsigned.aab
+        run: cp android/app/build/outputs/bundle/release/app-release.aab Treino-Trinca-v2026.09.30.61-release-signed.aab
 
       - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
-          name: Treino-Trinca-v2026.09.30.61-release-unsigned
-          path: Treino-Trinca-v2026.09.30.61-release-unsigned.aab
+          name: Treino-Trinca-v2026.09.30.61-release-signed
+          path: Treino-Trinca-v2026.09.30.61-release-signed.aab
           retention-days: 30
+
+      - name: Remove temporary keystore
+        if: ${{ always() }}
+        run: rm -f android/treino-trinca-upload.jks
