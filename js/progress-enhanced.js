@@ -87,14 +87,7 @@
     const logs=exerciseLogs(name);
     const valid=logs.filter(x=>num(x.kg)>0&&num(x.reps)>0);
     if(!valid.length){
-      return {
-        maxKg:0,
-        bestReps:0,
-        volume:0,
-        rirAvg:null,
-        sessions:0,
-        sets:logs.length
-      };
+      return {maxKg:0,bestReps:0,volume:0,rirAvg:null,sessions:0,sets:logs.length};
     }
 
     const maxKg=Math.max(...valid.map(x=>num(x.kg)));
@@ -199,7 +192,7 @@
       <button class="secondary" onclick="exportDataEnhanced()">📤 Exportar</button>
       <button class="secondary" onclick="document.getElementById('importFileEnhanced').click()">📥 Importar</button>
       <button class="secondary" onclick="clearDataEnhanced()">Limpar</button>
-      <input id="importFileEnhanced" type="file" accept="application/json" hidden onchange="importDataEnhanced(event)">
+      <input id="importFileEnhanced" type="file" accept="application/json,.json" hidden onchange="importDataEnhanced(event)">
       <div class="muted small">Exporte um arquivo antes de trocar de celular. A importação substitui os dados atuais.</div>
       <div class="repdb-credit">Exercise data by <a href="https://repdb.co" target="_blank" rel="noopener">RepDB (repdb.co)</a>.</div>
     </div>`;
@@ -231,29 +224,60 @@
     return result;
   }
 
-  function exportDataEnhanced(){
-    const cloneSessions=Array.isArray(data.sessions)?data.sessions.map(s=>({
+  function cloneSessions(){
+    return Array.isArray(data.sessions)?data.sessions.map(s=>({
       ...s,
       exercises:Array.isArray(s.exercises)?s.exercises.map(e=>({
         ...e,
         sets:Array.isArray(e.sets)?e.sets.map(x=>({...x})):[]
       })):[]
     })):[];
-    const cloneMetrics=Array.isArray(data.metrics)?data.metrics.map(m=>({...m})):[];
+  }
+
+  function cloneMetrics(){
+    return Array.isArray(data.metrics)?data.metrics.map(m=>({...m})):[];
+  }
+
+  function exportDataEnhanced(){
+    const filename=`treino-trinca-backup-${new Date().toISOString().slice(0,10)}.json`;
     const payload={
-      schemaVersion:2,
+      schemaVersion:3,
       exportedAt:new Date().toISOString(),
       profile,
       currentWorkout:current,
-      data:{sessions:cloneSessions,metrics:cloneMetrics},
+      data:{sessions:cloneSessions(),metrics:cloneMetrics()},
       workouts:collectWorkoutBackups()
     };
     const json=JSON.stringify(payload,null,2);
+
+    if(window.AndroidBackup?.saveBackup){
+      try{
+        window.AndroidBackup.saveBackup(filename,json);
+        return;
+      }catch(error){
+        console.warn('Exportação nativa indisponível; usando download do navegador.',error);
+      }
+    }
+
+    const blob=new Blob([json],{type:'application/json;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
     const a=document.createElement('a');
-    a.href=URL.createObjectURL(new Blob([json],{type:'application/json'}));
-    a.download=`treino-trinca-backup-${new Date().toISOString().slice(0,10)}.json`;
+    a.href=url;
+    a.download=filename;
+    a.style.display='none';
+    document.body.appendChild(a);
     a.click();
-    setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+
+  function clearDraftStorage(){
+    try{
+      const prefixes=['treinoTrincaDraft_'];
+      Object.keys(localStorage).forEach(key=>{
+        if(prefixes.some(prefix=>key.startsWith(prefix)))localStorage.removeItem(key);
+      });
+    }catch{}
   }
 
   function importDataEnhanced(event){
@@ -266,6 +290,7 @@
         const source=imported?.data&&typeof imported.data==='object'?imported.data:imported;
         if(!Array.isArray(source.sessions)||!Array.isArray(source.metrics))throw Error();
         if(!confirm('Substituir seus dados atuais pelo backup?'))return;
+
         data={
           sessions:source.sessions.map(s=>({
             ...s,
@@ -277,17 +302,36 @@
           })),
           metrics:source.metrics.map(m=>({...m,profile:m.profile||'masculino'}))
         };
+
         if(imported?.workouts&&typeof imported.workouts==='object'){
           ['masculino','feminino'].forEach(p=>{
             const saved=imported.workouts[p];
             if(saved&&typeof saved==='object')localStorage.setItem(`treinoTrincaWorkouts_${p}`,JSON.stringify(saved));
+            else localStorage.setItem(`treinoTrincaWorkouts_${p}`,'{}');
           });
         }
-        window.__trincaSelectedExercise='';
+
+        if(imported?.profile==='masculino'||imported?.profile==='feminino'){
+          localStorage.setItem(profileKey,imported.profile);
+          const importedCurrent=typeof imported.currentWorkout==='string'?imported.currentWorkout:'';
+          if(importedCurrent)localStorage.setItem(currentKey(imported.profile),importedCurrent);
+        }
+
         localStorage.setItem(stateKey,JSON.stringify(data));
-        renderProgressEnhanced(content);
+        localStorage.removeItem(activeKey);
+        localStorage.removeItem(restEndKey);
+        clearDraftStorage();
+        window.__trincaSelectedExercise='';
+
         alert(`Backup importado com sucesso! ${data.sessions.length} treino(s) recuperado(s).`);
-      }catch{alert('Arquivo de backup inválido.');}
+        location.reload();
+      }catch(error){
+        console.warn('Importação de backup falhou:',error);
+        alert('Arquivo de backup inválido.');
+      }finally{
+        const input=document.getElementById('importFileEnhanced');
+        if(input)input.value='';
+      }
     };
     reader.readAsText(file);
   }
