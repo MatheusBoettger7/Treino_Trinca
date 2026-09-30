@@ -10,3 +10,9 @@ android/app/build/
 ios/App/build/
 ios/App/Pods/
 ios/DerivedData/
+
+# Android signing material - never commit private keys
+*.jks
+*.keystore
+*.p12
+treino-trinca-upload-cert.pem
