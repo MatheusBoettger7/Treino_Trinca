@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
         webView.setWebChromeClient(new WebChromeClient());
 
         // Cache-bust the top-level document so each native APK version loads the current web app.
-        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.09.29.55");
+        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.09.30.56");
 
         requestNotificationPermission();
     }
@@ -238,6 +238,22 @@ public class MainActivity extends Activity {
 
             rootLayout.setOnApplyWindowInsetsListener(listener);
             rootLayout.post(() -> rootLayout.requestApplyInsets());
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || alarmManager.canScheduleExactAlarms()) {
+            exactAlarmSettingsOpened = false;
+        }
+        if (webView != null) {
+            webView.postDelayed(() ->
+                    webView.evaluateJavascript(
+                            "window.syncRestNativeAlarm&&window.syncRestNativeAlarm();",
+                            null
+                    ), 250);
         }
     }
 
