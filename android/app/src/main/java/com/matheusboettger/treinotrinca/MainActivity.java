@@ -12,6 +12,8 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.provider.Settings;
+import android.net.Uri;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -28,6 +30,7 @@ public class MainActivity extends Activity {
     private static final int NOTIFICATION_PERMISSION_REQUEST = 43;
     private static final String CHANNEL_ID = RestAlarmReceiver.CHANNEL_ID;
     private static final int REST_NOTIFICATION_ID = RestAlarmReceiver.REST_NOTIFICATION_ID;
+    private boolean exactAlarmSettingsOpened = false;
 
     private WebView webView;
     private FrameLayout rootLayout;
@@ -123,6 +126,22 @@ public class MainActivity extends Activity {
         if (seconds <= 0) return;
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
+            if (!exactAlarmSettingsOpened) {
+                exactAlarmSettingsOpened = true;
+                try {
+                    Intent settingsIntent = new Intent(
+                            Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,
+                            Uri.parse("package:" + getPackageName())
+                    );
+                    startActivity(settingsIntent);
+                } catch (Exception ex) {
+                    Log.w(TAG, "Não foi possível abrir as configurações de alarmes exatos.", ex);
+                }
+            }
+        }
+
         PendingIntent pendingIntent = getRestAlarmPendingIntent();
         long triggerAtMillis = SystemClock.elapsedRealtime() + (seconds * 1000L);
 
