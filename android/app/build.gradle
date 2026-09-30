@@ -2,12 +2,12 @@ plugins { id 'com.android.application' }
 
 android {
     namespace 'com.matheusboettger.treinotrinca'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId 'com.matheusboettger.treinotrinca'
         minSdk 23
-        targetSdk 35
+        targetSdk 36
         versionCode 61
         versionName '2026.09.30.61'
     }
