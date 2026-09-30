@@ -1,5 +1,17 @@
 plugins { id 'com.android.application' }
 
+def keystoreFilePath = System.getenv("ANDROID_KEYSTORE_FILE")
+def keystoreStorePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD")
+def keystoreAlias = System.getenv("ANDROID_KEY_ALIAS")
+def keystoreKeyPassword = System.getenv("ANDROID_KEY_PASSWORD")
+
+def signingConfigured = [
+    keystoreFilePath,
+    keystoreStorePassword,
+    keystoreAlias,
+    keystoreKeyPassword
+].every { value -> value != null && !value.trim().isEmpty() }
+
 android {
     namespace 'com.matheusboettger.treinotrinca'
     compileSdk 36
@@ -12,7 +24,27 @@ android {
         versionName '2026.09.30.61'
     }
 
+    signingConfigs {
+        if (signingConfigured) {
+            release {
+                storeFile file(keystoreFilePath)
+                storePassword keystoreStorePassword
+                keyAlias keystoreAlias
+                keyPassword keystoreKeyPassword
+            }
+        }
+    }
+
     buildTypes {
-        release { minifyEnabled false }
+        release {
+            minifyEnabled false
+
+            // CI/Play Store builds use the protected upload key supplied
+            // through environment variables. Local builds without those
+            // variables remain unsigned instead of requiring secrets.
+            if (signingConfigured) {
+                signingConfig signingConfigs.release
+            }
+        }
     }
 }
