@@ -1,4 +1,4 @@
-const CACHE='treino-trinca-v64';
+const CACHE='treino-trinca-2026.10.02.62';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./css/app.css?v=37','./css/exercise-picker.css','./js/app.js?v=17','./js/mobile-fix.js','./js/editor-v16.js','./js/progress-enhanced.js?v=6','./js/exercise-details.js','./js/weight-repeat.js','./js/repdb.js','./js/repdb-ptbr.js','./js/repdb-ptbr-runtime.js','./js/repdb-ptbr-names.js','./js/pwa-install.js?v=8','./js/layout-v25.js','./data/workouts.json','./data/repdb-image-map.json','./data/app-exercise-media.json','./data/app-repdb-media.json'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
