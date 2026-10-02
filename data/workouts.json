@@ -3,454 +3,129 @@
     "id": "A",
     "name": "Peito + base + bíceps",
     "items": [
-      {
-        "name": "Agachamento",
-        "sets": 3,
-        "reps": "5–8"
-      },
-      {
-        "name": "Supino reto",
-        "sets": 3,
-        "reps": "6–8"
-      },
-      {
-        "name": "Remada sentada no Pulley",
-        "sets": 3,
-        "reps": "8–10",
-        "repdbId": "seated-cable-row"
-      },
-      {
-        "name": "Cadeira extensora",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Elevação lateral",
-        "sets": 2,
-        "reps": "12–20"
-      },
-      {
-        "name": "Rosca direta",
-        "sets": 2,
-        "reps": "8–12"
-      },
-      {
-        "name": "Tríceps na polia",
-        "sets": 2,
-        "reps": "8–12"
-      },
-      {
-        "name": "Panturrilha",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Abdominal máquina",
-        "sets": 2,
-        "reps": "10–15",
-        "repdbId": "machine-seated-crunch"
-      }
+      {"name":"Agachamento","sets":3,"reps":"5–8"},
+      {"name":"Supino reto","sets":3,"reps":"6–8"},
+      {"name":"Remada sentada no Pulley","sets":3,"reps":"8–10","repdbId":"seated-cable-row"},
+      {"name":"Cadeira extensora","sets":2,"reps":"10–15"},
+      {"name":"Elevação lateral","sets":2,"reps":"12–20"},
+      {"name":"Rosca direta","sets":2,"reps":"8–12"},
+      {"name":"Tríceps na polia","sets":2,"reps":"8–12"},
+      {"name":"Panturrilha","sets":2,"reps":"10–15"},
+      {"name":"Abdominal máquina","sets":2,"reps":"10–15","repdbId":"machine-seated-crunch"}
     ]
   },
   "B": {
     "id": "B",
     "name": "Costas + posterior + peito complementar",
     "items": [
-      {
-        "name": "Leg press",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Puxada alta",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Supino inclinado com halteres",
-        "sets": 2,
-        "reps": "8–12"
-      },
-      {
-        "name": "Cadeira Flexora sentada",
-        "sets": 3,
-        "reps": "10–15",
-        "repdbId": "seated-leg-curl"
-      },
-      {
-        "name": "Desenvolvimento com halteres",
-        "sets": 2,
-        "reps": "8–12"
-      },
-      {
-        "name": "Tríceps francês",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Rosca martelo",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Panturrilha sentado",
-        "sets": 2,
-        "reps": "12–20"
-      }
+      {"name":"Leg press","sets":3,"reps":"8–12"},
+      {"name":"Puxada alta","sets":3,"reps":"8–12"},
+      {"name":"Supino inclinado com halteres","sets":2,"reps":"8–12"},
+      {"name":"Cadeira Flexora sentada","sets":3,"reps":"10–15","repdbId":"seated-leg-curl"},
+      {"name":"Desenvolvimento com halteres","sets":2,"reps":"8–12"},
+      {"name":"Tríceps francês","sets":2,"reps":"10–15"},
+      {"name":"Rosca martelo","sets":2,"reps":"10–15"},
+      {"name":"Panturrilha sentado","sets":2,"reps":"12–20"}
     ]
   },
   "C": {
-    "id": "C",
-    "name": "Peito + quadríceps + braços",
-    "items": [
-      {
-        "name": "Supino máquina",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Hack squat",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Cadeira extensora",
-        "sets": 3,
-        "reps": "10–15"
-      },
-      {
-        "name": "Elevação lateral",
-        "sets": 3,
-        "reps": "12–20"
-      },
-      {
-        "name": "Rosca Scott",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Tríceps corda",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Panturrilha",
-        "sets": 2,
-        "reps": "12–20"
-      },
-      {
-        "name": "Abdominal máquina",
-        "sets": 2,
-        "reps": "10–15",
-        "repdbId": "machine-seated-crunch"
-      }
+    "id":"C","name":"Peito + quadríceps + braços",
+    "items":[
+      {"name":"Supino máquina","sets":3,"reps":"8–12"},
+      {"name":"Hack squat","sets":3,"reps":"8–12"},
+      {"name":"Cadeira extensora","sets":3,"reps":"10–15"},
+      {"name":"Elevação lateral","sets":3,"reps":"12–20"},
+      {"name":"Rosca Scott","sets":2,"reps":"10–15"},
+      {"name":"Tríceps corda","sets":2,"reps":"10–15"},
+      {"name":"Panturrilha","sets":2,"reps":"12–20"},
+      {"name":"Abdominal máquina","sets":2,"reps":"10–15","repdbId":"machine-seated-crunch"}
     ]
   },
   "D": {
-    "id": "D",
-    "name": "Costas + posterior + braços",
-    "items": [
-      {
-        "name": "Stiff com halteres ou barra",
-        "sets": 3,
-        "reps": "8–12",
-        "repdbId": "romanian-deadlift"
-      },
-      {
-        "name": "Remada baixa",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Crossover",
-        "sets": 1,
-        "reps": "10–15"
-      },
-      {
-        "name": "Cadeira extensora",
-        "sets": 2,
-        "reps": "12–15"
-      },
-      {
-        "name": "Face pull",
-        "sets": 2,
-        "reps": "12–20"
-      },
-      {
-        "name": "Rosca martelo",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Tríceps corda",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Panturrilha",
-        "sets": 2,
-        "reps": "12–20"
-      }
+    "id":"D","name":"Costas + posterior + braços",
+    "items":[
+      {"name":"Stiff com halteres ou barra","sets":3,"reps":"8–12","repdbId":"romanian-deadlift"},
+      {"name":"Remada baixa","sets":3,"reps":"8–12"},
+      {"name":"Crossover","sets":1,"reps":"10–15"},
+      {"name":"Cadeira extensora","sets":2,"reps":"12–15"},
+      {"name":"Face pull","sets":2,"reps":"12–20"},
+      {"name":"Rosca martelo","sets":2,"reps":"10–15"},
+      {"name":"Tríceps corda","sets":2,"reps":"10–15"},
+      {"name":"Panturrilha","sets":2,"reps":"12–20"}
     ]
   },
   "E": {
-    "id": "E",
-    "name": "Peito + costas + pernas + braços + condicionamento",
-    "items": [
-      {
-        "name": "Supino inclinado com halteres",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Remada sentada",
-        "sets": 3,
-        "reps": "10–15"
-      },
-      {
-        "name": "Leg press",
-        "sets": 3,
-        "reps": "10–15"
-      },
-      {
-        "name": "Cadeira flexora sentada",
-        "sets": 2,
-        "reps": "10–15",
-        "repdbId": "seated-leg-curl"
-      },
-      {
-        "name": "Elevação lateral",
-        "sets": 2,
-        "reps": "15–20"
-      },
-      {
-        "name": "Rosca direta",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Tríceps corda",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Cardio moderado",
-        "sets": 1,
-        "reps": "15–20 min"
-      }
+    "id":"E","name":"Peito + costas + pernas + braços + condicionamento",
+    "items":[
+      {"name":"Supino inclinado com halteres","sets":3,"reps":"8–12"},
+      {"name":"Remada sentada","sets":3,"reps":"10–15"},
+      {"name":"Leg press","sets":3,"reps":"10–15"},
+      {"name":"Cadeira flexora sentada","sets":2,"reps":"10–15","repdbId":"seated-leg-curl"},
+      {"name":"Elevação lateral","sets":2,"reps":"15–20"},
+      {"name":"Rosca direta","sets":2,"reps":"10–15"},
+      {"name":"Tríceps corda","sets":2,"reps":"10–15"},
+      {"name":"Cardio moderado","sets":1,"reps":"15–20 min"}
     ]
   },
   "F": {
-    "id": "F",
-    "name": "Glúteos + quadríceps",
-    "items": [
-      {
-        "name": "Elevação pélvica",
-        "sets": 4,
-        "reps": "8–12"
-      },
-      {
-        "name": "Leg press",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Agachamento búlgaro",
-        "sets": 3,
-        "reps": "8–10 cada perna"
-      },
-      {
-        "name": "Cadeira extensora",
-        "sets": 3,
-        "reps": "10–15"
-      },
-      {
-        "name": "Coice na polia",
-        "sets": 3,
-        "reps": "12–15 cada perna",
-        "repdbId": "cable-kickback"
-      },
-      {
-        "name": "Abdutora",
-        "sets": 3,
-        "reps": "15–20"
-      }
+    "id":"F","name":"Glúteos + quadríceps",
+    "items":[
+      {"name":"Elevação pélvica","sets":4,"reps":"8–12"},
+      {"name":"Leg press","sets":3,"reps":"8–12"},
+      {"name":"Agachamento búlgaro","sets":3,"reps":"8–10 cada perna"},
+      {"name":"Cadeira extensora","sets":3,"reps":"10–15"},
+      {"name":"Coice na polia","sets":3,"reps":"12–15 cada perna","repdbId":"cable-kickback"},
+      {"name":"Abdutora","sets":3,"reps":"15–20"}
     ]
   },
   "G": {
-    "id": "G",
-    "name": "Costas + ombros + braços",
-    "items": [
-      {
-        "name": "Puxada alta",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Remada sentada",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Supino inclinado com halteres",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Elevação lateral",
-        "sets": 3,
-        "reps": "12–20"
-      },
-      {
-        "name": "Face pull",
-        "sets": 2,
-        "reps": "12–20"
-      },
-      {
-        "name": "Rosca martelo",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Tríceps corda",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Abdominal máquina",
-        "sets": 3,
-        "reps": "10–15",
-        "repdbId": "machine-seated-crunch"
-      }
+    "id":"G","name":"Costas + ombros + braços",
+    "items":[
+      {"name":"Puxada alta","sets":3,"reps":"8–12"},
+      {"name":"Remada sentada","sets":3,"reps":"8–12"},
+      {"name":"Supino inclinado com halteres","sets":3,"reps":"8–12"},
+      {"name":"Elevação lateral","sets":3,"reps":"12–20"},
+      {"name":"Face pull","sets":2,"reps":"12–20"},
+      {"name":"Rosca martelo","sets":2,"reps":"10–15"},
+      {"name":"Tríceps corda","sets":2,"reps":"10–15"},
+      {"name":"Abdominal máquina","sets":3,"reps":"10–15","repdbId":"machine-seated-crunch"}
     ]
   },
   "H": {
-    "id": "H",
-    "name": "Glúteos + posterior",
-    "items": [
-      {
-        "name": "Elevação pélvica",
-        "sets": 4,
-        "reps": "8–12"
-      },
-      {
-        "name": "Step-up",
-        "sets": 3,
-        "reps": "8–10 cada perna"
-      },
-      {
-        "name": "Stiff com halteres ou barra",
-        "sets": 3,
-        "reps": "8–12",
-        "repdbId": "romanian-deadlift"
-      },
-      {
-        "name": "Cadeira Flexora sentada",
-        "sets": 3,
-        "reps": "10–15",
-        "repdbId": "seated-leg-curl"
-      },
-      {
-        "name": "Coice na polia",
-        "sets": 3,
-        "reps": "12–15 cada perna",
-        "repdbId": "cable-kickback"
-      },
-      {
-        "name": "Abdutora",
-        "sets": 3,
-        "reps": "15–20"
-      }
+    "id":"H","name":"Glúteos + posterior",
+    "items":[
+      {"name":"Elevação pélvica","sets":4,"reps":"8–12"},
+      {"name":"Step-up","sets":3,"reps":"8–10 cada perna"},
+      {"name":"Stiff com halteres ou barra","sets":3,"reps":"8–12","repdbId":"romanian-deadlift"},
+      {"name":"Cadeira Flexora sentada","sets":3,"reps":"10–15","repdbId":"seated-leg-curl"},
+      {"name":"Coice na polia","sets":3,"reps":"12–15 cada perna","repdbId":"cable-kickback"},
+      {"name":"Abdutora","sets":3,"reps":"15–20"}
     ]
   },
   "I": {
-    "id": "I",
-    "name": "Superior + condicionamento",
-    "items": [
-      {
-        "name": "Supino máquina",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Remada sentada",
-        "sets": 3,
-        "reps": "10–15"
-      },
-      {
-        "name": "Desenvolvimento máquina",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Puxada alta",
-        "sets": 3,
-        "reps": "10–12"
-      },
-      {
-        "name": "Elevação lateral",
-        "sets": 3,
-        "reps": "12–20"
-      },
-      {
-        "name": "Tríceps corda",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Rosca Scott com Halteres no Banco Inclinado",
-        "sets": 2,
-        "reps": "10–15",
-        "repdbId": "incline-db-curl"
-      },
-      {
-        "name": "Cardio moderado",
-        "sets": 1,
-        "reps": "20–30 min"
-      }
+    "id":"I","name":"Superior + condicionamento",
+    "items":[
+      {"name":"Supino máquina","sets":3,"reps":"8–12"},
+      {"name":"Remada sentada","sets":3,"reps":"10–15"},
+      {"name":"Desenvolvimento máquina","sets":3,"reps":"8–12"},
+      {"name":"Puxada alta","sets":3,"reps":"10–12"},
+      {"name":"Elevação lateral","sets":3,"reps":"12–20"},
+      {"name":"Tríceps corda","sets":2,"reps":"10–15"},
+      {"name":"Rosca Scott com Halteres no Banco Inclinado","sets":2,"reps":"10–15","repdbId":"incline-db-curl"},
+      {"name":"Cardio moderado","sets":1,"reps":"20–30 min"}
     ]
   },
   "J": {
     "id": "J",
-    "name": "Pernas + glúteos",
+    "name": "Pernas pesado — 55–60 min",
+    "warmup": "Aquecimento: 5 min",
     "items": [
-      {
-        "name": "Hack squat",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Elevação pélvica",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Cadeira extensora",
-        "sets": 3,
-        "reps": "10–15"
-      },
-      {
-        "name": "Cadeira Flexora sentada",
-        "sets": 3,
-        "reps": "10–15",
-        "repdbId": "seated-leg-curl"
-      },
-      {
-        "name": "Abdutora",
-        "sets": 3,
-        "reps": "15–20"
-      },
-      {
-        "name": "Panturrilha",
-        "sets": 3,
-        "reps": "12–20"
-      },
-      {
-        "name": "Abdominal máquina",
-        "sets": 3,
-        "reps": "12–15",
-        "repdbId": "machine-seated-crunch"
-      }
+      {"name":"Agachamento no Smith","sets":4,"reps":"6–8","rest":"2 min"},
+      {"name":"Leg press 45","sets":4,"reps":"8–10","repdbId":"leg-press","rest":"2 min"},
+      {"name":"Hack squat","sets":3,"reps":"8–10","rest":"90 s"},
+      {"name":"Afundo no Smith","sets":3,"reps":"8–10 cada perna","rest":"90 s"},
+      {"name":"Cadeira extensora","sets":3,"reps":"10–12","rest":"60 s","notes":"Na última série, pode fazer drop-set."},
+      {"name":"Panturrilha no leg press","sets":3,"reps":"10–15","rest":"60 s"}
     ]
   }
 }
