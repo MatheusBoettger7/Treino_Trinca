@@ -159,8 +159,10 @@
       (s.exercises||[]).forEach(e=>(e.sets||[]).forEach(x=>{if(num(x.kg)>0&&num(x.reps)>0)volume+=num(x.kg)*num(x.reps);}));
       return {date:s.date,label:new Date(s.date).toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"}),volume:Math.round(volume)};
     });
-    if(!series.some(x=>x.volume>0))return "";
-    return `<div class="card"><h3>📈 Evolução dos treinos</h3><div class="muted small">Últimos 10 treinos registrados</div>${svgTrend(series,"volume","Volume total por treino"," kg","#60a5fa")}</div>`;
+    const chart=series.some(x=>x.volume>0)
+      ? svgTrend(series,"volume","Volume total por treino"," kg","#60a5fa")
+      : '<div class="empty">Registre cargas e repetições para visualizar sua evolução.</div>';
+    return `<div class="card"><h3>📈 Evolução dos treinos</h3><div class="muted small">Últimos 10 treinos registrados</div>${chart}</div>`;
   }
   function detailedStats(){
     const ss=progressSessions();
