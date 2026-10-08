@@ -125,6 +125,54 @@
     return h?`${h}h ${String(m).padStart(2,"0")}min`:`${m}min ${String(s).padStart(2,"0")}s`;
   }
 
+  function clamp(value,min,max){return Math.min(max,Math.max(min,Number(value)||0));}
+
+  function closestBodyWeight(date){
+    const metrics=metricsForProfile().filter(m=>num(m.weight)>0);
+    if(!metrics.length)return 0;
+    const target=new Date(date).getTime();
+    return metrics.slice().sort((a,b)=>Math.abs(new Date(a.date).getTime()-target)-Math.abs(new Date(b.date).getTime()-target))[0]?.weight||0;
+  }
+
+  function workoutIntensityMET(session,weight){
+    const durationMin=Math.max(1,(Number(session.durationSec)||0)/60);
+    let sets=0,totalReps=0,volume=0;
+    (session.exercises||[]).forEach(e=>(e.sets||[]).forEach(x=>{
+      const kg=num(x.kg),reps=num(x.reps);
+      if(kg>0&&reps>0){sets++;totalReps+=reps;volume+=kg*reps;}
+    }));
+    if(!sets)return 3.5;
+    const repsPerMin=totalReps/durationMin;
+    const volumePerBodyWeightPerMin=weight>0?volume/(weight*durationMin):0;
+    const densityScore=clamp((repsPerMin-1.5)/(6-1.5),0,1);
+    const loadScore=clamp((volumePerBodyWeightPerMin-0.5)/(4-0.5),0,1);
+    const repsScore=clamp((totalReps/sets-6)/(15-6),0,1);
+    const intensityScore=densityScore*0.5+loadScore*0.3+repsScore*0.2;
+    return 3.5+(intensityScore*1.5);
+  }
+
+  function estimateWorkoutCalories(session){
+    const weight=num(closestBodyWeight(session.date));
+    const durationMin=(Number(session.durationSec)||0)/60;
+    if(weight<=0||durationMin<=0)return null;
+    const met=workoutIntensityMET(session,weight);
+    return Math.round(met*3.5*weight*durationMin/200);
+  }
+
+  function calorieSeries(){
+    return progressSessions().slice().sort((a,b)=>new Date(a.date)-new Date(b.date)).map(s=>{
+      const calories=estimateWorkoutCalories(s);
+      if(calories==null)return null;
+      return {date:s.date,label:new Date(s.date).toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"}),calories};
+    }).filter(Boolean).slice(-10);
+  }
+
+  function caloriesOverview(){
+    const series=calorieSeries();
+    if(!series.length)return {series,total:0,average:0,last:0,best:0};
+    const values=series.map(x=>x.calories);
+    return {series,total:values.reduce((a,b)=>a+b,0),average:Math.round(values.reduce((a,b)=>a+b,0)/values.length),last:values[values.length-1],best:Math.max(...values)};
+  }
   function exerciseSeries(name){
     return progressSessions().filter(s=>(s.exercises||[]).some(e=>e.name===name)).sort((a,b)=>new Date(a.date)-new Date(b.date)).map(s=>{
       const e=(s.exercises||[]).find(x=>x.name===name);
@@ -154,19 +202,15 @@
   }
 
   function workoutTrend(){
-    const series=progressSessions().slice().sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(-10).map(s=>{
-      let volume=0;
-      (s.exercises||[]).forEach(e=>(e.sets||[]).forEach(x=>{if(num(x.kg)>0&&num(x.reps)>0)volume+=num(x.kg)*num(x.reps);}));
-      return {date:s.date,label:new Date(s.date).toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"}),volume:Math.round(volume)};
-    });
-    const chart=series.some(x=>x.volume>0)
-      ? svgTrend(series,"volume","Volume total por treino"," kg","#60a5fa")
-      : '<div class="empty">Registre cargas e repetições para visualizar sua evolução.</div>';
-    return `<div class="card"><h3>📈 Evolução dos treinos</h3><div class="muted small">Últimos 10 treinos registrados</div>${chart}</div>`;
+    const overview=caloriesOverview();
+    const chart=overview.series.length
+      ? svgTrend(overview.series.map(x=>({...x,value:x.calories})),"calories","Calorias estimadas por treino"," kcal","#60a5fa")
+      : "<div class=\"empty\">Registre seu peso e finalize alguns treinos para visualizar a estimativa.</div>";
+    return `<div class="card"><h3>🔥 Calorias estimadas</h3><div class="muted small">Estimativa por MET, usando peso corporal, duração e intensidade estimada pelo treino.</div>${chart}<div class="calorie-summary"><div><span>Último</span><b>${overview.last?formatN(overview.last)+" kcal":"—"}</b></div><div><span>Média</span><b>${overview.average?formatN(overview.average)+" kcal":"—"}</b></div><div><span>Maior</span><b>${overview.best?formatN(overview.best)+" kcal":"—"}</b></div></div><div class="muted tiny">Valor estimado, não uma medição fisiológica.</div></div>`;
   }
   function detailedStats(){
     const ss=progressSessions();
-    let sets=0,reps=0,volume=0,totalDuration=0,workoutsWithData=0,bestSession=0;
+    let sets=0,reps=0,volume=0,totalDuration=0,workoutsWithData=0,bestSession=0,totalCalories=0,calorieCount=0,bestCalories=0;
     const unique=new Set(),daysSet=new Set();
     ss.forEach(s=>{
       if(s.durationSec)totalDuration+=Number(s.durationSec)||0;
@@ -178,11 +222,12 @@
       });
       if(sessionHasData)workoutsWithData++;
       bestSession=Math.max(bestSession,sessionVolume);
+      const calories=estimateWorkoutCalories(s);
+      if(calories!=null){totalCalories+=calories;calorieCount++;bestCalories=Math.max(bestCalories,calories);}
     });
-    const avgDuration=ss.length?totalDuration/ss.length:0,avgVolume=workoutsWithData?volume/workoutsWithData:0,avgReps=sets?reps/sets:0;
-    return `<div class="detail-stats-grid"><div><span>Treinos</span><b>${formatN(ss.length)}</b></div><div><span>Dias treinados</span><b>${formatN(daysSet.size)}</b></div><div><span>Séries registradas</span><b>${formatN(sets)}</b></div><div><span>Repetições</span><b>${formatN(reps)}</b></div><div><span>Volume acumulado</span><b>${formatN(volume)} kg</b></div><div><span>Volume médio/treino</span><b>${formatN(avgVolume)} kg</b></div><div><span>Reps médias/série</span><b>${avgReps?avgReps.toLocaleString("pt-BR",{maximumFractionDigits:1}):"—"}</b></div><div><span>Duração média</span><b>${avgDuration?formatTime(avgDuration):"—"}</b></div><div><span>Maior volume em um treino</span><b>${bestSession?formatN(bestSession)+" kg":"—"}</b></div><div><span>Exercícios registrados</span><b>${formatN(unique.size)}</b></div></div>`;
+    const avgDuration=ss.length?totalDuration/ss.length:0,avgVolume=workoutsWithData?volume/workoutsWithData:0,avgReps=sets?reps/sets:0,avgCalories=calorieCount?totalCalories/calorieCount:0;
+    return `<div class="detail-stats-grid"><div><span>Treinos</span><b>${formatN(ss.length)}</b></div><div><span>Dias treinados</span><b>${formatN(daysSet.size)}</b></div><div><span>Séries registradas</span><b>${formatN(sets)}</b></div><div><span>Repetições</span><b>${formatN(reps)}</b></div><div><span>Volume acumulado</span><b>${formatN(volume)} kg</b></div><div><span>Volume médio/treino</span><b>${formatN(avgVolume)} kg</b></div><div><span>Reps médias/série</span><b>${avgReps?avgReps.toLocaleString("pt-BR",{maximumFractionDigits:1}):"—"}</b></div><div><span>Duração média</span><b>${avgDuration?formatTime(avgDuration):"—"}</b></div><div><span>Calorias estimadas</span><b>${totalCalories?formatN(totalCalories)+" kcal":"—"}</b></div><div><span>Média de calorias/treino</span><b>${avgCalories?formatN(avgCalories)+" kcal":"—"}</b></div><div><span>Maior estimativa</span><b>${bestCalories?formatN(bestCalories)+" kcal":"—"}</b></div><div><span>Exercícios registrados</span><b>${formatN(unique.size)}</b></div><div><span>Maior volume em um treino</span><b>${bestSession?formatN(bestSession)+" kg":"—"}</b></div></div>`;
   }
-
   function prs(){
     const best={};
     progressSessions().forEach(s=>(s.exercises||[]).forEach(e=>(e.sets||[]).forEach(x=>{
@@ -236,7 +281,7 @@
     c.innerHTML+=`<div class="card"><h3>Calendário · ${new Date().toLocaleDateString("pt-BR",{month:"long",year:"numeric"})}</h3><div class="calendar">${calendar()}</div></div>`;
     c.innerHTML+=workoutTrend();
     c.innerHTML+=`<details class="card progress-collapsible"><summary><b>📊 Estatísticas detalhadas</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body"><div class="muted small">Resumo de todo o seu histórico deste perfil.</div>${detailedStats()}</div></details>`;
-    c.innerHTML+=`<details class="card progress-collapsible"><summary><b>Peso e cintura</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body"><div class="metric"><div><label>Peso (kg)</label><input id="peso" inputmode="decimal" placeholder="82,5" value="${esc(metric.weight||"")}"></div><div><label>Cintura (cm)</label><input id="cintura" inputmode="decimal" placeholder="88" value="${esc(metric.waist||"")}"></div></div><button class="primary" onclick="saveMetricEnhanced()">Salvar medidas</button>${chart()}</div></details>`;
+    c.innerHTML+=`<details class="card progress-collapsible"><summary><b>Peso e cintura</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body"><div class="metric"><div><label>Peso (kg)</label><input id="peso" inputmode="decimal" placeholder="82,5" value="${esc(metric.weight||"")}"></div><div><label>Altura (cm)</label><input id="altura" inputmode="decimal" placeholder="175" value="${esc(metric.height||"")}"></div><div><label>Cintura (cm)</label><input id="cintura" inputmode="decimal" placeholder="88" value="${esc(metric.waist||"")}"></div></div><button class="primary" onclick="saveMetricEnhanced()">Salvar medidas</button>${chart()}</div></details>`;
     c.innerHTML+=`<details class="card progress-collapsible"><summary><b>📈 Evolução por exercício</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body"><div class="exercise-history-picker">${exercises.map(e=>`<button class="filter ${e===selected?"active":""}" data-exercise="${esc(e)}" onclick="selectExerciseEnhanced(this.dataset.exercise)">${esc(e)}</button>`).join("")||"<div class=\"empty\">Faça algum treino para criar o histórico.</div>"}</div>${selected?`<div class="exercise-summary"><div class="exercise-summary-head"><strong>${esc(selected)}</strong><span class="muted small">${summary.sessions} treino${summary.sessions===1?"":"s"} · ${summary.sets} séries</span></div><div class="exercise-summary-grid"><div><span>Maior carga</span><b>${summary.maxKg?`${summary.maxKg} kg`:"—"}</b></div><div><span>Melhor repetição</span><b>${summary.bestReps||"—"}</b></div><div><span>Volume acumulado</span><b>${summary.volume?`${summary.volume.toLocaleString("pt-BR")} kg`:"—"}</b></div><div><span>RIR médio</span><b>${summary.rirAvg!=null?summary.rirAvg.toLocaleString("pt-BR"):"—"}</b></div></div></div>`:""}${exerciseEvolution(selected)}${exerciseHistory(selected)}</div></details>`;
     c.innerHTML+=`<details class="card progress-collapsible"><summary><b>🏆 Recordes pessoais</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body">${prs()}</div></details>`;
     c.innerHTML+=`<div class="card"><h3>Últimos treinos</h3>${recent.length?recent.map(s=>`<div class="history"><b>Treino ${esc(s.code)}</b> · ${new Date(s.date).toLocaleDateString("pt-BR")}${s.durationSec!=null?` · ⏱️ ${fmt(s.durationSec)}`:""}</div>`).join(""):"<div class=\"empty\">Nenhum treino salvo ainda.</div>"}</div>`;
@@ -249,10 +294,11 @@
 
   function saveMetricEnhanced(){
     const weight=(document.getElementById('peso')?.value||'').replace(',','.').trim();
+    const height=(document.getElementById('altura')?.value||'').replace(',','.').trim();
     const waist=(document.getElementById('cintura')?.value||'').replace(',','.').trim();
-    if(!weight&&!waist){alert('Preencha pelo menos uma medida.');return}
+    if(!weight&&!height&&!waist){alert('Preencha pelo menos uma medida.');return}
     if(!Array.isArray(data.metrics))data.metrics=[];
-    data.metrics.push({date:new Date().toISOString(),profile,weight,waist});
+    data.metrics.push({date:new Date().toISOString(),profile,weight,height,waist});
     localStorage.setItem(stateKey,JSON.stringify(data));
     renderProgressEnhanced(content);
   }
