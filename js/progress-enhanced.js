@@ -285,7 +285,7 @@
     c.innerHTML+=`<details class="card progress-collapsible"><summary><b>📈 Evolução por exercício</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body"><div class="exercise-history-picker">${exercises.map(e=>`<button class="filter ${e===selected?"active":""}" data-exercise="${esc(e)}" onclick="selectExerciseEnhanced(this.dataset.exercise)">${esc(e)}</button>`).join("")||"<div class=\"empty\">Faça algum treino para criar o histórico.</div>"}</div>${selected?`<div class="exercise-summary"><div class="exercise-summary-head"><strong>${esc(selected)}</strong><span class="muted small">${summary.sessions} treino${summary.sessions===1?"":"s"} · ${summary.sets} séries</span></div><div class="exercise-summary-grid"><div><span>Maior carga</span><b>${summary.maxKg?`${summary.maxKg} kg`:"—"}</b></div><div><span>Melhor repetição</span><b>${summary.bestReps||"—"}</b></div><div><span>Volume acumulado</span><b>${summary.volume?`${summary.volume.toLocaleString("pt-BR")} kg`:"—"}</b></div><div><span>RIR médio</span><b>${summary.rirAvg!=null?summary.rirAvg.toLocaleString("pt-BR"):"—"}</b></div></div></div>`:""}${exerciseEvolution(selected)}${exerciseHistory(selected)}</div></details>`;
     c.innerHTML+=`<details class="card progress-collapsible"><summary><b>🏆 Recordes pessoais</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body">${prs()}</div></details>`;
     c.innerHTML+=`<div class="card"><h3>Últimos treinos</h3>${recent.length?recent.map(s=>`<div class="history"><b>Treino ${esc(s.code)}</b> · ${new Date(s.date).toLocaleDateString("pt-BR")}${s.durationSec!=null?` · ⏱️ ${fmt(s.durationSec)}`:""}</div>`).join(""):"<div class=\"empty\">Nenhum treino salvo ainda.</div>"}</div>`;
-    c.innerHTML+=`<div class="card"><h3>Backup completo</h3><button class="secondary" onclick="exportDataEnhanced()">📤 Exportar</button><button class="secondary" onclick="document.getElementById(\"importFileEnhanced\").click()">📥 Importar</button><button class="secondary" onclick="clearDataEnhanced()">Limpar</button><input id="importFileEnhanced" type="file" accept="application/json,.json" hidden onchange="importDataEnhanced(event)"><div class="muted small">Inclui histórico, medidas, treinos personalizados e configurações do aplicativo. A importação substitui os dados atuais.</div><div class="repdb-credit">Exercise data by <a href="https://repdb.co" target="_blank" rel="noopener">RepDB (repdb.co)</a>.</div></div>`;
+    c.innerHTML+=`<div class="card"><h3>Backup completo</h3><button class="secondary" onclick="exportDataEnhanced()">📤 Exportar</button><button class="secondary" onclick="openImportFileEnhanced()">📥 Importar</button><button class="secondary" onclick="clearDataEnhanced()">Limpar</button><input id="importFileEnhanced" type="file" accept="application/json,.json" hidden onchange="importDataEnhanced(event)"><div class="muted small">Inclui histórico, medidas, treinos personalizados e configurações do aplicativo. A importação substitui os dados atuais.</div><div class="repdb-credit">Exercise data by <a href="https://repdb.co" target="_blank" rel="noopener">RepDB (repdb.co)</a>.</div></div>`;
   }
   function selectExerciseEnhanced(name){
     window.__trincaSelectedExercise=name||'';
@@ -390,6 +390,16 @@
     setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
 
+  function openImportFileEnhanced(){
+    const input=document.getElementById('importFileEnhanced');
+    if(!input){
+      console.warn('Campo de importação de backup não encontrado.');
+      return;
+    }
+    input.value='';
+    input.click();
+  }
+
   function importDataEnhanced(event){
     const file=event.target.files?.[0];
     if(!file)return;
@@ -466,6 +476,7 @@
   window.selectExerciseEnhanced=selectExerciseEnhanced;
   window.saveMetricEnhanced=saveMetricEnhanced;
   window.exportDataEnhanced=exportDataEnhanced;
+  window.openImportFileEnhanced=openImportFileEnhanced;
   window.importDataEnhanced=importDataEnhanced;
   window.clearDataEnhanced=clearDataEnhanced;
 })();
