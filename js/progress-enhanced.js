@@ -314,29 +314,58 @@
     return result;
   }
 
+  function collectAppStorage(){
+    const storage={};
+    Object.keys(localStorage)
+      .filter(key=>key.startsWith('treinoTrinca'))
+      .sort()
+      .forEach(key=>{storage[key]=localStorage.getItem(key);});
+    return storage;
+  }
+
+  function clearAppStorage(){
+    try{
+      Object.keys(localStorage)
+        .filter(key=>key.startsWith('treinoTrinca'))
+        .forEach(key=>localStorage.removeItem(key));
+    }catch{}
+  }
+
+  function restoreAppStorage(storage){
+    if(!storage||typeof storage!=='object'||Array.isArray(storage))return false;
+    clearAppStorage();
+    Object.entries(storage).forEach(([key,value])=>{
+      if(!key.startsWith('treinoTrinca'))return;
+      if(value===null||value===undefined)return;
+      localStorage.setItem(key,String(value));
+    });
+    return true;
+  }
+
   function cloneSessions(){
     return Array.isArray(data.sessions)?data.sessions.map(s=>({
       ...s,
       exercises:Array.isArray(s.exercises)?s.exercises.map(e=>({
         ...e,
-        sets:Array.isArray(e.sets)?e.sets.map(x=>({...x})):[]
-      })):[]
-    })):[];
+        sets:Array.isArray(e.sets)?e.sets.map(x=>({...x})):[] 
+      })):[] 
+    })):[]; 
   }
 
   function cloneMetrics(){
-    return Array.isArray(data.metrics)?data.metrics.map(m=>({...m})):[];
+    return Array.isArray(data.metrics)?data.metrics.map(m=>({...m})):[]; 
   }
 
   function exportDataEnhanced(){
     const filename=`treino-trinca-backup-${new Date().toISOString().slice(0,10)}.json`;
     const payload={
-      schemaVersion:3,
+      schemaVersion:4,
       exportedAt:new Date().toISOString(),
       profile,
       currentWorkout:current,
       data:{sessions:cloneSessions(),metrics:cloneMetrics()},
-      workouts:collectWorkoutBackups()
+      workouts:collectWorkoutBackups(),
+      appStorage:collectAppStorage()
     };
     const json=JSON.stringify(payload,null,2);
 
@@ -361,15 +390,6 @@
     setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
 
-  function clearDraftStorage(){
-    try{
-      const prefixes=['treinoTrincaDraft_'];
-      Object.keys(localStorage).forEach(key=>{
-        if(prefixes.some(prefix=>key.startsWith(prefix)))localStorage.removeItem(key);
-      });
-    }catch{}
-  }
-
   function importDataEnhanced(event){
     const file=event.target.files?.[0];
     if(!file)return;
@@ -381,19 +401,21 @@
         if(!Array.isArray(source.sessions)||!Array.isArray(source.metrics))throw Error();
         if(!confirm('Substituir seus dados atuais pelo backup?'))return;
 
+        const restoredFullStorage=restoreAppStorage(imported?.appStorage);
+
         data={
           sessions:source.sessions.map(s=>({
             ...s,
             profile:s.profile||'masculino',
             exercises:Array.isArray(s.exercises)?s.exercises.map(e=>({
               ...e,
-              sets:Array.isArray(e.sets)?e.sets.map(x=>({...x})):[]
-            })):[]
+              sets:Array.isArray(e.sets)?e.sets.map(x=>({...x})):[] 
+            })):[] 
           })),
           metrics:source.metrics.map(m=>({...m,profile:m.profile||'masculino'}))
         };
 
-        if(imported?.workouts&&typeof imported.workouts==='object'){
+        if(!restoredFullStorage&&imported?.workouts&&typeof imported.workouts==='object'){
           ['masculino','feminino'].forEach(p=>{
             const saved=imported.workouts[p];
             if(saved&&typeof saved==='object')localStorage.setItem(`treinoTrincaWorkouts_${p}`,JSON.stringify(saved));
@@ -401,19 +423,23 @@
           });
         }
 
-        if(imported?.profile==='masculino'||imported?.profile==='feminino'){
+        if(!restoredFullStorage&& (imported?.profile==='masculino'||imported?.profile==='feminino')){
           localStorage.setItem(profileKey,imported.profile);
           const importedCurrent=typeof imported.currentWorkout==='string'?imported.currentWorkout:'';
           if(importedCurrent)localStorage.setItem(currentKey(imported.profile),importedCurrent);
         }
 
         localStorage.setItem(stateKey,JSON.stringify(data));
-        localStorage.removeItem(activeKey);
-        localStorage.removeItem(restEndKey);
-        clearDraftStorage();
+
+        if(!restoredFullStorage){
+          localStorage.removeItem(activeKey);
+          localStorage.removeItem(restEndKey);
+          clearDraftStorage();
+        }
+
         window.__trincaSelectedExercise='';
 
-        alert(`Backup importado com sucesso! ${data.sessions.length} treino(s) recuperado(s).`);
+        alert(`Backup importado com sucesso! ${data.sessions.length} treino(s) recuperado(s).${restoredFullStorage?' Todas as configurações e estados do aplicativo também foram restaurados.':''}`);
         location.reload();
       }catch(error){
         console.warn('Importação de backup falhou:',error);
@@ -425,6 +451,7 @@
     };
     reader.readAsText(file);
   }
+
 
   function clearDataEnhanced(){
     if(confirm('Apagar todo o histórico?')){
