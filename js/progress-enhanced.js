@@ -155,14 +155,13 @@
 
   function workoutTrend(){
     const series=progressSessions().slice().sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(-10).map(s=>{
-      let volume=0,sets=0;
-      (s.exercises||[]).forEach(e=>(e.sets||[]).forEach(x=>{if(num(x.kg)>0&&num(x.reps)>0){sets++;volume+=num(x.kg)*num(x.reps);}}));
-      return {date:s.date,label:new Date(s.date).toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"}),volume:Math.round(volume),sets};
+      let volume=0;
+      (s.exercises||[]).forEach(e=>(e.sets||[]).forEach(x=>{if(num(x.kg)>0&&num(x.reps)>0)volume+=num(x.kg)*num(x.reps);}));
+      return {date:s.date,label:new Date(s.date).toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"}),volume:Math.round(volume)};
     });
     if(!series.some(x=>x.volume>0))return "";
-    return `<div class="card"><h3>📈 Evolução dos treinos</h3><div class="muted small">Últimos 10 treinos registrados</div><div class="evolution-charts">${svgTrend(series,"volume","Volume total por treino"," kg","#60a5fa")}${svgTrend(series,"sets","Séries com carga registrada","","#22c55e")}</div></div>`;
+    return `<div class="card"><h3>📈 Evolução dos treinos</h3><div class="muted small">Últimos 10 treinos registrados</div>${svgTrend(series,"volume","Volume total por treino"," kg","#60a5fa")}</div>`;
   }
-
   function detailedStats(){
     const ss=progressSessions();
     let sets=0,reps=0,volume=0,totalDuration=0,workoutsWithData=0,bestSession=0;
@@ -231,19 +230,14 @@
     if(!window.__trincaSelectedExercise&&exercises.length)window.__trincaSelectedExercise=exercises[0];
     if(window.__trincaSelectedExercise&&!exercises.includes(window.__trincaSelectedExercise))window.__trincaSelectedExercise=exercises[0]||"";
     const selected=window.__trincaSelectedExercise||"",metric=lastMetric()||{},summary=selected?exerciseSummary(selected):null;
-    c.innerHTML=`<div class="card"><h2>Resumo da semana</h2><div class="stats"><div class="stat"><b>${stats.sessions}</b><span class="small muted">treinos</span></div><div class="stat"><b>${stats.sets}</b><span class="small muted">séries</span></div><div class="stat"><b>${stats.volume.toLocaleString("pt-BR")}</b><span class="small muted">kg volume</span></div></div></div>
-    ${workoutTrend()}
-    <div class="card"><h3>📊 Estatísticas detalhadas</h3><div class="muted small">Resumo de todo o seu histórico deste perfil.</div>${detailedStats()}</div>
-    <div class="card"><h3>Calendário · ${new Date().toLocaleDateString("pt-BR",{month:"long",year:"numeric"})}</h3><div class="calendar">${calendar()}</div></div>
-    <div class="card"><h3>Peso e cintura</h3><div class="metric"><div><label>Peso (kg)</label><input id="peso" inputmode="decimal" placeholder="82,5" value="${esc(metric.weight||"")}"></div><div><label>Cintura (cm)</label><input id="cintura" inputmode="decimal" placeholder="88" value="${esc(metric.waist||"")}"></div></div><button class="primary" onclick="saveMetricEnhanced()">Salvar medidas</button>${chart()}</div>
-    <div class="card"><h3>📈 Evolução por exercício</h3><div class="exercise-history-picker">${exercises.map(e=>`<button class="filter ${e===selected?"active":""}" data-exercise="${esc(e)}" onclick="selectExerciseEnhanced(this.dataset.exercise)">${esc(e)}</button>`).join("")||"<div class=\"empty\">Faça algum treino para criar o histórico.</div>"}</div>
-      ${selected?`<div class="exercise-summary"><div class="exercise-summary-head"><strong>${esc(selected)}</strong><span class="muted small">${summary.sessions} treino${summary.sessions===1?"":"s"} · ${summary.sets} séries</span></div><div class="exercise-summary-grid"><div><span>Maior carga</span><b>${summary.maxKg?`${summary.maxKg} kg`:"—"}</b></div><div><span>Melhor repetição</span><b>${summary.bestReps||"—"}</b></div><div><span>Volume acumulado</span><b>${summary.volume?`${summary.volume.toLocaleString("pt-BR")} kg`:"—"}</b></div><div><span>RIR médio</span><b>${summary.rirAvg!=null?summary.rirAvg.toLocaleString("pt-BR"):"—"}</b></div></div></div>`:""}
-      ${exerciseEvolution(selected)}
-      ${exerciseHistory(selected)}
-    </div>
-    <div class="card"><h3>🏆 Recordes pessoais</h3>${prs()}</div>
-    <div class="card"><h3>Últimos treinos</h3>${recent.length?recent.map(s=>`<div class="history"><b>Treino ${esc(s.code)}</b> · ${new Date(s.date).toLocaleDateString("pt-BR")}${s.durationSec!=null?` · ⏱️ ${fmt(s.durationSec)}`:""}</div>`).join(""):"<div class=\"empty\">Nenhum treino salvo ainda.</div>"}</div>
-    <div class="card"><h3>Backup dos dados</h3><button class="secondary" onclick="exportDataEnhanced()">📤 Exportar</button><button class="secondary" onclick="document.getElementById(\"importFileEnhanced\").click()">📥 Importar</button><button class="secondary" onclick="clearDataEnhanced()">Limpar</button><input id="importFileEnhanced" type="file" accept="application/json,.json" hidden onchange="importDataEnhanced(event)"><div class="muted small">Exporte um arquivo antes de trocar de celular. A importação substitui os dados atuais.</div><div class="repdb-credit">Exercise data by <a href="https://repdb.co" target="_blank" rel="noopener">RepDB (repdb.co)</a>.</div></div>`;
+    c.innerHTML=`<div class="card"><h2>Resumo da semana</h2><div class="stats"><div class="stat"><b>${stats.sessions}</b><span class="small muted">treinos</span></div><div class="stat"><b>${stats.sets}</b><span class="small muted">séries</span></div><div class="stat"><b>${stats.volume.toLocaleString("pt-BR")}</b><span class="small muted">kg volume</span></div></div></div>`;
+    c.innerHTML+=workoutTrend();
+    c.innerHTML+=`<details class="card progress-collapsible"><summary><b>📊 Estatísticas detalhadas</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body"><div class="muted small">Resumo de todo o seu histórico deste perfil.</div>${detailedStats()}</div></details>`;
+    c.innerHTML+=`<details class="card progress-collapsible"><summary><b>Peso e cintura</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body"><div class="metric"><div><label>Peso (kg)</label><input id="peso" inputmode="decimal" placeholder="82,5" value="${esc(metric.weight||"")}"></div><div><label>Cintura (cm)</label><input id="cintura" inputmode="decimal" placeholder="88" value="${esc(metric.waist||"")}"></div></div><button class="primary" onclick="saveMetricEnhanced()">Salvar medidas</button>${chart()}</div></details>`;
+    c.innerHTML+=`<details class="card progress-collapsible"><summary><b>📈 Evolução por exercício</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body"><div class="exercise-history-picker">${exercises.map(e=>`<button class="filter ${e===selected?"active":""}" data-exercise="${esc(e)}" onclick="selectExerciseEnhanced(this.dataset.exercise)">${esc(e)}</button>`).join("")||"<div class=\"empty\">Faça algum treino para criar o histórico.</div>"}</div>${selected?`<div class="exercise-summary"><div class="exercise-summary-head"><strong>${esc(selected)}</strong><span class="muted small">${summary.sessions} treino${summary.sessions===1?"":"s"} · ${summary.sets} séries</span></div><div class="exercise-summary-grid"><div><span>Maior carga</span><b>${summary.maxKg?`${summary.maxKg} kg`:"—"}</b></div><div><span>Melhor repetição</span><b>${summary.bestReps||"—"}</b></div><div><span>Volume acumulado</span><b>${summary.volume?`${summary.volume.toLocaleString("pt-BR")} kg`:"—"}</b></div><div><span>RIR médio</span><b>${summary.rirAvg!=null?summary.rirAvg.toLocaleString("pt-BR"):"—"}</b></div></div></div>`:""}${exerciseEvolution(selected)}${exerciseHistory(selected)}</div></details>`;
+    c.innerHTML+=`<details class="card progress-collapsible"><summary><b>🏆 Recordes pessoais</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body">${prs()}</div></details>`;
+    c.innerHTML+=`<div class="card"><h3>Últimos treinos</h3>${recent.length?recent.map(s=>`<div class="history"><b>Treino ${esc(s.code)}</b> · ${new Date(s.date).toLocaleDateString("pt-BR")}${s.durationSec!=null?` · ⏱️ ${fmt(s.durationSec)}`:""}</div>`).join(""):"<div class=\"empty\">Nenhum treino salvo ainda.</div>"}</div>`;
+    c.innerHTML+=`<div class="card"><h3>Backup dos dados</h3><button class="secondary" onclick="exportDataEnhanced()">📤 Exportar</button><button class="secondary" onclick="document.getElementById(\"importFileEnhanced\").click()">📥 Importar</button><button class="secondary" onclick="clearDataEnhanced()">Limpar</button><input id="importFileEnhanced" type="file" accept="application/json,.json" hidden onchange="importDataEnhanced(event)"><div class="muted small">Exporte um arquivo antes de trocar de celular. A importação substitui os dados atuais.</div><div class="repdb-credit">Exercise data by <a href="https://repdb.co" target="_blank" rel="noopener">RepDB (repdb.co)</a>.</div></div>`;
   }
   function selectExerciseEnhanced(name){
     window.__trincaSelectedExercise=name||'';
