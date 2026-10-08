@@ -285,7 +285,7 @@
     c.innerHTML+=`<details class="card progress-collapsible"><summary><b>📈 Evolução por exercício</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body"><div class="exercise-history-picker">${exercises.map(e=>`<button class="filter ${e===selected?"active":""}" data-exercise="${esc(e)}" onclick="selectExerciseEnhanced(this.dataset.exercise)">${esc(e)}</button>`).join("")||"<div class=\"empty\">Faça algum treino para criar o histórico.</div>"}</div>${selected?`<div class="exercise-summary"><div class="exercise-summary-head"><strong>${esc(selected)}</strong><span class="muted small">${summary.sessions} treino${summary.sessions===1?"":"s"} · ${summary.sets} séries</span></div><div class="exercise-summary-grid"><div><span>Maior carga</span><b>${summary.maxKg?`${summary.maxKg} kg`:"—"}</b></div><div><span>Melhor repetição</span><b>${summary.bestReps||"—"}</b></div><div><span>Volume acumulado</span><b>${summary.volume?`${summary.volume.toLocaleString("pt-BR")} kg`:"—"}</b></div><div><span>RIR médio</span><b>${summary.rirAvg!=null?summary.rirAvg.toLocaleString("pt-BR"):"—"}</b></div></div></div>`:""}${exerciseEvolution(selected)}${exerciseHistory(selected)}</div></details>`;
     c.innerHTML+=`<details class="card progress-collapsible"><summary><b>🏆 Recordes pessoais</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body">${prs()}</div></details>`;
     c.innerHTML+=`<div class="card"><h3>Últimos treinos</h3>${recent.length?recent.map(s=>`<div class="history"><b>Treino ${esc(s.code)}</b> · ${new Date(s.date).toLocaleDateString("pt-BR")}${s.durationSec!=null?` · ⏱️ ${fmt(s.durationSec)}`:""}</div>`).join(""):"<div class=\"empty\">Nenhum treino salvo ainda.</div>"}</div>`;
-    c.innerHTML+=`<div class="card"><h3>Backup dos dados</h3><button class="secondary" onclick="exportDataEnhanced()">📤 Exportar</button><button class="secondary" onclick="document.getElementById(\"importFileEnhanced\").click()">📥 Importar</button><button class="secondary" onclick="clearDataEnhanced()">Limpar</button><input id="importFileEnhanced" type="file" accept="application/json,.json" hidden onchange="importDataEnhanced(event)"><div class="muted small">Exporte um arquivo antes de trocar de celular. A importação substitui os dados atuais.</div><div class="repdb-credit">Exercise data by <a href="https://repdb.co" target="_blank" rel="noopener">RepDB (repdb.co)</a>.</div></div>`;
+    c.innerHTML+=`<div class="card"><h3>Backup completo</h3><button class="secondary" onclick="exportDataEnhanced()">📤 Exportar</button><button class="secondary" onclick="openImportFileEnhanced()">📥 Importar</button><button class="secondary" onclick="clearDataEnhanced()">Limpar</button><input id="importFileEnhanced" type="file" accept="application/json,.json" hidden onchange="importDataEnhanced(event)"><div class="muted small">Inclui histórico, medidas, treinos personalizados e configurações do aplicativo. A importação substitui os dados atuais.</div><div class="repdb-credit">Exercise data by <a href="https://repdb.co" target="_blank" rel="noopener">RepDB (repdb.co)</a>.</div></div>`;
   }
   function selectExerciseEnhanced(name){
     window.__trincaSelectedExercise=name||'';
@@ -314,29 +314,58 @@
     return result;
   }
 
+  function collectAppStorage(){
+    const storage={};
+    Object.keys(localStorage)
+      .filter(key=>key.startsWith('treinoTrinca'))
+      .sort()
+      .forEach(key=>{storage[key]=localStorage.getItem(key);});
+    return storage;
+  }
+
+  function clearAppStorage(){
+    try{
+      Object.keys(localStorage)
+        .filter(key=>key.startsWith('treinoTrinca'))
+        .forEach(key=>localStorage.removeItem(key));
+    }catch{}
+  }
+
+  function restoreAppStorage(storage){
+    if(!storage||typeof storage!=='object'||Array.isArray(storage))return false;
+    clearAppStorage();
+    Object.entries(storage).forEach(([key,value])=>{
+      if(!key.startsWith('treinoTrinca'))return;
+      if(value===null||value===undefined)return;
+      localStorage.setItem(key,String(value));
+    });
+    return true;
+  }
+
   function cloneSessions(){
     return Array.isArray(data.sessions)?data.sessions.map(s=>({
       ...s,
       exercises:Array.isArray(s.exercises)?s.exercises.map(e=>({
         ...e,
-        sets:Array.isArray(e.sets)?e.sets.map(x=>({...x})):[]
-      })):[]
-    })):[];
+        sets:Array.isArray(e.sets)?e.sets.map(x=>({...x})):[] 
+      })):[] 
+    })):[]; 
   }
 
   function cloneMetrics(){
-    return Array.isArray(data.metrics)?data.metrics.map(m=>({...m})):[];
+    return Array.isArray(data.metrics)?data.metrics.map(m=>({...m})):[]; 
   }
 
   function exportDataEnhanced(){
     const filename=`treino-trinca-backup-${new Date().toISOString().slice(0,10)}.json`;
     const payload={
-      schemaVersion:3,
+      schemaVersion:4,
       exportedAt:new Date().toISOString(),
       profile,
       currentWorkout:current,
       data:{sessions:cloneSessions(),metrics:cloneMetrics()},
-      workouts:collectWorkoutBackups()
+      workouts:collectWorkoutBackups(),
+      appStorage:collectAppStorage()
     };
     const json=JSON.stringify(payload,null,2);
 
@@ -361,13 +390,14 @@
     setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
 
-  function clearDraftStorage(){
-    try{
-      const prefixes=['treinoTrincaDraft_'];
-      Object.keys(localStorage).forEach(key=>{
-        if(prefixes.some(prefix=>key.startsWith(prefix)))localStorage.removeItem(key);
-      });
-    }catch{}
+  function openImportFileEnhanced(){
+    const input=document.getElementById('importFileEnhanced');
+    if(!input){
+      console.warn('Campo de importação de backup não encontrado.');
+      return;
+    }
+    input.value='';
+    input.click();
   }
 
   function importDataEnhanced(event){
@@ -381,19 +411,21 @@
         if(!Array.isArray(source.sessions)||!Array.isArray(source.metrics))throw Error();
         if(!confirm('Substituir seus dados atuais pelo backup?'))return;
 
+        const restoredFullStorage=restoreAppStorage(imported?.appStorage);
+
         data={
           sessions:source.sessions.map(s=>({
             ...s,
             profile:s.profile||'masculino',
             exercises:Array.isArray(s.exercises)?s.exercises.map(e=>({
               ...e,
-              sets:Array.isArray(e.sets)?e.sets.map(x=>({...x})):[]
-            })):[]
+              sets:Array.isArray(e.sets)?e.sets.map(x=>({...x})):[] 
+            })):[] 
           })),
           metrics:source.metrics.map(m=>({...m,profile:m.profile||'masculino'}))
         };
 
-        if(imported?.workouts&&typeof imported.workouts==='object'){
+        if(!restoredFullStorage&&imported?.workouts&&typeof imported.workouts==='object'){
           ['masculino','feminino'].forEach(p=>{
             const saved=imported.workouts[p];
             if(saved&&typeof saved==='object')localStorage.setItem(`treinoTrincaWorkouts_${p}`,JSON.stringify(saved));
@@ -401,19 +433,23 @@
           });
         }
 
-        if(imported?.profile==='masculino'||imported?.profile==='feminino'){
+        if(!restoredFullStorage&& (imported?.profile==='masculino'||imported?.profile==='feminino')){
           localStorage.setItem(profileKey,imported.profile);
           const importedCurrent=typeof imported.currentWorkout==='string'?imported.currentWorkout:'';
           if(importedCurrent)localStorage.setItem(currentKey(imported.profile),importedCurrent);
         }
 
         localStorage.setItem(stateKey,JSON.stringify(data));
-        localStorage.removeItem(activeKey);
-        localStorage.removeItem(restEndKey);
-        clearDraftStorage();
+
+        if(!restoredFullStorage){
+          localStorage.removeItem(activeKey);
+          localStorage.removeItem(restEndKey);
+          clearDraftStorage();
+        }
+
         window.__trincaSelectedExercise='';
 
-        alert(`Backup importado com sucesso! ${data.sessions.length} treino(s) recuperado(s).`);
+        alert(`Backup importado com sucesso! ${data.sessions.length} treino(s) recuperado(s).${restoredFullStorage?' Todas as configurações e estados do aplicativo também foram restaurados.':''}`);
         location.reload();
       }catch(error){
         console.warn('Importação de backup falhou:',error);
@@ -425,6 +461,7 @@
     };
     reader.readAsText(file);
   }
+
 
   function clearDataEnhanced(){
     if(confirm('Apagar todo o histórico?')){
@@ -439,6 +476,7 @@
   window.selectExerciseEnhanced=selectExerciseEnhanced;
   window.saveMetricEnhanced=saveMetricEnhanced;
   window.exportDataEnhanced=exportDataEnhanced;
+  window.openImportFileEnhanced=openImportFileEnhanced;
   window.importDataEnhanced=importDataEnhanced;
   window.clearDataEnhanced=clearDataEnhanced;
 })();
