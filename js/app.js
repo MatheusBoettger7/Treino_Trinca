@@ -96,7 +96,52 @@ function preencherUltimoTreino(exerciseIndex){
   }
   renderWorkout(content);
 }
-function startWorkout(){if(!activeWorkout())localStorage.setItem(activeKey,JSON.stringify({profile,code:current,startedAt:Date.now()}));startWorkoutClock();renderWorkout(content)}
+function preencherUltimoTreinoAutomatico(){
+  const w=workouts[current];
+  if(!w?.items?.length)return 0;
+  const d=draft();
+  let filled=0;
+  w.items.forEach((it,i)=>{
+    const last=lastExercise(it.name);
+    if(!last)return;
+    const previousSets=Array.isArray(last.sets)?last.sets:[];
+    for(let s=0;s<it.sets;s++){
+      const previous=previousSets[s];
+      if(!previous)continue;
+      const key=i+'_'+s;
+      const currentValue=d[key]||{};
+      const next={...currentValue};
+      let changed=false;
+      if(!String(currentValue.kg||'').trim()&&String(previous.kg||'').trim()){
+        next.kg=previous.kg;
+        changed=true;
+      }
+      if(!String(currentValue.reps||'').trim()&&String(previous.reps||'').trim()){
+        next.reps=previous.reps;
+        changed=true;
+      }
+      if(changed){
+        d[key]=next;
+        filled++;
+      }
+    }
+  });
+  if(filled)saveDraft(d);
+  return filled;
+}
+
+function startWorkout(){
+  if(!activeWorkout()){
+    const filled=preencherUltimoTreinoAutomatico();
+    localStorage.setItem(activeKey,JSON.stringify({profile,code:current,startedAt:Date.now()}));
+    startWorkoutClock();
+    renderWorkout(content);
+    if(filled)showAppMessage('Último treino carregado','KG e Reps preenchidos automaticamente para <b>'+filled+'</b> série(s) com base no seu último treino. 💪','↻');
+    return;
+  }
+  startWorkoutClock();
+  renderWorkout(content);
+}
 function startWorkoutClock(){clearInterval(workoutTimer);workoutTimer=setInterval(()=>{const a=activeWorkout(),el=document.getElementById('workoutTimer');if(a&&el)el.textContent=fmt((Date.now()-a.startedAt)/1000)},1000)}
 function stopWorkoutClock(){clearInterval(workoutTimer);workoutTimer=null}
 function cancelWorkout(){const a=activeWorkout();if(!a)return;showAppConfirm('Cancelar treino?','O tempo será encerrado e <b>os dados digitados deste treino serão apagados</b>. Nenhum registro será salvo no histórico.',()=>{localStorage.removeItem(activeKey);clearDraft();stopWorkoutClock();stopRest();renderWorkout(content);window.scrollTo({top:0,behavior:'smooth'})},'⚠️')}
