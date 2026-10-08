@@ -136,7 +136,6 @@ function startWorkout(){
     localStorage.setItem(activeKey,JSON.stringify({profile,code:current,startedAt:Date.now()}));
     startWorkoutClock();
     renderWorkout(content);
-    if(filled)showAppMessage('Último treino carregado','KG e Reps preenchidos automaticamente para <b>'+filled+'</b> série(s) com base no seu último treino. 💪','↻');
     return;
   }
   startWorkoutClock();
