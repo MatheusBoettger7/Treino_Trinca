@@ -469,6 +469,7 @@
         }
       });
     }
+    if(Number(imported.schemaVersion)>=5&&imported.workouts===undefined)throw new Error('O backup v5 não contém as definições completas dos treinos.');
     if(imported.workouts!==undefined)validateWorkoutBackups(imported.workouts,Number(imported.schemaVersion)>=5);
     if(imported.profile!==undefined&&!['masculino','feminino'].includes(imported.profile))throw new Error('O perfil selecionado no backup é inválido.');
     return {
