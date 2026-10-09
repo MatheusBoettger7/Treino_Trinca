@@ -685,3 +685,6 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
   .metric>div{flex:1 1 calc(50% - 4px);min-width:0}
   .metric>div:last-child{flex-basis:100%}
 }
+
+/* Gráficos interativos: tooltip acompanha o ponto selecionado por toque ou mouse. */
+.trend-chart-wrap{position:relative;overflow:visible}.trend-chart{display:block;width:100%;overflow:visible;touch-action:pan-y;outline:none}.trend-chart [data-chart-value]{cursor:pointer;stroke:var(--chart-point-outline,transparent);stroke-width:8;paint-order:stroke fill}.trend-chart [data-chart-value].selected{stroke:#ffffff55;stroke-width:8}.trend-chart-tooltip{position:absolute;z-index:3;max-width:145px;padding:7px 10px;border-radius:8px;background:#303030;color:#fff;font-size:12px;font-weight:700;white-space:nowrap;box-shadow:0 4px 16px #0005;pointer-events:none;transform:translateY(-2px)}.trend-chart-tooltip[hidden]{display:none}.trend-chart:focus-visible{outline:2px solid #60a5fa;outline-offset:3px;border-radius:8px}
