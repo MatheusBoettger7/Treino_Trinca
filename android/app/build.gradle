@@ -20,8 +20,8 @@ android {
         applicationId 'com.matheusboettger.treinotrinca'
         minSdk 23
         targetSdk 36
-        versionCode 61
-        versionName '2026.09.30.61'
+        versionCode 74
+        versionName '2026.10.09.74'
     }
 
     signingConfigs {
