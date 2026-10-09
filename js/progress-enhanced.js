@@ -448,6 +448,7 @@
     });
 
     const hasAppStorage=Object.prototype.hasOwnProperty.call(imported,'appStorage');
+    if(Number(imported.schemaVersion)>=5&&!hasAppStorage)throw new Error('O backup v5 não contém as configurações completas do aplicativo.');
     if(hasAppStorage){
       if(!isPlainObject(imported.appStorage)||Object.keys(imported.appStorage).length===0)throw new Error('As configurações do backup estão vazias ou são inválidas.');
       Object.entries(imported.appStorage).forEach(([key,value])=>{
