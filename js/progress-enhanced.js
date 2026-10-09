@@ -415,6 +415,12 @@
     return true;
   }
 
+  function clearDraftStorage(){
+    Object.keys(localStorage)
+      .filter(key=>key.startsWith('treinoTrincaDraft_'))
+      .forEach(key=>localStorage.removeItem(key));
+  }
+
   function validateBackupPayload(imported){
     if(!isPlainObject(imported))throw new Error('O arquivo não contém um objeto de backup.');
     const source=isPlainObject(imported.data)?imported.data:imported;
