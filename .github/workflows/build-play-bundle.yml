@@ -69,13 +69,20 @@ jobs:
         run: gradle --no-daemon bundleRelease
 
       - name: Prepare AAB artifact
-        run: cp android/app/build/outputs/bundle/release/app-release.aab Treino-Trinca-v2026.09.30.61-release-signed.aab
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION_NAME="$(sed -n "s/^[[:space:]]*versionName ['\"]\([^'\"]*\)['\"].*/\1/p" android/app/build.gradle | head -n 1)"
+          test -n "$VERSION_NAME" || { echo "::error::Não foi possível identificar versionName em android/app/build.gradle."; exit 1; }
+          AAB_NAME="Treino-Trinca-v${VERSION_NAME}-release-signed"
+          cp android/app/build/outputs/bundle/release/app-release.aab "${AAB_NAME}.aab"
+          echo "AAB_NAME=$AAB_NAME" >> "$GITHUB_ENV"
 
       - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
-          name: Treino-Trinca-v2026.09.30.61-release-signed
-          path: Treino-Trinca-v2026.09.30.61-release-signed.aab
+          name: ${{ env.AAB_NAME }}
+          path: ${{ env.AAB_NAME }}.aab
           retention-days: 30
 
       - name: Remove temporary keystore
