@@ -191,7 +191,43 @@
     const xAt=i=>points.length===1?(w-left-right)/2+left:left+i*((w-left-right)/Math.max(points.length-1,1));
     const yAt=v=>top+(max-v)/range*(h-top-bottom);
     const path=points.map((p,i)=>`${i?"L":"M"} ${xAt(i).toFixed(1)} ${yAt(p.y).toFixed(1)}`).join(" ");
-    return `<div class="trend-chart-wrap"><div class="trend-chart-title"><b>${esc(label)}</b><span class="muted small">${formatN(points[points.length-1].y)}${suffix}</span></div><svg class="trend-chart" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}"><line x1="${left}" y1="${top}" x2="${left}" y2="${h-bottom}" stroke="#334155"/><line x1="${left}" y1="${h-bottom}" x2="${w-right}" y2="${h-bottom}" stroke="#334155"/><path d="${path}" fill="none" stroke="${stroke}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>${points.map((p,i)=>`<circle cx="${xAt(i)}" cy="${yAt(p.y)}" r="3.5" fill="${stroke}"/><text x="${xAt(i)}" y="${h-10}" text-anchor="middle" class="trend-label">${p.x}</text>`).join("")}</svg></div>`;
+    return `<div class="trend-chart-wrap"><div class="trend-chart-title"><b>${esc(label)}</b><span class="muted small">${formatN(points[points.length-1].y)}${suffix}</span></div><svg class="trend-chart" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}" tabindex="0"><line x1="${left}" y1="${top}" x2="${left}" y2="${h-bottom}" stroke="#334155"/><line x1="${left}" y1="${h-bottom}" x2="${w-right}" y2="${h-bottom}" stroke="#334155"/><path d="${path}" fill="none" stroke="${stroke}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>${points.map((p,i)=>`<circle cx="${xAt(i)}" cy="${yAt(p.y)}" r="4" fill="${stroke}" data-chart-value="${p.y}" data-chart-label="${esc(p.x)}" tabindex="0" role="button" aria-label="${esc(p.x)}: ${formatN(p.y)}${esc(suffix)}"/><text x="${xAt(i)}" y="${h-10}" text-anchor="middle" class="trend-label">${esc(p.x)}</text>`).join("")}</svg><div class="trend-chart-tooltip" role="status" aria-live="polite" hidden></div></div>`;
+  }
+
+  function bindTrendChartInteractions(root){
+    root.querySelectorAll(".trend-chart-wrap").forEach(wrap=>{
+      const svg=wrap.querySelector(".trend-chart"),tooltip=wrap.querySelector(".trend-chart-tooltip");
+      if(!svg||!tooltip||svg.dataset.interactiveBound)return;
+      svg.dataset.interactiveBound="true";
+      const points=()=>Array.from(svg.querySelectorAll("[data-chart-value]"));
+      const showPoint=point=>{
+        if(!point)return;
+        const value=Number(point.dataset.chartValue)||0,label=point.dataset.chartLabel||"";
+        tooltip.textContent=`${formatN(value)}${wrap.querySelector(".trend-chart-title b")?.textContent?.toLowerCase().includes("calorias")?" kcal":""} · ${label}`;
+        tooltip.hidden=false;
+        const svgRect=svg.getBoundingClientRect(),wrapRect=wrap.getBoundingClientRect();
+        const scaleX=svgRect.width/340,scaleY=svgRect.height/170;
+        const x=Number(point.getAttribute("cx"))*scaleX+svgRect.left-wrapRect.left;
+        const y=Number(point.getAttribute("cy"))*scaleY+svgRect.top-wrapRect.top;
+        tooltip.style.left=`${Math.max(4,Math.min(wrapRect.width-150,x-68))}px`;
+        tooltip.style.top=`${Math.max(0,y-38)}px`;
+        points().forEach(p=>p.classList.toggle("selected",p===point));
+      };
+      const nearest=event=>{
+        const rect=svg.getBoundingClientRect(),scale=340/rect.width;
+        const x=(event.clientX-rect.left)*scale;
+        return points().sort((a,b)=>Math.abs(Number(a.getAttribute("cx"))-x)-Math.abs(Number(b.getAttribute("cx"))-x))[0];
+      };
+      svg.addEventListener("pointerdown",e=>{showPoint(nearest(e));});
+      svg.addEventListener("pointermove",e=>{if(e.pointerType==="mouse"||e.buttons||e.pointerType==="touch")showPoint(nearest(e));});
+      svg.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse")tooltip.hidden=true;});
+      svg.addEventListener("focusin",e=>{if(e.target.matches("[data-chart-value]"))showPoint(e.target);});
+      svg.addEventListener("keydown",e=>{
+        if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight")return;
+        const all=points(),index=all.indexOf(document.activeElement),next=Math.max(0,Math.min(all.length-1,index+(e.key==="ArrowRight"?1:-1)));
+        e.preventDefault();all[next]?.focus();showPoint(all[next]);
+      });
+    });
   }
 
   function exerciseEvolution(name){
@@ -286,6 +322,7 @@
     c.innerHTML+=`<details class="card progress-collapsible"><summary><b>🏆 Recordes pessoais</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body">${prs()}</div></details>`;
     c.innerHTML+=`<div class="card"><h3>Últimos treinos</h3>${recent.length?recent.map(s=>`<div class="history"><b>Treino ${esc(s.code)}</b> · ${new Date(s.date).toLocaleDateString("pt-BR")}${s.durationSec!=null?` · ⏱️ ${fmt(s.durationSec)}`:""}</div>`).join(""):"<div class=\"empty\">Nenhum treino salvo ainda.</div>"}</div>`;
     c.innerHTML+=`<div class="card"><h3>Backup completo</h3><button class="secondary" onclick="exportDataEnhanced()">📤 Exportar</button><button class="secondary" onclick="openImportFileEnhanced()">📥 Importar</button><button class="secondary" onclick="clearDataEnhanced()">Limpar</button><input id="importFileEnhanced" type="file" accept="application/json,.json" hidden onchange="importDataEnhanced(event)"><div class="muted small">Inclui histórico, medidas, treinos personalizados e configurações do aplicativo. A importação substitui os dados atuais.</div><div class="repdb-credit">Exercise data by <a href="https://repdb.co" target="_blank" rel="noopener">RepDB (repdb.co)</a>.</div></div>`;
+    bindTrendChartInteractions(c);
   }
   function selectExerciseEnhanced(name){
     window.__trincaSelectedExercise=name||'';
