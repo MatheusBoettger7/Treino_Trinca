@@ -551,6 +551,7 @@
 
         // A restauração é transacional: se qualquer gravação falhar, tenta devolver o estado anterior.
         const previousStorage=collectAppStorage();
+        const previousData=data;
         try{
           const restoredFullStorage=hasAppStorage?restoreAppStorage(imported.appStorage):false;
 
@@ -580,6 +581,7 @@
             clearDraftStorage();
           }
         }catch(restoreError){
+          data=previousData;
           try{
             clearAppStorage();
             Object.entries(previousStorage).forEach(([key,value])=>localStorage.setItem(key,value));
