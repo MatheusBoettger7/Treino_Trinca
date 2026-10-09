@@ -429,6 +429,7 @@
 
   function validateBackupPayload(imported){
     if(!isPlainObject(imported))throw new Error('O arquivo não contém um objeto de backup.');
+    if(imported.schemaVersion!==undefined&&(!Number.isInteger(Number(imported.schemaVersion))||Number(imported.schemaVersion)<1))throw new Error('A versão do formato de backup é inválida.');
     const source=isPlainObject(imported.data)?imported.data:imported;
     if(!Array.isArray(source.sessions)||!Array.isArray(source.metrics))throw new Error('O backup não contém histórico e medidas válidos.');
     source.sessions.forEach((session,index)=>{
@@ -448,7 +449,7 @@
 
     const hasAppStorage=Object.prototype.hasOwnProperty.call(imported,'appStorage');
     if(hasAppStorage){
-      if(!isPlainObject(imported.appStorage))throw new Error('As configurações do backup são inválidas.');
+      if(!isPlainObject(imported.appStorage)||Object.keys(imported.appStorage).length===0)throw new Error('As configurações do backup estão vazias ou são inválidas.');
       Object.entries(imported.appStorage).forEach(([key,value])=>{
         if(!key.startsWith('treinoTrinca')||typeof value!=='string')throw new Error('Uma configuração salva no backup é inválida.');
         if(key==='treinoTrincaData'){
