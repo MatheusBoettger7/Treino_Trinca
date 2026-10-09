@@ -354,13 +354,17 @@
         (item.sets===undefined||(Number.isInteger(Number(item.sets))&&Number(item.sets)>0)));
   }
 
-  function validateWorkoutBackups(workouts){
+  function validateWorkoutBackups(workouts,requireDefaults=false){
     if(!isPlainObject(workouts))throw new Error('A seção de treinos do backup é inválida.');
     ['masculino','feminino'].forEach(p=>{
       if(workouts[p]!==undefined&&!isPlainObject(workouts[p]))throw new Error('A lista de treinos do perfil '+p+' é inválida.');
       Object.entries(workouts[p]||{}).forEach(([code,workout])=>{
         if(!code||!isWorkoutDefinition(workout))throw new Error('Definição inválida para o treino '+code+'.');
       });
+      if(requireDefaults){
+        const missing=(profiles?.[p]?.codes||[]).filter(code=>!isWorkoutDefinition(workouts[p]?.[code]));
+        if(missing.length)throw new Error('O backup está incompleto: faltam definições dos treinos padrão do perfil '+p+': '+missing.join(', ')+'.');
+      }
     });
     return workouts;
   }
@@ -371,8 +375,9 @@
     ['masculino','feminino'].forEach(p=>{
       const codes=profiles?.[p]?.codes||[];
       codes.forEach(code=>{
-        const workout=defaults[code]||workouts?.[code];
-        if(workout&&isWorkoutDefinition(workout))result[p][code]=cloneJson(workout);
+        const defaultWorkout=isWorkoutDefinition(defaults[code])?defaults[code]:workouts?.[code];
+        if(!isWorkoutDefinition(defaultWorkout))throw new Error('Não foi possível incluir o treino padrão '+code+' do perfil '+p+' no backup.');
+        result[p][code]=cloneJson(defaultWorkout);
       });
       let saved={};
       try{
@@ -386,6 +391,7 @@
         result[p][code]=cloneJson(workout);
       });
     });
+    validateWorkoutBackups(result,true);
     return result;
   }
 
@@ -463,7 +469,7 @@
         }
       });
     }
-    if(imported.workouts!==undefined)validateWorkoutBackups(imported.workouts);
+    if(imported.workouts!==undefined)validateWorkoutBackups(imported.workouts,Number(imported.schemaVersion)>=5);
     if(imported.profile!==undefined&&!['masculino','feminino'].includes(imported.profile))throw new Error('O perfil selecionado no backup é inválido.');
     return {
       sessions:source.sessions.map(session=>({
