@@ -340,13 +340,51 @@
     renderProgressEnhanced(content);
   }
 
+  function isPlainObject(value){
+    return value!==null&&typeof value==='object'&&!Array.isArray(value);
+  }
+
+  function cloneJson(value){
+    return JSON.parse(JSON.stringify(value));
+  }
+
+  function isWorkoutDefinition(workout){
+    return isPlainObject(workout)&&Array.isArray(workout.items)&&
+      workout.items.every(item=>isPlainObject(item)&&
+        (item.sets===undefined||(Number.isInteger(Number(item.sets))&&Number(item.sets)>0)));
+  }
+
+  function validateWorkoutBackups(workouts){
+    if(!isPlainObject(workouts))throw new Error('A seção de treinos do backup é inválida.');
+    ['masculino','feminino'].forEach(p=>{
+      if(workouts[p]!==undefined&&!isPlainObject(workouts[p]))throw new Error('A lista de treinos do perfil '+p+' é inválida.');
+      Object.entries(workouts[p]||{}).forEach(([code,workout])=>{
+        if(!code||!isWorkoutDefinition(workout))throw new Error('Definição inválida para o treino '+code+'.');
+      });
+    });
+    return workouts;
+  }
+
   function collectWorkoutBackups(){
     const result={masculino:{},feminino:{}};
+    const defaults=window.__trincaDefaults||{};
     ['masculino','feminino'].forEach(p=>{
+      const codes=profiles?.[p]?.codes||[];
+      codes.forEach(code=>{
+        const workout=defaults[code]||workouts?.[code];
+        if(workout&&isWorkoutDefinition(workout))result[p][code]=cloneJson(workout);
+      });
+      let saved={};
       try{
-        const saved=JSON.parse(localStorage.getItem(`treinoTrincaWorkouts_${p}`)||'{}');
-        if(saved&&typeof saved==='object')result[p]=saved;
-      }catch{}
+        saved=JSON.parse(localStorage.getItem(`treinoTrincaWorkouts_${p}`)||'{}');
+      }catch{
+        throw new Error('As personalizações de treino do perfil '+p+' estão corrompidas. Corrija os dados antes de exportar.');
+      }
+      if(!isPlainObject(saved))throw new Error('As personalizações de treino do perfil '+p+' são inválidas.');
+      Object.entries(saved).forEach(([code,workout])=>{
+        if(!isWorkoutDefinition(workout))throw new Error('A definição salva do treino '+code+' é inválida.');
+        result[p][code]=cloneJson(workout);
+      });
     });
     return result;
   }
@@ -361,22 +399,77 @@
   }
 
   function clearAppStorage(){
-    try{
-      Object.keys(localStorage)
-        .filter(key=>key.startsWith('treinoTrinca'))
-        .forEach(key=>localStorage.removeItem(key));
-    }catch{}
+    Object.keys(localStorage)
+      .filter(key=>key.startsWith('treinoTrinca'))
+      .forEach(key=>localStorage.removeItem(key));
   }
 
   function restoreAppStorage(storage){
-    if(!storage||typeof storage!=='object'||Array.isArray(storage))return false;
+    if(!isPlainObject(storage))return false;
     clearAppStorage();
     Object.entries(storage).forEach(([key,value])=>{
-      if(!key.startsWith('treinoTrinca'))return;
-      if(value===null||value===undefined)return;
-      localStorage.setItem(key,String(value));
+      if(!key.startsWith('treinoTrinca'))throw new Error('O backup contém uma configuração não reconhecida.');
+      if(typeof value!=='string')throw new Error('O valor da configuração '+key+' é inválido.');
+      localStorage.setItem(key,value);
     });
     return true;
+  }
+
+  function validateBackupPayload(imported){
+    if(!isPlainObject(imported))throw new Error('O arquivo não contém um objeto de backup.');
+    const source=isPlainObject(imported.data)?imported.data:imported;
+    if(!Array.isArray(source.sessions)||!Array.isArray(source.metrics))throw new Error('O backup não contém histórico e medidas válidos.');
+    source.sessions.forEach((session,index)=>{
+      if(!isPlainObject(session))throw new Error('O treino registrado '+(index+1)+' é inválido.');
+      if(session.exercises!==undefined&&!Array.isArray(session.exercises))throw new Error('A lista de exercícios do treino '+(index+1)+' é inválida.');
+      (session.exercises||[]).forEach((exercise,exerciseIndex)=>{
+        if(!isPlainObject(exercise))throw new Error('Um exercício do treino '+(index+1)+' é inválido.');
+        if(exercise.sets!==undefined&&!Array.isArray(exercise.sets))throw new Error('As séries do exercício '+(exerciseIndex+1)+' são inválidas.');
+        (exercise.sets||[]).forEach(set=>{
+          if(!isPlainObject(set))throw new Error('Uma série do backup é inválida.');
+        });
+      });
+    });
+    source.metrics.forEach((metric,index)=>{
+      if(!isPlainObject(metric))throw new Error('A medida corporal '+(index+1)+' é inválida.');
+    });
+
+    const hasAppStorage=Object.prototype.hasOwnProperty.call(imported,'appStorage');
+    if(hasAppStorage){
+      if(!isPlainObject(imported.appStorage))throw new Error('As configurações do backup são inválidas.');
+      Object.entries(imported.appStorage).forEach(([key,value])=>{
+        if(!key.startsWith('treinoTrinca')||typeof value!=='string')throw new Error('Uma configuração salva no backup é inválida.');
+        if(key==='treinoTrincaData'){
+          let stored;
+          try{stored=JSON.parse(value)}catch{throw new Error('O histórico salvo nas configurações está corrompido.');}
+          if(!isPlainObject(stored)||!Array.isArray(stored.sessions)||!Array.isArray(stored.metrics))throw new Error('O histórico salvo nas configurações é inválido.');
+        }else if(/^treinoTrincaWorkouts_/.test(key)){
+          let saved;
+          try{saved=JSON.parse(value)}catch{throw new Error('As personalizações de treino salvas estão corrompidas.');}
+          if(!isPlainObject(saved))throw new Error('As personalizações de treino salvas são inválidas.');
+          Object.entries(saved).forEach(([code,workout])=>{
+            if(!code||!isWorkoutDefinition(workout))throw new Error('A definição salva do treino '+code+' é inválida.');
+          });
+        }else if(/^treinoTrincaDraft_/.test(key)||key==='treinoTrincaActive'){
+          let parsed;
+          try{parsed=JSON.parse(value)}catch{throw new Error('Um rascunho ou treino em andamento está corrompido.');}
+          if(!isPlainObject(parsed))throw new Error('Um rascunho ou treino em andamento é inválido.');
+        }
+      });
+    }
+    if(imported.workouts!==undefined)validateWorkoutBackups(imported.workouts);
+    if(imported.profile!==undefined&&!['masculino','feminino'].includes(imported.profile))throw new Error('O perfil selecionado no backup é inválido.');
+    return {
+      sessions:source.sessions.map(session=>({
+        ...session,
+        profile:session.profile||'masculino',
+        exercises:Array.isArray(session.exercises)?session.exercises.map(exercise=>({
+          ...exercise,
+          sets:Array.isArray(exercise.sets)?exercise.sets.map(set=>({...set})):[]
+        })):[]
+      })),
+      metrics:source.metrics.map(metric=>({...metric,profile:metric.profile||'masculino'}))
+    };
   }
 
   function cloneSessions(){
@@ -395,13 +488,21 @@
 
   function exportDataEnhanced(){
     const filename=`treino-trinca-backup-${new Date().toISOString().slice(0,10)}.json`;
+    let workoutBackups;
+    try{
+      workoutBackups=collectWorkoutBackups();
+    }catch(error){
+      console.error('Não foi possível preparar o backup dos treinos:',error);
+      alert(error.message||'Não foi possível preparar o backup dos treinos.');
+      return;
+    }
     const payload={
-      schemaVersion:4,
+      schemaVersion:5,
       exportedAt:new Date().toISOString(),
       profile,
       currentWorkout:current,
       data:{sessions:cloneSessions(),metrics:cloneMetrics()},
-      workouts:collectWorkoutBackups(),
+      workouts:workoutBackups,
       appStorage:collectAppStorage()
     };
     const json=JSON.stringify(payload,null,2);
@@ -444,61 +545,68 @@
     reader.onload=()=>{
       try{
         const imported=JSON.parse(reader.result);
-        const source=imported?.data&&typeof imported.data==='object'?imported.data:imported;
-        if(!Array.isArray(source.sessions)||!Array.isArray(source.metrics))throw Error();
+        const restoredData=validateBackupPayload(imported);
+        const hasAppStorage=Object.prototype.hasOwnProperty.call(imported,'appStorage');
         if(!confirm('Substituir seus dados atuais pelo backup?'))return;
 
-        const restoredFullStorage=restoreAppStorage(imported?.appStorage);
+        // A restauração é transacional: se qualquer gravação falhar, tenta devolver o estado anterior.
+        const previousStorage=collectAppStorage();
+        const previousData=data;
+        try{
+          const restoredFullStorage=hasAppStorage?restoreAppStorage(imported.appStorage):false;
 
-        data={
-          sessions:source.sessions.map(s=>({
-            ...s,
-            profile:s.profile||'masculino',
-            exercises:Array.isArray(s.exercises)?s.exercises.map(e=>({
-              ...e,
-              sets:Array.isArray(e.sets)?e.sets.map(x=>({...x})):[] 
-            })):[] 
-          })),
-          metrics:source.metrics.map(m=>({...m,profile:m.profile||'masculino'}))
-        };
+          if(imported.workouts!==undefined){
+            ['masculino','feminino'].forEach(p=>{
+              const saved=imported.workouts[p]||{};
+              localStorage.setItem(`treinoTrincaWorkouts_${p}`,JSON.stringify(saved));
+            });
+          }else if(!restoredFullStorage){
+            // Backups antigos sem definições completas mantêm compatibilidade com o formato anterior.
+            localStorage.removeItem('treinoTrincaWorkouts_masculino');
+            localStorage.removeItem('treinoTrincaWorkouts_feminino');
+          }
 
-        if(!restoredFullStorage&&imported?.workouts&&typeof imported.workouts==='object'){
-          ['masculino','feminino'].forEach(p=>{
-            const saved=imported.workouts[p];
-            if(saved&&typeof saved==='object')localStorage.setItem(`treinoTrincaWorkouts_${p}`,JSON.stringify(saved));
-            else localStorage.setItem(`treinoTrincaWorkouts_${p}`,'{}');
-          });
-        }
+          if(!restoredFullStorage&&(imported.profile==='masculino'||imported.profile==='feminino')){
+            localStorage.setItem(profileKey,imported.profile);
+            const importedCurrent=typeof imported.currentWorkout==='string'?imported.currentWorkout:'';
+            if(importedCurrent)localStorage.setItem(currentKey(imported.profile),importedCurrent);
+          }
 
-        if(!restoredFullStorage&& (imported?.profile==='masculino'||imported?.profile==='feminino')){
-          localStorage.setItem(profileKey,imported.profile);
-          const importedCurrent=typeof imported.currentWorkout==='string'?imported.currentWorkout:'';
-          if(importedCurrent)localStorage.setItem(currentKey(imported.profile),importedCurrent);
-        }
+          data=restoredData;
+          localStorage.setItem(stateKey,JSON.stringify(data));
 
-        localStorage.setItem(stateKey,JSON.stringify(data));
-
-        if(!restoredFullStorage){
-          localStorage.removeItem(activeKey);
-          localStorage.removeItem(restEndKey);
-          clearDraftStorage();
+          if(!restoredFullStorage){
+            localStorage.removeItem(activeKey);
+            localStorage.removeItem(restEndKey);
+            clearDraftStorage();
+          }
+        }catch(restoreError){
+          data=previousData;
+          try{
+            clearAppStorage();
+            Object.entries(previousStorage).forEach(([key,value])=>localStorage.setItem(key,value));
+          }catch(rollbackError){
+            console.error('Falha ao devolver o estado anterior após erro na restauração:',rollbackError);
+          }
+          throw restoreError;
         }
 
         window.__trincaSelectedExercise='';
-
-        alert(`Backup importado com sucesso! ${data.sessions.length} treino(s) recuperado(s).${restoredFullStorage?' Todas as configurações e estados do aplicativo também foram restaurados.':''}`);
+        alert(`Backup importado com sucesso! ${data.sessions.length} treino(s) recuperado(s).${hasAppStorage?' Configurações e estados do aplicativo também foram restaurados.':''}`);
         location.reload();
       }catch(error){
         console.warn('Importação de backup falhou:',error);
-        alert('Arquivo de backup inválido.');
+        alert(error.message&&/backup|treino|configuração|histórico|medida|exercício|série|rascunho|perfil/i.test(error.message)
+          ?'Backup não importado: '+error.message
+          :'Arquivo de backup inválido. Nenhum dado foi alterado.');
       }finally{
         const input=document.getElementById('importFileEnhanced');
         if(input)input.value='';
       }
     };
+    reader.onerror=()=>alert('Não foi possível ler o arquivo de backup. Nenhum dado foi alterado.');
     reader.readAsText(file);
   }
-
 
   function clearDataEnhanced(){
     if(confirm('Apagar todo o histórico?')){
