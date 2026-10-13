@@ -330,6 +330,16 @@
   function selectExerciseEnhanced(name){
     window.__trincaSelectedExercise=name||'';
     renderProgressEnhanced(content);
+
+    // Após atualizar os dados, leva o foco visual para as informações do exercício escolhido.
+    const target=content.querySelector('.exercise-summary')||
+      content.querySelector('.evolution-charts')||
+      content.querySelector('.exercise-history-list');
+    if(target){
+      requestAnimationFrame(()=>{
+        target.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    }
   }
 
   function saveMetricEnhanced(){
