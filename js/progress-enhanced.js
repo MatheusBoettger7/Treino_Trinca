@@ -309,6 +309,8 @@
   }
 
   function renderProgressEnhanced(c){
+    // Preserva quais painéis estavam abertos antes de reconstruir a aba Progresso.
+    const openSections=Array.from(c.querySelectorAll('details.progress-collapsible')).map(section=>section.open);
     const stats=weekStats(),recent=progressSessions().slice(-8).reverse(),exercises=allExercises();
     if(!window.__trincaSelectedExercise&&exercises.length)window.__trincaSelectedExercise=exercises[0];
     if(window.__trincaSelectedExercise&&!exercises.includes(window.__trincaSelectedExercise))window.__trincaSelectedExercise=exercises[0]||"";
@@ -322,6 +324,7 @@
     c.innerHTML+=`<details class="card progress-collapsible"><summary><b>🏆 Recordes pessoais</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body">${prs()}</div></details>`;
     c.innerHTML+=`<div class="card"><h3>Últimos treinos</h3>${recent.length?recent.map(s=>`<div class="history"><b>Treino ${esc(s.code)}</b> · ${new Date(s.date).toLocaleDateString("pt-BR")}${s.durationSec!=null?` · ⏱️ ${fmt(s.durationSec)}`:""}</div>`).join(""):"<div class=\"empty\">Nenhum treino salvo ainda.</div>"}</div>`;
     c.innerHTML+=`<div class="card"><h3>Backup completo</h3><button class="secondary" onclick="exportDataEnhanced()">📤 Exportar</button><button class="secondary" onclick="openImportFileEnhanced()">📥 Importar</button><button class="secondary" onclick="clearDataEnhanced()">Limpar</button><input id="importFileEnhanced" type="file" accept="application/json,.json" hidden onchange="importDataEnhanced(event)"><div class="muted small">Inclui histórico, medidas, treinos personalizados e configurações do aplicativo. A importação substitui os dados atuais.</div><div class="repdb-credit">Exercise data by <a href="https://repdb.co" target="_blank" rel="noopener">RepDB (repdb.co)</a>.</div></div>`;
+    c.querySelectorAll('details.progress-collapsible').forEach((section,index)=>{ section.open=Boolean(openSections[index]); });
     bindTrendChartInteractions(c);
   }
   function selectExerciseEnhanced(name){
