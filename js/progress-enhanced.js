@@ -331,13 +331,15 @@
     window.__trincaSelectedExercise=name||'';
     renderProgressEnhanced(content);
 
-    // Após atualizar os dados, leva o foco visual para as informações do exercício escolhido.
-    // O foco deve ficar no cartão com o nome e os indicadores do exercício, não nos gráficos.
+    // Rola até o cartão do exercício (nome + indicadores), nunca até os gráficos.
     const target=content.querySelector('.exercise-summary');
     if(target){
-      requestAnimationFrame(()=>{
-        target.scrollIntoView({behavior:'smooth',block:'start'});
-      });
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{
+        const header=document.querySelector('.top');
+        const offset=(header?.getBoundingClientRect().height||0)+12;
+        const top=target.getBoundingClientRect().top+window.scrollY-offset;
+        window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+      }));
     }
   }
 
