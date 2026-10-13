@@ -332,9 +332,8 @@
     renderProgressEnhanced(content);
 
     // Após atualizar os dados, leva o foco visual para as informações do exercício escolhido.
-    const target=content.querySelector('.exercise-summary')||
-      content.querySelector('.evolution-charts')||
-      content.querySelector('.exercise-history-list');
+    // O foco deve ficar no cartão com o nome e os indicadores do exercício, não nos gráficos.
+    const target=content.querySelector('.exercise-summary');
     if(target){
       requestAnimationFrame(()=>{
         target.scrollIntoView({behavior:'smooth',block:'start'});
