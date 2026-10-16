@@ -137,7 +137,7 @@ public class MainActivity extends Activity {
         });
 
         // Cache-bust the top-level document so each native APK version loads the current web app.
-        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.10.09.74");
+        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.10.16.75");
 
         requestNotificationPermission();
     }
@@ -347,6 +347,13 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Remove apenas o aviso já exibido; não cancela os próximos alarmes de descanso.
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (notificationManager != null) {
+            notificationManager.cancel(REST_NOTIFICATION_ID);
+        }
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || alarmManager.canScheduleExactAlarms()) {
