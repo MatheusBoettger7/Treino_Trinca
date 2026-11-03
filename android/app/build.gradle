@@ -16,3 +16,7 @@ android {
         release { minifyEnabled false }
     }
 }
+
+dependencies {
+    implementation 'androidx.core:core:1.15.0'
+}
