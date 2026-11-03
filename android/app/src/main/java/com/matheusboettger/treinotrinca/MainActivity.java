@@ -26,6 +26,9 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 import android.graphics.Color;
 import android.util.Log;
+import android.util.Base64;
+
+import androidx.core.content.FileProvider;
 
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
@@ -78,6 +81,7 @@ public class MainActivity extends Activity {
 
         webView.addJavascriptInterface(new NotificationBridge(this), "AndroidNotifications");
         webView.addJavascriptInterface(new BackupBridge(this), "AndroidBackup");
+        webView.addJavascriptInterface(new ShareBridge(this), "AndroidShare");
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -137,7 +141,7 @@ public class MainActivity extends Activity {
         });
 
         // Cache-bust the top-level document so each native APK version loads the current web app.
-        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.10.16.75");
+        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.11.03.80");
 
         requestNotificationPermission();
     }
@@ -260,6 +264,68 @@ public class MainActivity extends Activity {
                 cancelRestAlarmOnly();
                 RestAlarmReceiver.showRestNotification(context);
             });
+        }
+    }
+
+    public class ShareBridge {
+        private final Context context;
+
+        ShareBridge(Context context) {
+            this.context = context;
+        }
+
+        @JavascriptInterface
+        public void shareImage(String fileName, String imageBase64) {
+            runOnUiThread(() -> shareWorkoutImage(fileName, imageBase64));
+        }
+    }
+
+    private void shareWorkoutImage(String fileName, String imageBase64) {
+        try {
+            if (imageBase64 == null || imageBase64.isEmpty() || imageBase64.length() > 15000000) {
+                throw new IllegalArgumentException("Imagem inválida ou muito grande.");
+            }
+
+            byte[] imageBytes = Base64.decode(imageBase64, Base64.DEFAULT);
+            if (imageBytes.length == 0 || imageBytes.length > 10 * 1024 * 1024) {
+                throw new IllegalArgumentException("A imagem excede o tamanho permitido.");
+            }
+
+            File shareDirectory = new File(getCacheDir(), "shared");
+            if (!shareDirectory.exists() && !shareDirectory.mkdirs()) {
+                throw new IllegalStateException("Não foi possível preparar a imagem para compartilhamento.");
+            }
+
+            String safeName = fileName == null ? "treino-trinca.png"
+                    : fileName.replaceAll("[^A-Za-z0-9._-]", "_");
+            if (!safeName.toLowerCase(java.util.Locale.ROOT).endsWith(".png")) {
+                safeName += ".png";
+            }
+
+            File imageFile = new File(shareDirectory, safeName);
+            try (FileOutputStream output = new FileOutputStream(imageFile)) {
+                output.write(imageBytes);
+                output.flush();
+            }
+
+            Uri imageUri = FileProvider.getUriForFile(
+                    this,
+                    getPackageName() + ".fileprovider",
+                    imageFile
+            );
+
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("image/png");
+            shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Meu treino concluído com o Treino Trinca 💪");
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+            Intent chooser = Intent.createChooser(shareIntent, "Compartilhar treino");
+            chooser.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(chooser);
+        } catch (Exception ex) {
+            Log.e(TAG, "Não foi possível compartilhar a imagem do treino.", ex);
+            Toast.makeText(this, "Não foi possível compartilhar a imagem.", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -444,6 +510,7 @@ public class MainActivity extends Activity {
         if (webView != null) {
             webView.removeJavascriptInterface("AndroidNotifications");
             webView.removeJavascriptInterface("AndroidBackup");
+            webView.removeJavascriptInterface("AndroidShare");
             webView.destroy();
         }
         super.onDestroy();
