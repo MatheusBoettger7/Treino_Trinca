@@ -41,5 +41,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Treino-Trinca-v2026.11.03.80
-          path: Treino-Trinca-v2026.10.09.74-debug.apk
+          path: Treino-Trinca-v2026.11.03.80-debug.apk
           retention-days: 30
