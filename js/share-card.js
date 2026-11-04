@@ -61,7 +61,8 @@
     const ctx = canvas.getContext('2d');
     if (!ctx) throw new Error('Não foi possível criar a imagem do treino.');
 
-    const blue = document.documentElement.dataset.theme === 'blue';
+    const selectedTheme = localStorage.getItem('treinoTrincaTheme') || document.documentElement.dataset.theme || 'red';
+    const blue = selectedTheme === 'blue';
     const accent = blue ? '#3987ff' : '#ef4444';
     const accentSoft = blue ? 'rgba(57,135,255,0.22)' : 'rgba(239,68,68,0.22)';
     const profile = session.profile === 'feminino' ? 'FEMININO' : 'MASCULINO';
@@ -78,7 +79,7 @@
     const hasVolume = volume > 0;
     const date = new Date(session.date || Date.now());
     const dateLabel = date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
-    const weekCount = Math.max(1, Number(session.weeklyCount) || 1);
+    const weekCount = Math.min(5, Math.max(1, Number(session.weeklyCount) || 1));
     const workoutCode = session.code || '';
     const workoutName = session.workoutName || ('Treino ' + workoutCode);
 
@@ -114,10 +115,10 @@
     ctx.translate(76, 78);
     ctx.scale(78 / 512, 78 / 512);
     roundedRect(ctx, 0, 0, 512, 512, 145);
-    ctx.fillStyle = '#090a18';
+    ctx.fillStyle = '#0b0b0b';
     ctx.fill();
 
-    ctx.fillStyle = blue ? '#2563eb' : '#8f0000';
+    ctx.fillStyle = blue ? '#2563eb' : '#b00000';
     roundedRect(ctx, 132, 152, 54, 208, 27);
     ctx.fill();
     roundedRect(ctx, 326, 152, 54, 208, 27);
