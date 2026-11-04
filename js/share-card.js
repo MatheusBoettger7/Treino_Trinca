@@ -110,10 +110,30 @@
       ctx.stroke();
     }
 
-    roundedRect(ctx, 76, 78, 78, 78, 22);
-    ctx.fillStyle = accent;
+    ctx.save();
+    ctx.translate(76, 78);
+    ctx.scale(78 / 512, 78 / 512);
+    roundedRect(ctx, 0, 0, 512, 512, 145);
+    ctx.fillStyle = '#090a18';
     ctx.fill();
-    text(ctx, 'TT', 115, 130, '900 31px system-ui, sans-serif', '#ffffff', 'center');
+
+    ctx.fillStyle = '#58a8f5';
+    roundedRect(ctx, 132, 152, 54, 208, 27);
+    ctx.fill();
+    roundedRect(ctx, 326, 152, 54, 208, 27);
+    ctx.fill();
+    roundedRect(ctx, 91, 210, 54, 92, 27);
+    ctx.fill();
+    roundedRect(ctx, 367, 210, 54, 92, 27);
+    ctx.fill();
+    roundedRect(ctx, 145, 224, 222, 64, 32);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(256, 256, 45, 0, Math.PI * 2);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.restore();
     text(ctx, 'TREINO TRINCA', 184, 116, '800 31px system-ui, sans-serif', '#ffffff');
     text(ctx, 'EVOLUÇÃO QUE VOCÊ CONSTRÓI', 184, 151, '600 17px system-ui, sans-serif', '#8994a5');
 
