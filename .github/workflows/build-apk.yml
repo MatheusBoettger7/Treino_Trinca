@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ main, producao, 'test/android-safe-area-v49', 'test/ios-pwa-v50', 'test/cancel-workout-v52', 'test/scroll-stability-v53', 'fix/apk-artifact-v54', 'teste/calorias-estimadas-v70', 'teste/backup-import-v72', 'feature/share-workout-card-test' ]
+    branches: [ main, producao, 'test/android-safe-area-v49', 'test/ios-pwa-v50', 'test/cancel-workout-v52', 'test/scroll-stability-v53', 'fix/apk-artifact-v54', 'teste/calorias-estimadas-v70', 'teste/backup-import-v72', 'feature/share-workout-card-test', 'fix/android-share-download-v81' ]
     paths:
       - 'android/**'
       - 'index.html'
