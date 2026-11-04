@@ -128,18 +128,8 @@
     ctx.fill();
     text(ctx, 'TREINO CONCLUÍDO', 132, 262, '800 19px system-ui, sans-serif', '#e8edf5');
 
-    text(ctx, 'Treino ' + workoutCode, 76, 398, '900 91px system-ui, sans-serif', '#ffffff');
-
     const weekdayLabel = date.toLocaleDateString('pt-BR', { weekday: 'long' }).toUpperCase();
-    roundedRect(ctx, 760, 342, 244, 54, 18);
-    ctx.fillStyle = accentSoft;
-    ctx.fill();
-    ctx.strokeStyle = accent;
-    ctx.globalAlpha = 0.48;
-    ctx.lineWidth = 2;
-    ctx.stroke();
-    ctx.globalAlpha = 1;
-    text(ctx, weekdayLabel, 882, 376, '800 20px system-ui, sans-serif', '#ffffff', 'center');
+    text(ctx, weekdayLabel, 76, 398, '900 76px system-ui, sans-serif', '#ffffff');
     ctx.font = '600 38px system-ui, sans-serif';
     ctx.fillStyle = '#c5cedb';
     const nameWords = String(workoutName).split(/\s+/);
