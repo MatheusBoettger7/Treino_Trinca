@@ -296,9 +296,20 @@
 
   function downloadCurrentImage() {
     if (!activeCanvas || !activeSession) return;
+    const name = fileNameFor(activeSession);
+    const dataUrl = activeCanvas.toDataURL('image/png');
+    const imageBase64 = dataUrl.substring(dataUrl.indexOf(',') + 1);
+
+    // Native Android WebView downloads must be saved through the system document picker.
+    if (window.AndroidShare && typeof window.AndroidShare.saveImage === 'function') {
+      window.AndroidShare.saveImage(name, imageBase64);
+      return;
+    }
+
+    // Regular browsers keep the normal file-download behavior.
     const link = document.createElement('a');
-    link.href = activeCanvas.toDataURL('image/png');
-    link.download = fileNameFor(activeSession);
+    link.href = dataUrl;
+    link.download = name;
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -312,15 +323,20 @@
     button.textContent = 'Preparando imagem…';
 
     try {
-      const blob = await getBlob();
       const name = fileNameFor(activeSession);
-      const file = new File([blob], name, { type: 'image/png' });
 
+      // Call the native bridge first. Do not require WebView Blob/File support for Android.
       if (window.AndroidShare && typeof window.AndroidShare.shareImage === 'function') {
         const dataUrl = activeCanvas.toDataURL('image/png');
-        window.AndroidShare.shareImage(name, dataUrl.split(',')[1]);
+        const imageBase64 = dataUrl.substring(dataUrl.indexOf(',') + 1);
+        window.AndroidShare.shareImage(name, imageBase64);
+        button.textContent = 'Abrindo compartilhamento…';
         return;
       }
+
+      // Browser flow uses the File Sharing API where supported.
+      const blob = await getBlob();
+      const file = new File([blob], name, { type: 'image/png' });
 
       if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
         await navigator.share({
