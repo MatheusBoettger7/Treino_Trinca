@@ -40,6 +40,7 @@ public class MainActivity extends Activity {
     private static final int NOTIFICATION_PERMISSION_REQUEST = 43;
     private static final int BACKUP_FILE_CHOOSER_REQUEST = 1001;
     private static final int BACKUP_CREATE_DOCUMENT_REQUEST = 1002;
+    private static final int WORKOUT_IMAGE_CREATE_DOCUMENT_REQUEST = 1003;
     private static final String CHANNEL_ID = RestAlarmReceiver.CHANNEL_ID;
     private static final int REST_NOTIFICATION_ID = RestAlarmReceiver.REST_NOTIFICATION_ID;
     private boolean exactAlarmSettingsOpened = false;
@@ -50,6 +51,8 @@ public class MainActivity extends Activity {
     private ValueCallback<Uri[]> filePathCallback;
     private String pendingBackupFileName;
     private String pendingBackupJson;
+    private String pendingWorkoutImageFileName;
+    private byte[] pendingWorkoutImageBytes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +146,7 @@ public class MainActivity extends Activity {
         });
 
         // Cache-bust the top-level document so each native APK version loads the current web app.
-        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.11.03.80");
+        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.11.03.81");
 
         requestNotificationPermission();
     }
@@ -280,6 +283,11 @@ public class MainActivity extends Activity {
         public void shareImage(String fileName, String imageBase64) {
             runOnUiThread(() -> shareWorkoutImage(fileName, imageBase64));
         }
+
+        @JavascriptInterface
+        public void saveImage(String fileName, String imageBase64) {
+            runOnUiThread(() -> openWorkoutImageSaveDialog(fileName, imageBase64));
+        }
     }
 
     private void shareWorkoutImage(String fileName, String imageBase64) {
@@ -288,23 +296,14 @@ public class MainActivity extends Activity {
                 throw new IllegalArgumentException("Imagem inválida ou muito grande.");
             }
 
-            byte[] imageBytes = Base64.decode(imageBase64, Base64.DEFAULT);
-            if (imageBytes.length == 0 || imageBytes.length > 10 * 1024 * 1024) {
-                throw new IllegalArgumentException("A imagem excede o tamanho permitido.");
-            }
+            byte[] imageBytes = decodeWorkoutImage(imageBase64);
 
             File shareDirectory = new File(getCacheDir(), "shared");
             if (!shareDirectory.exists() && !shareDirectory.mkdirs()) {
                 throw new IllegalStateException("Não foi possível preparar a imagem para compartilhamento.");
             }
 
-            String safeName = fileName == null ? "treino-trinca.png"
-                    : fileName.replaceAll("[^A-Za-z0-9._-]", "_");
-            if (!safeName.toLowerCase(java.util.Locale.ROOT).endsWith(".png")) {
-                safeName += ".png";
-            }
-
-            File imageFile = new File(shareDirectory, safeName);
+            File imageFile = new File(shareDirectory, safeWorkoutImageFileName(fileName));
             try (FileOutputStream output = new FileOutputStream(imageFile)) {
                 output.write(imageBytes);
                 output.flush();
@@ -329,6 +328,72 @@ public class MainActivity extends Activity {
             Log.e(TAG, "Não foi possível compartilhar a imagem do treino.", ex);
             Toast.makeText(this, "Não foi possível compartilhar a imagem.", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private String safeWorkoutImageFileName(String fileName) {
+        String safeName = fileName == null ? "treino-trinca.png"
+                : fileName.replaceAll("[^A-Za-z0-9._-]", "_");
+        if (!safeName.toLowerCase(java.util.Locale.ROOT).endsWith(".png")) {
+            safeName += ".png";
+        }
+        return safeName;
+    }
+
+    private byte[] decodeWorkoutImage(String imageBase64) {
+        if (imageBase64 == null || imageBase64.isEmpty() || imageBase64.length() > 15000000) {
+            throw new IllegalArgumentException("Imagem inválida ou muito grande.");
+        }
+
+        byte[] imageBytes = Base64.decode(imageBase64, Base64.DEFAULT);
+        if (imageBytes.length == 0 || imageBytes.length > 10 * 1024 * 1024) {
+            throw new IllegalArgumentException("A imagem excede o tamanho permitido.");
+        }
+        return imageBytes;
+    }
+
+    private void openWorkoutImageSaveDialog(String fileName, String imageBase64) {
+        try {
+            pendingWorkoutImageBytes = decodeWorkoutImage(imageBase64);
+            pendingWorkoutImageFileName = safeWorkoutImageFileName(fileName);
+
+            Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType("image/png");
+            intent.putExtra(Intent.EXTRA_TITLE, pendingWorkoutImageFileName);
+
+            startActivityForResult(intent, WORKOUT_IMAGE_CREATE_DOCUMENT_REQUEST);
+        } catch (Exception ex) {
+            Log.e(TAG, "Não foi possível abrir o salvamento da imagem do treino.", ex);
+            clearPendingWorkoutImage();
+            Toast.makeText(this, "Não foi possível preparar a imagem para salvar.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void saveWorkoutImageToUri(Uri uri) {
+        if (uri == null || pendingWorkoutImageBytes == null) {
+            clearPendingWorkoutImage();
+            return;
+        }
+
+        try (OutputStream output = getContentResolver().openOutputStream(uri)) {
+            if (output == null) {
+                throw new IllegalStateException("Não foi possível abrir o arquivo para escrita.");
+            }
+
+            output.write(pendingWorkoutImageBytes);
+            output.flush();
+            Toast.makeText(this, "Imagem salva com sucesso.", Toast.LENGTH_SHORT).show();
+        } catch (Exception ex) {
+            Log.e(TAG, "Falha ao salvar a imagem do treino.", ex);
+            Toast.makeText(this, "Não foi possível salvar a imagem.", Toast.LENGTH_LONG).show();
+        } finally {
+            clearPendingWorkoutImage();
+        }
+    }
+
+    private void clearPendingWorkoutImage() {
+        pendingWorkoutImageFileName = null;
+        pendingWorkoutImageBytes = null;
     }
 
     public class BackupBridge {
@@ -464,6 +529,15 @@ public class MainActivity extends Activity {
             } else {
                 clearPendingBackup();
             }
+            return;
+        }
+
+        if (requestCode == WORKOUT_IMAGE_CREATE_DOCUMENT_REQUEST) {
+            if (resultCode == RESULT_OK && resultData != null) {
+                saveWorkoutImageToUri(resultData.getData());
+            } else {
+                clearPendingWorkoutImage();
+            }
         }
     }
 
@@ -508,6 +582,7 @@ public class MainActivity extends Activity {
         }
 
         clearPendingBackup();
+        clearPendingWorkoutImage();
 
         if (webView != null) {
             webView.removeJavascriptInterface("AndroidNotifications");
