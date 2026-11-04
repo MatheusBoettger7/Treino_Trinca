@@ -117,7 +117,7 @@
     ctx.fillStyle = '#090a18';
     ctx.fill();
 
-    ctx.fillStyle = '#58a8f5';
+    ctx.fillStyle = blue ? '#2563eb' : '#8f0000';
     roundedRect(ctx, 132, 152, 54, 208, 27);
     ctx.fill();
     roundedRect(ctx, 326, 152, 54, 208, 27);
