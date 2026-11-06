@@ -109,6 +109,7 @@ function preencherUltimoTreinoAutomatico(){
 function startWorkout(){
   if(!activeWorkout()){
     const filled=preencherUltimoTreinoAutomatico();
+    localStorage.setItem('treinoTrincaDescriptionOpen_'+profile+'_'+current,'0');
     localStorage.setItem(activeKey,JSON.stringify({profile,code:current,startedAt:Date.now()}));
     startWorkoutClock();
     renderWorkout(content);
