@@ -708,3 +708,9 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
 .workout-description-disclosure summary::after{content:'⌄';font-size:19px;color:var(--primary-light);transition:transform .18s ease}
 .workout-description-disclosure[open] summary::after{transform:rotate(180deg)}
 .workout-description-content{padding-top:10px;font-size:13px;line-height:1.55;white-space:normal;color:var(--muted)}
+
+/* Backup organizado nas Configurações */
+.settings-backup-card{display:flex;flex-direction:column;gap:10px}
+.settings-backup-actions{display:flex;flex-wrap:wrap;gap:7px}
+.settings-backup-actions .secondary{flex:1;min-width:120px;margin:0}
+@media(max-width:430px){.settings-backup-actions{display:grid;grid-template-columns:1fr}.settings-backup-actions .secondary{width:100%}}

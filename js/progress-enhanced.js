@@ -323,7 +323,7 @@
     c.innerHTML+=`<details class="card progress-collapsible"><summary><b>📈 Evolução por exercício</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body"><div class="exercise-history-picker">${exercises.map(e=>`<button class="filter ${e===selected?"active":""}" data-exercise="${esc(e)}" onclick="selectExerciseEnhanced(this.dataset.exercise)">${esc(e)}</button>`).join("")||"<div class=\"empty\">Faça algum treino para criar o histórico.</div>"}</div>${selected?`<div class="exercise-summary"><div class="exercise-summary-head"><strong>${esc(selected)}</strong><span class="muted small">${summary.sessions} treino${summary.sessions===1?"":"s"} · ${summary.sets} séries</span></div><div class="exercise-summary-grid"><div><span>Maior carga</span><b>${summary.maxKg?`${summary.maxKg} kg`:"—"}</b></div><div><span>Melhor repetição</span><b>${summary.bestReps||"—"}</b></div><div><span>Volume acumulado</span><b>${summary.volume?`${summary.volume.toLocaleString("pt-BR")} kg`:"—"}</b></div><div><span>RIR médio</span><b>${summary.rirAvg!=null?summary.rirAvg.toLocaleString("pt-BR"):"—"}</b></div></div></div>`:""}${exerciseEvolution(selected)}${exerciseHistory(selected)}</div></details>`;
     c.innerHTML+=`<details class="card progress-collapsible"><summary><b>🏆 Recordes pessoais</b><span class="muted small">Toque para expandir</span></summary><div class="collapsible-body">${prs()}</div></details>`;
     c.innerHTML+=`<div class="card"><h3>Últimos treinos</h3>${recent.length?recent.map(s=>`<div class="history"><b>Treino ${esc(s.code)}</b> · ${new Date(s.date).toLocaleDateString("pt-BR")}${s.durationSec!=null?` · ⏱️ ${fmt(s.durationSec)}`:""}</div>`).join(""):"<div class=\"empty\">Nenhum treino salvo ainda.</div>"}</div>`;
-    c.innerHTML+=`<div class="card"><h3>Backup completo</h3><button class="secondary" onclick="exportDataEnhanced()">📤 Exportar</button><button class="secondary" onclick="openImportFileEnhanced()">📥 Importar</button><button class="secondary" onclick="clearDataEnhanced()">Limpar</button><input id="importFileEnhanced" type="file" accept="application/json,.json" hidden onchange="importDataEnhanced(event)"><div class="muted small">Inclui histórico, medidas, treinos personalizados e configurações do aplicativo. A importação substitui os dados atuais.</div><div class="repdb-credit">Exercise data by <a href="https://repdb.co" target="_blank" rel="noopener">RepDB (repdb.co)</a>.</div></div>`;
+    c.innerHTML+=``;
     c.querySelectorAll('details.progress-collapsible').forEach((section,index)=>{ section.open=Boolean(openSections[index]); });
     bindTrendChartInteractions(c);
   }
@@ -376,7 +376,8 @@
         if(!code||!isWorkoutDefinition(workout))throw new Error('Definição inválida para o treino '+code+'.');
       });
       if(requireDefaults){
-        const missing=(profiles?.[p]?.codes||[]).filter(code=>!isWorkoutDefinition(workouts[p]?.[code]));
+        const requiredCodes=[...(profiles?.[p]?.codes||[]),...(profiles?.[p]?.extraCodes||[])];
+        const missing=requiredCodes.filter(code=>!isWorkoutDefinition(workouts[p]?.[code]));
         if(missing.length)throw new Error('O backup está incompleto: faltam definições dos treinos padrão do perfil '+p+': '+missing.join(', ')+'.');
       }
     });
@@ -387,7 +388,7 @@
     const result={masculino:{},feminino:{}};
     const defaults=window.__trincaDefaults||{};
     ['masculino','feminino'].forEach(p=>{
-      const codes=profiles?.[p]?.codes||[];
+      const codes=[...(profiles?.[p]?.codes||[]),...(profiles?.[p]?.extraCodes||[])];
       codes.forEach(code=>{
         const defaultWorkout=isWorkoutDefinition(defaults[code])?defaults[code]:workouts?.[code];
         if(!isWorkoutDefinition(defaultWorkout))throw new Error('Não foi possível incluir o treino padrão '+code+' do perfil '+p+' no backup.');
