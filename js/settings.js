@@ -18,6 +18,6 @@ function renderSettings(c){
 (function(){
  if(typeof window.renderWorkout==='function'){
   const original=window.renderWorkout;
-  window.renderWorkout=function(c){original(c);const w=window.workouts?.[window.current];const hero=c.querySelector('.hero');if(w?.description&&hero){const d=document.createElement('div');d.className='workout-description';d.textContent=w.description;hero.appendChild(d)}if(w?.items){w.items.forEach((item,i)=>{if(!item.group)return;const cards=c.querySelectorAll('.exercise');const card=cards[i];if(card){const tag=document.createElement('span');tag.className='badge exercise-group';tag.textContent=item.group;card.prepend(tag)}})}};
+  window.renderWorkout=function(c){original(c);const w=workouts?.[current];const hero=c.querySelector('.hero');if(w?.description&&hero){const d=document.createElement('div');d.className='workout-description';d.textContent=w.description;hero.appendChild(d)}if(w?.items){w.items.forEach((item,i)=>{if(!item.group)return;const cards=c.querySelectorAll('.exercise');const card=cards[i];if(card){const tag=document.createElement('span');tag.className='badge exercise-group';tag.textContent=item.group;card.prepend(tag)}})}};
  }
 })();
