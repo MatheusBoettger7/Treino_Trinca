@@ -167,6 +167,13 @@
         "reps": "10–15"
       },
       {
+        "name": "Crossover baixo para cima",
+        "sets": 3,
+        "reps": "12–15",
+        "rest": "60 s",
+        "repdbId": "cable-fly"
+      },
+      {
         "name": "Cadeira extensora",
         "sets": 2,
         "reps": "12–15"
