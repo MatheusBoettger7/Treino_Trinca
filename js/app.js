@@ -32,7 +32,8 @@ function updateThemePicker(){
   el.querySelectorAll('[data-theme-choice]').forEach(b=>b.classList.toggle('active',b.dataset.themeChoice===theme));
 }
 function closeThemePicker(){document.getElementById('themePicker')?.classList.remove('show')}
-document.addEventListener('DOMContentLoaded',()=>applyTheme());
+// O tema já foi definido no <head> para evitar flash; sincroniza também logo e controles agora.
+applyTheme();
 
 const stateKey='treinoTrincaData';
 const profileKey='treinoTrincaProfile';
