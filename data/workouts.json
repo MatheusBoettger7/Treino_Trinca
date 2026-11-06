@@ -3,116 +3,411 @@
     "id": "A",
     "name": "Peito + base + bíceps",
     "items": [
-      {"name":"Agachamento","sets":3,"reps":"5–8"},
-      {"name":"Supino reto","sets":3,"reps":"6–8"},
-      {"name":"Remada sentada no Pulley","sets":3,"reps":"8–10","repdbId":"seated-cable-row"},
-      {"name":"Cadeira extensora","sets":2,"reps":"10–15"},
-      {"name":"Elevação lateral","sets":2,"reps":"12–20"},
-      {"name":"Rosca direta","sets":2,"reps":"8–12"},
-      {"name":"Tríceps na polia","sets":2,"reps":"8–12"},
-      {"name":"Panturrilha","sets":2,"reps":"10–15"},
-      {"name":"Abdominal máquina","sets":2,"reps":"10–15","repdbId":"machine-seated-crunch"}
+      {
+        "name": "Agachamento",
+        "sets": 3,
+        "reps": "5–8"
+      },
+      {
+        "name": "Supino reto",
+        "sets": 3,
+        "reps": "6–8"
+      },
+      {
+        "name": "Remada sentada no Pulley",
+        "sets": 3,
+        "reps": "8–10",
+        "repdbId": "seated-cable-row"
+      },
+      {
+        "name": "Cadeira extensora",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 2,
+        "reps": "12–20"
+      },
+      {
+        "name": "Rosca direta",
+        "sets": 2,
+        "reps": "8–12"
+      },
+      {
+        "name": "Tríceps na polia",
+        "sets": 2,
+        "reps": "8–12"
+      },
+      {
+        "name": "Panturrilha",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Abdominal máquina",
+        "sets": 2,
+        "reps": "10–15",
+        "repdbId": "machine-seated-crunch"
+      }
     ]
   },
   "B": {
     "id": "B",
     "name": "Costas + posterior + peito complementar",
     "items": [
-      {"name":"Leg press","sets":3,"reps":"8–12"},
-      {"name":"Puxada alta","sets":3,"reps":"8–12"},
-      {"name":"Supino inclinado com halteres","sets":2,"reps":"8–12"},
-      {"name":"Cadeira Flexora sentada","sets":3,"reps":"10–15","repdbId":"seated-leg-curl"},
-      {"name":"Desenvolvimento com halteres","sets":2,"reps":"8–12"},
-      {"name":"Tríceps francês","sets":2,"reps":"10–15"},
-      {"name":"Rosca martelo","sets":2,"reps":"10–15"},
-      {"name":"Panturrilha sentado","sets":2,"reps":"12–20"}
+      {
+        "name": "Leg press",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Puxada alta",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Supino inclinado com halteres",
+        "sets": 2,
+        "reps": "8–12"
+      },
+      {
+        "name": "Cadeira Flexora sentada",
+        "sets": 3,
+        "reps": "10–15",
+        "repdbId": "seated-leg-curl"
+      },
+      {
+        "name": "Desenvolvimento com halteres",
+        "sets": 2,
+        "reps": "8–12"
+      },
+      {
+        "name": "Tríceps francês",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Rosca martelo",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Panturrilha sentado",
+        "sets": 2,
+        "reps": "12–20"
+      }
     ]
   },
   "C": {
-    "id":"C","name":"Peito + quadríceps + braços",
-    "items":[
-      {"name":"Supino máquina","sets":3,"reps":"8–12"},
-      {"name":"Hack squat","sets":3,"reps":"8–12"},
-      {"name":"Cadeira extensora","sets":3,"reps":"10–15"},
-      {"name":"Elevação lateral","sets":3,"reps":"12–20"},
-      {"name":"Rosca Scott","sets":2,"reps":"10–15"},
-      {"name":"Tríceps corda","sets":2,"reps":"10–15"},
-      {"name":"Panturrilha","sets":2,"reps":"12–20"},
-      {"name":"Abdominal máquina","sets":2,"reps":"10–15","repdbId":"machine-seated-crunch"}
+    "id": "C",
+    "name": "Peito + quadríceps + braços",
+    "items": [
+      {
+        "name": "Supino máquina",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Hack squat",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Cadeira extensora",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 3,
+        "reps": "12–20"
+      },
+      {
+        "name": "Rosca Scott",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Tríceps corda",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Panturrilha",
+        "sets": 2,
+        "reps": "12–20"
+      },
+      {
+        "name": "Abdominal máquina",
+        "sets": 2,
+        "reps": "10–15",
+        "repdbId": "machine-seated-crunch"
+      }
     ]
   },
   "D": {
-    "id":"D","name":"Costas + posterior + braços",
-    "items":[
-      {"name":"Stiff com halteres ou barra","sets":3,"reps":"8–12","repdbId":"romanian-deadlift"},
-      {"name":"Remada baixa","sets":3,"reps":"8–12"},
-      {"name":"Crossover","sets":1,"reps":"10–15"},
-      {"name":"Cadeira extensora","sets":2,"reps":"12–15"},
-      {"name":"Face pull","sets":2,"reps":"12–20"},
-      {"name":"Rosca martelo","sets":2,"reps":"10–15"},
-      {"name":"Tríceps corda","sets":2,"reps":"10–15"},
-      {"name":"Panturrilha","sets":2,"reps":"12–20"}
+    "id": "D",
+    "name": "Costas + posterior + braços",
+    "items": [
+      {
+        "name": "Stiff com halteres ou barra",
+        "sets": 3,
+        "reps": "8–12",
+        "repdbId": "romanian-deadlift"
+      },
+      {
+        "name": "Remada baixa",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Crossover",
+        "sets": 1,
+        "reps": "10–15"
+      },
+      {
+        "name": "Cadeira extensora",
+        "sets": 2,
+        "reps": "12–15"
+      },
+      {
+        "name": "Face pull",
+        "sets": 2,
+        "reps": "12–20"
+      },
+      {
+        "name": "Rosca martelo",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Tríceps corda",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Panturrilha",
+        "sets": 2,
+        "reps": "12–20"
+      }
     ]
   },
   "E": {
-    "id":"E","name":"Peito + costas + pernas + braços + condicionamento",
-    "items":[
-      {"name":"Supino inclinado com halteres","sets":3,"reps":"8–12"},
-      {"name":"Remada sentada","sets":3,"reps":"10–15"},
-      {"name":"Leg press","sets":3,"reps":"10–15"},
-      {"name":"Cadeira flexora sentada","sets":2,"reps":"10–15","repdbId":"seated-leg-curl"},
-      {"name":"Elevação lateral","sets":2,"reps":"15–20"},
-      {"name":"Rosca direta","sets":2,"reps":"10–15"},
-      {"name":"Tríceps corda","sets":2,"reps":"10–15"},
-      {"name":"Cardio moderado","sets":1,"reps":"15–20 min"}
+    "id": "E",
+    "name": "Peito + costas + pernas + braços + condicionamento",
+    "items": [
+      {
+        "name": "Supino inclinado com halteres",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Remada sentada",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Leg press",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Cadeira flexora sentada",
+        "sets": 2,
+        "reps": "10–15",
+        "repdbId": "seated-leg-curl"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 2,
+        "reps": "15–20"
+      },
+      {
+        "name": "Rosca direta",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Tríceps corda",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Cardio moderado",
+        "sets": 1,
+        "reps": "15–20 min"
+      }
     ]
   },
   "F": {
-    "id":"F","name":"Glúteos + quadríceps",
-    "items":[
-      {"name":"Elevação pélvica","sets":4,"reps":"8–12"},
-      {"name":"Leg press","sets":3,"reps":"8–12"},
-      {"name":"Agachamento búlgaro","sets":3,"reps":"8–10 cada perna"},
-      {"name":"Cadeira extensora","sets":3,"reps":"10–15"},
-      {"name":"Coice na polia","sets":3,"reps":"12–15 cada perna","repdbId":"cable-kickback"},
-      {"name":"Abdutora","sets":3,"reps":"15–20"}
+    "id": "F",
+    "name": "Glúteos + quadríceps",
+    "items": [
+      {
+        "name": "Elevação pélvica",
+        "sets": 4,
+        "reps": "8–12"
+      },
+      {
+        "name": "Leg press",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Agachamento búlgaro",
+        "sets": 3,
+        "reps": "8–10 cada perna"
+      },
+      {
+        "name": "Cadeira extensora",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Coice na polia",
+        "sets": 3,
+        "reps": "12–15 cada perna",
+        "repdbId": "cable-kickback"
+      },
+      {
+        "name": "Abdutora",
+        "sets": 3,
+        "reps": "15–20"
+      }
     ]
   },
   "G": {
-    "id":"G","name":"Costas + ombros + braços",
-    "items":[
-      {"name":"Puxada alta","sets":3,"reps":"8–12"},
-      {"name":"Remada sentada","sets":3,"reps":"8–12"},
-      {"name":"Supino inclinado com halteres","sets":3,"reps":"8–12"},
-      {"name":"Elevação lateral","sets":3,"reps":"12–20"},
-      {"name":"Face pull","sets":2,"reps":"12–20"},
-      {"name":"Rosca martelo","sets":2,"reps":"10–15"},
-      {"name":"Tríceps corda","sets":2,"reps":"10–15"},
-      {"name":"Abdominal máquina","sets":3,"reps":"10–15","repdbId":"machine-seated-crunch"}
+    "id": "G",
+    "name": "Costas + ombros + braços",
+    "items": [
+      {
+        "name": "Puxada alta",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Remada sentada",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Supino inclinado com halteres",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 3,
+        "reps": "12–20"
+      },
+      {
+        "name": "Face pull",
+        "sets": 2,
+        "reps": "12–20"
+      },
+      {
+        "name": "Rosca martelo",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Tríceps corda",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Abdominal máquina",
+        "sets": 3,
+        "reps": "10–15",
+        "repdbId": "machine-seated-crunch"
+      }
     ]
   },
   "H": {
-    "id":"H","name":"Glúteos + posterior",
-    "items":[
-      {"name":"Elevação pélvica","sets":4,"reps":"8–12"},
-      {"name":"Step-up","sets":3,"reps":"8–10 cada perna"},
-      {"name":"Stiff com halteres ou barra","sets":3,"reps":"8–12","repdbId":"romanian-deadlift"},
-      {"name":"Cadeira Flexora sentada","sets":3,"reps":"10–15","repdbId":"seated-leg-curl"},
-      {"name":"Coice na polia","sets":3,"reps":"12–15 cada perna","repdbId":"cable-kickback"},
-      {"name":"Abdutora","sets":3,"reps":"15–20"}
+    "id": "H",
+    "name": "Glúteos + posterior",
+    "items": [
+      {
+        "name": "Elevação pélvica",
+        "sets": 4,
+        "reps": "8–12"
+      },
+      {
+        "name": "Step-up",
+        "sets": 3,
+        "reps": "8–10 cada perna"
+      },
+      {
+        "name": "Stiff com halteres ou barra",
+        "sets": 3,
+        "reps": "8–12",
+        "repdbId": "romanian-deadlift"
+      },
+      {
+        "name": "Cadeira Flexora sentada",
+        "sets": 3,
+        "reps": "10–15",
+        "repdbId": "seated-leg-curl"
+      },
+      {
+        "name": "Coice na polia",
+        "sets": 3,
+        "reps": "12–15 cada perna",
+        "repdbId": "cable-kickback"
+      },
+      {
+        "name": "Abdutora",
+        "sets": 3,
+        "reps": "15–20"
+      }
     ]
   },
   "I": {
-    "id":"I","name":"Superior + condicionamento",
-    "items":[
-      {"name":"Supino máquina","sets":3,"reps":"8–12"},
-      {"name":"Remada sentada","sets":3,"reps":"10–15"},
-      {"name":"Desenvolvimento máquina","sets":3,"reps":"8–12"},
-      {"name":"Puxada alta","sets":3,"reps":"10–12"},
-      {"name":"Elevação lateral","sets":3,"reps":"12–20"},
-      {"name":"Tríceps corda","sets":2,"reps":"10–15"},
-      {"name":"Rosca Scott com Halteres no Banco Inclinado","sets":2,"reps":"10–15","repdbId":"incline-db-curl"},
-      {"name":"Cardio moderado","sets":1,"reps":"20–30 min"}
+    "id": "I",
+    "name": "Superior + condicionamento",
+    "items": [
+      {
+        "name": "Supino máquina",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Remada sentada",
+        "sets": 3,
+        "reps": "10–15"
+      },
+      {
+        "name": "Desenvolvimento máquina",
+        "sets": 3,
+        "reps": "8–12"
+      },
+      {
+        "name": "Puxada alta",
+        "sets": 3,
+        "reps": "10–12"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 3,
+        "reps": "12–20"
+      },
+      {
+        "name": "Tríceps corda",
+        "sets": 2,
+        "reps": "10–15"
+      },
+      {
+        "name": "Rosca Scott com Halteres no Banco Inclinado",
+        "sets": 2,
+        "reps": "10–15",
+        "repdbId": "incline-db-curl"
+      },
+      {
+        "name": "Cardio moderado",
+        "sets": 1,
+        "reps": "20–30 min"
+      }
     ]
   },
   "J": {
@@ -120,12 +415,342 @@
     "name": "Pernas pesado — 55–60 min",
     "warmup": "Aquecimento: 5 min",
     "items": [
-      {"name":"Agachamento no Smith","sets":4,"reps":"6–8","rest":"2 min"},
-      {"name":"Leg press 45","sets":4,"reps":"8–10","repdbId":"leg-press","rest":"2 min"},
-      {"name":"Hack squat","sets":3,"reps":"8–10","rest":"90 s"},
-      {"name":"Afundo no Smith","sets":3,"reps":"8–10 cada perna","rest":"90 s"},
-      {"name":"Cadeira extensora","sets":3,"reps":"10–12","rest":"60 s","notes":"Na última série, pode fazer drop-set."},
-      {"name":"Panturrilha no leg press","sets":3,"reps":"10–15","rest":"60 s"}
+      {
+        "name": "Agachamento no Smith",
+        "sets": 4,
+        "reps": "6–8",
+        "rest": "2 min"
+      },
+      {
+        "name": "Leg press 45",
+        "sets": 4,
+        "reps": "8–10",
+        "repdbId": "leg-press",
+        "rest": "2 min"
+      },
+      {
+        "name": "Hack squat",
+        "sets": 3,
+        "reps": "8–10",
+        "rest": "90 s"
+      },
+      {
+        "name": "Afundo no Smith",
+        "sets": 3,
+        "reps": "8–10 cada perna",
+        "rest": "90 s"
+      },
+      {
+        "name": "Cadeira extensora",
+        "sets": 3,
+        "reps": "10–12",
+        "rest": "60 s",
+        "notes": "Na última série, pode fazer drop-set."
+      },
+      {
+        "name": "Panturrilha no leg press",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "60 s"
+      }
+    ]
+  },
+  "K": {
+    "id": "K",
+    "name": "Treino A - Push (1º dia)",
+    "description": "Técnica antes da carga sempre! Priorize a amplitude que você controla com estabilidade e sem dor. Siga com atenção as informações do vídeo demonstrativo. Como escolher a carga: termine cada série com a sensação de que conseguiria fazer apenas mais 1 ou 2 repetições com boa execução. Como progredir: quando completar o limite superior da faixa de repetições em todas as séries com boa execução, aumente a carga na próxima sessão e volte ao limite inferior da faixa. Anote cargas e repetições no app. Teste este primeiro ciclo por algumas semanas para avaliar sua adaptação. Cardio: 20 minutos pós-treino em toda sessão. Em dia de perna, intensidade leve; em dia de superiores, moderada. Se a recuperação piorar, o sono cair ou o desempenho estagnar, reduza para 3 sessões de cardio por semana ou 15 minutos. Se o objetivo principal for secar e a recuperação estiver boa, aumente 5 minutos a cada 2 semanas até 30–40 minutos.",
+    "items": [
+      {
+        "name": "Supino reto com barra",
+        "sets": 4,
+        "reps": "6–10",
+        "rest": "2min 30s"
+      },
+      {
+        "name": "Supino inclinado com halteres",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min",
+        "group": "BI-SET"
+      },
+      {
+        "name": "Crucifixo inclinado com halteres",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min 30s",
+        "group": "BI-SET"
+      },
+      {
+        "name": "Crossover polia alta",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min 30s"
+      },
+      {
+        "name": "Desenvolvimento com halteres",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min"
+      },
+      {
+        "name": "Elevação lateral com halteres",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Tríceps pulley corda",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Tríceps testa na polia",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Cardio: caminhada inclinada na esteira",
+        "sets": 1,
+        "reps": "20 min",
+        "rest": "—",
+        "notes": "Caminhada pós-treino."
+      }
+    ]
+  },
+  "L": {
+    "id": "L",
+    "name": "Treino B - Pull (2º dia)",
+    "description": "Técnica antes da carga sempre! Priorize a amplitude que você controla com estabilidade e sem dor. Siga com atenção as informações do vídeo demonstrativo. Como escolher a carga: termine cada série com a sensação de que conseguiria fazer apenas mais 1 ou 2 repetições com boa execução. Como progredir: quando completar o limite superior da faixa de repetições em todas as séries com boa execução, aumente a carga na próxima sessão e volte ao limite inferior da faixa. Anote cargas e repetições no app. Teste este primeiro ciclo por algumas semanas para avaliar sua adaptação. Cardio: 20 minutos pós-treino em toda sessão. Em dia de perna, intensidade leve; em dia de superiores, moderada. Se a recuperação piorar, o sono cair ou o desempenho estagnar, reduza para 3 sessões de cardio por semana ou 15 minutos. Se o objetivo principal for secar e a recuperação estiver boa, aumente 5 minutos a cada 2 semanas até 30–40 minutos.",
+    "items": [
+      {
+        "name": "Puxada pegada aberta",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min"
+      },
+      {
+        "name": "Remada curvada",
+        "sets": 4,
+        "reps": "6–10",
+        "rest": "2min"
+      },
+      {
+        "name": "Remada baixa pegada aberta no pulley",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min"
+      },
+      {
+        "name": "Pulldown na polia com barra reta",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min"
+      },
+      {
+        "name": "Face pull com corda na polia",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Encolhimento de ombros com halter",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Rosca direta com barra",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Rosca martelo alternada",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Cardio: caminhada inclinada na esteira",
+        "sets": 1,
+        "reps": "20 min",
+        "rest": "—"
+      }
+    ]
+  },
+  "M": {
+    "id": "M",
+    "name": "Treino C - Legs (3º dia)",
+    "description": "Técnica antes da carga sempre! Priorize a amplitude que você controla com estabilidade e sem dor. Siga com atenção as informações do vídeo demonstrativo. Como escolher a carga: termine cada série com a sensação de que conseguiria fazer apenas mais 1 ou 2 repetições com boa execução. Como progredir: quando completar o limite superior da faixa de repetições em todas as séries com boa execução, aumente a carga na próxima sessão e volte ao limite inferior da faixa. Anote cargas e repetições no app. Teste este primeiro ciclo por algumas semanas para avaliar sua adaptação. Cardio: 20 minutos pós-treino em toda sessão. Em dia de perna, intensidade leve; em dia de superiores, moderada. Se a recuperação piorar, o sono cair ou o desempenho estagnar, reduza para 3 sessões de cardio por semana ou 15 minutos. Se o objetivo principal for secar e a recuperação estiver boa, aumente 5 minutos a cada 2 semanas até 30–40 minutos.",
+    "items": [
+      {
+        "name": "Agachamento barra livre",
+        "sets": 4,
+        "reps": "6–10",
+        "rest": "2min 30s"
+      },
+      {
+        "name": "Leg press 45°",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min 30s"
+      },
+      {
+        "name": "Stiff com barra livre",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min"
+      },
+      {
+        "name": "Cadeira flexora",
+        "sets": 4,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Cadeira extensora",
+        "sets": 3,
+        "reps": "12",
+        "rest": "1min 30s"
+      },
+      {
+        "name": "Panturrilha em pé",
+        "sets": 3,
+        "reps": "12–20",
+        "rest": "1min 30s"
+      },
+      {
+        "name": "Abdominal supra solo",
+        "sets": 3,
+        "reps": "12–20",
+        "rest": "1min"
+      },
+      {
+        "name": "Prancha abdominal isométrica",
+        "sets": 3,
+        "reps": "1 min",
+        "rest": "1min"
+      },
+      {
+        "name": "Cardio: caminhada inclinada na esteira",
+        "sets": 1,
+        "reps": "20 min",
+        "rest": "—",
+        "notes": "Cardio leve no dia de pernas."
+      }
+    ]
+  },
+  "N": {
+    "id": "N",
+    "name": "Treino D - Upper (4º dia)",
+    "description": "Técnica antes da carga sempre! Priorize a amplitude que você controla com estabilidade e sem dor. Siga com atenção as informações do vídeo demonstrativo. Como escolher a carga: termine cada série com a sensação de que conseguiria fazer apenas mais 1 ou 2 repetições com boa execução. Como progredir: quando completar o limite superior da faixa de repetições em todas as séries com boa execução, aumente a carga na próxima sessão e volte ao limite inferior da faixa. Anote cargas e repetições no app. Teste este primeiro ciclo por algumas semanas para avaliar sua adaptação. Cardio: 20 minutos pós-treino em toda sessão. Em dia de perna, intensidade leve; em dia de superiores, moderada. Se a recuperação piorar, o sono cair ou o desempenho estagnar, reduza para 3 sessões de cardio por semana ou 15 minutos. Se o objetivo principal for secar e a recuperação estiver boa, aumente 5 minutos a cada 2 semanas até 30–40 minutos.",
+    "items": [
+      {
+        "name": "Supino inclinado com barra",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min"
+      },
+      {
+        "name": "Remada unilateral com halteres",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min"
+      },
+      {
+        "name": "Elevação lateral na polia",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Crucifixo inverso no apoio das pernas",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Rosca com halteres",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Tríceps francês com corda na polia",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Elevação frontal com halter unilateral",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Cardio: caminhada inclinada na esteira",
+        "sets": 1,
+        "reps": "20 min",
+        "rest": "—"
+      }
+    ]
+  },
+  "O": {
+    "id": "O",
+    "name": "Treino E - Lower (5º dia)",
+    "description": "Técnica antes da carga sempre! Priorize a amplitude que você controla com estabilidade e sem dor. Siga com atenção as informações do vídeo demonstrativo. Como escolher a carga: termine cada série com a sensação de que conseguiria fazer apenas mais 1 ou 2 repetições com boa execução. Como progredir: quando completar o limite superior da faixa de repetições em todas as séries com boa execução, aumente a carga na próxima sessão e volte ao limite inferior da faixa. Anote cargas e repetições no app. Teste este primeiro ciclo por algumas semanas para avaliar sua adaptação. Cardio: 20 minutos pós-treino em toda sessão. Em dia de perna, intensidade leve; em dia de superiores, moderada. Se a recuperação piorar, o sono cair ou o desempenho estagnar, reduza para 3 sessões de cardio por semana ou 15 minutos. Se o objetivo principal for secar e a recuperação estiver boa, aumente 5 minutos a cada 2 semanas até 30–40 minutos.",
+    "items": [
+      {
+        "name": "Agachamento livre com halteres",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min"
+      },
+      {
+        "name": "Leg press 45° pés abduzidos",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min"
+      },
+      {
+        "name": "Stiff com halter",
+        "sets": 3,
+        "reps": "8–12",
+        "rest": "2min"
+      },
+      {
+        "name": "Cadeira flexora unilateral",
+        "sets": 3,
+        "reps": "10–15",
+        "rest": "1min 30s"
+      },
+      {
+        "name": "Hiperextensão lombar no banco romano",
+        "sets": 3,
+        "reps": "12–15",
+        "rest": "1min"
+      },
+      {
+        "name": "Panturrilha em pé",
+        "sets": 3,
+        "reps": "12–20",
+        "rest": "1min 30s"
+      },
+      {
+        "name": "Prancha lateral",
+        "sets": 3,
+        "reps": "1 min",
+        "rest": "1min"
+      },
+      {
+        "name": "Cardio: caminhada inclinada na esteira",
+        "sets": 1,
+        "reps": "20 min",
+        "rest": "—",
+        "notes": "Cardio leve no dia de pernas."
+      }
     ]
   }
 }
