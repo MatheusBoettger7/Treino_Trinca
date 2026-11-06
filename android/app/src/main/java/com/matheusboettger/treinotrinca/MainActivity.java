@@ -146,7 +146,7 @@ public class MainActivity extends Activity {
         });
 
         // Cache-bust the top-level document so each native APK version loads the current web app.
-        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.11.06.82");
+        webView.loadUrl("https://matheusboettger7.github.io/Treino_Trinca/?nativeVersion=2026.11.06.83");
 
         requestNotificationPermission();
     }
