@@ -8,8 +8,8 @@ android {
         applicationId 'com.matheusboettger.treinotrinca'
         minSdk 23
         targetSdk 36
-        versionCode 81
-        versionName '2026.11.03.81'
+        versionCode 82
+        versionName '2026.11.06.82'
     }
 
     buildTypes {
