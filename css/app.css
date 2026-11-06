@@ -700,3 +700,11 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
 .workout-description{margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:13px;line-height:1.55;color:var(--muted)}
 .exercise-group{margin-bottom:6px;background:#4b1515;color:#ff8b8b}
 @media(max-width:430px){.profile-buttons button{font-size:12px;padding:8px 5px}.settings-theme-options{gap:6px}}
+
+/* Descrição expansível do treino */
+.workout-description-disclosure{margin-top:14px;padding-top:12px;border-top:1px solid var(--border);color:var(--muted)}
+.workout-description-disclosure summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;font-weight:750;color:var(--text);padding:2px 0}
+.workout-description-disclosure summary::-webkit-details-marker{display:none}
+.workout-description-disclosure summary::after{content:'⌄';font-size:19px;color:var(--primary-light);transition:transform .18s ease}
+.workout-description-disclosure[open] summary::after{transform:rotate(180deg)}
+.workout-description-content{padding-top:10px;font-size:13px;line-height:1.55;white-space:normal;color:var(--muted)}
