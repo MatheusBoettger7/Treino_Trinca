@@ -17,7 +17,7 @@ function renderSettings(c){
  '<h3 class="section-title">Treinamento</h3><div class="card settings-card"><b>Descanso padrão entre séries</b><div class="muted small">Usado quando o exercício não tiver intervalo próprio.</div><div class="settings-rest-options">'+restButtons+'</div><div class="settings-note">Os intervalos específicos de cada exercício aparecem na ficha.</div></div>'+
  '<h3 class="section-title">Perfil de treino</h3><div class="card settings-card"><div class="muted small">Alterne entre os programas sem apagar o histórico dos outros perfis.</div>'+profileButtons+'</div>'+
  '<h3 class="section-title">Dados e progresso</h3><div class="card settings-card"><div class="settings-row"><div><b>Histórico de treinos</b><div class="muted small">'+sessionsCount+' treinos neste perfil</div></div><button class="secondary compact-btn" onclick="show(&#39;prog&#39;)">Ver</button></div><div class="settings-note">Seus registros, cargas e repetições permanecem salvos neste dispositivo.</div></div>'+
- '<h3 class="section-title">Sobre</h3><div class="card settings-card"><div class="settings-row"><b>Treino Trinca</b><span class="muted small">v2026.11.06.83</span></div><div class="settings-note">Os treinos Push, Pull, Legs, Upper e Lower agora estão disponíveis no perfil Masculino.</div></div>';
+ '<h3 class="section-title">Sobre</h3><div class="card settings-card"><div class="settings-row"><b>Treino Trinca</b><span class="muted small">v2026.11.06.84</span></div><div class="settings-note">Os treinos Push, Pull, Legs, Upper e Lower ficam como segunda opção no perfil Masculino.</div></div>';
 }
 (function(){
  if(typeof window.renderWorkout!=='function')return;
