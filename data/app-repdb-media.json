@@ -78,8 +78,8 @@
     "Supino inclinado com halteres": {
       "repdbId": "incline-db-press",
       "images": {
-        "start": "./assets/repdb/incline-db-press/start.webp",
-        "peak": "./assets/repdb/incline-db-press/peak.webp"
+        "start": "./assets/exercises/Incline_Dumbbell_Press/start.webp",
+        "peak": "./assets/exercises/Incline_Dumbbell_Press/peak.webp"
       }
     },
     "Puxada alta": {
@@ -99,8 +99,8 @@
     "Desenvolvimento com halteres": {
       "repdbId": "dumbbell-shoulder-press",
       "images": {
-        "start": "./assets/repdb/dumbbell-shoulder-press/start.webp",
-        "peak": "./assets/repdb/dumbbell-shoulder-press/peak.webp"
+        "start": "./assets/exercises/Dumbbell_Shoulder_Press/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Shoulder_Press/peak.webp"
       }
     },
     "Crossover": {
@@ -162,8 +162,8 @@
     "Cadeira extensora": {
       "repdbId": "leg-extension",
       "images": {
-        "start": "./assets/repdb/leg-extension/start.webp",
-        "peak": "./assets/repdb/leg-extension/peak.webp"
+        "start": "./assets/exercises/Leg_Extensions/start.webp",
+        "peak": "./assets/exercises/Leg_Extensions/peak.webp"
       }
     },
     "Face pull": {
@@ -248,6 +248,250 @@
         "start": "./assets/repdb/hip-abduction/start.webp",
         "peak": "./assets/repdb/hip-abduction/peak.webp"
       }
+    },
+    "Supino reto com barra": {
+      "repdbId": "bench-press",
+      "images": {
+        "start": "./assets/exercises/Barbell_Bench_Press_-_Medium_Grip/start.webp",
+        "peak": "./assets/exercises/Barbell_Bench_Press_-_Medium_Grip/peak.webp"
+      }
+    },
+    "Crucifixo inclinado com halteres": {
+      "repdbId": "decline-db-fly",
+      "images": {
+        "start": "./assets/exercises/Decline_Dumbbell_Flyes/start.webp",
+        "peak": "./assets/exercises/Decline_Dumbbell_Flyes/peak.webp"
+      }
+    },
+    "Crossover polia alta": {
+      "repdbId": "cable-chest-press",
+      "images": {
+        "start": "./assets/exercises/Cable_Chest_Press/start.webp",
+        "peak": "./assets/exercises/Cable_Chest_Press/peak.webp"
+      }
+    },
+    "Elevação lateral com halteres": {
+      "repdbId": "lateral-raise",
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Lying_Rear_Lateral_Raise/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Lying_Rear_Lateral_Raise/peak.webp"
+      }
+    },
+    "Tríceps pulley corda": {
+      "repdbId": "tricep-pushdown",
+      "images": {
+        "start": "./assets/exercises/Cable_Incline_Pushdown/start.webp",
+        "peak": "./assets/exercises/Cable_Incline_Pushdown/peak.webp"
+      }
+    },
+    "Tríceps testa na polia": {
+      "repdbId": "barbell-overhead-extension",
+      "images": {
+        "start": "./assets/exercises/Standing_Overhead_Barbell_Triceps_Extension/start.webp",
+        "peak": "./assets/exercises/Standing_Overhead_Barbell_Triceps_Extension/peak.webp"
+      }
+    },
+    "Cardio: caminhada inclinada na esteira": {
+      "repdbId": "walking",
+      "images": {
+        "main": "./assets/exercises/Walking_Treadmill/main.webp"
+      }
+    },
+    "Puxada pegada aberta": {
+      "repdbId": "close-grip-lat-pulldown",
+      "images": {
+        "start": "./assets/exercises/Close-Grip_Front_Lat_Pulldown/start.webp",
+        "peak": "./assets/exercises/Close-Grip_Front_Lat_Pulldown/peak.webp"
+      }
+    },
+    "Remada curvada": {
+      "repdbId": "barbell-row",
+      "images": {
+        "start": "./assets/exercises/Bent_Over_Barbell_Row/start.webp",
+        "peak": "./assets/exercises/Bent_Over_Barbell_Row/peak.webp"
+      }
+    },
+    "Remada baixa pegada aberta no pulley": {
+      "repdbId": "seated-cable-row",
+      "images": {
+        "start": "./assets/exercises/Seated_Cable_Rows/start.webp",
+        "peak": "./assets/exercises/Seated_Cable_Rows/peak.webp"
+      }
+    },
+    "Pulldown na polia com barra reta": {
+      "repdbId": "straight-arm-pulldown",
+      "images": {
+        "start": "./assets/exercises/Rope_Straight-Arm_Pulldown/start.webp",
+        "peak": "./assets/exercises/Rope_Straight-Arm_Pulldown/peak.webp"
+      }
+    },
+    "Face pull com corda na polia": {
+      "repdbId": "face-pull",
+      "images": {
+        "start": "./assets/exercises/Face_Pull/start.webp",
+        "peak": "./assets/exercises/Face_Pull/peak.webp"
+      }
+    },
+    "Encolhimento de ombros com halter": {
+      "repdbId": "db-shrug",
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Shrug/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Shrug/peak.webp"
+      }
+    },
+    "Rosca direta com barra": {
+      "repdbId": "barbell-curl",
+      "images": {
+        "start": "./assets/exercises/Barbell_Curl/start.webp",
+        "peak": "./assets/exercises/Barbell_Curl/peak.webp"
+      }
+    },
+    "Rosca martelo alternada": {
+      "repdbId": "hammer-curl",
+      "images": {
+        "start": "./assets/exercises/Preacher_Hammer_Dumbbell_Curl/start.webp",
+        "peak": "./assets/exercises/Preacher_Hammer_Dumbbell_Curl/peak.webp"
+      }
+    },
+    "Agachamento barra livre": {
+      "repdbId": "squat",
+      "images": {
+        "start": "./assets/exercises/Barbell_Full_Squat/start.webp",
+        "peak": "./assets/exercises/Barbell_Full_Squat/peak.webp"
+      }
+    },
+    "Leg press 45°": {
+      "repdbId": "leg-press",
+      "images": {
+        "start": "./assets/exercises/Leg_Press/start.webp",
+        "peak": "./assets/exercises/Leg_Press/peak.webp"
+      }
+    },
+    "Stiff com barra livre": {
+      "repdbId": "romanian-deadlift",
+      "images": {
+        "start": "./assets/exercises/Romanian_Deadlift/start.webp",
+        "peak": "./assets/exercises/Romanian_Deadlift/peak.webp"
+      }
+    },
+    "Cadeira flexora": {
+      "repdbId": "leg-curl",
+      "images": {
+        "start": "./assets/exercises/Lying_Leg_Curls/start.webp",
+        "peak": "./assets/exercises/Lying_Leg_Curls/peak.webp"
+      }
+    },
+    "Panturrilha em pé": {
+      "repdbId": "standing-calf-raise",
+      "images": {
+        "start": "./assets/exercises/Rocking_Standing_Calf_Raise/start.webp",
+        "peak": "./assets/exercises/Rocking_Standing_Calf_Raise/peak.webp"
+      }
+    },
+    "Abdominal supra solo": {
+      "repdbId": "crunches",
+      "images": {
+        "start": "./assets/exercises/Crunches/start.webp",
+        "peak": "./assets/exercises/Crunches/peak.webp"
+      }
+    },
+    "Prancha abdominal isométrica": {
+      "repdbId": "plank",
+      "images": {
+        "main": "./assets/exercises/Plank/main.webp"
+      }
+    },
+    "Supino inclinado com barra": {
+      "repdbId": "incline-bench-press",
+      "images": {
+        "start": "./assets/exercises/Barbell_Incline_Bench_Press_-_Medium_Grip/start.webp",
+        "peak": "./assets/exercises/Barbell_Incline_Bench_Press_-_Medium_Grip/peak.webp"
+      }
+    },
+    "Remada unilateral com halteres": {
+      "repdbId": "bent-over-db-row",
+      "images": {
+        "start": "./assets/exercises/Bent_Over_Two-Dumbbell_Row/start.webp",
+        "peak": "./assets/exercises/Bent_Over_Two-Dumbbell_Row/peak.webp"
+      }
+    },
+    "Elevação lateral na polia": {
+      "repdbId": "cable-lateral-raise",
+      "images": {
+        "start": "./assets/exercises/Cable_Seated_Lateral_Raise/start.webp",
+        "peak": "./assets/exercises/Cable_Seated_Lateral_Raise/peak.webp"
+      }
+    },
+    "Crucifixo inverso no apoio das pernas": {
+      "repdbId": "rear-delt-fly",
+      "images": {
+        "start": "./assets/exercises/Cable_Rear_Delt_Fly/start.webp",
+        "peak": "./assets/exercises/Cable_Rear_Delt_Fly/peak.webp"
+      }
+    },
+    "Rosca com halteres": {
+      "repdbId": "bicep-curl",
+      "images": {
+        "start": "./assets/exercises/Dumbbell_Alternate_Bicep_Curl/start.webp",
+        "peak": "./assets/exercises/Dumbbell_Alternate_Bicep_Curl/peak.webp"
+      }
+    },
+    "Tríceps francês com corda na polia": {
+      "repdbId": "barbell-overhead-extension",
+      "images": {
+        "start": "./assets/exercises/Standing_Overhead_Barbell_Triceps_Extension/start.webp",
+        "peak": "./assets/exercises/Standing_Overhead_Barbell_Triceps_Extension/peak.webp"
+      }
+    },
+    "Elevação frontal com halter unilateral": {
+      "repdbId": "dumbbell-front-raise",
+      "images": {
+        "start": "./assets/exercises/Front_Dumbbell_Raise/start.webp",
+        "peak": "./assets/exercises/Front_Dumbbell_Raise/peak.webp"
+      }
+    },
+    "Agachamento livre com halteres": {
+      "repdbId": "goblet-squat",
+      "images": {
+        "start": "./assets/exercises/Goblet_Squat/start.webp",
+        "peak": "./assets/exercises/Goblet_Squat/peak.webp"
+      }
+    },
+    "Leg press 45° pés abduzidos": {
+      "repdbId": "leg-press",
+      "images": {
+        "start": "./assets/exercises/Leg_Press/start.webp",
+        "peak": "./assets/exercises/Leg_Press/peak.webp"
+      }
+    },
+    "Stiff com halter": {
+      "repdbId": "romanian-deadlift",
+      "images": {
+        "start": "./assets/exercises/Romanian_Deadlift/start.webp",
+        "peak": "./assets/exercises/Romanian_Deadlift/peak.webp"
+      }
+    },
+    "Cadeira flexora unilateral": {
+      "repdbId": "leg-curl",
+      "images": {
+        "start": "./assets/exercises/Lying_Leg_Curls/start.webp",
+        "peak": "./assets/exercises/Lying_Leg_Curls/peak.webp"
+      }
+    },
+    "Hiperextensão lombar no banco romano": {
+      "repdbId": "back-extension",
+      "images": {
+        "start": "./assets/exercises/Hyperextensions_Back_Extensions/start.webp",
+        "peak": "./assets/exercises/Hyperextensions_Back_Extensions/peak.webp"
+      }
+    },
+    "Prancha lateral": {
+      "repdbId": "side-plank-leg-lift",
+      "images": {
+        "start": "./assets/exercises/Leg_Lift/start.webp",
+        "peak": "./assets/exercises/Leg_Lift/peak.webp"
+      }
     }
-  }
+  },
+  "manualAliasesAdded": 38
 }
