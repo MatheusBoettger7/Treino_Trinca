@@ -114,7 +114,9 @@ const RepDB = (() => {
   function image(ex, phase = 'peak') {
     if (!ex) return '';
 
-    const local = imageMap?.exercises?.[ex.id]?.images || {};
+    const entries = imageMap?.exercises || {};
+    const mapped = entries[ex.id] || Object.values(entries).find(item => item?.repdbId === ex.id);
+    const local = mapped?.images || {};
     const localPath = local[phase] || local.peak || local.start || local.main;
     if (localPath) return localPath;
 
