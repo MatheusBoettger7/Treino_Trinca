@@ -688,3 +688,15 @@ input,select,textarea{background:var(--surface-2)!important;border-color:var(--b
 
 /* Gráficos interativos: tooltip acompanha o ponto selecionado por toque ou mouse. */
 .trend-chart-wrap{position:relative;overflow:visible}.trend-chart{display:block;width:100%;overflow:visible;touch-action:pan-y;outline:none}.trend-chart [data-chart-value]{cursor:pointer;stroke:var(--chart-point-outline,transparent);stroke-width:8;paint-order:stroke fill}.trend-chart [data-chart-value].selected{stroke:#ffffff55;stroke-width:8}.trend-chart-tooltip{position:absolute;z-index:3;max-width:145px;padding:7px 10px;border-radius:8px;background:#303030;color:#fff;font-size:12px;font-weight:700;white-space:nowrap;box-shadow:0 4px 16px #0005;pointer-events:none;transform:translateY(-2px)}.trend-chart-tooltip[hidden]{display:none}.trend-chart:focus-visible{outline:2px solid #60a5fa;outline-offset:3px;border-radius:8px}
+/* Configurações e perfil experimental A7 */
+.profile-buttons{flex-wrap:wrap}.profile-buttons button{min-width:0}
+.settings-header h2{margin:0 0 6px}.settings-header p{margin:0}
+.settings-card{padding:16px}.settings-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.settings-theme-options,.settings-rest-options{display:flex;gap:8px;margin-top:12px}
+.theme-setting{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2)!important;color:var(--text)!important}
+.theme-setting.selected{outline:2px solid var(--primary);background:var(--surface-3)!important}
+.theme-dot{width:14px;height:14px;border-radius:50%;display:inline-block}.red-dot{background:#ef2929}.blue-dot{background:#2878df}
+.settings-rest-options button{flex:1;margin:0}.settings-note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.45}
+.workout-description{margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:13px;line-height:1.55;color:var(--muted)}
+.exercise-group{margin-bottom:6px;background:#4b1515;color:#ff8b8b}
+@media(max-width:430px){.profile-buttons button{font-size:12px;padding:8px 5px}.settings-theme-options{gap:6px}}
