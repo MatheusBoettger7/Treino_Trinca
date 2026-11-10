@@ -249,218 +249,217 @@
   },
   "F": {
     "id": "F",
-    "name": "Glúteos + quadríceps",
+    "name": "Quadríceps + panturrilha",
     "items": [
       {
-        "name": "Elevação pélvica",
-        "sets": 4,
-        "reps": "8–12"
+        "name": "Agachamento livre",
+        "sets": 3,
+        "reps": "8–10",
+        "repdbId": "squat",
+        "rest": "120 s"
       },
       {
         "name": "Leg press",
         "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Agachamento búlgaro",
-        "sets": 3,
-        "reps": "8–10 cada perna"
-      },
-      {
-        "name": "Cadeira extensora",
-        "sets": 3,
-        "reps": "10–15"
-      },
-      {
-        "name": "Coice na polia",
-        "sets": 3,
-        "reps": "12–15 cada perna",
-        "repdbId": "cable-kickback"
-      },
-      {
-        "name": "Abdutora",
-        "sets": 3,
-        "reps": "15–20"
-      }
-    ]
-  },
-  "G": {
-    "id": "G",
-    "name": "Costas + ombros + braços",
-    "items": [
-      {
-        "name": "Puxada alta",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Remada sentada",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Supino inclinado com halteres",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Elevação lateral",
-        "sets": 3,
-        "reps": "12–20"
-      },
-      {
-        "name": "Face pull",
-        "sets": 2,
-        "reps": "12–20"
-      },
-      {
-        "name": "Rosca martelo",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Tríceps corda",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Abdominal máquina",
-        "sets": 3,
-        "reps": "10–15",
-        "repdbId": "machine-seated-crunch"
-      }
-    ]
-  },
-  "H": {
-    "id": "H",
-    "name": "Glúteos + posterior",
-    "items": [
-      {
-        "name": "Elevação pélvica",
-        "sets": 4,
-        "reps": "8–12"
-      },
-      {
-        "name": "Step-up",
-        "sets": 3,
-        "reps": "8–10 cada perna"
-      },
-      {
-        "name": "Stiff com halteres ou barra",
-        "sets": 3,
-        "reps": "8–12",
-        "repdbId": "romanian-deadlift"
-      },
-      {
-        "name": "Cadeira Flexora sentada",
-        "sets": 3,
-        "reps": "10–15",
-        "repdbId": "seated-leg-curl"
-      },
-      {
-        "name": "Coice na polia",
-        "sets": 3,
-        "reps": "12–15 cada perna",
-        "repdbId": "cable-kickback"
-      },
-      {
-        "name": "Abdutora",
-        "sets": 3,
-        "reps": "15–20"
-      }
-    ]
-  },
-  "I": {
-    "id": "I",
-    "name": "Superior + condicionamento",
-    "items": [
-      {
-        "name": "Supino máquina",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Remada sentada",
-        "sets": 3,
-        "reps": "10–15"
-      },
-      {
-        "name": "Desenvolvimento máquina",
-        "sets": 3,
-        "reps": "8–12"
-      },
-      {
-        "name": "Puxada alta",
-        "sets": 3,
-        "reps": "10–12"
-      },
-      {
-        "name": "Elevação lateral",
-        "sets": 3,
-        "reps": "12–20"
-      },
-      {
-        "name": "Tríceps corda",
-        "sets": 2,
-        "reps": "10–15"
-      },
-      {
-        "name": "Rosca Scott com Halteres no Banco Inclinado",
-        "sets": 2,
-        "reps": "10–15",
-        "repdbId": "incline-db-curl"
-      },
-      {
-        "name": "Cardio moderado",
-        "sets": 1,
-        "reps": "20–30 min"
-      }
-    ]
-  },
-  "J": {
-    "id": "J",
-    "name": "Pernas pesado — 55–60 min",
-    "warmup": "Aquecimento: 5 min",
-    "items": [
-      {
-        "name": "Agachamento no Smith",
-        "sets": 4,
-        "reps": "6–8",
-        "rest": "2 min"
-      },
-      {
-        "name": "Leg press 45",
-        "sets": 4,
-        "reps": "8–10",
+        "reps": "10–12",
         "repdbId": "leg-press",
-        "rest": "2 min"
+        "rest": "120 s"
       },
       {
         "name": "Hack squat",
         "sets": 3,
-        "reps": "8–10",
-        "rest": "90 s"
-      },
-      {
-        "name": "Afundo no Smith",
-        "sets": 3,
-        "reps": "8–10 cada perna",
-        "rest": "90 s"
+        "reps": "10–12",
+        "repdbId": "hack-squat",
+        "rest": "120 s"
       },
       {
         "name": "Cadeira extensora",
         "sets": 3,
-        "reps": "10–12",
-        "rest": "60 s",
-        "notes": "Na última série, pode fazer drop-set."
+        "reps": "12–15",
+        "repdbId": "leg-extension",
+        "rest": "90 s"
       },
       {
-        "name": "Panturrilha no leg press",
+        "name": "Panturrilha",
         "sets": 3,
-        "reps": "10–15",
-        "rest": "60 s"
+        "reps": "12–15",
+        "repdbId": "machine-calf-raise",
+        "rest": "90 s"
       }
-    ]
+    ],
+    "warmup": "Aquecimento: alguns minutos e séries leves de preparação.",
+    "description": "Aquecimento: alguns minutos e séries leves de preparação. Exercícios principais: descanso de 90–120 segundos; isolados: 60–90 segundos. Use cargas desafiadoras com técnica e termine a maioria das séries com 1–3 repetições em reserva. Ao atingir o topo da faixa de repetições com boa execução, aumente a carga gradualmente. Sessões planejadas para até 60 minutos."
+  },
+  "G": {
+    "id": "G",
+    "name": "Ombros + tríceps",
+    "items": [
+      {
+        "name": "Desenvolvimento com halteres",
+        "sets": 3,
+        "reps": "8–10",
+        "repdbId": "dumbbell-shoulder-press",
+        "rest": "120 s"
+      },
+      {
+        "name": "Elevação lateral",
+        "sets": 3,
+        "reps": "12–15",
+        "repdbId": "lateral-raise",
+        "rest": "90 s"
+      },
+      {
+        "name": "Crucifixo inverso",
+        "sets": 3,
+        "reps": "12–15",
+        "repdbId": "rear-delt-fly",
+        "rest": "90 s"
+      },
+      {
+        "name": "Tríceps corda",
+        "sets": 3,
+        "reps": "10–12",
+        "repdbId": "rope-tricep-pushdown",
+        "rest": "90 s"
+      },
+      {
+        "name": "Tríceps francês na polia",
+        "sets": 3,
+        "reps": "10–12",
+        "repdbId": "overhead-tricep-extension",
+        "rest": "90 s"
+      }
+    ],
+    "warmup": "Aquecimento: alguns minutos e séries leves de preparação.",
+    "description": "Aquecimento: alguns minutos e séries leves de preparação. Exercícios principais: descanso de 90–120 segundos; isolados: 60–90 segundos. Use cargas desafiadoras com técnica e termine a maioria das séries com 1–3 repetições em reserva. Ao atingir o topo da faixa de repetições com boa execução, aumente a carga gradualmente. Sessões planejadas para até 60 minutos."
+  },
+  "H": {
+    "id": "H",
+    "name": "Glúteos + posteriores",
+    "items": [
+      {
+        "name": "Elevação pélvica",
+        "sets": 4,
+        "reps": "8–10",
+        "repdbId": "hip-thrust",
+        "rest": "120 s"
+      },
+      {
+        "name": "Stiff",
+        "sets": 3,
+        "reps": "8–10",
+        "repdbId": "romanian-deadlift",
+        "rest": "120 s"
+      },
+      {
+        "name": "Step-up",
+        "sets": 2,
+        "reps": "10 por perna",
+        "repdbId": "step-up",
+        "rest": "120 s"
+      },
+      {
+        "name": "Mesa flexora",
+        "sets": 3,
+        "reps": "10–12",
+        "repdbId": "leg-curl",
+        "rest": "90 s"
+      },
+      {
+        "name": "Cadeira abdutora",
+        "sets": 2,
+        "reps": "15–20",
+        "repdbId": "hip-abduction",
+        "rest": "90 s"
+      }
+    ],
+    "warmup": "Aquecimento: alguns minutos e séries leves de preparação.",
+    "description": "Aquecimento: alguns minutos e séries leves de preparação. Exercícios principais: descanso de 90–120 segundos; isolados: 60–90 segundos. Use cargas desafiadoras com técnica e termine a maioria das séries com 1–3 repetições em reserva. Ao atingir o topo da faixa de repetições com boa execução, aumente a carga gradualmente. Sessões planejadas para até 60 minutos."
+  },
+  "I": {
+    "id": "I",
+    "name": "Costas + bíceps",
+    "items": [
+      {
+        "name": "Puxada alta",
+        "sets": 3,
+        "reps": "10–12",
+        "repdbId": "lat-pulldown",
+        "rest": "120 s"
+      },
+      {
+        "name": "Remada baixa",
+        "sets": 3,
+        "reps": "10–12",
+        "repdbId": "seated-cable-row",
+        "rest": "120 s"
+      },
+      {
+        "name": "Remada articulada",
+        "sets": 3,
+        "reps": "10–12",
+        "rest": "120 s"
+      },
+      {
+        "name": "Rosca direta",
+        "sets": 3,
+        "reps": "10–12",
+        "repdbId": "barbell-curl",
+        "rest": "90 s"
+      },
+      {
+        "name": "Rosca martelo",
+        "sets": 3,
+        "reps": "10–12",
+        "repdbId": "hammer-curl",
+        "rest": "90 s"
+      }
+    ],
+    "warmup": "Aquecimento: alguns minutos e séries leves de preparação.",
+    "description": "Aquecimento: alguns minutos e séries leves de preparação. Exercícios principais: descanso de 90–120 segundos; isolados: 60–90 segundos. Use cargas desafiadoras com técnica e termine a maioria das séries com 1–3 repetições em reserva. Ao atingir o topo da faixa de repetições com boa execução, aumente a carga gradualmente. Sessões planejadas para até 60 minutos."
+  },
+  "J": {
+    "id": "J",
+    "name": "Pernas + glúteos",
+    "warmup": "Aquecimento: alguns minutos e séries leves de preparação.",
+    "items": [
+      {
+        "name": "Hack squat",
+        "sets": 3,
+        "reps": "10–12",
+        "repdbId": "hack-squat",
+        "rest": "120 s"
+      },
+      {
+        "name": "Leg press horizontal unilateral",
+        "sets": 3,
+        "reps": "10 por perna",
+        "repdbId": "leg-press",
+        "rest": "120 s"
+      },
+      {
+        "name": "Cadeira extensora",
+        "sets": 2,
+        "reps": "12–15",
+        "repdbId": "leg-extension",
+        "rest": "90 s"
+      },
+      {
+        "name": "Elevação pélvica",
+        "sets": 3,
+        "reps": "10–12",
+        "repdbId": "hip-thrust",
+        "rest": "120 s"
+      },
+      {
+        "name": "Panturrilha",
+        "sets": 3,
+        "reps": "12–15",
+        "repdbId": "machine-calf-raise",
+        "rest": "90 s"
+      }
+    ],
+    "description": "Aquecimento: alguns minutos e séries leves de preparação. Exercícios principais: descanso de 90–120 segundos; isolados: 60–90 segundos. Use cargas desafiadoras com técnica e termine a maioria das séries com 1–3 repetições em reserva. Ao atingir o topo da faixa de repetições com boa execução, aumente a carga gradualmente. Sessões planejadas para até 60 minutos. Na sexta-feira, mantenha a elevação pélvica moderada para não repetir o esforço máximo de quarta-feira."
   },
   "K": {
     "id": "K",
