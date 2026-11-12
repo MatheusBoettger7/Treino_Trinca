@@ -1,0 +1,25 @@
+{
+  "name": "Treino Trinca",
+  "short_name": "Treino Trinca",
+  "id": "/Treino_Trinca/",
+  "start_url": "/Treino_Trinca/",
+  "scope": "/Treino_Trinca/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "description": "Treinos, cargas, repetições e progresso para dois perfis.",
+  "icons": [
+    {
+      "src": "assets/treino-trinca-icon-red-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/treino-trinca-icon-red-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

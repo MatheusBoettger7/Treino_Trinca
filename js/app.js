@@ -8,7 +8,8 @@ function applyTheme(theme=getTheme()){
   const meta=document.querySelector('meta[name="theme-color"]');
   if(meta)meta.content=value==='blue'?'#0b1020':'#080808';
   const logo=document.querySelector('.brand-logo');
-  if(logo){logo.src=value==='blue'?'assets/treino-trinca-logo-blue.svg':'assets/blulive-logo.svg';}
+  if(logo){logo.src=value==='blue'?'assets/treino-trinca-logo-blue.svg':'assets/treino-trinca-logo-red.svg';}
+  if(typeof window.setTreinoTrincaThemeAssets==='function')window.setTreinoTrincaThemeAssets(value);
   const btn=document.getElementById('themeBtn');
   if(btn)btn.textContent=value==='blue'?'🔵':'🔴';
 }
