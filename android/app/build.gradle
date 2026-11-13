@@ -8,6 +8,7 @@ def uploadKeyPassword = System.getenv("ANDROID_KEY_PASSWORD")
 def hasReleaseSigning = uploadStoreFile && uploadStorePassword && uploadKeyAlias && uploadKeyPassword
 
 android {
+    // applicationId is the permanent package registered in Google Play Console.
     namespace 'com.matheusboettger.treinotrinca'
     compileSdk 36
 
