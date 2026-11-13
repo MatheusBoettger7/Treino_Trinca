@@ -1,5 +1,12 @@
 plugins { id 'com.android.application' }
 
+def uploadStoreFile = System.getenv("ANDROID_KEYSTORE_PATH")
+def uploadStorePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD")
+def uploadKeyAlias = System.getenv("ANDROID_KEY_ALIAS")
+def uploadKeyPassword = System.getenv("ANDROID_KEY_PASSWORD")
+
+def hasReleaseSigning = uploadStoreFile && uploadStorePassword && uploadKeyAlias && uploadKeyPassword
+
 android {
     namespace 'com.matheusboettger.treinotrinca'
     compileSdk 36
@@ -8,12 +15,28 @@ android {
         applicationId 'com.matheusboettger.treinotrinca'
         minSdk 23
         targetSdk 36
-        versionCode 90
-        versionName '2026.11.10.90'
+        versionCode 91
+        versionName '2026.11.12.91'
+    }
+
+    signingConfigs {
+        release {
+            if (hasReleaseSigning) {
+                storeFile file(uploadStoreFile)
+                storePassword uploadStorePassword
+                keyAlias uploadKeyAlias
+                keyPassword uploadKeyPassword
+            }
+        }
     }
 
     buildTypes {
-        release { minifyEnabled false }
+        release {
+            minifyEnabled false
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.release
+            }
+        }
     }
 }
 
