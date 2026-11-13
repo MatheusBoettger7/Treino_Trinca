@@ -17,6 +17,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Read Android version
+        id: app_version
+        shell: bash
+        run: |
+          VERSION_CODE=$(sed -nE 's/^[[:space:]]*versionCode ([0-9]+)$/\\1/p' android/app/build.gradle | head -n 1)
+          if [ -z "$VERSION_CODE" ]; then
+            echo "::error::Não foi possível identificar o versionCode em android/app/build.gradle."
+            exit 1
+          fi
+          echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
+
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
@@ -65,7 +76,7 @@ jobs:
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
         with:
-          name: treino-trinca-aab-v91
+          name: treino-trinca-aab-v${{ steps.app_version.outputs.version_code }}
           path: android/app/build/outputs/bundle/release/app-release.aab
           if-no-files-found: error
           retention-days: 14
