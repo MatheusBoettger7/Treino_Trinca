@@ -21,7 +21,7 @@ jobs:
         id: app_version
         shell: bash
         run: |
-          VERSION_CODE=$(sed -nE 's/^[[:space:]]*versionCode ([0-9]+)$/\\1/p' android/app/build.gradle | head -n 1)
+          VERSION_CODE=$(awk '/^[[:space:]]*versionCode / { print $2; exit }' android/app/build.gradle)
           if [ -z "$VERSION_CODE" ]; then
             echo "::error::Não foi possível identificar o versionCode em android/app/build.gradle."
             exit 1
