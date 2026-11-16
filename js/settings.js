@@ -27,9 +27,16 @@ function renderSettings(c){
   original(c);
   const w=workouts?.[current];
   const hero=c.querySelector('.hero');
-  if(w?.description&&hero){
+  if((w?.description||w?.warmup)&&hero){
    const key='treinoTrincaDescriptionOpen_'+profile+'_'+current;
    const saved=localStorage.getItem(key);
+
+   // As orientações ficam em um único painel; não repetir o texto fora dele.
+   hero.querySelectorAll(':scope > .muted.small').forEach(el=>{
+    if(el.textContent.trim()===String(w.warmup||'').trim() ||
+       el.textContent.trim()===String(w.description||'').trim()) el.remove();
+   });
+
    const details=document.createElement('details');
    details.className='workout-description-disclosure';
    details.open=saved===null?!activeWorkout():saved==='1';
@@ -37,11 +44,15 @@ function renderSettings(c){
    summary.textContent='Orientações do treino';
    const body=document.createElement('div');
    body.className='workout-description-content';
-   body.textContent=w.description;
+   body.textContent=[w.warmup,w.description].filter(Boolean).join(' ');
    details.appendChild(summary);
    details.appendChild(body);
-   details.addEventListener('toggle',()=>localStorage.setItem(key,details.open?'1':'0'));
+
+   // O cronômetro fica logo após o título, antes das orientações.
+   const timer=c.querySelector('.workout-timer-card');
+   if(timer)hero.appendChild(timer);
    hero.appendChild(details);
+   details.addEventListener('toggle',()=>localStorage.setItem(key,details.open?'1':'0'));
   }
   if(w?.items){
    w.items.forEach((item,i)=>{
